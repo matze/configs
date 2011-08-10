@@ -1,0 +1,12 @@
+[user]
+	name = Matthias Vogelgesang
+	email = matthias.vogelgesang@gmail.com
+
+[alias]
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
