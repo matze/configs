@@ -158,7 +158,12 @@ syntax on
 set t_Co=256
 set background=dark
 
-colorscheme lilypink
+try
+    colorscheme lilypink
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert
+endtry
+
 
 if has("gui_running")
     set lines=60                " bißchen höher im GUI-Modus
