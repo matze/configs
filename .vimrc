@@ -1,6 +1,6 @@
 " Matzes .vimrc
 "
-" Last revision: 2011-08-02
+" Last revision: 2011-08-10
 "
 " Important Scripts:
 "   - NeoComplCache
@@ -27,9 +27,6 @@ set scrolloff=2     " Mindestens zwei Zeilen Kontext
 set sidescrolloff=2 " Mindestens zwei Spalten Kontext
 set mouse=a         " Mouse-Support im Terminal
 set tags=tags
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/gl
-set tags+=~/.vim/tags/sdl
 set ttyfast
 let mapleader = ","
 
@@ -56,7 +53,7 @@ set wrapscan        " Suche oben fortsetzen
 set sm
 set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
-set nogdefault        " g ist nicht Standard bei :s/foo/bar
+set nogdefault      " g ist nicht Standard bei :s/foo/bar
 if has("cscope")
     set cst         " use cscope's tag
     set csto=1      " use ctags first
@@ -114,7 +111,6 @@ nmap <Leader>gb :GitCheckout
 let g:git_branch_status_nogit = ""
 let g:git_branch_status_ignore_remotes = 1
 set statusline=%<%f\ %h%m%r\ %{GitBranchInfoTokens()[0]}%=%-14.(%l,%c%V%)\ %P
-
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -228,8 +224,6 @@ nmap <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
 " --- basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
-"nmap <Leader>v V`]
-nmap Q gqip
 
 " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
