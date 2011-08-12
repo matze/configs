@@ -72,8 +72,4 @@ function prompt_workingdir () {
     echo $newPWD
 }
 
-
-gitbranch=$(parse_git_branch)
-
 export PS1='\[\033[1;30m\]me\[\033[0m\]@\[\033[1;30m\]\h\[\033[0m\]:\[\033[0;33m\]$(prompt_workingdir)\[\033[0m\]$(parse_git_branch)$ '
-#export PS1='\[$(bldblk)\]\u\[$(txtrst)\]@\h \[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
