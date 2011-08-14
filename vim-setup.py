@@ -58,6 +58,6 @@ if __name__ == '__main__':
         os.mkdir(colors_path)
 
     for scheme_url in COLOR_SCHEMES:
-        filename = colors_path + partial_path(scheme_url)
+        filename = colors_path + '/' + partial_path(scheme_url)
         open(filename, 'w').write(curl_get(scheme_url))
 
