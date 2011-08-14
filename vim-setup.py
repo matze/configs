@@ -56,6 +56,6 @@ if __name__ == '__main__':
         print "mkdir ~/.vim/colors"
 
     for scheme_url in COLOR_SCHEMES:
-        filename = partial_path(scheme_url)
+        filename = vimdir + '/colors/' + partial_path(scheme_url)
         open(filename, 'w').write(curl_get(scheme_url))
 
