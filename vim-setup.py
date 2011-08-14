@@ -52,10 +52,12 @@ if __name__ == '__main__':
             os.chdir(bundledir)
             do_git('clone https://github.com/%s.git' % repo)
 
-    if not os.path.exists(vimdir + '/colors'):
+    colors_path = vimdir + '/colors'
+    if not os.path.exists(colors_path):
         print "mkdir ~/.vim/colors"
+        os.mkdir(colors_path)
 
     for scheme_url in COLOR_SCHEMES:
-        filename = vimdir + '/colors/' + partial_path(scheme_url)
+        filename = colors_path + partial_path(scheme_url)
         open(filename, 'w').write(curl_get(scheme_url))
 
