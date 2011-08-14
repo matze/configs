@@ -1,14 +1,6 @@
 " Matzes .vimrc
 "
 " Last revision: 2011-08-10
-"
-" Important Scripts:
-"   - NeoComplCache
-"   - NERD_commenter
-"   - NERD_tree
-"   - TagBar
-"   - MinibufExplorer (*)
-"   - delimitMate
 
 " --- general ---------------------------------------------------------------
 "
