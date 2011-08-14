@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """vim-setup.py: Re-create .vim directory and update plugins"""
 
-import os, curl, subprocess
+import os, urllib, subprocess
 
 PATHOGEN_URL = 'https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim'
 
@@ -25,7 +25,7 @@ def do_git(command):
 
 def curl_get(url):
     print "GET %s" % url
-    return curl.Curl().get(url)
+    return urllib.urlopen(url).read()
 
 if __name__ == '__main__':
     vimdir = os.path.expanduser('~/.vim')
