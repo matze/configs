@@ -46,8 +46,11 @@ set tw=80
 
 " --- folding ---------------------------------------------------------------
 "
-set foldmethod=syntax
 set nofoldenable
+set foldmethod=indent
+set fillchars=fold:\ 
+nnoremap <Space> za
+
 
 " --- searching -------------------------------------------------------------
 "
