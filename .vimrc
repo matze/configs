@@ -44,6 +44,11 @@ set number          " Zeilennummern anschalten
 set listchars=tab:»\ ,trail:·,eol:¬
 set tw=80
 
+" --- folding ---------------------------------------------------------------
+"
+set foldmethod=syntax
+set nofoldenable
+
 " --- searching -------------------------------------------------------------
 "
 set ignorecase      " Case-insentive Suchen
