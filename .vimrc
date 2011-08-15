@@ -103,14 +103,9 @@ let g:miniBufExplMapWindowNavArrows = 0
 nmap <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>nf :NERDTreeFind<CR>
 
-" --- git-vim
-nmap <Leader>gl :GitLog<CR>
-nmap <Leader>gb :GitCheckout 
-
-" --- GitBranchInfo
-let g:git_branch_status_nogit = ""
-let g:git_branch_status_ignore_remotes = 1
-set statusline=%<%f\ %h%m%r\ %{GitBranchInfoTokens()[0]}%=%-14.(%l,%c%V%)\ %P
+" --- fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
