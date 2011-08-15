@@ -6,6 +6,7 @@ import os, urllib, subprocess
 PATHOGEN_URL = 'https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim'
 
 GITHUB_REPOS = [
+    "mileszs/ack.vim",
     "Raimondi/delimitMate",
     "fholgado/minibufexpl.vim",
     "scrooloose/nerdcommenter",
