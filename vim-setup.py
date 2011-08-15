@@ -12,7 +12,7 @@ GITHUB_REPOS = [
     "scrooloose/nerdtree",
     "Shougo/neocomplcache",
     "majutsushi/tagbar",
-    "taq/vim-git-branch-info",
+    "tpope/vim-fugitive",
     "tpope/vim-surround" ]
 
 COLOR_SCHEMES = [ 'https://raw.github.com/vim-scripts/lilypink/master/colors/lilypink.vim' ]
