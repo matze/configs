@@ -126,8 +126,8 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-imap <C-k>  <Plug>(neocomplcache_snippets_expand)
-smap <C-k>  <Plug>(neocomplcache_snippets_expand)
+"imap <C-h>  <Plug>(neocomplcache_snippets_expand)
+"smap <C-h>  <Plug>(neocomplcache_snippets_expand)
 
 inoremap  <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>\<C-p>\<Down>"
 function! s:check_back_space()"{{{
@@ -238,6 +238,9 @@ iab iene eine
 iab rekrusiv rekursiv
 iab sidn sind
 iab vlgr Viele Grüße
+
+" --- digraphs --------------------------------------------------------------
+digraph ,: 8230
 
 " --- Auto-Commands ---------------------------------------------------------
 "
