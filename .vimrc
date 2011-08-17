@@ -126,8 +126,6 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-"imap <C-h>  <Plug>(neocomplcache_snippets_expand)
-"smap <C-h>  <Plug>(neocomplcache_snippets_expand)
 
 inoremap  <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>\<C-p>\<Down>"
 function! s:check_back_space()"{{{
@@ -188,6 +186,7 @@ inoremap <F6> <Esc>:w!<CR>:make!<CR>
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
 nmap <Leader>p :set paste! paste?<CR>
+nmap <Leader>bb :Ack "@inproceedings\\|@article\\|@misc\\|@standard" %<CR><CR>:cw<CR>
 
 " --- window management
 nmap - <C-W>-<CR>
@@ -229,6 +228,7 @@ nmap <Leader>r2 yypVr-
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
+
 
 
 " --- abbreviations ---------------------------------------------------------
