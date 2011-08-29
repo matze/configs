@@ -133,8 +133,10 @@ function! s:check_back_space()"{{{
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
-smap <tab>  <right><plug>(neocomplcache_snippets_jump) 
 inoremap <expr><c-e> neocomplcache#complete_common_string()
+
+imap <C-K> <Plug>(neocomplcache_snippets_expand)
+smap <C-K> <Plug>(neocomplcache_snippets_expand)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
