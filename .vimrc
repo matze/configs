@@ -253,6 +253,10 @@ augroup text
     au BufNewFile,BufRead       *.tex               set tw=80
 augroup END
 
+" Save when switching buffers
+au FocusLost * :wa 
+" Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
 au BufEnter *.tex   set nosmartindent
+" OpenCL is not yet included
 au BufNewFile,BufRead       *.cl set filetype=c
-augroup END
+
