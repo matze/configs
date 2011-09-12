@@ -3,7 +3,11 @@
 	email = matthias.vogelgesang@gmail.com
 
 [alias]
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    l = log --graph --decorate --pretty=oneline --abbrev-commit
+    s = status --short 
+    d = diff --color-words
+    co = checkout
+    ci = commit
     switch = checkout
 
 [color]
