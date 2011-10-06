@@ -1,6 +1,9 @@
 [user]
-	name = Matthias Vogelgesang
-	email = matthias.vogelgesang@gmail.com
+    name = Matthias Vogelgesang
+    email = matthias.vogelgesang@gmail.com
+
+[core]
+    editor = vim
 
 [alias]
     l = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
