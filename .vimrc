@@ -257,6 +257,8 @@ augroup END
 au FocusLost * :wa 
 " Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
 au BufEnter *.tex   set nosmartindent
+" Similar, prevent not indenting the comment hash
+au BufEnter *.py    set nosmartindent
 " OpenCL is not yet included
 au BufNewFile,BufRead       *.cl set filetype=c
 
