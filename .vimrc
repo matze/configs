@@ -181,9 +181,7 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
-nnoremap <F5> "=strftime("%Y-%m-%d")<CR>P
-nnoremap <F6> :w!<CR>:make!<CR>
-inoremap <F6> <Esc>:w!<CR>:make!<CR>
+inoremap <F5> <Esc>:w!<CR>:make!<CR>
 
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
@@ -215,6 +213,7 @@ nmap <Leader>7 :b7<CR>
 nmap <Leader>8 :b8<CR>
 nmap <Leader>9 :b9<CR>
 nmap <Leader>bc :bd<CR>
+nmap <Leader>cl :ccl<CR>
 
 " --- Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>

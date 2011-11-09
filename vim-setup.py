@@ -11,6 +11,8 @@ GITHUB_REPOS = [
     "fholgado/minibufexpl.vim",
     "scrooloose/nerdtree",
     "Shougo/neocomplcache",
+    "nvie/vim-pep8",
+    "nvie/vim-pyflakes",
     "majutsushi/tagbar",
     "tpope/vim-commentary",
     "tpope/vim-fugitive",
