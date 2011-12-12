@@ -13,7 +13,7 @@ set backspace=2     " alles im Insertmode löschen
 set noerrorbells    " Klingeling ausschalten
 set history=1000    " Commandline-History
 set wildmenu        " Tab-completion im Menü
-set wildignore+=*~  " will ich nicht sehen
+set wildignore+=*/.git/*,*/.bzr/*,*~
 set hidden
 set scrolloff=2     " Mindestens zwei Zeilen Kontext
 set sidescrolloff=2 " Mindestens zwei Spalten Kontext
@@ -104,8 +104,8 @@ nmap <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>nf :NERDTreeFind<CR>
 
 " --- fugitive
-autocmd BufReadPost fugitive://* set bufhidden=delete
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" autocmd BufReadPost fugitive://* set bufhidden=delete
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -218,7 +218,7 @@ nmap <Leader>cl :ccl<CR>
 
 " --- Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-nmap <C-p> <C-]>
+nmap <C-l> <C-]>
 nmap <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
 

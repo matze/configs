@@ -9,11 +9,12 @@ GITHUB_REPOS = [
     "mileszs/ack.vim",
     "Raimondi/delimitMate",
     "fholgado/minibufexpl.vim",
-    "scrooloose/nerdtree",
+    # "scrooloose/nerdtree",
     "Shougo/neocomplcache",
     "nvie/vim-pep8",
     "nvie/vim-pyflakes",
     "majutsushi/tagbar",
+    "kien/ctrlp.vim",
     "tpope/vim-commentary"
     # "tpope/vim-fugitive",
     # "tpope/vim-surround" 
