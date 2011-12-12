@@ -181,7 +181,9 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
-inoremap <F5> <Esc>:w!<CR>:make!<CR>
+nmap <F4> <Esc>:bd<CR>
+nmap <S-F4> <Esc>:bd!<CR>
+nmap <F5> <Esc>:w!<CR>:make!<CR>
 
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
@@ -212,7 +214,6 @@ nmap <Leader>6 :b6<CR>
 nmap <Leader>7 :b7<CR>
 nmap <Leader>8 :b8<CR>
 nmap <Leader>9 :b9<CR>
-nmap <Leader>bc :bd<CR>
 nmap <Leader>cl :ccl<CR>
 
 " --- Tlist and ctags stuff

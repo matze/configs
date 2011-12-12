@@ -14,9 +14,10 @@ GITHUB_REPOS = [
     "nvie/vim-pep8",
     "nvie/vim-pyflakes",
     "majutsushi/tagbar",
-    "tpope/vim-commentary",
-    "tpope/vim-fugitive",
-    "tpope/vim-surround" ]
+    "tpope/vim-commentary"
+    # "tpope/vim-fugitive",
+    # "tpope/vim-surround" 
+    ]
 
 COLOR_SCHEMES = [ 'https://raw.github.com/vim-scripts/lilypink/master/colors/lilypink.vim' ]
 
