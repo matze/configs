@@ -1,6 +1,5 @@
 " Matzes .vimrc
 "
-" Last revision: 2011-08-10
 
 " --- general ---------------------------------------------------------------
 "
@@ -41,8 +40,6 @@ set tw=80
 set nofoldenable
 set foldmethod=indent
 set fillchars=fold:\ 
-nnoremap <Space> za
-
 
 " --- searching -------------------------------------------------------------
 "
@@ -54,6 +51,7 @@ set sm
 set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
 set nogdefault      " g ist nicht Standard bei :s/foo/bar
+
 if has("cscope")
     set cst         " use cscope's tag
     set csto=1      " use ctags first
@@ -98,10 +96,6 @@ nmap <silent> <Leader>tt :TagbarToggle<CR>
 " --- minibufexplorer
 let g:miniBufExplMaxHeight = 1
 let g:miniBufExplMapWindowNavArrows = 0
-
-" --- NERDTree
-nmap <Leader>nt :NERDTreeToggle<CR>
-nmap <Leader>nf :NERDTreeFind<CR>
 
 " --- fugitive
 " autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -158,7 +152,6 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
-
 
 if has("gui_running")
     set lines=60                " bißchen höher im GUI-Modus
@@ -218,7 +211,6 @@ nmap <Leader>cl :ccl<CR>
 
 " --- Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-nmap <C-l> <C-]>
 nmap <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
@@ -230,7 +222,6 @@ nmap <Leader>r2 yypVr-
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-
 
 
 " --- abbreviations ---------------------------------------------------------
