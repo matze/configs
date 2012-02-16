@@ -5,7 +5,8 @@
 "
 set nocompatible    " vi-Kompatibilität ausschalten
 set showmatch       " Klammermatching anzeigen
-set cursorline      " aktuelle Zeile anzeigen
+set nocursorline
+set nocursorcolumn
 set ruler           " aktuelle Cursorposition
 set laststatus=2    " Status immer anzeigen
 set backspace=2     " alles im Insertmode löschen
@@ -97,10 +98,6 @@ nmap <silent> <Leader>tt :TagbarToggle<CR>
 let g:miniBufExplMaxHeight = 1
 let g:miniBufExplMapWindowNavArrows = 0
 let g:miniBufExplCheckDupeBufs = 0
-
-" --- fugitive
-" autocmd BufReadPost fugitive://* set bufhidden=delete
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
