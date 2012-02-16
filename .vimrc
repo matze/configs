@@ -96,6 +96,7 @@ nmap <silent> <Leader>tt :TagbarToggle<CR>
 " --- minibufexplorer
 let g:miniBufExplMaxHeight = 1
 let g:miniBufExplMapWindowNavArrows = 0
+let g:miniBufExplCheckDupeBufs = 0
 
 " --- fugitive
 " autocmd BufReadPost fugitive://* set bufhidden=delete
