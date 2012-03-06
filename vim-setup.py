@@ -13,7 +13,8 @@ GITHUB_REPOS = [
     "Shougo/neocomplcache-snippets-complete",
     "majutsushi/tagbar",
     "kien/ctrlp.vim",
-    "tpope/vim-commentary"
+    "tpope/vim-commentary",
+    "nvie/vim-flake8"
     ]
 
 COLOR_SCHEMES = [ 'https://raw.github.com/vim-scripts/lilypink/master/colors/lilypink.vim' ]
