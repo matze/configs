@@ -10,6 +10,7 @@ GITHUB_REPOS = [
     "Raimondi/delimitMate",
     "fholgado/minibufexpl.vim",
     "Shougo/neocomplcache",
+    "Shougo/neocomplcache-snippets-complete",
     "majutsushi/tagbar",
     "kien/ctrlp.vim",
     "tpope/vim-commentary"
