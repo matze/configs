@@ -211,6 +211,7 @@ nmap <Leader>cl :ccl<CR>
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 nmap <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-o> <C-]>
 
 " --- basic formatting
 nmap <Leader>r1 yypVr=
