@@ -4,6 +4,7 @@
 " --- general ---------------------------------------------------------------
 "
 set nocompatible    " vi-Kompatibilität ausschalten
+set modeline
 set showmatch       " Klammermatching anzeigen
 set nocursorline
 set nocursorcolumn

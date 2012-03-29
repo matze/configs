@@ -14,6 +14,8 @@ GITHUB_REPOS = [
     "majutsushi/tagbar",
     "kien/ctrlp.vim",
     "tpope/vim-commentary",
+    "tpope/vim-fugitive",
+    "tpope/vim-surround",
     "nvie/vim-flake8"
     ]
 
