@@ -16,6 +16,7 @@ GITHUB_REPOS = [
     "tpope/vim-commentary",
     "tpope/vim-fugitive",
     "tpope/vim-surround",
+    "tpope/vim-repeat",
     "nvie/vim-flake8"
     ]
 
