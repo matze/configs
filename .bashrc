@@ -94,6 +94,7 @@ PROMPT_COMMAND=_prompt_command
 if [ -f /usr/local/bin/fasd ]; then
     eval "$(fasd --init auto)"
     alias v='f -e vim'
-    _fasd_bash_hook_cmd_complete v
+    alias o='a -e xdg-open'
+    _fasd_bash_hook_cmd_complete v o
 fi
 
