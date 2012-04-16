@@ -45,7 +45,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # --- misc environment variables (mostly fixes) -------------------------------
-export SISODIR5=/opt/siso
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 
 # --- enhance prompt ----------------------------------------------------------
@@ -63,6 +62,7 @@ function _prompt_workingdir () {
     fi
     echo $newPWD
 }
+
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
@@ -84,8 +84,16 @@ function _git_prompt() {
         echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
     fi
 }
+
 function _prompt_command() {
     PS1="`_git_prompt`"'\[\033[1;30m\]me\[\033[0m\]@\[\033[1;30m\]\h\[\033[0m\]:\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\]$ '
 }
 
 PROMPT_COMMAND=_prompt_command
+
+if [ -f /usr/local/bin/fasd ]; then
+    eval "$(fasd --init auto)"
+    alias v='f -e vim'
+    _fasd_bash_hook_cmd_complete v
+fi
+
