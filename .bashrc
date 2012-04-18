@@ -86,7 +86,7 @@ function _git_prompt() {
 }
 
 function _prompt_command() {
-    PS1="`_git_prompt`"'\[\033[1;30m\]me\[\033[0m\]@\[\033[1;30m\]\h\[\033[0m\]:\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\]$ '
+    PS1="`_git_prompt`"'\[\033[1;30m\]me\[\033[0m\]@\[\033[1;30m\]\h\[\033[0m\]:\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
 }
 
 PROMPT_COMMAND=_prompt_command
