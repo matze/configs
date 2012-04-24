@@ -39,6 +39,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias tmux="TERM=xterm-256color tmux"
 
+vman() { man $* | col -b | /usr/share/vim/vimcurrent/macros/less.sh -c 'set ft=man nomod nolist' -; }
+alias man='vman'
+
 # --- bash completion ---------------------------------------------------------
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
