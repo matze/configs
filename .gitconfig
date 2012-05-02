@@ -13,7 +13,6 @@
     ds = diff --cached --color-words
     co = checkout
     ci = commit
-    switch = checkout
     unstage = reset HEAD 
     undo = checkout -- 
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
