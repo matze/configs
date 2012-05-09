@@ -9,13 +9,14 @@
 [alias]
     l = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
     s = status
+    b = branch
     d = diff --color-words
     ds = diff --cached --color-words
     co = checkout
-    ci = commit
     unstage = reset HEAD 
     undo = checkout -- 
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
+    tags = tag -l
 
 [color]
     branch = auto
