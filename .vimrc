@@ -134,6 +134,10 @@ smap <C-K> <Plug>(neocomplcache_snippets_expand)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
+" --- fugitive
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+
 " --- omni completion -------------------------------------------------------
 "
 set omnifunc=syntaxcomplete#Complete
