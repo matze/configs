@@ -1,0 +1,27 @@
+set header_cache        = ~/.mutt/cache/headers
+set message_cachedir    = ~/.mutt/cache/bodies
+set signature           = ~/.mutt/signature
+set editor              = "/usr/bin/vim +/^$"
+set realname            = "Matthias Vogelgesang"
+
+set mbox_type           = Maildir
+set folder              = ~/.mail
+set spoolfile           = "+GMail/INBOX"
+set envelope_from       = yes
+set include             = yes               # always quote when replying
+
+unset move
+unset confirmappend
+set quit
+set sig_dashes
+set fast_reply
+
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+
+auto_view               text/html
+
+folder-hook GMail/* source ~/.mutt/gmail.muttrc
+mailboxes +GMail/INBOX +GMail/archive +GMail/sent +GMail/drafts +GMail/spam +GMail/trash
+
+folder-hook FZK/* source ~/.mutt/fzk.muttrc

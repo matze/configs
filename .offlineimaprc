@@ -1,0 +1,36 @@
+[general]
+ui = ttyui
+accounts = gmail, fzk
+pythonfile = ~/offlineimap/offlineimap.py
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+
+[Account fzk]
+localrepository = fzk-local
+remoterepository = fzk-remote
+
+[Repository gmail-local]
+type = Maildir
+localfolders = ~/.mail/GMail
+
+[Repository fzk-local]
+type = Maildir
+localfolders = ~/.mail/FZK
+
+[Repository gmail-remote]
+type = Gmail
+remoteuser = matthias.vogelgesang@gmail.com
+remotepasseval = keyring.get_password("offlineimap", "matthias.vogelgesang@gmail.com")
+realdelete = no
+nametrans = lambda folder:  re.sub('^inbox$', 'INBOX',
+                            re.sub(' +', '_',
+                            re.sub(r'.*/(.*)$', r'\1', folder).lower()))
+
+[Repository fzk-remote]
+type = IMAP
+remotehost = imap4.fzk.de
+remoteport = 993
+remoteuser = matthias.vogelgesang@ipe.fzk.de
+remotepasseval = keyring.get_password("offlineimap", "matthias.vogelgesang@ipe.fzk.de")
