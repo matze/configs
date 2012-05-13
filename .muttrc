@@ -21,6 +21,13 @@ set sort_aux            = reverse-last-date-received
 
 auto_view               text/html
 
+ignore *
+unignore from date to cc subject
+hdr_order From Date: From: To: CC: Subject:
+
+source ~/.mutt/aliases
+set alias_file=~/.mutt/aliases
+
 folder-hook GMail/* source ~/.mutt/gmail.muttrc
 mailboxes +GMail/INBOX +GMail/archive +GMail/sent +GMail/drafts +GMail/spam +GMail/trash
 

@@ -15,6 +15,7 @@ mkdir -p ~/.mutt/temp
 ln -s -f $HERE/.mutt/fzk.muttrc ~/.mutt/fzk.muttrc
 ln -s -f $HERE/.mutt/gmail.muttrc ~/.mutt/gmail.muttrc
 ln -s -f $HERE/.mutt/signature ~/.mutt/signature
+ln -s -f $HERE/.mutt/aliases ~/.mutt/aliases
 
 mkdir -p ~/.offlineimap
 ln -s -f $HERE/offlineimap.py ~/.offlineimap/offlineimap.py
