@@ -9,15 +9,18 @@ set mbox_type           = Maildir
 set folder              = ~/.mail
 set spoolfile           = "+GMail/INBOX"
 set envelope_from       = yes
-set include             = yes               # always quote when replying
 set sleep_time          = 0                 # no "mailbox unchanged"
 
 unset move
 unset confirmappend
 set quit
 set sig_dashes
-set fast_reply
 
+set fast_reply
+set include             = yes               # always quote when replying
+
+set pager_index_lines   = 6
+set pager_context       = 3
 set sort                = threads
 set sort_aux            = reverse-last-date-received
 
