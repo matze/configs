@@ -1,8 +1,8 @@
-color status green default
-
 set from        =   "matthias.vogelgesang@gmail.com"
 set mbox        =   "+GMail/archive"
 set postponed   =   "+GMail/drafts"
 unset record                            # let Gmail handle that
 
 macro index E "<change-folder>+GMail/archive<enter><limit>~B " "search everything"
+macro index <esc>1 "<change-folder>+GMail/INBOX<enter>"
+macro index <esc>2 "<change-folder>+GMail/all_mail<enter>"

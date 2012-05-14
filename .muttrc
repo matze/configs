@@ -1,6 +1,7 @@
 set header_cache        = ~/.mutt/cache/headers
 set message_cachedir    = ~/.mutt/cache/bodies
 set signature           = ~/.mutt/signature
+set alias_file          = ~/.mutt/aliases
 set editor              = "/usr/bin/vim +/^$"
 set realname            = "Matthias Vogelgesang"
 
@@ -25,10 +26,18 @@ ignore *
 unignore from date to cc subject
 hdr_order From Date: From: To: CC: Subject:
 
-source ~/.mutt/aliases
-set alias_file=~/.mutt/aliases
+source $alias_file
+source ~/.mutt/gmail.muttrc
 
 folder-hook GMail/* source ~/.mutt/gmail.muttrc
-mailboxes +GMail/INBOX +GMail/archive +GMail/sent +GMail/drafts +GMail/spam +GMail/trash
+mailboxes +GMail/INBOX +GMail/all_mail +GMail/sent +GMail/drafts +GMail/spam +GMail/trash
 
 folder-hook FZK/* source ~/.mutt/fzk.muttrc
+
+
+color index     brightyellow    black ~N
+color index     yellow          black ~O
+color index     magenta         black ~F
+color index     blue            black ~T
+color index     red             black ~D
+color index     white           black ~R
