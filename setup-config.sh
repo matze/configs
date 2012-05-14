@@ -5,6 +5,7 @@ HERE=`pwd`
 ln -s -f $HERE/.bashrc ~/.bashrc
 ln -s -f $HERE/.gitconfig ~/.gitconfig
 ln -s -f $HERE/.gitignore ~/.gitignore
+ln -s -f $HERE/.goobookrc ~/.goobookrc
 ln -s -f $HERE/.tmux.conf ~/.tmux.conf
 ln -s -f $HERE/.vimrc ~/.vimrc
 

@@ -21,6 +21,8 @@ set fast_reply
 set sort                = threads
 set sort_aux            = reverse-last-date-received
 
+set query_command       = "goobook query '%s'"
+
 auto_view               text/html
 
 ignore *
@@ -35,6 +37,7 @@ mailboxes +GMail/INBOX +GMail/all_mail +GMail/sent +GMail/drafts +GMail/spam +GM
 
 folder-hook FZK/* source ~/.mutt/fzk.muttrc
 
+bind editor     <Tab>   complete-query
 
 color index     brightyellow    black ~N
 color index     yellow          black ~O

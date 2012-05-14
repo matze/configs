@@ -14,7 +14,7 @@ localfolders = ~/.mail/GMail
 [Repository gmail-remote]
 type = Gmail
 remoteuser = matthias.vogelgesang@gmail.com
-remotepasseval = keyring.get_password("offlineimap", "matthias.vogelgesang@gmail.com")
+remotepasseval = keyring.get_password("gmail", "matthias.vogelgesang@gmail.com")
 realdelete = no
 nametrans = lambda folder:  re.sub('^inbox$', 'INBOX',
                             re.sub(' +', '_',
