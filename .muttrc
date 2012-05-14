@@ -10,6 +10,7 @@ set folder              = ~/.mail
 set spoolfile           = "+GMail/INBOX"
 set envelope_from       = yes
 set include             = yes               # always quote when replying
+set sleep_time          = 0                 # no "mailbox unchanged"
 
 unset move
 unset confirmappend
