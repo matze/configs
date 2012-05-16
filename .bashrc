@@ -49,6 +49,7 @@ fi
 
 # --- misc environment variables (mostly fixes) -------------------------------
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
+export PATH=$PATH:$HOME/.local/bin
 
 # --- enhance prompt ----------------------------------------------------------
 function _prompt_workingdir () {

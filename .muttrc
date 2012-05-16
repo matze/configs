@@ -25,7 +25,7 @@ set pager_context       = 3
 set sort                = threads
 set sort_aux            = reverse-last-date-received
 
-set query_command       = "goobook query '%s'"
+set query_command       = "~/.local/bin/query.sh '%s'"
 
 alternative_order       text/enriched text/plain text/html
 auto_view               text/html
@@ -42,7 +42,7 @@ mailboxes +GMail/INBOX +GMail/all_mail +GMail/sent +GMail/drafts +GMail/spam +GM
 
 folder-hook FZK/* source ~/.mutt/fzk.muttrc
 
-bind editor     <Tab>   complete-query
+# bind editor     <Tab>   complete-query
 
 bind pager      k       previous-line
 bind pager      j       next-line 
