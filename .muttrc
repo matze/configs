@@ -10,6 +10,7 @@ set folder              = ~/.mail
 set spoolfile           = "+GMail/INBOX"
 set envelope_from       = yes
 set sleep_time          = 0                 # no "mailbox unchanged"
+set mail_check          = 60
 
 unset move
 unset confirmappend
@@ -41,6 +42,19 @@ mailboxes +GMail/INBOX +GMail/all_mail +GMail/sent +GMail/drafts +GMail/spam +GM
 folder-hook FZK/* source ~/.mutt/fzk.muttrc
 
 bind editor     <Tab>   complete-query
+
+bind pager      k       previous-line
+bind pager      j       next-line 
+bind pager      /       search
+bind pager      gg      top
+bind pager      G       bottom
+bind pager      R       group-reply
+
+bind index      gg      first-entry
+bind index      G       last-entry
+bind index      K       previous-unread
+bind index      J       next-unread 
+bind index      R       group-reply
 
 color index     brightyellow    black ~N
 color index     yellow          black ~O
