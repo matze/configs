@@ -14,9 +14,9 @@ set mail_check          = 60
 
 unset move
 unset confirmappend
+set delete
 set quit
 set sig_dashes
-
 set fast_reply
 set include             = yes               # always quote when replying
 
@@ -27,6 +27,7 @@ set sort_aux            = reverse-last-date-received
 
 set query_command       = "goobook query '%s'"
 
+alternative_order       text/enriched text/plain text/html
 auto_view               text/html
 
 ignore *

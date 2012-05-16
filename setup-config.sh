@@ -7,6 +7,7 @@ ln -s -f $HERE/.gitconfig ~/.gitconfig
 ln -s -f $HERE/.gitignore ~/.gitignore
 ln -s -f $HERE/.goobookrc ~/.goobookrc
 ln -s -f $HERE/.tmux.conf ~/.tmux.conf
+ln -s -f $HERE/.mailcap ~/.mailcap
 ln -s -f $HERE/.vimrc ~/.vimrc
 
 mkdir -p ~/.mutt/cache/bodies
