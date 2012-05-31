@@ -137,6 +137,9 @@ nmap <Leader>ncd :NeoComplCacheDisable<CR>
 " --- fugitive
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
+" --- notes.vim
+let g:notes_directory = '~/notes'
+let g:notes_suffix = '.note'
 
 " --- omni completion -------------------------------------------------------
 "
@@ -257,3 +260,4 @@ au BufEnter *.py    set nosmartindent
 " OpenCL is not yet included
 au BufNewFile,BufRead       *.cl set filetype=c
 
+autocmd FileType note NeoComplCacheDisable

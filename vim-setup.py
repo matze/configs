@@ -17,7 +17,8 @@ GITHUB_REPOS = [
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-repeat",
-    "nvie/vim-flake8"
+    "nvie/vim-flake8",
+    "xolox/vim-notes"
     ]
 
 COLOR_SCHEMES = [ 'https://raw.github.com/vim-scripts/lilypink/master/colors/lilypink.vim' ]
