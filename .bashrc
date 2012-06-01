@@ -95,8 +95,4 @@ function _prompt_command() {
 
 PROMPT_COMMAND=_prompt_command
 
-if [ -f /etc/profile.d/autojump.bash ]; then
-    source /etc/profile.d/autojump.bash
-fi
-
 [[ -s ~/.autojump/etc/profile.d/autojump.bash ]] && source ~/.autojump/etc/profile.d/autojump.bash

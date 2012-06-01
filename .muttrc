@@ -42,7 +42,15 @@ mailboxes +GMail/INBOX +GMail/all_mail +GMail/sent +GMail/drafts +GMail/spam +GM
 
 folder-hook FZK/* source ~/.mutt/fzk.muttrc
 
-# bind editor     <Tab>   complete-query
+macro index <F8> \
+      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+      "notmuch: search mail"
+macro index <F9> \
+      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
+      "notmuch: reconstruct thread"
+macro index <F6> \
+      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -inbox<enter>" \
+      "notmuch: remove message from inbox"
 
 bind pager      k       previous-line
 bind pager      j       next-line 

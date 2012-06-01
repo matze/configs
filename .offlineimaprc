@@ -6,6 +6,7 @@ pythonfile = ~/.offlineimap/offlineimap.py
 [Account gmail]
 localrepository = gmail-local
 remoterepository = gmail-remote
+postsynchook = notmuch new
 
 [Repository gmail-local]
 type = Maildir
