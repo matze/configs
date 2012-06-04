@@ -4,7 +4,6 @@
 [ -z "$PS1" ] && return
 
 # --- general options ---------------------------------------------------------
-set -o vi               # ;-)
 shopt -s checkwinsize
 shopt -s histappend
 
