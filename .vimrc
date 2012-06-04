@@ -199,7 +199,8 @@ map <C-l> <C-W>l
 
 " --- buffer and file management
 nmap <Leader>w :w!<CR>
-nmap <Leader>a :b#<CR>
+nmap <Leader>l :b#<CR>
+nmap <Leader>d :bd<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
 nmap <Right> :bn<CR>

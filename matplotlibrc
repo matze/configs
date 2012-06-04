@@ -197,7 +197,7 @@ font.sans-serif     : PT Sans, Droid Sans, sans-serif
 # default fontsizes for ticklabels, and so on.  See
 # http://matplotlib.sourceforge.net/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
-axes.facecolor      : eeeeee   # axes background color
+axes.facecolor      : ffffff   # axes background color
 axes.edgecolor      : bcbcbc   # axes edge color
 axes.linewidth      : 1        # edge linewidth
 axes.grid           : True     # display grid or not
