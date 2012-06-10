@@ -11,6 +11,7 @@ GITHUB_REPOS = [
     "fholgado/minibufexpl.vim",
     "Shougo/neocomplcache",
     "Shougo/neocomplcache-snippets-complete",
+    "Lokaltog/vim-powerline",
     "majutsushi/tagbar",
     "kien/ctrlp.vim",
     "tpope/vim-commentary",

@@ -135,11 +135,14 @@ nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
 " --- fugitive
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " --- notes.vim
 let g:notes_directory = '~/notes'
 let g:notes_suffix = '.note'
+
+" --- powerline
+let g:Powerline_symbols = 'fancy'
 
 " --- omni completion -------------------------------------------------------
 "
@@ -188,6 +191,11 @@ nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
 nmap <Leader>p :set paste! paste?<CR>
 nmap <Leader>bb :Ack "@inproceedings\\|@article\\|@misc\\|@standard" %<CR><CR>:cw<CR>
+
+" --- copy & paste
+nnoremap <Leader>y "*yy
+nnoremap <Leader>yy "*Y
+nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 " --- window management
 nmap - <C-W>-<CR>
