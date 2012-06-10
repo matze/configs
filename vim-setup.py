@@ -17,6 +17,7 @@ GITHUB_REPOS = [
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-repeat",
+    "tpope/vim-markdown",
     "nvie/vim-flake8",
     "xolox/vim-notes"
     ]
