@@ -250,6 +250,7 @@ augroup text
     au BufNewFile,BufRead       *.rst               set tw=80
     au BufNewFile,BufRead       *.rst               so $VIMRUNTIME/syntax/rst.vim
     au BufNewFile,BufRead       *.tex               set tw=80
+    au BufNewFile,BufRead       wscript             setf python
 augroup END
 
 " Save when switching buffers
