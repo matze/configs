@@ -147,7 +147,7 @@ let g:Powerline_symbols = 'fancy'
 " --- omni completion -------------------------------------------------------
 "
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menu,preview
+set completeopt=menu
 
 
 " --- highlighting, colors, fonts -------------------------------------------
