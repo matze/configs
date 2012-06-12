@@ -96,9 +96,9 @@ let g:tagbar_type_tex = {
 nmap <silent> <Leader>tt :TagbarToggle<CR>
 
 " --- minibufexplorer
-let g:miniBufExplMaxHeight = 1
-let g:miniBufExplMapWindowNavArrows = 0
-let g:miniBufExplCheckDupeBufs = 0
+" let g:miniBufExplMaxHeight = 1
+" let g:miniBufExplMapWindowNavArrows = 0
+" let g:miniBufExplCheckDupeBufs = 0
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -133,9 +133,6 @@ smap <C-K> <Plug>(neocomplcache_snippets_expand)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
-
-" --- fugitive
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " --- notes.vim
 let g:notes_directory = '~/notes'
@@ -261,13 +258,8 @@ augroup text
     au BufNewFile,BufRead       wscript             setf python
 augroup END
 
-" Save when switching buffers
-au FocusLost * :wa 
 " Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
 au BufEnter *.tex   set nosmartindent fo+=a
-" Similar, prevent not indenting the comment hash
 au BufEnter *.py    set nosmartindent
-" OpenCL is not yet included
-au BufNewFile,BufRead       *.cl set filetype=c
 
 autocmd FileType note NeoComplCacheDisable

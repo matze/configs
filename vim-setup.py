@@ -8,7 +8,6 @@ PATHOGEN_URL = 'https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen
 GITHUB_REPOS = [
     "mileszs/ack.vim",
     "Raimondi/delimitMate",
-    "fholgado/minibufexpl.vim",
     "Shougo/neocomplcache",
     "Shougo/neocomplcache-snippets-complete",
     "Lokaltog/vim-powerline",
