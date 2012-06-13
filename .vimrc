@@ -81,24 +81,8 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" --- Tagbar
-let g:tagbar_type_tex = {
-    \ 'ctagstype' : 'latex',
-    \ 'kinds'     : [
-        \ 's:sections',
-        \ 'g:graphics',
-        \ 'l:labels',
-        \ 'r:refs:1',
-        \ 'p:pagerefs:1'
-    \ ],
-    \ 'sort'    : 0
-\ }
-nmap <silent> <Leader>tt :TagbarToggle<CR>
-
-" --- minibufexplorer
-" let g:miniBufExplMaxHeight = 1
-" let g:miniBufExplMapWindowNavArrows = 0
-" let g:miniBufExplCheckDupeBufs = 0
+" --- LustyJuggler
+nmap <Leader>ll :LustyJuggler<CR>
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -177,11 +161,7 @@ endif
 "
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <tab> %
-vnoremap <tab> %
 
-nmap <F4> <Esc>:bd<CR>
-nmap <S-F4> <Esc>:bd!<CR>
 nmap <F5> <Esc>:w!<CR>:make!<CR>
 
 nmap <Leader>cw 1z=
@@ -204,7 +184,6 @@ map <C-l> <C-W>l
 
 " --- buffer and file management
 nmap <Leader>w :w!<CR>
-nmap <Leader>l :b#<CR>
 nmap <Leader>d :bd<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
