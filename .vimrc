@@ -54,17 +54,6 @@ set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
 set nogdefault      " g ist nicht Standard bei :s/foo/bar
 
-if has("cscope")
-    set cst         " use cscope's tag
-    set csto=1      " use ctags first
-
-    if filereadable("cscope.out")
-        cs add cscope.out
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-endif
-
 " --- stuff for newer versions ----------------------------------------------
 "
 if version >= 730
@@ -80,9 +69,6 @@ call pathogen#runtime_append_all_bundles()
 filetype on
 filetype plugin on
 filetype indent on
-
-" --- LustyJuggler
-nmap <Leader>ll :LustyJuggler<CR>
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -215,14 +201,6 @@ nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 
-
-" --- abbreviations ---------------------------------------------------------
-"
-iab dne den
-iab iene eine
-iab rekrusiv rekursiv
-iab sidn sind
-iab vlgr Viele Grüße
 
 " --- digraphs --------------------------------------------------------------
 digraph ,: 8230
