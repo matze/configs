@@ -54,17 +54,6 @@ set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
 set nogdefault      " g ist nicht Standard bei :s/foo/bar
 
-if has("cscope")
-    set cst         " use cscope's tag
-    set csto=1      " use ctags first
-
-    if filereadable("cscope.out")
-        cs add cscope.out
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-endif
-
 " --- stuff for newer versions ----------------------------------------------
 "
 if version >= 730
@@ -80,25 +69,6 @@ call pathogen#runtime_append_all_bundles()
 filetype on
 filetype plugin on
 filetype indent on
-
-" --- Tagbar
-let g:tagbar_type_tex = {
-    \ 'ctagstype' : 'latex',
-    \ 'kinds'     : [
-        \ 's:sections',
-        \ 'g:graphics',
-        \ 'l:labels',
-        \ 'r:refs:1',
-        \ 'p:pagerefs:1'
-    \ ],
-    \ 'sort'    : 0
-\ }
-nmap <silent> <Leader>tt :TagbarToggle<CR>
-
-" --- minibufexplorer
-" let g:miniBufExplMaxHeight = 1
-" let g:miniBufExplMapWindowNavArrows = 0
-" let g:miniBufExplCheckDupeBufs = 0
 
 " --- ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -177,11 +147,7 @@ endif
 "
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <tab> %
-vnoremap <tab> %
 
-nmap <F4> <Esc>:bd<CR>
-nmap <S-F4> <Esc>:bd!<CR>
 nmap <F5> <Esc>:w!<CR>:make!<CR>
 
 nmap <Leader>cw 1z=
@@ -204,7 +170,6 @@ map <C-l> <C-W>l
 
 " --- buffer and file management
 nmap <Leader>w :w!<CR>
-nmap <Leader>l :b#<CR>
 nmap <Leader>d :bd<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
@@ -236,14 +201,6 @@ nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 
-
-" --- abbreviations ---------------------------------------------------------
-"
-iab dne den
-iab iene eine
-iab rekrusiv rekursiv
-iab sidn sind
-iab vlgr Viele Grüße
 
 " --- digraphs --------------------------------------------------------------
 digraph ,: 8230

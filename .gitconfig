@@ -23,6 +23,9 @@
             git log -1 --format=format:\"%Cred$branch:%Cblue %s %Cgreen%h%Creset (%ar)\" $branch; \
             done'"
 
+[push]
+    default = upstream
+
 [color]
     branch = auto
     diff = auto
