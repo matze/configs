@@ -24,7 +24,7 @@
             done'"
 
 [push]
-    default = upstream
+    default = tracking
 
 [color]
     branch = auto
