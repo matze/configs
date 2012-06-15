@@ -1,17 +1,31 @@
 [user]
-    name = Matthias Vogelgesang
-    email = matthias.vogelgesang@gmail.com
+    name            = Matthias Vogelgesang
+    email           = matthias.vogelgesang@gmail.com
 
 [core]
-    editor = vim
-    excludesfile = ~/.gitignore
+    editor          = vim
+    excludesfile    = ~/.gitignore 
+    whitespace      = fix, trailing-space
+
+[color]
+    ui          = auto
+    branch      = auto
+    diff        = auto
+    interactive = auto
+    status      = auto
+
+[color "diff"]
+    whitespace  = red reverse
+
+[push]
+    default = tracking
 
 [alias]
     l = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
     s = status
     b = branch
-    d = diff --color-words
-    ds = diff --cached --color-words
+    d = diff
+    ds = diff --cached
     co = checkout
     unstage = reset HEAD 
     undo = checkout -- 
@@ -22,12 +36,3 @@
             while read branch; do \
             git log -1 --format=format:\"%Cred$branch:%Cblue %s %Cgreen%h%Creset (%ar)\" $branch; \
             done'"
-
-[push]
-    default = tracking
-
-[color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
