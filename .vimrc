@@ -216,7 +216,7 @@ augroup text
 augroup END
 
 " Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
-au BufEnter *.tex   set nosmartindent fo+=a
+au BufEnter *.tex   set nosmartindent
 au BufEnter *.py    set nosmartindent
 
 autocmd FileType note NeoComplCacheDisable
