@@ -41,7 +41,7 @@ set tw=80
 "
 set nofoldenable
 set foldmethod=indent
-set fillchars=fold:\ 
+set fillchars=fold:\
 
 " --- searching -------------------------------------------------------------
 "
@@ -195,6 +195,7 @@ nmap <C-o> <C-]>
 " --- basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
+nmap <Leader>fw :%s/\s\+$//<CR>
 
 " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
