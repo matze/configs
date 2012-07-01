@@ -93,3 +93,5 @@ function _prompt_command() {
 PROMPT_COMMAND=_prompt_command
 
 [[ -s ~/.autojump/etc/profile.d/autojump.bash ]] && source ~/.autojump/etc/profile.d/autojump.bash
+
+export RI="-Tf ansi"
