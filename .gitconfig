@@ -31,6 +31,7 @@
     undo = checkout -- 
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
     tags = tag -l
+    todo = grep -i -n -e ' FIX: *' -e ' TODO: *'
     branch-info = "!sh -c 'git branch --list --no-color | \
             sed -e \"s/*/ /\" | \
             while read branch; do \
