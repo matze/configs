@@ -48,6 +48,17 @@ fi
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 export PATH=$PATH:$HOME/.local/bin
 
+# --- use existing ssh-agent on tmux if possible ------------------------------
+if [ -z "$TMUX" ]; then
+    if [ ! -z "$SSH_TTY" ]; then
+        if [ ! -z "SSH_AUTH_SOCK" ]; then
+            ln -sf "$SSH_AUTH_SOCK" "$HOME/.wrap_auth_sock"
+        fi
+
+        export SSH_AUTH_SOCK="$HOME/.wrap_auth_sock"
+    fi
+fi
+
 # --- enhance prompt ----------------------------------------------------------
 function _prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
