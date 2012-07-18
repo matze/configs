@@ -113,6 +113,7 @@ let g:Powerline_symbols = 'fancy'
 
 " --- ctrlp.vim
 let g:ctrlp_extensions = ['buffertag']
+nmap <Leader>pp :CtrlPBufTag<CR>
 
 " --- omni completion -------------------------------------------------------
 "
