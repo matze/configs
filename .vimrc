@@ -111,6 +111,9 @@ let g:notes_suffix = '.note'
 " --- powerline
 let g:Powerline_symbols = 'fancy'
 
+" --- ctrlp.vim
+let g:ctrlp_extensions = ['buffertag']
+
 " --- omni completion -------------------------------------------------------
 "
 set omnifunc=syntaxcomplete#Complete
