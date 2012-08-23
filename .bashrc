@@ -47,6 +47,9 @@ fi
 # --- misc environment variables (mostly fixes) -------------------------------
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 export PATH=$PATH:$HOME/.local/bin
+export RI="-Tf ansi"
+
+[[ -s ~/.bash_local ]] && source ~/.bash_local
 
 # --- use existing ssh-agent on tmux if possible ------------------------------
 if [ -z "$TMUX" ]; then
@@ -104,5 +107,3 @@ function _prompt_command() {
 PROMPT_COMMAND=_prompt_command
 
 [[ -s ~/.autojump/etc/profile.d/autojump.bash ]] && source ~/.autojump/etc/profile.d/autojump.bash
-
-export RI="-Tf ansi"
