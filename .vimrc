@@ -54,17 +54,24 @@ set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
 set nogdefault      " g ist nicht Standard bei :s/foo/bar
 
-" --- stuff for newer versions ----------------------------------------------
-"
-if version >= 730
-    set relativenumber
-endif
-
 " --- plugins ---------------------------------------------------------------
 "
 filetype off
 
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'mileszs/ack.vim',
+Bundle 'Raimondi/delimitMate',
+Bundle 'Shougo/neocomplcache',
+Bundle 'Shougo/neocomplcache-snippets-complete',
+Bundle 'Lokaltog/vim-powerline',
+Bundle 'kien/ctrlp.vim',
+Bundle 'tpope/vim-commentary',
+Bundle 'tpope/vim-markdown',
+Bundle 'tpope/vim-fugitive',
+Bundle 'nvie/vim-flake8',
+Bundle 'matze/dwm.vim'
 
 filetype on
 filetype plugin on
