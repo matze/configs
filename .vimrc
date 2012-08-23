@@ -115,6 +115,14 @@ let g:Powerline_symbols = 'fancy'
 let g:ctrlp_extensions = ['buffertag']
 nmap <Leader>pp :CtrlPBufTag<CR>
 
+" --- dwm.vim
+let g:dwm_map_keys = 0
+map <C-N> :call DWM_New()<CR>
+map <C-X> :call DWM_Close()<CR>
+map <C-H> :call DWM_Focus()<CR>
+map <C-J> <C-W>w
+map <C-K> <C-W>W
+
 " --- omni completion -------------------------------------------------------
 "
 set omnifunc=syntaxcomplete#Complete
@@ -163,14 +171,6 @@ nmap <Leader>bb :Ack "@inproceedings\\|@article\\|@misc\\|@standard" %<CR><CR>:c
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
-
-" --- window management
-nmap - <C-W>-<CR>
-nmap + <C-W>+<CR>
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " --- buffer and file management
 nmap <Leader>w :w!<CR>
