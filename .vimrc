@@ -72,6 +72,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'matze/dwm.vim'
+Bundle 'uggedal/go-vim'
 
 filetype on
 filetype plugin on
