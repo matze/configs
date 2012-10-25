@@ -64,7 +64,7 @@ call vundle#rc()
 Bundle 'mileszs/ack.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
@@ -72,6 +72,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
+Bundle 'johnsyweb/vim-makeshift'
 
 filetype on
 filetype plugin on
@@ -105,11 +106,12 @@ endfunction"}}}
 
 inoremap <expr><c-e> neocomplcache#complete_common_string()
 
-imap <C-K> <Plug>(neocomplcache_snippets_expand)
-smap <C-K> <Plug>(neocomplcache_snippets_expand)
-
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
+
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
+
 
 " --- notes.vim
 let g:notes_directory = '~/notes'
@@ -232,5 +234,6 @@ augroup END
 " Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
 au BufEnter *.tex   set nosmartindent
 au BufEnter *.py    set nosmartindent
+au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
 
 autocmd FileType note NeoComplCacheDisable
