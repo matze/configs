@@ -72,3 +72,7 @@ highlight Constant guifg=#ffa1cf gui=NONE ctermfg=218 cterm=NONE
 
 highlight Statement guifg=#8ac6f2 gui=NONE ctermfg=117 cterm=NONE
 highlight Keyword guifg=#8ac6f2 gui=NONE ctermfg=117 cterm=NONE
+
+if has("signs")
+  highlight SignColumn guibg=#242424 ctermbg=235
+endif
