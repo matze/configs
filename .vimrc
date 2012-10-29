@@ -62,7 +62,7 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'mileszs/ack.vim'
-Bundle 'Raimondi/delimitMate'
+" Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Lokaltog/vim-powerline'
@@ -172,6 +172,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 nmap <F5> <Esc>:w!<CR>:make!<CR>
+inoremap <F9> <C-O>za
+nnoremap <F9> za
 
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
