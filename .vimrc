@@ -72,7 +72,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
-Bundle 'johnsyweb/vim-makeshift'
+Bundle 'kshenoy/vim-signature'
 
 filetype on
 filetype plugin on
@@ -111,11 +111,6 @@ nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
 smap <C-K> <Plug>(neosnippet_expand_or_jump)
-
-
-" --- notes.vim
-let g:notes_directory = '~/notes'
-let g:notes_suffix = '.note'
 
 " --- powerline
 let g:Powerline_symbols = 'fancy'
