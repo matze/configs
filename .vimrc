@@ -62,17 +62,17 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'mileszs/ack.vim'
-Bundle 'Raimondi/delimitMate'
+" Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
-Bundle 'matze/dwm.vim'
-Bundle 'uggedal/go-vim'
+Bundle 'spolu/dwm.vim'
+Bundle 'kshenoy/vim-signature'
 
 filetype on
 filetype plugin on
@@ -106,15 +106,11 @@ endfunction"}}}
 
 inoremap <expr><c-e> neocomplcache#complete_common_string()
 
-imap <C-K> <Plug>(neocomplcache_snippets_expand)
-smap <C-K> <Plug>(neocomplcache_snippets_expand)
-
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
-" --- notes.vim
-let g:notes_directory = '~/notes'
-let g:notes_suffix = '.note'
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
 
 " --- powerline
 let g:Powerline_symbols = 'fancy'
@@ -125,11 +121,13 @@ nmap <Leader>pp :CtrlPBufTag<CR>
 
 " --- dwm.vim
 let g:dwm_map_keys = 0
-map <C-N> :call DWM_New()<CR>
-map <C-X> :call DWM_Close()<CR>
-map <C-H> :call DWM_Focus()<CR>
 map <C-J> <C-W>w
 map <C-K> <C-W>W
+map <C-N> <Plug>DWMNew
+map <C-X> <Plug>DWMClose
+map <C-@> <Plug>DWMFocus
+map <C-L> <Plug>DWMGrowMaster
+map <C-H> <Plug>DWMShrinkMaster
 
 " --- omni completion -------------------------------------------------------
 "
@@ -169,6 +167,8 @@ nnoremap / /\v
 vnoremap / /\v
 
 nmap <F5> <Esc>:w!<CR>:make!<CR>
+inoremap <F9> <C-O>za
+nnoremap <F9> za
 
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
@@ -231,5 +231,4 @@ augroup END
 " Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
 au BufEnter *.tex   set nosmartindent
 au BufEnter *.py    set nosmartindent
-
-autocmd FileType note NeoComplCacheDisable
+au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
