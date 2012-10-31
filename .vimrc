@@ -62,7 +62,6 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'mileszs/ack.vim'
-" Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Lokaltog/vim-powerline'
@@ -73,6 +72,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
 Bundle 'kshenoy/vim-signature'
+Bundle 'matze/latex-fold'
 
 filetype on
 filetype plugin on
