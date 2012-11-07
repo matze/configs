@@ -71,7 +71,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
-Bundle 'kshenoy/vim-signature'
 Bundle 'matze/latex-fold'
 
 filetype on
@@ -96,16 +95,6 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-
-inoremap  <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>\<C-p>\<Down>"
-function! s:check_back_space()"{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-inoremap <expr><c-e> neocomplcache#complete_common_string()
-
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
@@ -117,17 +106,17 @@ let g:Powerline_symbols = 'fancy'
 
 " --- ctrlp.vim
 let g:ctrlp_extensions = ['buffertag']
-nmap <Leader>pp :CtrlPBufTag<CR>
 
 " --- dwm.vim
 let g:dwm_map_keys = 0
 map <C-J> <C-W>w
-map <C-K> <C-W>W
+" map <C-K> <C-W>W      " clashes with neocomplcache
 map <C-N> <Plug>DWMNew
 map <C-X> <Plug>DWMClose
 map <C-@> <Plug>DWMFocus
 map <C-L> <Plug>DWMGrowMaster
 map <C-H> <Plug>DWMShrinkMaster
+
 
 " --- omni completion -------------------------------------------------------
 "
@@ -162,61 +151,40 @@ endif
 
 
 " --- key mappings ----------------------------------------------------------
-"
-nnoremap / /\v
-vnoremap / /\v
-
 nmap <F5> <Esc>:w!<CR>:make!<CR>
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 
 nmap <Leader>cw 1z=
 nmap <silent> <Leader>h :silent noh<CR>
-nmap <Leader>p :set paste! paste?<CR>
-nmap <Leader>bb :Ack "@inproceedings\\|@article\\|@misc\\|@standard" %<CR><CR>:cw<CR>
 
-" --- copy & paste
+" " --- copy & paste
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
-" --- buffer and file management
+" " --- buffer and file management
 nmap <Leader>w :w!<CR>
 nmap <Leader>d :bd<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
 nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
-nmap <Leader>1 :b1<CR>
-nmap <Leader>2 :b2<CR>
-nmap <Leader>3 :b3<CR>
-nmap <Leader>4 :b4<CR>
-nmap <Leader>5 :b5<CR>
-nmap <Leader>6 :b6<CR>
-nmap <Leader>7 :b7<CR>
-nmap <Leader>8 :b8<CR>
-nmap <Leader>9 :b9<CR>
 nmap <Leader>cl :ccl<CR>
 
-" --- Tlist and ctags stuff
+" " --- Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-nmap <Leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <Leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <C-o> <C-]>
 
-" --- basic formatting
+" " --- basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
 
-" --- spellchecking
+" " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-
-
-" --- digraphs --------------------------------------------------------------
-digraph ,: 8230
 
 " --- Auto-Commands ---------------------------------------------------------
 "
