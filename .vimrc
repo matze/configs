@@ -14,7 +14,7 @@ set backspace=2     " alles im Insertmode löschen
 set noerrorbells    " Klingeling ausschalten
 set history=1000    " Commandline-History
 set wildmenu        " Tab-completion im Menü
-set wildignore+=*/.git/*,*/.bzr/*,*~
+set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*
 set hidden
 set scrolloff=2     " Mindestens zwei Zeilen Kontext
 set sidescrolloff=2 " Mindestens zwei Spalten Kontext
@@ -97,14 +97,7 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-
-inoremap  <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>\<C-p>\<Down>"
-function! s:check_back_space()"{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-inoremap <expr><c-e> neocomplcache#complete_common_string()
+inoremap <expr><C-E> neocomplcache#complete_common_string()
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
@@ -215,9 +208,6 @@ nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 
 
-" --- digraphs --------------------------------------------------------------
-digraph ,: 8230
-
 " --- Auto-Commands ---------------------------------------------------------
 "
 augroup text
@@ -232,3 +222,13 @@ augroup END
 au BufEnter *.tex   set nosmartindent
 au BufEnter *.py    set nosmartindent
 au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
+
+function TryCmakeMakeprg()
+    if !filereadable('Makefile')
+        if filereadable('build/Makefile')
+            set makeprg=make\ -C\ ./build
+        endif
+    endif
+endfunction
+
+au BufEnter *.c     call TryCmakeMakeprg()
