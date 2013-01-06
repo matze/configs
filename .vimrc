@@ -14,7 +14,7 @@ set backspace=2     " alles im Insertmode löschen
 set noerrorbells    " Klingeling ausschalten
 set history=1000    " Commandline-History
 set wildmenu        " Tab-completion im Menü
-set wildignore+=*/.git/*,*/.bzr/*,*~
+set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*
 set hidden
 set scrolloff=2     " Mindestens zwei Zeilen Kontext
 set sidescrolloff=2 " Mindestens zwei Spalten Kontext
@@ -200,3 +200,13 @@ augroup END
 au BufEnter *.tex   set nosmartindent
 au BufEnter *.py    set nosmartindent
 au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
+
+function TryCmakeMakeprg()
+    if !filereadable('Makefile')
+        if filereadable('build/Makefile')
+            set makeprg=make\ -C\ ./build
+        endif
+    endif
+endfunction
+
+au BufEnter *.c     call TryCmakeMakeprg()
