@@ -72,6 +72,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
 Bundle 'matze/latex-fold'
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype on
 filetype plugin on
