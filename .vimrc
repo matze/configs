@@ -96,6 +96,8 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
