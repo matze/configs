@@ -64,7 +64,6 @@ call vundle#rc()
 Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-markdown'
@@ -73,6 +72,10 @@ Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
 Bundle 'matze/latex-fold'
 Bundle 'Lokaltog/vim-easymotion'
+
+if has("python")
+    Bundle 'Lokaltog/vim-powerline'
+endif
 
 filetype on
 filetype plugin on
