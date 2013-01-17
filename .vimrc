@@ -207,7 +207,7 @@ au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
 function TryCmakeMakeprg()
     if !filereadable('Makefile')
         if filereadable('build/Makefile')
-            set makeprg=make\ -C\ ./build
+            set makeprg=make\ -C\ ./build\ --no-print-directory
         endif
     endif
 endfunction
