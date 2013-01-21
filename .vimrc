@@ -23,6 +23,7 @@ set tags=tags
 set ttyfast
 let mapleader = ","
 
+
 " --- textformatting, indenting, tabs ---------------------------------------
 "
 set autoindent
@@ -104,9 +105,6 @@ inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
-
 " --- powerline
 let g:Powerline_symbols = 'fancy'
 
@@ -116,7 +114,7 @@ let g:ctrlp_extensions = ['buffertag']
 " --- dwm.vim
 let g:dwm_map_keys = 0
 map <C-J> <C-W>w
-" map <C-K> <C-W>W      " clashes with neocomplcache
+map <C-K> <C-W>W
 map <C-N> <Plug>DWMNew
 map <C-X> <Plug>DWMClose
 map <C-@> <Plug>DWMFocus
