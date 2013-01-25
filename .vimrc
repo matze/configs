@@ -101,6 +101,8 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
@@ -113,13 +115,13 @@ let g:ctrlp_extensions = ['buffertag']
 
 " --- dwm.vim
 let g:dwm_map_keys = 0
-map <C-J> <C-W>w
-map <C-K> <C-W>W
-map <C-N> <Plug>DWMNew
-map <C-X> <Plug>DWMClose
-map <C-@> <Plug>DWMFocus
-map <C-L> <Plug>DWMGrowMaster
-map <C-H> <Plug>DWMShrinkMaster
+nmap <C-J> <C-W>w
+nmap <C-K> <C-W>W
+nmap <C-N> <Plug>DWMNew
+nmap <C-X> <Plug>DWMClose
+nmap <C-@> <Plug>DWMFocus
+nmap <C-L> <Plug>DWMGrowMaster
+nmap <C-H> <Plug>DWMShrinkMaster
 
 
 " --- omni completion -------------------------------------------------------
