@@ -88,8 +88,12 @@ function _git_prompt() {
     fi
 }
 
+function _colored_host() {
+    echo "\[\033[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]\h\[\033[0m\]"
+}
+
 function _prompt_command() {
-    PS1="`_git_prompt`"'\[\033[1;30m\]me\[\033[0m\]@\[\033[1;30m\]\h\[\033[0m\]:\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
+    PS1="`_git_prompt`"'\[\033[1;30m\]\u\[\033[0m\]@'"`_colored_host`"':\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
 }
 
 PROMPT_COMMAND=_prompt_command
