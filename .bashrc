@@ -7,6 +7,8 @@
 shopt -s checkwinsize
 shopt -s histappend
 
+set -o vi
+
 # --- bash history options ----------------------------------------------------
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
