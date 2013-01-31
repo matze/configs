@@ -89,7 +89,7 @@ function _git_prompt() {
 }
 
 function _colored_host() {
-    echo "\[\033[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]\h\[\033[0m\]"
+    echo "\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]\h\[\033[0m\]"
 }
 
 function _prompt_command() {
