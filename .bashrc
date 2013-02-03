@@ -75,10 +75,10 @@ function _git_prompt() {
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
         if [ -z "$git_status" ]; then
             local ansi=42
-        elif [[ "$git_status" == *"??"* ]]; then
-            local ansi=43
-        else
+        elif [[ "$git_status" == *" M "* ]]; then
             local ansi=45
+        else
+            local ansi=43
         fi
 
         local branch=$(__git_ps1 "%s")
