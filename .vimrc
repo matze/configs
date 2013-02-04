@@ -73,6 +73,7 @@ Bundle 'nvie/vim-flake8'
 Bundle 'spolu/dwm.vim'
 Bundle 'matze/latex-fold'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'petRUShka/vim-opencl'
 
 if has("python")
     Bundle 'Lokaltog/vim-powerline'
@@ -192,20 +193,15 @@ nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 
+
 " --- Auto-Commands ---------------------------------------------------------
 "
-augroup text
-    au!
-    au BufNewFile,BufRead       *.rst               set tw=80
-    au BufNewFile,BufRead       *.rst               so $VIMRUNTIME/syntax/rst.vim
-    au BufNewFile,BufRead       *.tex               set tw=80
-    au BufNewFile,BufRead       wscript             setf python
-augroup END
-
-" Prevent strange re-wrapping with gqap when 'if' is inside a paragraph
-au BufEnter *.tex   set nosmartindent
-au BufEnter *.py    set nosmartindent
-au BufEnter *.bib   set sw=2 ts=2 softtabstop=2
+au BufNewFile,BufRead       *.rst   set tw=80
+au BufNewFile,BufRead       *.rst   so $VIMRUNTIME/syntax/rst.vim
+au BufNewFile,BufRead       *.tex   set tw=80 nosmartindent
+au BufNewFile,BufRead       *.bib   set sw=2 ts=2 softtabstop=2
+au BufNewFile,BufRead       *.py    set nosmartindent
+au BufNewFile,BufRead       wscript setf python
 
 function TryCmakeMakeprg()
     if !filereadable('Makefile')
