@@ -1,57 +1,45 @@
-# Matze's .bashrc
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# --- general options ---------------------------------------------------------
-shopt -s checkwinsize
-shopt -s histappend
 
+# --- general options ---------------------------------------------------------
+shopt -s histappend
+shopt -s cdspell
 set -o vi
 
-# --- bash history options ----------------------------------------------------
-HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
+
 # --- aliases -----------------------------------------------------------------
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
 
-# --- bash completion ---------------------------------------------------------
+
+# --- source other things -----------------------------------------------------
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# --- misc environment variables (mostly fixes) -------------------------------
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
-export PATH=$PATH:$HOME/.local/bin
-export RI="-Tf ansi"
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
 
-[[ -s ~/.bash_local ]] && source ~/.bash_local
+if [ -f ~/.autojump/etc/profile.d/autojump.bash ]; then
+    . ~/.autojump/etc/profile.d/autojump.bash
+fi
 
 
 # --- enhance prompt ----------------------------------------------------------
@@ -96,6 +84,17 @@ function _prompt_command() {
     PS1="`_git_prompt`"'\[\033[1;30m\]\u\[\033[0m\]@'"`_colored_host`"':\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
 }
 
+
+# --- environment variables ---------------------------------------------------
+EDITOR=$(which vi)
+VISUAL=$EDITOR
+GIT_EDITOR=$EDITOR
+
+PATH=$PATH:$HOME/.local/bin
 PROMPT_COMMAND=_prompt_command
 
-[[ -s ~/.autojump/etc/profile.d/autojump.bash ]] && source ~/.autojump/etc/profile.d/autojump.bash
+HISTCONTROL=ignoredups:ignorespace
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+RI="-Tf ansi"
