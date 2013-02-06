@@ -84,7 +84,7 @@ filetype plugin on
 filetype indent on
 
 " --- ack.vim
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=build"
 
 " --- NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
