@@ -169,6 +169,7 @@ nmap <silent> <Leader>h :silent noh<CR>
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+nnoremap Q <nop>
 
 " " --- buffer and file management
 nmap <Leader>w :w!<CR>
