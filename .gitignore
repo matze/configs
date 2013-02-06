@@ -4,3 +4,7 @@
 *.swp
 tags
 _site
+ranger/bookmarks
+ranger/history
+ranger/tagged
+ranger/*.pyo
