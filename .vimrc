@@ -181,7 +181,7 @@ nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 
 " " --- Tlist and ctags stuff
-nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
 
 " " --- basic formatting
