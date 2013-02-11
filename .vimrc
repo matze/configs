@@ -62,18 +62,20 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'mileszs/ack.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'matze/neosnippet'
+
+Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'matze/latex-fold'
+Bundle 'mileszs/ack.vim'
+Bundle 'nvie/vim-flake8'
+Bundle 'petRUShka/vim-opencl'
+Bundle 'spolu/dwm.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
-Bundle 'nvie/vim-flake8'
-Bundle 'spolu/dwm.vim'
-Bundle 'matze/latex-fold'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'petRUShka/vim-opencl'
 
 if has("python")
     Bundle 'Lokaltog/vim-powerline'
