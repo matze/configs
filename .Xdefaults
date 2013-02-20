@@ -14,8 +14,8 @@ URxvt*scrollBar:        false
 URxvt*letterSpace:      -1
 URxvt*font:             xft:Inconsolata for Powerline:pixelsize=14:hinting=true
 
-URxvt*background: #000000
-URxvt*foreground: #ffffff
+URxvt*background: #101010
+URxvt*foreground: #f0f0f0
 ! black
 URxvt.color0  : #000000
 URxvt.color8  : #555555

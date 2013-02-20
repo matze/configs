@@ -165,7 +165,7 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 
 nmap <Leader>cw 1z=
-nmap <silent> <Leader>h :silent noh<CR>
+nmap <silent> <CR> :silent noh<CR>
 
 " " --- copy & paste
 nnoremap <Leader>y "*yy
