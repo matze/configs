@@ -70,7 +70,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'matze/latex-fold'
 Bundle 'spolu/dwm.vim'
 Bundle 'nvie/vim-flake8'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'petRUShka/vim-opencl'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-markdown'
@@ -200,11 +199,6 @@ nmap <Leader>sn :setlocal nospell<CR>
 
 " --- Auto-Commands ---------------------------------------------------------
 "
-au BufNewFile,BufRead       *.rst   set tw=80
-au BufNewFile,BufRead       *.rst   so $VIMRUNTIME/syntax/rst.vim
-au BufNewFile,BufRead       *.tex   set tw=80 nosmartindent
-au BufNewFile,BufRead       *.bib   set sw=2 ts=2 softtabstop=2
-au BufNewFile,BufRead       *.py    set nosmartindent
 au BufNewFile,BufRead       wscript setf python
 
 function TryCmakeMakeprg()
