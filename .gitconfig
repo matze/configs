@@ -37,3 +37,10 @@
             while read branch; do \
             git log -1 --format=format:\"%Cred$branch:%Cblue %s %Cgreen%h%Creset (%ar)\" $branch; \
             done'"
+
+[advice]
+    pushNonFastForward  = false
+    statusHints         = false
+    commitBeforeMerge   = false
+    resolveConflict     = false
+    detachedHead        = false
