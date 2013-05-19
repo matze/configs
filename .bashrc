@@ -2,7 +2,7 @@
 [ -z "$PS1" ] && return
 
 
-# --- general options ---------------------------------------------------------
+# --- general options ----------------------------
 shopt -s histappend
 shopt -s cdspell
 set -o vi
@@ -21,14 +21,18 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 
-# --- aliases -----------------------------------------------------------------
+# --- aliases ------------------------------------
 alias ll='ls -alF'
 alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
 
 
-# --- source other things -----------------------------------------------------
+# --- binds --------------------------------------
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+# --- source other things ------------------------
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
@@ -42,7 +46,7 @@ if [ -f ~/.autojump/etc/profile.d/autojump.bash ]; then
 fi
 
 
-# --- enhance prompt ----------------------------------------------------------
+# --- enhance prompt -----------------------------
 function _prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
     local trunc_symbol="..."
@@ -85,7 +89,7 @@ function _prompt_command() {
 }
 
 
-# --- environment variables ---------------------------------------------------
+# --- environment variables ----------------------
 EDITOR=$(which vi)
 VISUAL=$EDITOR
 GIT_EDITOR=$EDITOR
