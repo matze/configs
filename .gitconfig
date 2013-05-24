@@ -1,6 +1,5 @@
 [user]
     name            = Matthias Vogelgesang
-    email           = matthias.vogelgesang@gmail.com
 
 [core]
     editor          = vim
@@ -24,14 +23,12 @@
     l   = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
     s   = status --short
     b   = branch
-    bo  = "!bash -c 'for k in `git branch | sed s/^..//`;do echo -e `git log -1 --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset\" \"$k\"`\t\"$k\";done | sort -r'"
     d   = diff
     ds  = diff --cached
     co  = checkout
     unstage = reset HEAD 
     undo = checkout -- 
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
-    tags = tag -l
     todo = grep -i -n -e ' FIX: *' -e ' TODO: *'
 
 [advice]
