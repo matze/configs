@@ -22,6 +22,7 @@ fi
 
 
 # --- aliases ------------------------------------
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
@@ -29,24 +30,13 @@ alias waf='./waf'
 
 
 # --- binds --------------------------------------
+
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-# --- source other things ------------------------
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
-fi
-
-if [ -f ~/.z.sh ]; then
-    . ~/.z.sh
-fi
-
 
 # --- enhance prompt -----------------------------
+
 function _prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
     local trunc_symbol="..."
@@ -90,6 +80,7 @@ function _prompt_command() {
 
 
 # --- environment variables ----------------------
+
 EDITOR=$(which vi)
 VISUAL=$EDITOR
 GIT_EDITOR=$EDITOR
@@ -102,3 +93,18 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 RI="-Tf ansi"
+
+
+# --- source other things ------------------------
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
+
+if [ -f ~/.z.sh ]; then
+    . ~/.z.sh
+fi
