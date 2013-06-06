@@ -41,8 +41,8 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-if [ -f ~/.autojump/etc/profile.d/autojump.bash ]; then
-    . ~/.autojump/etc/profile.d/autojump.bash
+if [ -f ~/.z.sh ]; then
+    . ~/.z.sh
 fi
 
 
