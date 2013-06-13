@@ -75,7 +75,13 @@ function _colored_host() {
 }
 
 function _prompt_command() {
-    PS1="`_git_prompt`"'\[\033[1;30m\]\u\[\033[0m\]@'"`_colored_host`"':\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
+    if test -z "$VIRTUAL_ENV" ; then
+        PYTHON_VIRTUALENV=""
+    else
+        PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`] "
+    fi
+
+    PS1="`_git_prompt`${PYTHON_VIRTUALENV}"'\[\033[1;30m\]\u\[\033[0m\]@'"`_colored_host`"':\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
 }
 
 
