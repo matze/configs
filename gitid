@@ -1,0 +1,21 @@
+#!/bin/bash
+
+read -p "Use private [ ] or work email [1]? " answer
+
+echo "answer: ${answer}"
+
+function set_git_identity() {
+    echo "Set email to ${_USER_EMAIL}"
+    git config user.name "Matthias Vogelgesang"
+    git config user.email $_USER_EMAIL
+}
+
+case $answer in
+    1)  _USER_EMAIL="matthias.vogelgesang@kit.edu"
+        ;;
+
+    *)  _USER_EMAIL="matthias.vogelgesang@gmail.com"
+        ;;
+esac
+
+set_git_identity
