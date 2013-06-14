@@ -36,20 +36,25 @@ bind '"\e[B":history-search-forward'
 
 
 # --- enhance prompt -----------------------------
+COLOR_NONE="\[\033[0m\]"
+BROWN="\[\033[0;33m\]"
+CYAN="\[\033[0;36m\]"
+YELLOW="\[\033[1;33m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
+DARK_GRAY="\[\033[1;30m\]"
 
-function _prompt_workingdir () {
+function _set_prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
     local trunc_symbol="..."
     if [[ $PWD == $HOME* ]]; then
-        newPWD="~${PWD#$HOME}" 
+        NEW_PWD="~${PWD#$HOME}"
     else
-        newPWD=${PWD}
+        NEW_PWD=${PWD}
     fi
-    if [ ${#newPWD} -gt $pwdmaxlen ]; then
-        local pwdoffset=$(( ${#newPWD} - $pwdmaxlen + 3 ))
-        newPWD="${trunc_symbol}${newPWD:$pwdoffset:$pwdmaxlen}"
+    if [ ${#NEW_PWD} -gt $pwdmaxlen ]; then
+        local pwdoffset=$(( ${#NEW_PWD} - $pwdmaxlen + 3 ))
+        NEW_PWD="${trunc_symbol}${NEW_PWD:$pwdoffset:$pwdmaxlen}"
     fi
-    echo $newPWD
 }
 
 function _git_prompt() {
@@ -70,18 +75,22 @@ function _git_prompt() {
     fi
 }
 
-function _colored_host() {
-    echo "\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]\h\[\033[0m\]"
+function _set_host_color() {
+    HOST_COLOR="\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]"
 }
 
 function _prompt_command() {
+
     if test -z "$VIRTUAL_ENV" ; then
         PYTHON_VIRTUALENV=""
     else
-        PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`] "
+        PYTHON_VIRTUALENV="${YELLOW}☼ `basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
     fi
 
-    PS1="`_git_prompt`${PYTHON_VIRTUALENV}"'\[\033[1;30m\]\u\[\033[0m\]@'"`_colored_host`"':\[\033[0;33m\]$(_prompt_workingdir)\[\033[0m\] '
+    _set_host_color
+    _set_prompt_workingdir
+
+    PS1="`_git_prompt`${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE} "
 }
 
 
