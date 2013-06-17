@@ -17,7 +17,6 @@ ln -s -f $HERE/.gitconfig ~/.gitconfig
 ln -s -f $HERE/.tmux.conf ~/.tmux.conf
 ln -s -f $HERE/.Xdefaults ~/.Xdefaults
 ln -s -f $HERE/.vimrc ~/.vimrc
-ln -s -f $HERE/ranger ~/.config/ranger
 ln -s -f $HERE/z/z.sh ~/.z.sh
 
 for source in `find vim/ -type f`; do
