@@ -114,7 +114,10 @@ nmap <Leader>ncd :NeoComplCacheDisable<CR>
 let g:Powerline_symbols = 'fancy'
 
 " --- ctrlp.vim
-let g:ctrlp_extensions = ['buffertag']
+let g:ctrlp_extensions = ['buffertag', 'tag']
+
+nnoremap <Leader>pb :CtrlPBufTag<CR>
+nnoremap <Leader>pt :CtrlPTag<CR>
 
 " --- dwm.vim
 let g:dwm_map_keys = 0
@@ -170,7 +173,6 @@ nmap <silent> <Space> :silent noh<CR>
 " " --- copy & paste
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
-nnoremap <Leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 nnoremap Q <nop>
 
 " " --- buffer and file management
