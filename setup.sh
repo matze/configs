@@ -4,9 +4,6 @@ HERE=`pwd`
 VUNDLE_URL="https://github.com/gmarik/vundle.git"
 VUNDLE_DIR="$HOME/.vim/bundle/vundle"
 
-AUTOJUMP_URL="https://github.com/joelthelion/autojump.git"
-AUTOJUMP_DIR="$HOME/.autojump"
-
 # Create necessary directories
 mkdir -p ~/.vim/{after/ftplugin,autoload,bundle,colors,ftdetect}
 mkdir -p ~/.config
@@ -26,4 +23,10 @@ done
 # Checkout Vundle
 if [ ! -d "$VUNDLE_DIR" ]; then
     git clone $VUNDLE_URL $VUNDLE_DIR
+fi
+
+# Get submodule if not existing
+if [ ! -f $PWD/z/z.sh ]; then
+    git submodule init
+    git submodule update
 fi
