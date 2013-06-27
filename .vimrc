@@ -163,7 +163,7 @@ endif
 
 
 " --- key mappings ----------------------------------------------------------
-nmap <F5> <Esc>:w!<CR>:make!<CR>
+nmap <F5> <Esc>:w!<CR>:make!<CR><CR>
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 
