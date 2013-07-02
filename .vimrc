@@ -192,6 +192,7 @@ nmap <C-o> <C-]>
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
+nmap <Leader>t :r!date -R<CR>A: 
 
 " " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
