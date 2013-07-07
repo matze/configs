@@ -66,6 +66,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'matze/neosnippet'
 
 Bundle 'mileszs/ack.vim'
+Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'matze/latex-fold'
 Bundle 'matze/vim-markdown'
@@ -76,10 +77,6 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lokaltog/vim-easymotion'
-
-if has("python")
-    Bundle 'Lokaltog/vim-powerline'
-endif
 
 filetype on
 filetype plugin on
@@ -110,8 +107,9 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
-" --- powerline
-let g:Powerline_symbols = 'fancy'
+" --- vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
 
 " --- ctrlp.vim
 let g:ctrlp_extensions = ['buffertag', 'tag']
