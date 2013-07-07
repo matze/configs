@@ -108,6 +108,7 @@ nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 
 " --- vim-airline
+let g:airline_enable_syntastic = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 
