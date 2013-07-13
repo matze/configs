@@ -111,6 +111,7 @@ nmap <Leader>ncd :NeoComplCacheDisable<CR>
 let g:airline_enable_syntastic = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
+let g:airline_section_x = ''
 
 " --- ctrlp.vim
 let g:ctrlp_extensions = ['buffertag', 'tag']
