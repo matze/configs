@@ -3,6 +3,7 @@
 
 
 # --- general options ----------------------------
+
 shopt -s histappend
 shopt -s cdspell
 set -o vi
@@ -36,6 +37,7 @@ bind '"\e[B":history-search-forward'
 
 
 # --- enhance prompt -----------------------------
+
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
 CYAN="\[\033[0;36m\]"
@@ -112,8 +114,6 @@ man() {
 EDITOR=$(which vi)
 VISUAL=$EDITOR
 GIT_EDITOR=$EDITOR
-
-PATH=$PATH:$HOME/.local/bin
 PROMPT_COMMAND=_prompt_command
 
 HISTCONTROL=ignoredups:ignorespace
