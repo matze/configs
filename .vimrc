@@ -101,8 +101,8 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
@@ -128,6 +128,11 @@ nmap <C-X> <Plug>DWMClose
 nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
+
+" --- better man viewer
+let $GROFF_NO_SGR=1
+source $VIMRUNTIME/ftplugin/man.vim
+nmap K :Man <cword><CR>
 
 
 " --- omni completion -------------------------------------------------------
