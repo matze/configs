@@ -65,6 +65,7 @@ call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'matze/neosnippet'
 
+Bundle 'matze/vim-move'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
