@@ -131,6 +131,13 @@ let $GROFF_NO_SGR=1
 source $VIMRUNTIME/ftplugin/man.vim
 nmap K :Man <cword><CR>
 
+" --- vim-move
+let g:move_map_keys = 0
+vmap <C-j> <Plug>MoveBlockDown
+vmap <C-k> <Plug>MoveBlockUp
+nmap j <Plug>MoveLineDown
+nmap k <Plug>MoveLineUp
+
 
 " --- omni completion -------------------------------------------------------
 "
