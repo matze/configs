@@ -62,22 +62,18 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'Shougo/neocomplcache'
-Bundle 'matze/neosnippet'
-
-Bundle 'matze/vim-move'
-Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
-Bundle 'matze/latex-fold'
+Bundle 'matze/neosnippet'
 Bundle 'matze/vim-markdown'
-Bundle 'spolu/dwm.vim'
+Bundle 'matze/vim-move'
+Bundle 'mileszs/ack.vim'
 Bundle 'nvie/vim-flake8'
+Bundle 'Shougo/neocomplcache'
+Bundle 'spolu/dwm.vim'
 Bundle 'petRUShka/vim-opencl'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
-" Bundle 'jnwhiteh/vim-golang'
-" Bundle 'Lokaltog/vim-easymotion'
 
 filetype on
 filetype plugin on
@@ -198,7 +194,7 @@ nmap <C-o> <C-]>
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
-nmap <Leader>t :r!date -R<CR>A: 
+nmap <Leader>t :r!date -R<CR>A:
 
 " " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
@@ -208,8 +204,6 @@ nmap <Leader>sn :setlocal nospell<CR>
 
 " --- Auto-Commands ---------------------------------------------------------
 "
-au BufNewFile,BufRead       wscript setf python
-
 function TryCmakeMakeprg()
     if !filereadable('Makefile')
         if filereadable('build/Makefile')
