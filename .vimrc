@@ -76,8 +76,8 @@ Bundle 'nvie/vim-flake8'
 Bundle 'petRUShka/vim-opencl'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'jnwhiteh/vim-golang'
+" Bundle 'Lokaltog/vim-easymotion'
 
 filetype on
 filetype plugin on
