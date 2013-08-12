@@ -98,7 +98,7 @@ function _prompt_command() {
 
 # --- colored man pages --------------------------
 
-man() {
+function man() {
     env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 	LESS_TERMCAP_md=$(printf "\e[1;35m") \
 	LESS_TERMCAP_me=$(printf "\e[0m") \
@@ -107,6 +107,10 @@ man() {
 	LESS_TERMCAP_ue=$(printf "\e[0m") \
 	LESS_TERMCAP_us=$(printf "\e[04;36m") \
 	man "$@"
+}
+
+function md() {
+    mkdir -p "$1" && cd "$1"
 }
 
 # --- environment variables ----------------------
