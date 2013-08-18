@@ -4,8 +4,9 @@
 
 # --- general options ----------------------------
 
-shopt -s histappend
+shopt -s autocd
 shopt -s cdspell
+shopt -s histappend
 set -o vi
 
 
