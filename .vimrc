@@ -168,37 +168,59 @@ nmap j <Plug>MoveLineDown
 nmap k <Plug>MoveLineUp
 "}}}
 "}}}
+"{{{ Functions 
+function! NextClosedFold(dir)
+    " Stolen from http://stackoverflow.com/a/9407015/997768
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
+"}}}
 "{{{ Keymaps 
+"{{{ Misc 
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
-
-" --- copy & paste
+"}}}
+"{{{ Copy & paste 
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap Q <nop>
-
-" --- buffer and file management
+"}}}
+"{{{ Buffer and file management 
 nmap <Leader>w :w!<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
 nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
-
-" --- Tlist and ctags stuff
+"}}}
+"{{{ Tlist and ctags stuff 
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
-
-" --- basic formatting
+"}}}
+"{{{ Basic formatting 
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
-
-" --- spellchecking
+"}}}
+"{{{ Spellchecking 
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
+"}}}
+"{{{ Folding
+nnoremap <silent> zJ :call NextClosedFold('j')<CR>
+nnoremap <silent> zK :call NextClosedFold('k')<CR>
+"}}}
 "}}}
 "{{{ Auto commands 
 function TryCmakeMakeprg()
