@@ -1,19 +1,26 @@
+#                    /\ \__
+#   ___ ___      __  \ \ ,_\  ____      __
+#  /' __` __`\  /'__`\ \ \ \/ /\_ ,`\  /'__`\
+#  /\ \/\ \/\ \/\ \L\.\_\ \ \_\/_/  /_/\  __/
+#  \ \_\ \_\ \_\ \__/.\_\\ \__\ /\____\ \____\
+#   \/_/\/_/\/_/\/__/\/_/ \/__/ \/____/\/____/
+#
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-
-# --- general options ----------------------------
-
+#{{{ Options 
 shopt -s autocd
 shopt -s cdspell
 shopt -s histappend
 set -o vi
-
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable color support of ls and also add handy aliases
+#}}}
+#{{{ Binds 
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+#}}}
+#{{{ Aliases 
+# Color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -22,26 +29,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
-# --- aliases ------------------------------------
-
 alias ll='ls -alF'
 alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
-
-
-# --- binds --------------------------------------
-
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
-
-
-# --- enhance prompt -----------------------------
-
+#}}}
+#{{{ Prompt 
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
-CYAN="\[\033[0;36m\]"
 YELLOW="\[\033[1;33m\]"
 LIGHT_GRAY="\[\033[0;37m\]"
 DARK_GRAY="\[\033[1;30m\]"
@@ -83,7 +78,6 @@ function _set_host_color() {
 }
 
 function _prompt_command() {
-
     if test -z "$VIRTUAL_ENV" ; then
         PYTHON_VIRTUALENV=""
     else
@@ -95,10 +89,8 @@ function _prompt_command() {
 
     PS1="`_git_prompt`${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE} "
 }
-
-
-# --- colored man pages --------------------------
-
+#}}}
+#{{{ Functions 
 function man() {
     env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 	LESS_TERMCAP_md=$(printf "\e[1;35m") \
@@ -113,9 +105,8 @@ function man() {
 function md() {
     mkdir -p "$1" && cd "$1"
 }
-
-# --- environment variables ----------------------
-
+#}}}
+#{{{ Environment
 EDITOR=$(which vi)
 VISUAL=$EDITOR
 GIT_EDITOR=$EDITOR
@@ -126,9 +117,9 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 RI="-Tf ansi"
-
-
-# --- source other things ------------------------
+#}}}
+#{{{ Sourcing 
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
@@ -141,3 +132,4 @@ fi
 if [ -f ~/.z.sh ]; then
     . ~/.z.sh
 fi
+#}}}
