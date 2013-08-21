@@ -1,8 +1,17 @@
-" Matzes .vimrc
+"
+"                    /\ \__
+"   ___ ___      __  \ \ ,_\  ____      __
+"  /' __` __`\  /'__`\ \ \ \/ /\_ ,`\  /'__`\
+"  /\ \/\ \/\ \/\ \L\.\_\ \ \_\/_/  /_/\  __/
+"  \ \_\ \_\ \_\ \__/.\_\\ \__\ /\____\ \____\
+"   \/_/\/_/\/_/\/__/\/_/ \/__/ \/____/\/____/
+"
+" Author: matthias.vogelgesang[at]gmail[dot]com
+" Blog: http://bloerg.net
 "
 
-" --- general ---------------------------------------------------------------
-"
+"{{{ Settings
+"{{{ General 
 set nocompatible    " vi-Kompatibilität ausschalten
 set modeline
 set showmatch       " Klammermatching anzeigen
@@ -22,10 +31,18 @@ set mouse=a         " Mouse-Support im Terminal
 set tags=tags
 set ttyfast
 let mapleader = ","
-
-
-" --- textformatting, indenting, tabs ---------------------------------------
-"
+"}}}
+"{{{ Searching 
+set ignorecase      " Case-insentive Suchen
+set smartcase       " ignoriere ggf. ignorecase
+set hlsearch
+set wrapscan        " Suche oben fortsetzen
+set sm
+set incsearch       " Inkrementelle Suche von Teilergebnissen
+set noedcompatible
+set nogdefault      " g ist nicht Standard bei :s/foo/bar
+"}}}
+"{{{ Textformatting, indenting, tabs 
 set autoindent
 set si
 set tabstop=4       " Anzahl Spaces pro <Tab>
@@ -37,117 +54,8 @@ set linebreak       " Zeilen am Ende (visuelle) umbrechen
 set number          " Zeilennummern anschalten
 set listchars=tab:»\ ,trail:·,eol:¬
 set tw=80
-
-" --- folding ---------------------------------------------------------------
-"
-set nofoldenable
-set foldmethod=marker
-set fillchars=fold:·
-
-" --- searching -------------------------------------------------------------
-"
-set ignorecase      " Case-insentive Suchen
-set smartcase       " ignoriere ggf. ignorecase
-set hlsearch
-set wrapscan        " Suche oben fortsetzen
-set sm
-set incsearch       " Inkrementelle Suche von Teilergebnissen
-set noedcompatible
-set nogdefault      " g ist nicht Standard bei :s/foo/bar
-
-" --- plugins ---------------------------------------------------------------
-"
-filetype off
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'matze/neosnippet'
-Bundle 'matze/vim-markdown'
-Bundle 'matze/vim-move'
-Bundle 'mileszs/ack.vim'
-Bundle 'nvie/vim-flake8'
-Bundle 'Shougo/neocomplcache'
-Bundle 'spolu/dwm.vim'
-Bundle 'petRUShka/vim-opencl'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
-
-filetype on
-filetype plugin on
-filetype indent on
-
-" --- ack.vim
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=build"
-
-" --- NeoComplCache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_auto_completion_start_length = 3
-let g:neocomplcache_manual_completion_start_length = 3
-let g:neocomplcache_min_syntax_length = 3
-
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-nmap <Leader>nce :NeoComplCacheEnable<CR>
-nmap <Leader>ncd :NeoComplCacheDisable<CR>
-
-" --- vim-airline
-let g:airline_enable_syntastic = 0
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
-let g:airline_section_x = ''
-let g:airline_detect_whitespace = 0
-
-" --- ctrlp.vim
-let g:ctrlp_extensions = ['buffertag', 'tag']
-
-nnoremap <Leader>pb :CtrlPBufTag<CR>
-nnoremap <Leader>pt :CtrlPTag<CR>
-
-" --- dwm.vim
-let g:dwm_map_keys = 0
-nmap <C-J> <C-W>w
-nmap <C-K> <C-W>W
-nmap <C-N> <Plug>DWMNew
-nmap <C-X> <Plug>DWMClose
-nmap <C-@> <Plug>DWMFocus
-nmap <C-L> <Plug>DWMGrowMaster
-nmap <C-H> <Plug>DWMShrinkMaster
-
-" --- better man viewer
-let $GROFF_NO_SGR=1
-source $VIMRUNTIME/ftplugin/man.vim
-nmap K :Man <cword><CR>
-
-" --- vim-move
-let g:move_map_keys = 0
-vmap <C-j> <Plug>MoveBlockDown
-vmap <C-k> <Plug>MoveBlockUp
-nmap j <Plug>MoveLineDown
-nmap k <Plug>MoveLineUp
-
-
-" --- omni completion -------------------------------------------------------
-"
-set omnifunc=syntaxcomplete#Complete
-set completeopt=menu
-
-
-" --- highlighting, colors, fonts -------------------------------------------
-"
+"}}}
+"{{{ Highlighting, colors, fonts 
 syntax on
 set t_Co=256
 set background=dark
@@ -170,14 +78,100 @@ if has("gui_running")
     set guioptions-=R
     set guioptions-=b
 endif
+"}}}
+"{{{ Folding 
+set foldenable
+set foldmethod=marker
+set fillchars=fold:·
+"}}}
+"{{{ Omni completion 
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menu
+"}}}
+"}}}
+"{{{ Plugins 
+filetype off
 
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
 
-" --- key mappings ----------------------------------------------------------
+Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'matze/neosnippet'
+Bundle 'matze/vim-markdown'
+Bundle 'matze/vim-move'
+Bundle 'mileszs/ack.vim'
+Bundle 'nvie/vim-flake8'
+Bundle 'Shougo/neocomplcache'
+Bundle 'spolu/dwm.vim'
+Bundle 'petRUShka/vim-opencl'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+
+filetype on
+filetype plugin on
+filetype indent on
+
+"{{{ ack.vim 
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=build"
+"}}}
+"{{{ NeoComplCache 
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_manual_completion_start_length = 3
+let g:neocomplcache_min_syntax_length = 3
+
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+nmap <Leader>nce :NeoComplCacheEnable<CR>
+nmap <Leader>ncd :NeoComplCacheDisable<CR>
+"}}}
+"{{{ vim-airline 
+let g:airline_enable_syntastic = 0
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
+let g:airline_section_x = ''
+let g:airline_detect_whitespace = 0
+"}}}
+"{{{ ctrlp.vim 
+let g:ctrlp_extensions = ['buffertag', 'tag']
+
+nnoremap <Leader>pb :CtrlPBufTag<CR>
+nnoremap <Leader>pt :CtrlPTag<CR>
+"}}}
+"{{{ dwm.vim 
+let g:dwm_map_keys = 0
+nmap <C-J> <C-W>w
+nmap <C-K> <C-W>W
+nmap <C-N> <Plug>DWMNew
+nmap <C-X> <Plug>DWMClose
+nmap <C-@> <Plug>DWMFocus
+nmap <C-L> <Plug>DWMGrowMaster
+nmap <C-H> <Plug>DWMShrinkMaster
+"}}}
+"{{{ vim-move 
+let g:move_map_keys = 0
+vmap <C-j> <Plug>MoveBlockDown
+vmap <C-k> <Plug>MoveBlockUp
+nmap j <Plug>MoveLineDown
+nmap k <Plug>MoveLineUp
+"}}}
+"}}}
+"{{{ Keymaps 
 nmap <F5> <Esc>:w!<CR>:make!<CR><CR>
-inoremap <F9> <C-O>za
-nnoremap <F9> za
+nnoremap <CR> za
 
-nmap <Leader>cw 1z=
 nmap <silent> <Space> :silent noh<CR>
 
 " " --- copy & paste
@@ -187,7 +181,6 @@ nnoremap Q <nop>
 
 " " --- buffer and file management
 nmap <Leader>w :w!<CR>
-nmap <Leader>d :bd<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
 nmap <Right> :bn<CR>
@@ -202,16 +195,18 @@ nmap <C-o> <C-]>
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
-nmap <Leader>t :r!date -R<CR>A:
 
 " " --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-
-
-" --- Auto-Commands ---------------------------------------------------------
 "
+" --- better man viewer
+let $GROFF_NO_SGR=1
+source $VIMRUNTIME/ftplugin/man.vim
+nmap K :Man <cword><CR>
+"}}}
+"{{{ Auto commands 
 function TryCmakeMakeprg()
     if !filereadable('Makefile')
         if filereadable('build/Makefile')
@@ -221,3 +216,4 @@ function TryCmakeMakeprg()
 endfunction
 
 au BufEnter *.c     call TryCmakeMakeprg()
+"}}}
