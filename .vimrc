@@ -10,8 +10,8 @@
 " Blog: http://bloerg.net
 "
 
-"{{{1 Settings 
-"{{{ General 
+"{{{1 Settings
+"{{{ General
 set nocompatible    " vi-Kompatibilität ausschalten
 set modeline
 set showmatch       " Klammermatching anzeigen
@@ -32,7 +32,7 @@ set tags=tags
 set ttyfast
 let mapleader = ","
 "}}}
-"{{{ Searching 
+"{{{ Searching
 set ignorecase      " Case-insentive Suchen
 set smartcase       " ignoriere ggf. ignorecase
 set hlsearch
@@ -42,7 +42,7 @@ set incsearch       " Inkrementelle Suche von Teilergebnissen
 set noedcompatible
 set nogdefault      " g ist nicht Standard bei :s/foo/bar
 "}}}
-"{{{ Textformatting, indenting, tabs 
+"{{{ Textformatting, indenting, tabs
 set autoindent
 set si
 set tabstop=4       " Anzahl Spaces pro <Tab>
@@ -55,7 +55,7 @@ set number          " Zeilennummern anschalten
 set listchars=tab:»\ ,trail:·,eol:¬
 set tw=80
 "}}}
-"{{{ Highlighting, colors, fonts 
+"{{{ Highlighting, colors, fonts
 syntax on
 set t_Co=256
 set background=dark
@@ -79,17 +79,17 @@ if has("gui_running")
     set guioptions-=b
 endif
 "}}}
-"{{{ Folding 
+"{{{ Folding
 set foldenable
 set foldmethod=marker
 set fillchars=fold:·
 "}}}
-"{{{ Omni completion 
+"{{{ Omni completion
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu
 "}}}
 "}}}
-"{{{1 Plugins 
+"{{{1 Plugins
 filetype off
 
 set rtp+=~/.vim/bundle/vundle
@@ -112,10 +112,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
-"{{{ ack.vim 
+"{{{ ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=build"
 "}}}
-"{{{ NeoComplCache 
+"{{{ NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -137,20 +137,20 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
-"{{{ vim-airline 
+"{{{ vim-airline
 let g:airline_enable_syntastic = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 let g:airline_section_x = ''
 let g:airline_detect_whitespace = 0
 "}}}
-"{{{ ctrlp.vim 
+"{{{ ctrlp.vim
 let g:ctrlp_extensions = ['buffertag', 'tag']
 
 nnoremap <Leader>pb :CtrlPBufTag<CR>
 nnoremap <Leader>pt :CtrlPTag<CR>
 "}}}
-"{{{ dwm.vim 
+"{{{ dwm.vim
 let g:dwm_map_keys = 0
 nmap <C-J> <C-W>w
 nmap <C-K> <C-W>W
@@ -160,7 +160,7 @@ nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
 "}}}
-"{{{ vim-move 
+"{{{ vim-move
 let g:move_map_keys = 0
 vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
@@ -168,7 +168,7 @@ nmap j <Plug>MoveLineDown
 nmap k <Plug>MoveLineUp
 "}}}
 "}}}
-"{{{1 Functions 
+"{{{1 Functions
 function! NextClosedFold(dir)
     " Stolen from http://stackoverflow.com/a/9407015/997768
     let cmd = 'norm!z' . a:dir
@@ -191,19 +191,27 @@ function TryCmakeMakeprg()
         endif
     endif
 endfunction
+
+function NicerFoldText()
+    " Regular expressions from http://dhruvasagar.com/2013/03/28/vim-better-foldtext
+    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    return '+-' . v:folddashes . line
+endfunction
+
+set foldtext=NicerFoldText()
 "}}}
-"{{{1 Keymaps 
-"{{{ Misc 
+"{{{1 Keymaps
+"{{{ Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
 "}}}
-"{{{ Copy & paste 
+"{{{ Copy & paste
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap Q <nop>
 "}}}
-"{{{ Buffer and file management 
+"{{{ Buffer and file management
 nmap <Leader>w :w!<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
@@ -211,16 +219,16 @@ nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 "}}}
-"{{{ Tlist and ctags stuff 
+"{{{ Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
 "}}}
-"{{{ Basic formatting 
+"{{{ Basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
 "}}}
-"{{{ Spellchecking 
+"{{{ Spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
@@ -230,6 +238,6 @@ nnoremap <silent> zJ :call NextClosedFold('j')<CR>
 nnoremap <silent> zK :call NextClosedFold('k')<CR>
 "}}}
 "}}}
-"{{{1 Auto commands 
+"{{{1 Auto commands
 au BufEnter *.c     call TryCmakeMakeprg()
 "}}}
