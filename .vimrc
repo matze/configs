@@ -10,7 +10,7 @@
 " Blog: http://bloerg.net
 "
 
-"{{{ Settings
+"{{{1 Settings 
 "{{{ General 
 set nocompatible    " vi-Kompatibilität ausschalten
 set modeline
@@ -89,7 +89,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu
 "}}}
 "}}}
-"{{{ Plugins 
+"{{{1 Plugins 
 filetype off
 
 set rtp+=~/.vim/bundle/vundle
@@ -168,7 +168,7 @@ nmap j <Plug>MoveLineDown
 nmap k <Plug>MoveLineUp
 "}}}
 "}}}
-"{{{ Functions 
+"{{{1 Functions 
 function! NextClosedFold(dir)
     " Stolen from http://stackoverflow.com/a/9407015/997768
     let cmd = 'norm!z' . a:dir
@@ -183,8 +183,16 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
+
+function TryCmakeMakeprg()
+    if !filereadable('Makefile')
+        if filereadable('build/Makefile')
+            set makeprg=make\ -C\ ./build\ --no-print-directory
+        endif
+    endif
+endfunction
 "}}}
-"{{{ Keymaps 
+"{{{1 Keymaps 
 "{{{ Misc 
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <CR> za
@@ -222,14 +230,6 @@ nnoremap <silent> zJ :call NextClosedFold('j')<CR>
 nnoremap <silent> zK :call NextClosedFold('k')<CR>
 "}}}
 "}}}
-"{{{ Auto commands 
-function TryCmakeMakeprg()
-    if !filereadable('Makefile')
-        if filereadable('build/Makefile')
-            set makeprg=make\ -C\ ./build\ --no-print-directory
-        endif
-    endif
-endfunction
-
+"{{{1 Auto commands 
 au BufEnter *.c     call TryCmakeMakeprg()
 "}}}
