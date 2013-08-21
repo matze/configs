@@ -169,17 +169,16 @@ nmap k <Plug>MoveLineUp
 "}}}
 "}}}
 "{{{ Keymaps 
-nmap <F5> <Esc>:w!<CR>:make!<CR><CR>
+nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <CR> za
+nnoremap <silent> <Space> :silent noh<CR>
 
-nmap <silent> <Space> :silent noh<CR>
-
-" " --- copy & paste
+" --- copy & paste
 nnoremap <Leader>y "*yy
 nnoremap <Leader>yy "*Y
 nnoremap Q <nop>
 
-" " --- buffer and file management
+" --- buffer and file management
 nmap <Leader>w :w!<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
@@ -187,24 +186,19 @@ nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 
-" " --- Tlist and ctags stuff
+" --- Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
 
-" " --- basic formatting
+" --- basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
 
-" " --- spellchecking
+" --- spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-"
-" --- better man viewer
-let $GROFF_NO_SGR=1
-source $VIMRUNTIME/ftplugin/man.vim
-nmap K :Man <cword><CR>
 "}}}
 "{{{ Auto commands 
 function TryCmakeMakeprg()
