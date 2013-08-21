@@ -41,8 +41,8 @@ set tw=80
 " --- folding ---------------------------------------------------------------
 "
 set nofoldenable
-set foldmethod=indent
-set fillchars=fold:\
+set foldmethod=marker
+set fillchars=fold:·
 
 " --- searching -------------------------------------------------------------
 "
