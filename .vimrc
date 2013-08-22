@@ -131,7 +131,6 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
@@ -153,6 +152,7 @@ nnoremap <Leader>pt :CtrlPTag<CR>
 "}}}
 "{{{ dwm.vim
 let g:dwm_map_keys = 0
+
 nmap <C-J> <C-W>w
 nmap <C-K> <C-W>W
 nmap <C-N> <Plug>DWMNew
@@ -163,6 +163,7 @@ nmap <C-H> <Plug>DWMShrinkMaster
 "}}}
 "{{{ vim-move
 let g:move_map_keys = 0
+
 vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
 nmap j <Plug>MoveLineDown
@@ -208,11 +209,6 @@ set foldtext=NicerFoldText()
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
-"}}}
-"{{{ Copy & paste
-nnoremap <Leader>y "*yy
-nnoremap <Leader>yy "*Y
-nnoremap Q <nop>
 "}}}
 "{{{ Buffer and file management
 nmap <Leader>w :w!<CR>
