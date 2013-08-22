@@ -197,7 +197,7 @@ function NicerFoldText()
     " Match everything that has the Vim marker after some character (presumably
     " the comment starter.
     let foldline = getline(v:foldstart)
-    let line = substitute(foldline, '^[^{]*{' . '{{\([.]*\)', '\1', '') . ' '
+    let line = substitute(foldline, '^[^{]*{' . '{{\d*\([.]*\)', '\1', '') . ' '
     return '+-' . v:folddashes . line
 endfunction
 
