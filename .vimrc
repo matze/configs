@@ -100,6 +100,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'matze/neosnippet'
 Bundle 'matze/vim-markdown'
 Bundle 'matze/vim-move'
+Bundle 'matze/vim-tex-fold'
 Bundle 'mileszs/ack.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'Shougo/neocomplcache'
@@ -193,8 +194,10 @@ function TryCmakeMakeprg()
 endfunction
 
 function NicerFoldText()
-    " Regular expressions from http://dhruvasagar.com/2013/03/28/vim-better-foldtext
-    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    " Match everything that has the Vim marker after some character (presumably
+    " the comment starter.
+    let foldline = getline(v:foldstart)
+    let line = substitute(foldline, '^[^{]*{' . '{{\([.]*\)', '\1', '') . ' '
     return '+-' . v:folddashes . line
 endfunction
 
