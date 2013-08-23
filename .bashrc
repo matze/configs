@@ -9,17 +9,17 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-#{{{ Options 
+#{{{ Options
 shopt -s autocd
 shopt -s cdspell
 shopt -s histappend
 set -o vi
 #}}}
-#{{{ Binds 
+#{{{ Binds
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 #}}}
-#{{{ Aliases 
+#{{{ Aliases
 # Color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b)"
@@ -34,7 +34,8 @@ alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
 #}}}
-#{{{ Prompt 
+#{{{ Functions
+#{{{ Prompt
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
 YELLOW="\[\033[1;33m\]"
@@ -90,7 +91,6 @@ function _prompt_command() {
     PS1="`_git_prompt`${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE} "
 }
 #}}}
-#{{{ Functions 
 function man() {
     env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 	LESS_TERMCAP_md=$(printf "\e[1;35m") \
@@ -118,7 +118,7 @@ HISTFILESIZE=2000
 
 RI="-Tf ansi"
 #}}}
-#{{{ Sourcing 
+#{{{ Sourcing
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
