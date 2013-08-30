@@ -12,7 +12,6 @@ mkdir -p ~/.config
 ln -s -f $HERE/.bashrc ~/.bashrc
 ln -s -f $HERE/.gitconfig ~/.gitconfig
 ln -s -f $HERE/.tmux.conf ~/.tmux.conf
-ln -s -f $HERE/.Xdefaults ~/.Xdefaults
 ln -s -f $HERE/.vimrc ~/.vimrc
 ln -s -f $HERE/.vimperatorrc ~/.vimperatorrc
 ln -s -f $HERE/z/z.sh ~/.z.sh
