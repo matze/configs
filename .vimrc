@@ -12,49 +12,45 @@
 
 "{{{1 Settings
 "{{{ General
-set nocompatible    " vi-Kompatibilität ausschalten
-set modeline
-set showmatch       " Klammermatching anzeigen
-set nocursorline
-set nocursorcolumn
-set ruler           " aktuelle Cursorposition
-set laststatus=2    " Status immer anzeigen
-set backspace=2     " alles im Insertmode löschen
-set noerrorbells    " Klingeling ausschalten
-set history=1000    " Commandline-History
-set wildmenu        " Tab-completion im Menü
+set nocompatible    " Disable vi compatibility
+set modeline        " Enable modeline
+set showmatch       " Show matching parentheses
+set nocursorline    " Do not highlight cursor line
+set nocursorcolumn  " Do not highlight current cursor column
+set ruler           " Show cursor position
+set laststatus=2    " Show status line
+set noerrorbells    " No beeps
+set history=1000    " Maximum history
+set wildmenu        " Tab completion
 set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*
-set hidden
-set scrolloff=2     " Mindestens zwei Zeilen Kontext
-set sidescrolloff=2 " Mindestens zwei Spalten Kontext
-set mouse=a         " Mouse-Support im Terminal
-set tags=tags
+set hidden          " Allow buffers to be hidden
+set scrolloff=2     " At least two lines and ...
+set sidescrolloff=2 " two columns context
+set mouse=a         " Mouse support
+set tags=tags       " Tags file
 set ttyfast
 set dir=~/.vim      " Location for .swp files
 let mapleader = ","
 "}}}
 "{{{ Searching
-set ignorecase      " Case-insentive Suchen
-set smartcase       " ignoriere ggf. ignorecase
-set hlsearch
-set wrapscan        " Suche oben fortsetzen
-set sm
-set incsearch       " Inkrementelle Suche von Teilergebnissen
-set noedcompatible
-set nogdefault      " g ist nicht Standard bei :s/foo/bar
+set ignorecase      " Case insensitive search
+set smartcase       " Ignore ignorecase
+set hlsearch        " Show search results
+set wrapscan        " Continue search at the top
+set incsearch       " Incremental search
 "}}}
 "{{{ Textformatting, indenting, tabs
-set autoindent
-set si
-set tabstop=4       " Anzahl Spaces pro <Tab>
-set shiftwidth=4
-set softtabstop=4
-set expandtab       " Spaces statt Tabs
-set smarttab        " Ich hoffe du schaffst das...
-set linebreak       " Zeilen am Ende (visuelle) umbrechen
-set number          " Zeilennummern anschalten
+set textwidth=80    " Yay, history!
+set autoindent      " ...
+set smartindent     " ...
+set tabstop=4       " Number of spaces per tab
+set shiftwidth=4    " Default number of spaces for >> and <<
+set softtabstop=4   " Number of spaces per tab
+set expandtab       " Spaces instead of tabs
+set smarttab        " Add/remove spaces instead of tabs
+set linebreak       " Break lines nicer
+set number          " Show line numbers
 set listchars=tab:»\ ,trail:·,eol:¬
-set tw=80
 "}}}
 "{{{ Highlighting, colors, fonts
 syntax on
@@ -68,8 +64,8 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
 if has("gui_running")
-    set lines=60                " bißchen höher im GUI-Modus
-    set columns=120             " und ein bißchen breiter
+    set lines=60                " More lines ...
+    set columns=120             " and columns in GUI mode
     set gfn=Monospace\ 9
     set guioptions-=m
     set guioptions-=T
