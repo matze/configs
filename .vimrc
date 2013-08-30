@@ -30,6 +30,7 @@ set sidescrolloff=2 " Mindestens zwei Spalten Kontext
 set mouse=a         " Mouse-Support im Terminal
 set tags=tags
 set ttyfast
+set dir=~/.vim      " Location for .swp files
 let mapleader = ","
 "}}}
 "{{{ Searching
