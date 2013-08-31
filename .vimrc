@@ -104,6 +104,7 @@ NeoBundle 'matze/vim-markdown'
 NeoBundle 'matze/vim-move'
 NeoBundle 'matze/vim-tex-fold'
 NeoBundle 'matze/vim-ini-fold'
+NeoBundle 'matze/vim-markdown-folding', 'user-defined-foldtext'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'nvie/vim-flake8'
 NeoBundle 'Shougo/neocomplcache'
@@ -169,6 +170,9 @@ vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
 nmap j <Plug>MoveLineDown
 nmap k <Plug>MoveLineUp
+"}}}
+"{{{ vim-markdown-folding
+let g:markdown_fold_override_foldtext = 0
 "}}}
 "}}}
 "{{{1 Functions
