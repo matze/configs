@@ -89,27 +89,30 @@ set completeopt=menu
 "{{{1 Plugins
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+if has('vim_starting')
+    set rtp+=~/.vim/bundle/neobundle.vim
+endif
 
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'matze/neosnippet'
-Bundle 'matze/vim-markdown'
-Bundle 'matze/vim-move'
-Bundle 'matze/vim-tex-fold'
-Bundle 'matze/vim-ini-fold'
-Bundle 'mileszs/ack.vim'
-Bundle 'nvie/vim-flake8'
-Bundle 'Shougo/neocomplcache'
-Bundle 'spolu/dwm.vim'
-Bundle 'petRUShka/vim-opencl'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-filetype on
-filetype plugin on
-filetype indent on
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'bling/vim-airline'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'matze/neosnippet'
+NeoBundle 'matze/vim-markdown'
+NeoBundle 'matze/vim-move'
+NeoBundle 'matze/vim-tex-fold'
+NeoBundle 'matze/vim-ini-fold'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'nvie/vim-flake8'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'spolu/dwm.vim'
+NeoBundle 'petRUShka/vim-opencl'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+
+filetype plugin indent on
 
 "{{{ ack.vim
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=build"

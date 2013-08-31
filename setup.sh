@@ -1,8 +1,8 @@
 #!/bin/bash
 
 HERE=`pwd`
-VUNDLE_URL="https://github.com/gmarik/vundle.git"
-VUNDLE_DIR="$HOME/.vim/bundle/vundle"
+NEOBUNDLE_URL="https://github.com/Shougo/neobundle.vim"
+NEOBUNDLE_DIR="$HOME/.vim/bundle/neobundle.vim"
 
 # Create necessary directories
 mkdir -p ~/.vim/{after/ftplugin,autoload,bundle,colors,ftdetect}
@@ -21,8 +21,8 @@ for source in `find vim/ -type f`; do
 done
 
 # Checkout Vundle
-if [ ! -d "$VUNDLE_DIR" ]; then
-    git clone $VUNDLE_URL $VUNDLE_DIR
+if [ ! -d "$NEOBUNDLE_DIR" ]; then
+    git clone $NEOBUNDLE_URL $NEOBUNDLE_DIR
 fi
 
 # Get submodule if not existing
