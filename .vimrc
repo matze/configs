@@ -56,12 +56,6 @@ set listchars=tab:»\ ,trail:·,eol:¬
 syntax on
 set t_Co=256
 
-try
-    colorscheme lilypink
-catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme desert
-endtry
-
 if has("gui_running")
     set lines=60                " More lines ...
     set columns=120             " and columns in GUI mode
@@ -106,10 +100,11 @@ NeoBundle 'matze/vim-tex-fold'
 NeoBundle 'matze/vim-ini-fold'
 NeoBundle 'matze/vim-markdown-folding', 'user-defined-foldtext'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nvie/vim-flake8'
+NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
-NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 
@@ -139,13 +134,6 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
-"{{{ vim-airline
-let g:airline_enable_syntastic = 0
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
-let g:airline_section_x = ''
-let g:airline_detect_whitespace = 0
-"}}}
 "{{{ ctrlp.vim
 let g:ctrlp_extensions = ['buffertag', 'tag']
 
@@ -163,9 +151,19 @@ nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
 "}}}
+"{{{ jellybeans.vim
+colorscheme jellybeans
+"}}}
 "{{{ solarized
 let g:solarized_termcolors=256
 let g:solarized_underline=0
+"}}}
+"{{{ vim-airline
+let g:airline_enable_syntastic = 0
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
+let g:airline_section_x = ''
+let g:airline_detect_whitespace = 0
 "}}}
 "{{{ vim-move
 let g:move_map_keys = 0
