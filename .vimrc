@@ -161,7 +161,7 @@ let g:solarized_underline=0
 "{{{ vim-airline
 let g:airline_enable_syntastic = 0
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'jellybeans'
 let g:airline_section_x = ''
 let g:airline_detect_whitespace = 0
 "}}}
@@ -214,6 +214,10 @@ set foldtext=NicerFoldText()
 "{{{1 Keymaps
 "{{{ Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
+
+" Set the color twice, so that airline can pick it up
+nnoremap <F6> <Esc>:color jellybeans<CR>:color jellybeans<CR>
+nnoremap <F7> <Esc>:color solarized<CR>:color solarized<CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
 "}}}
