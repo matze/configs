@@ -3,7 +3,7 @@
 
 [core]
     editor          = vim
-    excludesfile    = ~/.gitignore 
+    excludesfile    = ~/.gitignore
     whitespace      = fix, trailing-space
 
 [color]
@@ -26,8 +26,8 @@
     d   = diff
     ds  = diff --cached
     co  = checkout
-    unstage = reset HEAD 
-    undo = checkout -- 
+    unstage = reset HEAD
+    undo = checkout --
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
     todo = grep -i -n -e ' FIX: *' -e ' TODO: *'
 
