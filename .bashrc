@@ -129,7 +129,7 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-if [ -f ~/.z.sh ]; then
-    . ~/.z.sh
+if [ -f $HOME/configs/z/z.sh ]; then
+    . $HOME/configs/z/z.sh
 fi
 #}}}
