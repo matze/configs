@@ -55,7 +55,6 @@ set listchars=tab:»\ ,trail:·,eol:¬
 "{{{ Highlighting, colors, fonts
 syntax on
 set t_Co=256
-set background=dark
 
 try
     colorscheme lilypink
@@ -97,6 +96,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'matze/neosnippet'
@@ -162,6 +162,10 @@ nmap <C-X> <Plug>DWMClose
 nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
+"}}}
+"{{{ solarized
+let g:solarized_termcolors=256
+let g:solarized_underline=0
 "}}}
 "{{{ vim-move
 let g:move_map_keys = 0
