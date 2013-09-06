@@ -216,8 +216,8 @@ set foldtext=NicerFoldText()
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 
 " Set the color twice, so that airline can pick it up
-nnoremap <F6> <Esc>:color jellybeans<CR>:color jellybeans<CR>
-nnoremap <F7> <Esc>:color solarized<CR>:color solarized<CR>
+nnoremap <F8> <Esc>:color jellybeans<CR>:color jellybeans<CR>
+nnoremap <F9> <Esc>:color solarized<CR>:color solarized<CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
 "}}}
