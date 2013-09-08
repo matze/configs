@@ -178,21 +178,6 @@ let g:markdown_fold_override_foldtext = 0
 "}}}
 "}}}
 "{{{1 Functions
-function! NextClosedFold(dir)
-    " Stolen from http://stackoverflow.com/a/9407015/997768
-    let cmd = 'norm!z' . a:dir
-    let view = winsaveview()
-    let [l0, l, open] = [0, view.lnum, 1]
-    while l != l0 && open
-        exe cmd
-        let [l0, l] = [l, line('.')]
-        let open = foldclosed(l) < 0
-    endwhile
-    if open
-        call winrestview(view)
-    endif
-endfunction
-
 function TryCmakeMakeprg()
     if !filereadable('Makefile')
         if filereadable('build/Makefile')
@@ -242,10 +227,6 @@ nmap <Leader>fw :%s/\s\+$//<CR>
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-"}}}
-"{{{ Folding
-nnoremap <silent> zJ :call NextClosedFold('j')<CR>
-nnoremap <silent> zK :call NextClosedFold('k')<CR>
 "}}}
 "}}}
 "{{{1 Auto commands
