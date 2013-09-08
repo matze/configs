@@ -93,6 +93,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matze/neosnippet'
 NeoBundle 'matze/vim-markdown'
 NeoBundle 'matze/vim-move'
@@ -157,6 +158,14 @@ colorscheme jellybeans
 "{{{ solarized
 let g:solarized_termcolors=256
 let g:solarized_underline=0
+"}}}
+"{{{ tagbar
+let g:tagbar_autoclose = 1
+let g:tagbar_left = 1
+let g:tagbar_compact = 1
+let g:tagbar_iconchars = ['▸', '▾']
+
+noremap <leader>t :TagbarToggle<CR>
 "}}}
 "{{{ vim-airline
 let g:airline_enable_syntastic = 0
