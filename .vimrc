@@ -106,7 +106,7 @@ NeoBundle 'nvie/vim-flake8'
 NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
-NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
