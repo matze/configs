@@ -92,6 +92,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matze/neosnippet'
@@ -151,6 +152,9 @@ nmap <C-X> <Plug>DWMClose
 nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
+"}}}
+"{{{ EasyMotion
+let g:EasyMotion_keys = "qwerasdcfhjkluiobn"
 "}}}
 "{{{ jellybeans.vim
 colorscheme jellybeans
