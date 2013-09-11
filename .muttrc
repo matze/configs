@@ -1,0 +1,110 @@
+#{{{ General
+set realname    = 'Matthias Vogelgesang'
+set mbox_type   = Maildir
+set folder      = '~/mail/gmail'
+set spoolfile   = '~/mail/gmail/INBOX'
+set editor      = 'vim'
+
+set wait_key    = no
+set sleep_time  = 0     # switch mailbox immediately
+set fast_reply  = yes   # reply immediately
+set include     = yes   # always include quote
+set attribution = 'On %{%m/%d/%y %H:%M}, %n wrote:'
+
+set use_from    = yes
+set sendmail    = '/usr/bin/msmtp'
+set from        = 'matthias.vogelgesang@gmail.com'
+set envelope_from = yes
+
+mailboxes '~/mail/gmail/INBOX' '~/mail/gmail/Tarsnap'
+
+auto_view text/html
+#}}}
+#{{{ Sidebar
+set sidebar_delim   = '  │'
+set sidebar_visible = yes
+set sidebar_width   = 24
+#}}}
+#{{{ Statusbar
+set status_chars  = " *%A"
+set status_format = "──── Folder: %f → %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
+#}}}
+#{{{ Header
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+#}}}
+#{{{ Index view
+set date_format = "%m/%d"
+set sort        = threads
+set sort_aux    = reverse-last-date-received
+set index_format = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
+#}}}
+#{{{ Pager view
+set pager_index_lines   = 10
+set pager_context       = 3
+set pager_stop
+unset markers                   # No + markers
+#}}}
+#{{{ Colors
+color normal        color254 color233
+color tilde         color254 color233   # after attachment
+color status        color039 color233
+color message       color118 color233
+color signature     color240 color233
+color attachment    color097 color233
+color indicator     color231 color238
+color tree          color191 color233
+
+color index         color154 color233   ~N
+color index         color156 color233   ~O
+color index         color133 color233   ~F
+color index         color160 color233   ~D
+color index         color208 color233   ~T
+
+color hdrdefault    color250 color233
+color header        color214 color233 "^Subject"
+
+color body          color032 color233 "(finger|ftp|http|https|news|telnet)://[^ >]*"
+color body          color241 color233   "^gpg:.*"
+
+# Quotes ----------------------------------------
+color quoted        color191 color233
+color quoted1       color227 color233
+color quoted2       color221 color233
+color quoted3       color215 color233
+color quoted3       color209 color233
+color quoted4       color210 color233
+color quoted5       color211 color233
+color quoted6       color212 color233
+color quoted7       color213 color233
+#
+# Collapsed threads -----------------------------
+color index         color192 color233   "~v~(!~N)"  # no unread
+#}}}
+#{{{ Bindings
+bind index gg   first-entry
+bind index G    last-entry 
+bind index j    next-entry
+bind index k    previous-entry 
+
+bind index \Cu   half-up
+bind index \Cd   half-down
+
+bind pager l    next-line
+bind pager h    previous-line 
+
+# Sidebar ---------------------------------------
+bind index,pager J  sidebar-next
+bind index,pager K  sidebar-prev
+bind index,pager o  sidebar-open
+
+# Show/hide -------------------------------------
+bind index      zA  collapse-thread
+bind index      za  collapse-all
+#}}}
+#{{{ Macros
+macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+macro index a "<limit>all\n" "show all messages (undo limit)"
+#}}}
