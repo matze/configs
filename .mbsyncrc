@@ -1,0 +1,20 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User matthias.vogelgesang@gmail.com
+UseIMAPS yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/INBOX
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX" "Labyrinth" "Tarsnap"
+Create Both
+Expunge Both
+SyncState *
