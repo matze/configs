@@ -1,6 +1,7 @@
 #{{{ General
 set realname    = 'Matthias Vogelgesang'
 set editor      = 'vim'
+set signature   = '~/.mutt/signature'
 
 set mbox_type   = Maildir
 set folder      = '~/mail/gmail'
@@ -19,37 +20,35 @@ set use_from    = yes
 set sendmail    = '/usr/bin/msmtp'
 set envelope_from = yes
 
-mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts'
-
-auto_view text/html
-#}}}
-#{{{ Sidebar
-set sidebar_delim   = '  │'
-set sidebar_visible = yes
-set sidebar_width   = 24
-#}}}
-#{{{ Statusbar
-set status_chars  = " *%A"
-set status_format = "──── Folder: %f → %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
-#}}}
-#{{{ Header
-ignore *
-unignore from: to: cc: date: subject:
-unhdr_order *
-hdr_order from: to: cc: date: subject:
-#}}}
-#{{{ Index view
 set date_format = "%m/%d"
 set sort        = threads
 set sort_aux    = reverse-last-date-received
 set index_format = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
-#}}}
-#{{{ Pager view
+
 set pager_index_lines   = 10
 set pager_context       = 3
 set pager_stop
 unset markers                   # No + markers
+
+set status_chars  = " *%A"
+set status_format = "──── Folder: %f → %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
+
+set sidebar_delim   = '  │'
+set sidebar_visible = yes
+set sidebar_width   = 24
 #}}}
+
+#{{{ Headers
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts'
+
+auto_view text/html
+#}}}
+
 #{{{ Colors
 color normal        color254 color233
 color tilde         color254 color233   # after attachment
@@ -86,6 +85,7 @@ color quoted7       color213 color233
 # Collapsed threads -----------------------------
 color index         color192 color233   "~v~(!~N)"  # no unread
 #}}}
+
 #{{{ Bindings
 bind index gg   first-entry
 bind index G    last-entry 
@@ -107,7 +107,12 @@ bind index,pager o  sidebar-open
 bind index      zA  collapse-thread
 bind index      za  collapse-all
 #}}}
+
 #{{{ Macros
 macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
 macro index a "<limit>all\n" "show all messages (undo limit)"
+#}}}
+
+#{{{ Folder hooks
+folder-hook . "push <collapse-all>\n"
 #}}}
