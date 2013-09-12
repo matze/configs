@@ -1,22 +1,25 @@
 #{{{ General
 set realname    = 'Matthias Vogelgesang'
+set editor      = 'vim'
+
 set mbox_type   = Maildir
 set folder      = '~/mail/gmail'
-set spoolfile   = '~/mail/gmail/INBOX'
-set editor      = 'vim'
+set spoolfile   = '+INBOX'
+set record      = '+[Gmail]/.Sent Mail'
+set postponed   = '+[Gmail]/.Drafts'
 
 set wait_key    = no
 set sleep_time  = 0     # switch mailbox immediately
 set fast_reply  = yes   # reply immediately
 set include     = yes   # always include quote
-set attribution = 'On %{%m/%d/%y %H:%M}, %n wrote:'
 
+set attribution = 'On %{%m/%d/%y %H:%M}, %n wrote:'
+set from        = 'matthias.vogelgesang@gmail.com'
 set use_from    = yes
 set sendmail    = '/usr/bin/msmtp'
-set from        = 'matthias.vogelgesang@gmail.com'
 set envelope_from = yes
 
-mailboxes '~/mail/gmail/INBOX' '~/mail/gmail/Tarsnap'
+mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts'
 
 auto_view text/html
 #}}}
