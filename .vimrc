@@ -27,7 +27,7 @@ set hidden          " Allow buffers to be hidden
 set scrolloff=2     " At least two lines and ...
 set sidescrolloff=2 " two columns context
 set mouse=a         " Mouse support
-set tags=tags       " Tags file
+set tags=.tags      " Tags file
 set ttyfast
 set dir=~/.vim      " Location for .swp files
 let mapleader = ","
@@ -137,10 +137,7 @@ nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
 "{{{ ctrlp.vim
-let g:ctrlp_extensions = ['buffertag', 'tag']
-
-nnoremap <Leader>pb :CtrlPBufTag<CR>
-nnoremap <Leader>pt :CtrlPTag<CR>
+let g:ctrlp_extensions = ['buffertag']
 "}}}
 "{{{ dwm.vim
 let g:dwm_map_keys = 0
@@ -228,8 +225,9 @@ nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 "}}}
 "{{{ Tlist and ctags stuff
-nmap <Leader>gt :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
+nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
+nnoremap <C-m>  :CtrlPBufTag<CR>
 "}}}
 "{{{ Basic formatting
 nmap <Leader>r1 yypVr=
