@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export LANG=""
+
+WIFI_STATUS=$(nmcli -t -f WIFI nm wifi)
+WIRED_STATUS=$(nmcli -t -f WWAN nm wwan)
+
+if [ "$WIFI_STATUS" == "enabled" ] || [ "$WIRED_STATUS" == "enabled" ]; then
+    mbsync gmail
+fi
