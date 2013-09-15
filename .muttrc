@@ -83,7 +83,8 @@ color quoted6       color212 color233
 color quoted7       color213 color233
 #
 # Collapsed threads -----------------------------
-color index         color192 color233   "~v~(!~N)"  # no unread
+color index         color250 color233   "~v~(!~N)"  # no unread
+color index         color160 color233   "~v~D"      # deleted
 #}}}
 
 #{{{ Bindings
