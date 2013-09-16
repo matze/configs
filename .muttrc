@@ -44,7 +44,7 @@ unignore from: to: cc: date: subject:
 unhdr_order *
 hdr_order from: to: cc: date: subject:
 
-mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts'
+mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts' '+Dokumente' '+Privat'
 
 auto_view text/html
 #}}}
@@ -102,7 +102,7 @@ bind pager h    previous-line
 # Sidebar ---------------------------------------
 bind index,pager J  sidebar-next
 bind index,pager K  sidebar-prev
-bind index,pager o  sidebar-open
+bind index,pager O  sidebar-open
 
 # Show/hide -------------------------------------
 bind index      zA  collapse-thread
