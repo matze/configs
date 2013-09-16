@@ -227,7 +227,7 @@ nmap <Leader>cl :ccl<CR>
 "{{{ Tlist and ctags stuff
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
-nnoremap <C-m>  :CtrlPBufTag<CR>
+nmap <C-b> :CtrlPBufTag<CR>
 "}}}
 "{{{ Basic formatting
 nmap <Leader>r1 yypVr=
