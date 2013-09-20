@@ -108,7 +108,7 @@ function md() {
     mkdir -p "$1" && cd "$1"
 }
 
-function gals() {
+function gall() {
     CWD=$(pwd)
     for fname in *; do
         if [ -d "$fname" ]; then
