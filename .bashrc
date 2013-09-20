@@ -106,6 +106,12 @@ function man() {
 function md() {
     mkdir -p "$1" && cd "$1"
 }
+
+function gls() {
+    CWD=$(pwd)
+    cd ${1:-.} && git annex find | cut -d / -f 1 | uniq
+    cd ${CWD}
+}
 #}}}
 #{{{ Environment
 EDITOR=$(which vi)
