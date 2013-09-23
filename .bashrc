@@ -30,7 +30,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias ga='git annex --quiet'
-alias ll='ls -alF'
 alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
@@ -108,18 +107,22 @@ function md() {
     mkdir -p "$1" && cd "$1"
 }
 
-function gall() {
-    CWD=$(pwd)
-    for fname in *; do
-        if [ -d "$fname" ]; then
-            printf "\e[1;34m$fname\e[0m\n"
-        elif [ ! -e "$fname" ]; then
-            printf "\e[1;30m$fname\e[0m\n"
-        else
-            echo $fname
-        fi
-    done
-    #cd ${CWD}
+function ll() {
+    pwd | grep annex > /dev/null
+
+    if [ $? -ne 0 ]; then
+        ls -alF
+    else
+        for fname in *; do
+            if [ -d "$fname" ]; then
+                printf "\e[1;34m$fname\e[0m\n"
+            elif [ ! -e "$fname" ]; then
+                printf "\e[1;30m$fname\e[0m\n"
+            else
+                echo $fname
+            fi
+        done
+    fi
 }
 #}}}
 #{{{ Environment
