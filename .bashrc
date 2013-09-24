@@ -113,13 +113,13 @@ function ll() {
     if [ $? -ne 0 ]; then
         ls -alF
     else
-        for fname in *; do
-            if [ -d "$fname" ]; then
-                printf "\e[1;34m$fname\e[0m\n"
-            elif [ ! -e "$fname" ]; then
-                printf "\e[1;30m$fname\e[0m\n"
+        for f in *; do
+            if [ -d "$f" ]; then
+                printf "\e[1;34m$f\e[0m\n"
+            elif [ ! -e "$f" ]; then
+                printf "\e[1;30m$f\e[0m\n"
             else
-                echo $fname
+                echo $f
             fi
         done
     fi
