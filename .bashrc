@@ -111,7 +111,7 @@ function ll() {
     pwd | grep annex > /dev/null
 
     if [ $? -ne 0 ]; then
-        ls -alF
+        ls -alF $1
     else
         for f in *; do
             if [ -d "$f" ]; then
