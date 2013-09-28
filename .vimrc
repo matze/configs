@@ -92,6 +92,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
@@ -135,6 +136,9 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
+"}}}
+"{{{ cmake.vim
+let g:cmake_build_dirs = ['build']
 "}}}
 "{{{ ctrlp.vim
 let g:ctrlp_extensions = ['buffertag']
@@ -240,7 +244,4 @@ nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 "}}}
-"}}}
-"{{{1 Auto commands
-au BufEnter *.c     call TryCmakeMakeprg()
 "}}}
