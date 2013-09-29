@@ -192,14 +192,6 @@ let g:markdown_fold_override_foldtext = 0
 "}}}
 "}}}
 "{{{1 Functions
-function TryCmakeMakeprg()
-    if !filereadable('Makefile')
-        if filereadable('build/Makefile')
-            set makeprg=make\ -C\ ./build\ --no-print-directory
-        endif
-    endif
-endfunction
-
 function NicerFoldText()
     " Match everything that has the Vim marker after some character (presumably
     " the comment starter.
