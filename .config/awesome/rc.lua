@@ -6,6 +6,8 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+-- Vicious widgets
+vicious = require("vicious")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -104,6 +106,10 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+-- Createa a battery widget
+batwidget = widget({ type = "textbox" })
+vicious.register(batwidget, vicious.widgets.bat, " $1$2%", 120, "BAT1")
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -180,6 +186,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        batwidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
