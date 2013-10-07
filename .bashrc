@@ -126,9 +126,6 @@ function ll() {
 }
 #}}}
 #{{{ Environment
-EDITOR=$(which vi)
-VISUAL=$EDITOR
-GIT_EDITOR=$EDITOR
 PROMPT_COMMAND=_prompt_command
 
 HISTCONTROL=ignoredups:ignorespace
