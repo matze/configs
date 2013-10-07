@@ -29,7 +29,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ga='git annex --quiet'
+alias ga='git annex'
 alias la='ls -A'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
