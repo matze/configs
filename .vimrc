@@ -237,3 +237,6 @@ nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 "}}}
 "}}}
+"{{{ Autocmds
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+"}}}
