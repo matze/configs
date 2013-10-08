@@ -15,7 +15,7 @@ Inbox ~/mail/gmail/INBOX
 Channel gmail
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns "INBOX" "Dokumente" "Labyrinth" "Privat" "Tarsnap" "[Gmail]/Sent Mail" "[Gmail]/Drafts" "[Gmail]/Starred"
+Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Starred"
 Create Both
 Expunge Both
 SyncState *
