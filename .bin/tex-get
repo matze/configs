@@ -68,6 +68,7 @@ function install() {
         install_files "*.sty" "$TEXMF/tex/latex/$PACKAGE"
         install_files "*.cls" "$TEXMF/tex/latex/base"
         install_files "*.tex" "$TEXMF/tex/plain/$PACKAGE"
+        install_files "*.bst" "$TEXMF/bibtex/bst/$PACKAGE"
     fi
 
     echo "Cleanup ..."
