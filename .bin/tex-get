@@ -1,0 +1,105 @@
+#!/bin/bash
+
+CTAN_URL="http://mirrors.ctan.org/macros/latex/contrib"
+
+CMD=$1
+PACKAGE=$2
+PACKAGE_ZIP="$PACKAGE.zip"
+PACKAGE_URL="$CTAN_URL/$PACKAGE_ZIP"
+
+LOGFILE="/tmp/texget.$$.log"
+ERROR_SIGNAL="tmp/texget.$$.error"
+
+TEXMF=$(kpsewhich -var-value=TEXMFHOME)
+MANIFEST=$TEXMF/tex/latex/$PACKAGE/install.manifest
+
+
+function compile_files() {
+    find . -maxdepth 1 -name "*.ins"|while read FILE;
+    do
+        latex -interaction=nonstopmode $FILE > $LOGFILE
+
+        if [ $? -ne 0 ]; then
+            touch $ERROR_SIGNAL
+            break
+        fi
+    done
+}
+
+function install_files() {
+    PATTERN=$1
+    INSTDIR=$2
+
+    mkdir -p $INSTDIR
+
+    find . -maxdepth 1 -name "$PATTERN"|while read FILE;
+    do
+        DEST="$INSTDIR/$FILE"
+        cp $FILE $DEST
+        echo "$DEST" >> $MANIFEST
+    done
+}
+
+function download() {
+    echo "Download $PACKAGE ..."
+    wget -q $PACKAGE_URL
+}
+
+function install() {
+    cd /tmp
+
+    download
+
+    echo "Unzip $PACKAGE ..."
+    unzip -u -qq $PACKAGE_ZIP
+
+    cd $PACKAGE
+
+    echo "Compile $PACKAGE ..."
+    compile_files
+
+    if [ -f $ERROR_SIGNAL ]; then
+        cat $LOGFILE
+        echo "Error during compilation"
+    else
+        echo "Installing ..."
+        mkdir -p $TEXMF/tex/latex/$PACKAGE
+
+        install_files "*.sty" "$TEXMF/tex/latex/$PACKAGE"
+        install_files "*.cls" "$TEXMF/tex/latex/base"
+        install_files "*.tex" "$TEXMF/tex/plain/$PACKAGE"
+    fi
+
+    echo "Cleanup ..."
+    cd ..
+    rm -f $ERROR_SIGNAL $LOGFILE
+    rm -rf $PACKAGE
+    rm $PACKAGE_ZIP
+}
+
+function remove() {
+    if [ -f $MANIFEST ]; then
+        echo "Removing $PACKAGE ..."
+        cat $MANIFEST | xargs rm
+        rm $MANIFEST
+
+        rmdir $TEXMF/tex/latex/$PACKAGE
+    else
+        echo "$PACKAGE is not installed"
+    fi
+}
+
+case "$CMD" in
+    "download")
+        download
+        ;;
+    "install")
+        install
+        ;;
+    "remove")
+        remove
+        ;;
+    *)
+        echo "Usage: tex-get [download|install|remove] package"
+        ;;
+esac
