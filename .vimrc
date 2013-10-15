@@ -131,6 +131,12 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+function! s:my_cr_function()
+    return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
