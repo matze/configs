@@ -124,6 +124,17 @@ function ll() {
         done
     fi
 }
+
+function switch() {
+    if [ ! ${1} ]; then
+        echo "Must pass a virtualenv"
+    else
+        if [ ${VIRTUAL_ENV} ]; then
+            deactivate
+            workon $1
+        fi
+    fi
+}
 #}}}
 #{{{ Environment
 PROMPT_COMMAND=_prompt_command
