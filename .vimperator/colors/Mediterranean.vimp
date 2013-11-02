@@ -6,45 +6,43 @@
 "" Author e-mail: acommn@gmail.com
 
 "" General font family and size, foreground and bacground color configuration
-highlight! CmdLine					color: #E0E0E0; background: #484848;
-highlight! CmdLine>*				font-family: Inconsolata, Sans; font-size: 11pt;
-highlight! Normal					color: #E0E0E0; background: #484848; font-family: Inconsolata, Sans; font-size: 11pt;
-highlight! StatusLine				color: #E0E0E0; background: #484848; font-family: Inconsolata, Sans; font-size: 11pt;
+hi! CmdLine              color: #E0E0E0; background: #484848;
+hi! CmdLine>*            font-family: Inconsolata, Sans; font-size: 11pt;
+hi! Normal               color: #E0E0E0; background: #484848; font-family: Inconsolata, Sans; font-size: 11pt;
+hi! StatusLine           color: #E0E0E0; background: #484848; font-family: Inconsolata, Sans; font-size: 11pt;
 
 "" All the groups below, well, didn't know what category should they be in :)
-highlight! Bell						border: none; background: #484848; font-weight: bold;
-highlight! Boolean					color: #489696;
-highlight! CompDesc					width: 500px; max-width: 500px; color: #E0E0E0;
-highlight! CompItem>*				height: 18px; min-height: 18px; padding-top: 2px; padding-bottom: 2px;
-highlight! CompItem[selected]		background: #B45F04;
-highlight! CompTitle				font-family: Source Sans Pro Semibold; font-weight: normal; background: #2D2D2D;
-highlight! CompTitle>*				color: #E0E0E0; border-top: 1px solid #202020; border-bottom: 1px solid #202020; padding: 1px 0.5ex;
-highlight! ContentSeparator			border-top: 1px solid #202020; display: -moz-box;
+hi! Bell                 border: none; background: #484848; font-weight: bold;
+hi! Boolean              color: #489696;
+hi! CompDesc             width: 500px; max-width: 500px; color: #E0E0E0;
+hi! CompItem>*           height: 18px; min-height: 18px; padding-top: 2px; padding-bottom: 2px;
+hi! CompItem[selected]   background: #B45F04;
+hi! CompTitle            font-family: Source Sans Pro Semibold; font-weight: normal; background: #2D2D2D;
+hi! CompTitle>*          color: #E0E0E0; border-top: 1px solid #202020; border-bottom: 1px solid #202020; padding: 1px 0.5ex;
+hi! ContentSeparator     border-top: 1px solid #202020; display: -moz-box;
 
-highlight! Disabled					color: #610B0B;
-highlight! Enabled					color: #A9F5A9;
-highlight! ErrorMsg					color: #E0E0E0; font-family: Inconsolata, Sans; font-weight: bold;
-highlight! Filter					color: #E0E0E0; background: #323232;
-highlight! FrameIndicator			background-color: #B45F04; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0; border: 1px solid black;
+hi! Disabled             color: #610B0B;
+hi! Enabled              color: #A9F5A9;
+hi! ErrorMsg             color: #E0E0E0; font-family: Inconsolata, Sans; font-weight: bold;
+hi! Filter               color: #E0E0E0; background: #323232;
+hi! FrameIndicator       background-color: #B45F04; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0; border: 1px solid black;
 
-highlight! HelpNote					color: #610B0B; font-weight: bold;
-highlight! HelpWarning				color: #610B0B; font-weight: bold;
+hi! HelpNote             color: #610B0B; font-weight: bold;
+hi! HelpWarning          color: #610B0B; font-weight: bold;
 
-highlight! Hint						font-family: Inconsolata, Sans; font-size: 8pt; font-weight: bold; color: #E0E0E0; border: 1px solid #202020; background-color: #B45F04; margin-left: 1px; margin-top: 1px; padding-left: 2px; padding-right: 2px;	
-highlight! HintActive				color: #E0E0E0; background-color: #B45F04; opacity: 1;
-highlight! HintElem					color: #E0E0E0; background-color: #323232; opacity: 1;
-highlight! HintImage				opacity: 0.5;
+hi! Hint                 font-family: Inconsolata, Sans; font-size: 9pt; color: #E0E0E0; border: 1px solid #202020; background-color: #B45F04; margin-right: 5px; padding: 2px;
+hi! HintActive           color: #E0E0E0; background-color: #B45F04; opacity: 1;
+hi! HintElem             color: #A9F5A9; background-color: #484848; opacity: 1;
+hi! HintImage            opacity: 0.5;
 
-highlight! InfoMsg					color: #A9F5A9; font-family: Inconsolata, Sans; font-size: 11pt;
-highlight! Keyword					color: #E0E0E0;
-highlight! LineNr					color: #B45F04;
+hi! InfoMsg              color: #A9F5A9; font-family: Inconsolata, Sans; font-size: 11pt;
+hi! Keyword              color: #E0E0E0;
+hi! LineNr               color: #B45F04;
+hi! ModeMsg              color: #E0E0E0; margin-left: 10px; padding-left: 2px; padding-right: 2px; font-family: Inconsolata, Sans; font-size: 10pt;
+hi! MoreMsg              color: #E0E0E0; font-family: Inconsolata, Sans; font-size: 10pt;
 
-highlight! ModeMsg					color: #E0E0E0; margin-left: 10px; padding-left: 2px; padding-right: 2px; font-family: Inconsolata, Sans; font-size: 10pt;
-highlight! MoreMsg					color: #E0E0E0; font-family: Inconsolata, Sans; font-size: 10pt;
-
-highlight! PromptText				padding-top: 2px; color: #E0E0E0; font-weight: bold;
-highlight! Question					color: #E0E0E0; font-weight: bold;
-highlight! NonText                  color: #E0E0E0;
-
-highlight! Title					color: #A9F5A9; font-weight: bold;
-highlight! WarningMsg				color: #E0E0E0; font-weight: bold;
+hi! PromptText           padding-top: 2px; color: #E0E0E0; font-weight: bold;
+hi! Question             color: #E0E0E0; font-weight: bold;
+hi! NonText              color: #E0E0E0;
+hi! Title                color: #A9F5A9; font-weight: bold;
+hi! WarningMsg           color: #E0E0E0; font-weight: bold;
