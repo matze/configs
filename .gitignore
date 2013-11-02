@@ -3,3 +3,4 @@
 .vim/bundle/*
 .vim/.netrwhist
 *.swp
+.vimperator/info/default/history-*
