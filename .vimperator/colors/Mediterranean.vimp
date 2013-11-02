@@ -35,7 +35,7 @@ highlight! HintActive				color: #E0E0E0; background-color: #B45F04; opacity: 1;
 highlight! HintElem					color: #E0E0E0; background-color: #323232; opacity: 1;
 highlight! HintImage				opacity: 0.5;
 
-highlight! InfoMsg					color: #E0E0E0;
+highlight! InfoMsg					color: #A9F5A9; font-family: Inconsolata, Sans; font-size: 11pt;
 highlight! Keyword					color: #E0E0E0;
 highlight! LineNr					color: #B45F04;
 
@@ -44,6 +44,7 @@ highlight! MoreMsg					color: #E0E0E0; font-family: Inconsolata, Sans; font-size
 
 highlight! PromptText				padding-top: 2px; color: #E0E0E0; font-weight: bold;
 highlight! Question					color: #E0E0E0; font-weight: bold;
+highlight! NonText                  color: #E0E0E0;
 
-highlight! Title					color: magenta; font-weight: bold;
+highlight! Title					color: #A9F5A9; font-weight: bold;
 highlight! WarningMsg				color: #E0E0E0; font-weight: bold;
