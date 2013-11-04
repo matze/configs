@@ -4,4 +4,6 @@ source! /home/matthias/.vimperatorrc.local
 
 javascript liberator.beep = function() { return false; }
 
+colorscheme Mediterranean
+
 " vim: set ft=vimperator:
