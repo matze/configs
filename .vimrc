@@ -228,11 +228,12 @@ nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 "}}}
-"{{{ Tlist and ctags stuff
+"{{{ Tlist and ctags
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
 nmap <C-o> <C-]>
 nmap <C-b> :CtrlPBufTag<CR>
 "}}}
+"
 "{{{ Basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
@@ -242,6 +243,10 @@ nmap <Leader>fw :%s/\s\+$//<CR>
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
+"}}}
+"{{{ Copy & Paste
+nnoremap <Leader>p :setlocal paste!<CR>"+p:setlocal nopaste!<CR>
+inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
 "}}}
 "}}}
 "{{{ Autocmds
