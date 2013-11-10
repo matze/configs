@@ -51,6 +51,7 @@ set smarttab        " Add/remove spaces instead of tabs
 set linebreak       " Break lines nicer
 set number          " Show line numbers
 set listchars=tab:»\ ,trail:·,eol:¬
+set fillchars=fold:·
 "}}}
 "{{{ Highlighting, colors, fonts
 syntax on
@@ -72,7 +73,6 @@ endif
 "{{{ Folding
 set foldenable
 set foldmethod=marker
-set fillchars=fold:·
 "}}}
 "{{{ Omni completion
 set omnifunc=syntaxcomplete#Complete
