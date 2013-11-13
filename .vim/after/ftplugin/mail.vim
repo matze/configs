@@ -1,5 +1,4 @@
-
-set textwidth=72
+setlocal textwidth=72
 
 function! MailRemoveSignature()
     let i = 0

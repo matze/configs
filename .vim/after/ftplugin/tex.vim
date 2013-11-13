@@ -1,3 +1,3 @@
-set textwidth=80
-set shiftwidth=2
-set nosmartindent
+setlocal textwidth=80
+setlocal shiftwidth=2
+setlocal nosmartindent
