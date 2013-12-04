@@ -111,6 +111,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-dispatch'
 
 filetype plugin indent on
 
@@ -212,7 +213,8 @@ set foldtext=NicerFoldText()
 "{{{1 Keymaps
 "{{{ Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
-nnoremap <C-i> :Ack! <C-r><C-w><CR>
+nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
+nnoremap <C-s> :Ack! <C-r><C-w><CR>
 
 " Set the color twice, so that airline can pick it up
 nnoremap <F8> <Esc>:color jellybeans<CR>:color jellybeans<CR>
@@ -230,7 +232,7 @@ nmap <Leader>cl :ccl<CR>
 "}}}
 "{{{ Tlist and ctags
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
-nmap <C-o> <C-]>
+nmap <C-i> <C-]>
 nmap <C-b> :CtrlPBufTag<CR>
 "}}}
 "
