@@ -214,7 +214,7 @@ set foldtext=NicerFoldText()
 "{{{ Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
-nnoremap <C-s> :Ack! <C-r><C-w><CR>
+nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
 
 " Set the color twice, so that airline can pick it up
 nnoremap <F8> <Esc>:color jellybeans<CR>:color jellybeans<CR>
