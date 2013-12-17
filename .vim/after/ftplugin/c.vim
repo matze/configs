@@ -1,0 +1,1 @@
+setlocal keywordprg=devhelp\ -s
