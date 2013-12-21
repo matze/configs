@@ -31,6 +31,8 @@
     snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
     todo = grep -i -n -e ' FIX: *' -e ' TODO: *'
 
+    setup-pr-remotes = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
+
 [advice]
     pushNonFastForward  = false
     statusHints         = false
