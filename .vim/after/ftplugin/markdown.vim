@@ -18,3 +18,5 @@ nnoremap <Leader>lr ciw[<C-r>"][]<Esc>Go[<C-r>"]: <Esc>"+p``
 vnoremap <Leader>lr :call MakeReferenceLink()<CR>``
 nnoremap <Leader>li ciw[<C-r>"](<Esc>"+pli)<Esc>
 vnoremap <Leader>li c[<C-r>"](<Esc>"+pli)<Esc>
+
+setlocal nosmartindent
