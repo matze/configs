@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CTAN_URL="http://mirrors.ctan.org/macros/latex/contrib"
+CTAN_TDS_URL="http://mirrors.ctan.org/install"
 
 CMD=$1
 PACKAGE=$2
@@ -42,7 +43,7 @@ function install_files() {
 
 function download() {
     echo "Download $PACKAGE ..."
-    wget -q $PACKAGE_URL
+    wget $PACKAGE_URL
 }
 
 function install() {
@@ -78,6 +79,26 @@ function install() {
     rm $PACKAGE_ZIP
 }
 
+function install_tds() {
+    PACKAGE_NAME=$(basename $PACKAGE)
+    PACKAGE_ZIP="$PACKAGE_NAME.tds.zip"
+    PACKAGE_PATH="$TEXMF/tex/latex"
+    PACKAGE_URL="$CTAN_TDS_URL/$PACKAGE.tds.zip"
+    MANIFEST=$TEXMF/tex/latex/$PACKAGE_NAME/install.manifest
+
+    cd $PACKAGE_PATH
+    download
+
+    unzip $PACKAGE_ZIP -d $PACKAGE_NAME
+
+    find $PACKAGE_NAME |while read FILE;
+    do
+        echo "$PACKAGE_PATH/$FILE" >> $MANIFEST
+    done
+
+    rm -f $PACKAGE_ZIP
+}
+
 function remove() {
     if [ -f $MANIFEST ]; then
         echo "Removing $PACKAGE ..."
@@ -100,7 +121,10 @@ case "$CMD" in
     "remove")
         remove
         ;;
+    "unzip")
+        install_tds
+        ;;
     *)
-        echo "Usage: tex-get [download|install|remove] package"
+        echo "Usage: tex-get [download|install|unzip|remove] package"
         ;;
 esac
