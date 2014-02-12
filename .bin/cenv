@@ -15,7 +15,7 @@ export CENV=$ENV_DIR
 export VIRTUAL_ENV=$ENV
 export PATH=$ENV_DIR/usr/bin:$PATH
 export LD_LIBRARY_PATH=$ENV_DIR/usr/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$ENV_DIR/usr/lib/pkgconfig:$LD_LIBRARY_PATH
-export GI_TYPELIB_PATH=$ENV_DIR/usr/lib/girepository-1.0:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$ENV_DIR/usr/lib/pkgconfig:$PKG_CONFIG_PATH
+export GI_TYPELIB_PATH=$ENV_DIR/usr/lib/girepository-1.0:$GI_TYPELIB_PATH
 
 bash
