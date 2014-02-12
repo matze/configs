@@ -1,0 +1,21 @@
+#!/bin/bash
+
+BASE_DIR=$HOME/.local/share/cenv
+ENV=$1
+ENV_DIR=$BASE_DIR/$ENV
+
+if [ -z "$ENV" ]; then
+    echo "Usage: cenv <envname>"
+    exit 1
+fi
+
+mkdir -p $ENV_DIR
+
+export CENV=$ENV_DIR
+export VIRTUAL_ENV=$ENV
+export PATH=$ENV_DIR/usr/bin:$PATH
+export LD_LIBRARY_PATH=$ENV_DIR/usr/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$ENV_DIR/usr/lib/pkgconfig:$LD_LIBRARY_PATH
+export GI_TYPELIB_PATH=$ENV_DIR/usr/lib/girepository-1.0:$LD_LIBRARY_PATH
+
+bash
