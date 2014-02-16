@@ -13,9 +13,9 @@ mkdir -p $ENV_DIR
 
 export CENV=$ENV_DIR
 export VIRTUAL_ENV=$ENV
-export PATH=$ENV_DIR/usr/bin:$PATH
-export LD_LIBRARY_PATH=$ENV_DIR/usr/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$ENV_DIR/usr/lib/pkgconfig:$PKG_CONFIG_PATH
-export GI_TYPELIB_PATH=$ENV_DIR/usr/lib/girepository-1.0:$GI_TYPELIB_PATH
+export PATH=$ENV_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$ENV_DIR/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$ENV_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
+export GI_TYPELIB_PATH=$ENV_DIR/lib/girepository-1.0:$GI_TYPELIB_PATH
 
 bash
