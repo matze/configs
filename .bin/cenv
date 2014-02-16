@@ -9,7 +9,9 @@ if [ -z "$ENV" ]; then
     exit 1
 fi
 
-mkdir -p $ENV_DIR
+if [ ! -d "$ENV_DIR" ]; then
+    mkdir -p $ENV_DIR
+fi
 
 export CENV=$ENV_DIR
 export VIRTUAL_ENV=$ENV
