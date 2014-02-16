@@ -14,10 +14,15 @@ if [ ! -d "$ENV_DIR" ]; then
 fi
 
 export CENV=$ENV_DIR
-export VIRTUAL_ENV=$ENV
 export PATH=$ENV_DIR/bin:$PATH
 export LD_LIBRARY_PATH=$ENV_DIR/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$ENV_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
 export GI_TYPELIB_PATH=$ENV_DIR/lib/girepository-1.0:$GI_TYPELIB_PATH
+
+if [ -z "$VIRTUAL_ENV" ]; then
+    export VIRTUAL_ENV="$ENV"
+else
+    export VIRTUAL_ENV="$VIRTUAL_ENV:$ENV"
+fi
 
 bash
