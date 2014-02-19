@@ -125,15 +125,8 @@ function ll() {
     fi
 }
 
-function switch() {
-    if [ ! ${1} ]; then
-        echo "Must pass a virtualenv"
-    else
-        if [ ${VIRTUAL_ENV} ]; then
-            deactivate
-            workon $1
-        fi
-    fi
+function _git_pick () {
+    __gitcomp_nl "$(__git_refs)"
 }
 #}}}
 #{{{ Environment
