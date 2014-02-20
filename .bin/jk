@@ -16,6 +16,10 @@ title: {title}
 """
 
 
+class NoMatchError(Exception):
+    pass
+
+
 def score(needle, match):
     needle_length = len(needle)
     match_length = len(match)
@@ -46,7 +50,10 @@ def score(needle, match):
 
 def fuzzy_search(needle, haystack):
     scores = [(score(needle, normalize(h)), h) for h in haystack]
-    return sorted(scores, key=lambda x: x[0], reverse=True)[0][1]
+    try:
+        return sorted(scores, key=lambda x: x[0], reverse=True)[0][1]
+    except IndexError:
+        raise NoMatchError
 
 
 def get_title(path):
@@ -94,6 +101,10 @@ def switch(args):
     print("Moved {} -> {}".format(match, filename))
 
 
+def search(args):
+    print(fuzzy_search(args.title, all_posts()))
+
+
 def edit(args):
     match = fuzzy_search(args.title, all_posts())
     editor = os.environ.get('EDITOR', 'vim')
@@ -112,7 +123,9 @@ if __name__ == '__main__':
         'switch': {'opts': {'help': 'Switch between post and draft'},
                   'defaults': {'func': switch}},
         'edit': {'opts': {'help': 'Edit post or draft'},
-                 'defaults': {'func': edit}}
+                 'defaults': {'func': edit}},
+        'search': {'opts': {'help': 'Search for post and print out path'},
+                   'defaults': {'func': search}},
     }
 
     for cmd in commands:
@@ -122,4 +135,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     args.title = ' '.join(args.title)
-    args.func(args)
+
+    try:
+        args.func(args)
+    except NoMatchError:
+        print("Couldn't find posts matching `{}'.".format(args.title))
