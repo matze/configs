@@ -44,6 +44,19 @@ if [ ! -d "$ENV_DIR" ]; then
     mkdir -p $ENV_DIR
 fi
 
+if [ ! -z "$DO_EDIT" ]; then
+    if [ ! -f "$LOCALRC" ]; then
+        cat > $LOCALRC << EOF
+# Use this file to add more environment variables, e.g.
+# export LV2PATH=\$CENV/lib/lv2
+EOF
+    fi
+
+    $EDITOR $LOCALRC
+
+    exit 0
+fi
+
 if [ -z "$DO_EDIT" ]; then
     export CENV=$ENV_DIR
     export PATH=$ENV_DIR/bin:$PATH
@@ -62,13 +75,4 @@ if [ -z "$DO_EDIT" ]; then
     fi
 
     bash
-else
-    if [ ! -f "$LOCALRC" ]; then
-        cat > $LOCALRC << EOF
-# Use this file to add more environment variables, e.g.
-# export LV2PATH=\$CENV/lib/lv2
-EOF
-    fi
-
-    $EDITOR $LOCALRC
 fi
