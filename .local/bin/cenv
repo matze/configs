@@ -1,12 +1,11 @@
 #!/bin/bash
 
-BASE_DIR=$HOME/.local/share/cenv
+CENV_BASE_DIR=${CENV_BASE_DIR:=$HOME/.local/share/cenv}
 
 
 function usage() {
     echo "Usage: cenv [-e|--edit] [-h] <envname>"
 }
-
 
 args=$(getopt -l "edit" -o "e:h" -- "$@")
 eval set -- "$args"
@@ -31,7 +30,7 @@ while [ $# -ge 1 ]; do
 done
 
 ENV=$*
-ENV_DIR=$BASE_DIR/$ENV
+ENV_DIR=$CENV_BASE_DIR/$ENV
 LOCALRC=$ENV_DIR/localrc
 
 if [ -z "$ENV" ]; then
