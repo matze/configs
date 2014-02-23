@@ -4,13 +4,14 @@ CENV_BASE_DIR=${CENV_BASE_DIR:=$HOME/.local/share/cenv}
 
 
 function usage() {
-    echo "Usage: cenv [-e|--edit] [-h] <envname>"
+    echo "Usage: cenv [--show] [-e|--edit] [-h] <envname>"
 }
 
-args=$(getopt -l "edit" -o "e:h" -- "$@")
+args=$(getopt -l "edit" -l "show" -o "e:h" -- "$@")
 eval set -- "$args"
 
 DO_EDIT=
+DO_SHOW=
 
 while [ $# -ge 1 ]; do
     case "$1" in
@@ -20,6 +21,9 @@ while [ $# -ge 1 ]; do
             ;;
         -e|--edit)
             DO_EDIT=1
+            ;;
+        --show)
+            DO_SHOW=1
             ;;
         -h)
             usage
@@ -32,6 +36,11 @@ done
 ENV=$*
 ENV_DIR=$CENV_BASE_DIR/$ENV
 LOCALRC=$ENV_DIR/localrc
+
+if [ ! -z "$DO_SHOW" ]; then
+    find $ENV_DIR -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
+    exit 0
+fi
 
 if [ -z "$ENV" ]; then
     usage
