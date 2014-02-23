@@ -129,6 +129,15 @@ function _git_pick () {
     __gitcomp_nl "$(__git_refs)"
 }
 #}}}
+#{{{ Completion
+_cenv() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local envs=$(cenv --show | tr "\n" " ")
+    COMPREPLY=($(compgen -W "${envs}" -- ${cur}))
+}
+
+complete -F _cenv cenv
+#}}}
 #{{{ Environment
 PROMPT_COMMAND=_prompt_command
 
