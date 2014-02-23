@@ -250,6 +250,9 @@ nmap <Leader>sn :setlocal nospell<CR>
 nnoremap <Leader>p :setlocal paste!<CR>"+p:setlocal nopaste!<CR>
 inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
 "}}}
+"{{{ EasyMotion
+nmap s <Plug>(easymotion-s)
+"}}}
 "}}}
 "{{{ Autocmds
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
