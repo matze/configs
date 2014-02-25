@@ -38,7 +38,9 @@ ENV_DIR=$CENV_BASE_DIR/$ENV
 LOCALRC=$ENV_DIR/localrc
 
 if [ ! -z "$DO_SHOW" ]; then
-    find $ENV_DIR -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
+    if [ -d $ENV_DIR ]; then
+        find $ENV_DIR -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
+    fi
     exit 0
 fi
 
