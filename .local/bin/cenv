@@ -4,14 +4,15 @@ CENV_BASE_DIR=${CENV_BASE_DIR:=$HOME/.local/share/cenv}
 
 
 function usage() {
-    echo "Usage: cenv [--show] [-e|--edit] [-h] <envname>"
+    echo "Usage: cenv [--show] [-e|--edit] [--remove] [-h] <envname>"
 }
 
-args=$(getopt -l "edit" -l "show" -o "e:h" -- "$@")
+args=$(getopt -l "edit" -l "show" -l "remove" -o "e:h" -- "$@")
 eval set -- "$args"
 
 DO_EDIT=
 DO_SHOW=
+DO_REMOVE=
 
 while [ $# -ge 1 ]; do
     case "$1" in
@@ -24,6 +25,9 @@ while [ $# -ge 1 ]; do
             ;;
         --show)
             DO_SHOW=1
+            ;;
+        --remove)
+            DO_REMOVE=1
             ;;
         -h)
             usage
@@ -52,6 +56,11 @@ fi
 # Create environment if not existing
 if [ ! -d "$ENV_DIR" ]; then
     mkdir -p $ENV_DIR
+fi
+
+if [ ! -z "$DO_REMOVE" ]; then
+    rm -rf $ENV_DIR
+    exit 0
 fi
 
 if [ ! -z "$DO_EDIT" ]; then
