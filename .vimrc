@@ -92,7 +92,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'jalcine/cmake.vim'
+" NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jnwhiteh/vim-golang'
