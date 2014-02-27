@@ -166,7 +166,7 @@ nmap <C-H> <Plug>DWMShrinkMaster
 let g:EasyMotion_keys = "qwerasdcfhjkluiobn"
 "}}}
 "{{{ jellybeans.vim
-colorscheme jellybeans
+silent! colorscheme jellybeans
 "}}}
 "{{{ solarized
 let g:solarized_termcolors=256
