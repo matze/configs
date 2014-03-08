@@ -137,8 +137,6 @@ PROMPT_COMMAND=_prompt_command
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-RI="-Tf ansi"
 #}}}
 #{{{ Sourcing
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
