@@ -90,13 +90,10 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
-" NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jnwhiteh/vim-golang'
-NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matze/neosnippet'
 NeoBundle 'matze/vim-markdown'
 NeoBundle 'matze/vim-move'
@@ -106,12 +103,12 @@ NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nvie/vim-flake8'
-NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-surround'
 
 filetype plugin indent on
 
@@ -145,9 +142,6 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
-"{{{ cmake.vim
-let g:cmake_build_dirs = ['build']
-"}}}
 "{{{ ctrlp.vim
 let g:ctrlp_extensions = ['buffertag']
 "}}}
@@ -167,10 +161,6 @@ let g:EasyMotion_keys = "qwerasdcfhjkluiobn"
 "}}}
 "{{{ jellybeans.vim
 silent! colorscheme jellybeans
-"}}}
-"{{{ solarized
-let g:solarized_termcolors=256
-let g:solarized_underline=0
 "}}}
 "{{{ tagbar
 let g:tagbar_autoclose = 1
@@ -216,9 +206,6 @@ nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
 
-" Set the color twice, so that airline can pick it up
-nnoremap <F8> <Esc>:color jellybeans<CR>:color jellybeans<CR>
-nnoremap <F9> <Esc>:color solarized<CR>:color solarized<CR>
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
 "}}}
