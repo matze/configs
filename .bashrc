@@ -43,6 +43,7 @@ BROWN="\[\033[0;33m\]"
 YELLOW="\[\033[1;33m\]"
 LIGHT_GRAY="\[\033[0;37m\]"
 DARK_GRAY="\[\033[1;30m\]"
+HOST_COLOR="\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]"
 
 function _set_prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
@@ -76,10 +77,6 @@ function _git_prompt() {
     fi
 }
 
-function _set_host_color() {
-    HOST_COLOR="\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]"
-}
-
 function _prompt_command() {
     if test -z "$VIRTUAL_ENV" ; then
         PYTHON_VIRTUALENV=""
@@ -87,7 +84,6 @@ function _prompt_command() {
         PYTHON_VIRTUALENV="${YELLOW}☼ `basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
     fi
 
-    _set_host_color
     _set_prompt_workingdir
 
     PS1="`_git_prompt`${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE} "
