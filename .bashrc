@@ -100,10 +100,6 @@ function man() {
 	man "$@"
 }
 
-function md() {
-    mkdir -p "$1" && cd "$1"
-}
-
 function ll() {
     pwd | grep annex > /dev/null
 
