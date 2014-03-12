@@ -109,6 +109,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'wting/rust.vim'
 
 filetype plugin indent on
 
