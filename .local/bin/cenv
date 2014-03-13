@@ -55,10 +55,12 @@ fi
 
 # Create environment if not existing
 if [ ! -d "$ENV_DIR" ]; then
+    echo "Creating $ENV in $ENV_DIR ..."
     mkdir -p $ENV_DIR
 fi
 
 if [ ! -z "$DO_REMOVE" ]; then
+    echo "Removing $ENV, deleting $ENV_DIR ..."
     rm -rf $ENV_DIR
     exit 0
 fi
