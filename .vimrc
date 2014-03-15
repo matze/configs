@@ -55,7 +55,7 @@ set listchars=tab:»\ ,trail:·,eol:¬
 set fillchars=fold:·
 "}}}
 "{{{ Highlighting, colors, fonts
-syntax on
+" syntax enable
 set t_Co=256
 
 if has("gui_running")
@@ -91,10 +91,13 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" NeoBundle 'jnwhiteh/vim-golang'
+" NeoBundle 'matze/neosnippet'
+" NeoBundle 'tpope/vim-dispatch'
+" NeoBundle 'tpope/vim-surround'
+" NeoBundle 'wting/rust.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'jnwhiteh/vim-golang'
-NeoBundle 'matze/neosnippet'
 NeoBundle 'matze/vim-markdown'
 NeoBundle 'matze/vim-move'
 NeoBundle 'matze/vim-tex-fold'
@@ -106,9 +109,6 @@ NeoBundle 'nvie/vim-flake8'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'wting/rust.vim'
 NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'itchyny/lightline.vim'
 
@@ -249,5 +249,5 @@ nmap s <Plug>(easymotion-s)
 "}}}
 "}}}
 "{{{ Autocmds
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 "}}}
