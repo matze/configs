@@ -14,7 +14,8 @@
 "{{{ General
 set nocompatible    " Disable vi compatibility
 set modeline        " Enable modeline
-set showmatch       " Show matching parentheses
+" set showmatch       " Show matching parentheses
+set noshowcmd
 set nocursorline    " Do not highlight cursor line
 set nocursorcolumn  " Do not highlight current cursor column
 set ruler           " Show cursor position
@@ -90,7 +91,6 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'jnwhiteh/vim-golang'
@@ -106,11 +106,11 @@ NeoBundle 'nvie/vim-flake8'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'wting/rust.vim'
 NeoBundle 'petRUShka/vim-opencl'
+NeoBundle 'itchyny/lightline.vim'
 
 filetype plugin indent on
 
@@ -172,12 +172,17 @@ let g:tagbar_iconchars = ['▸', '▾']
 
 noremap <leader>t :TagbarToggle<CR>
 "}}}
-"{{{ vim-airline
-let g:airline_enable_syntastic = 0
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'jellybeans'
-let g:airline_section_x = ''
-let g:airline_detect_whitespace = 0
+"{{{ lightline
+let g:lightline = {
+    \ 'component': {
+    \   'readonly': '%{&readonly?"⭤":""}',
+    \ },
+    \ 'active': {
+    \   'right': [['lineinfo'], ['percent']],
+    \ },
+    \ 'separator': { 'left': '⮀', 'right': '⮂' },
+    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+    \ }
 "}}}
 "{{{ vim-move
 let g:move_map_keys = 0
