@@ -2,4 +2,6 @@
 .vim/bundle/*
 .vim/.netrwhist
 .vimperator/info/default/history-*
+.vimperator/info/default/ignored-keys
 .vimperator/info/default/local-marks
+.vimperator/info/default/macros
