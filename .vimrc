@@ -12,9 +12,9 @@
 
 "{{{1 Settings
 "{{{ General
+" set showmatch       " Show matching parentheses
 set nocompatible    " Disable vi compatibility
 set modeline        " Enable modeline
-" set showmatch       " Show matching parentheses
 set noshowcmd
 set nocursorline    " Do not highlight cursor line
 set nocursorcolumn  " Do not highlight current cursor column
@@ -164,14 +164,6 @@ let g:EasyMotion_keys = "qwerasdcfhjkluiobn"
 "{{{ jellybeans.vim
 silent! colorscheme jellybeans
 "}}}
-"{{{ tagbar
-let g:tagbar_autoclose = 1
-let g:tagbar_left = 1
-let g:tagbar_compact = 1
-let g:tagbar_iconchars = ['▸', '▾']
-
-noremap <leader>t :TagbarToggle<CR>
-"}}}
 "{{{ lightline
 let g:lightline = {
     \ 'component': {
@@ -229,7 +221,6 @@ nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --ex
 nmap <C-i> <C-]>
 nmap <C-b> :CtrlPBufTag<CR>
 "}}}
-"
 "{{{ Basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
