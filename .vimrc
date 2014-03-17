@@ -96,14 +96,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'tpope/vim-dispatch'
 " NeoBundle 'tpope/vim-surround'
 " NeoBundle 'wting/rust.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'matze/vim-markdown'
 NeoBundle 'matze/vim-move'
 NeoBundle 'matze/vim-tex-fold'
 NeoBundle 'matze/vim-ini-fold'
-NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nvie/vim-flake8'
 NeoBundle 'Shougo/neocomplcache'
@@ -113,6 +114,7 @@ NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'itchyny/lightline.vim'
 
 filetype plugin indent on
+
 
 "{{{ ack.vim
 let g:ackprg="ag --nogroup --nocolor --column"
@@ -158,8 +160,8 @@ nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
 "}}}
-"{{{ EasyMotion
-let g:EasyMotion_keys = "qwerasdcfhjkluiobn"
+"{{{ sneak
+let g:sneak#streak = 1
 "}}}
 "{{{ jellybeans.vim
 silent! colorscheme jellybeans
@@ -234,9 +236,6 @@ nmap <Leader>sn :setlocal nospell<CR>
 "{{{ Copy & Paste
 nnoremap <Leader>p :setlocal paste!<CR>"+p:setlocal nopaste!<CR>
 inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
-"}}}
-"{{{ EasyMotion
-nmap s <Plug>(easymotion-s)
 "}}}
 "}}}
 "{{{ Autocmds
