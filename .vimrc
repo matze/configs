@@ -239,5 +239,6 @@ inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
 "}}}
 "}}}
 "{{{ Autocmds
-" autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" Allow using <CR> on quickfix entries
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 "}}}
