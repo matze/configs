@@ -23,7 +23,7 @@ set laststatus=2    " Show status line
 set noerrorbells    " No beeps
 set history=1000    " Maximum history
 set wildmenu        " Tab completion
-set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*
+set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*,*.pyc
 set hidden          " Allow buffers to be hidden
 set scrolloff=2     " At least two lines and ...
 set sidescrolloff=2 " two columns context
@@ -147,7 +147,7 @@ nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
 "{{{ ctrlp.vim
-let g:ctrlp_extensions = ['buffertag']
+let g:ctrlp_extensions = ['tag']
 "}}}
 "{{{ dwm.vim
 let g:dwm_map_keys = 0
@@ -219,9 +219,9 @@ nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
 "}}}
 "{{{ Tlist and ctags
-nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build .<CR><CR>
+nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build --exclude=_build .<CR><CR>
 nmap <C-i> <C-]>
-nmap <C-b> :CtrlPBufTag<CR>
+nmap <C-b> :CtrlPTag<CR>
 "}}}
 "{{{ Basic formatting
 nmap <Leader>r1 yypVr=
