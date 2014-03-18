@@ -241,4 +241,9 @@ inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" Show quickfix after :make, taken from
+" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+autocmd QuickFixCmdPost [^l]*   nested  cwindow
+autocmd QuickFixCmdPost l*      nested  lwindow
 "}}}
