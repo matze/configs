@@ -92,7 +92,6 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle 'jnwhiteh/vim-golang'
-" NeoBundle 'matze/neosnippet'
 " NeoBundle 'tpope/vim-dispatch'
 " NeoBundle 'tpope/vim-surround'
 " NeoBundle 'wting/rust.vim'
@@ -108,6 +107,7 @@ NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nvie/vim-flake8'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'petRUShka/vim-opencl'
@@ -140,8 +140,8 @@ endfunction
 
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+imap <Leader>e     <Plug>(neosnippet_expand_or_jump)
+smap <Leader>e     <Plug>(neosnippet_expand_or_jump)
 
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
