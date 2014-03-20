@@ -170,13 +170,11 @@ silent! colorscheme jellybeans
 "{{{ lightline
 let g:lightline = {
     \ 'component': {
-    \   'readonly': '%{&readonly?"⭤":""}',
+    \   'readonly': '%{&readonly?"✖":""}',
     \ },
     \ 'active': {
     \   'right': [['lineinfo'], ['percent']],
     \ },
-    \ 'separator': { 'left': '⮀', 'right': '⮂' },
-    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
     \ }
 "}}}
 "{{{ vim-move
