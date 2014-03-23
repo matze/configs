@@ -214,7 +214,11 @@ endfunction
 set foldtext=NicerFoldText()
 "}}}
 "{{{ Keymaps
-" Misc
+
+" paste multiple lines without overwriting content
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 
