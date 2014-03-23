@@ -1,5 +1,6 @@
 .bin/*
 .vim/bundle/*
+.vim/spell/*
 .vim/.netrwhist
 .vimperator/info/default/history-*
 .vimperator/info/default/ignored-keys
