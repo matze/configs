@@ -32,7 +32,7 @@ set mouse=a         " Mouse support
 set tags=.tags      " Tags file
 set ttyfast
 set dir=~/.vim      " Location for .swp files
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Searching
 set ignorecase      " Case insensitive search
@@ -188,7 +188,7 @@ nmap k <Plug>MoveLineUp
 let g:markdown_fold_override_foldtext = 0
 "}}}
 "}}}
-"{{{1 Functions
+"{{{ Functions
 function NicerFoldText()
     " Match everything that has the Vim marker after some character (presumably
     " the comment starter.
@@ -203,23 +203,25 @@ set foldtext=NicerFoldText()
 " Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
-nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
+
+nnoremap <Right> :bn<CR>
+nnoremap <Left> :bp<CR>
 
 nnoremap <CR> za
-nnoremap <silent> <Space> :silent noh<CR>
 
-" Buffer and file management
-nmap <Leader>w :w!<CR>
-nmap cn <Esc>:cn<CR>
-nmap cp <Esc>:cp<CR>
-nmap <Right> :bn<CR>
-nmap <Left> :bp<CR>
-nmap <Leader>cl :ccl<CR>
+nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
+nnoremap <C-i> <C-]>
+nnoremap <C-b> :CtrlPTag<CR>
+
+nnoremap cn <Esc>:cn<CR>
+nnoremap cp <Esc>:cp<CR>
+
+" Leader maps
+nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>h :silent noh<CR>
 
 " Tlist and ctags
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build --exclude=_build .<CR><CR>
-nmap <C-i> <C-]>
-nmap <C-b> :CtrlPTag<CR>
 
 " Basic formatting
 nmap <Leader>r1 yypVr=
@@ -231,9 +233,13 @@ nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 
-" Copy & Paste
-nnoremap <Leader>p :setlocal paste!<CR>"+p:setlocal nopaste!<CR>
-inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
+" Copy & paste
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader>p "+p
+nmap <Leader>P "+P
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
