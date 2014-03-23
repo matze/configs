@@ -219,13 +219,16 @@ set foldtext=NicerFoldText()
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+nnoremap <CR> za
+
+" select pasted text
+noremap gV `[v`]
+
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 
 nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
-
-nnoremap <CR> za
 
 nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
 nnoremap <C-i> <C-]>
@@ -234,22 +237,17 @@ nnoremap <C-b> :CtrlPTag<CR>
 nnoremap cn <Esc>:cn<CR>
 nnoremap cp <Esc>:cp<CR>
 
-" Leader maps
 nnoremap <Leader>w :w!<CR>
 nnoremap <Leader>h :silent noh<CR>
 
-" Tlist and ctags
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build --exclude=_build .<CR><CR>
 
-" Basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
 
-" Spellchecking
 nmap <Leader>s :call ToggleSpell()<CR>
 
-" Copy & paste
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 vmap <Leader>p "+p
