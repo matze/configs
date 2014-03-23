@@ -10,8 +10,9 @@
 " Blog: http://bloerg.net
 "
 
-"{{{1 Settings
-"{{{ General
+"{{{ Settings
+
+" General
 " set showmatch       " Show matching parentheses
 set nocompatible    " Disable vi compatibility
 set modeline        " Enable modeline
@@ -32,15 +33,15 @@ set tags=.tags      " Tags file
 set ttyfast
 set dir=~/.vim      " Location for .swp files
 let mapleader = ","
-"}}}
-"{{{ Searching
+
+" Searching
 set ignorecase      " Case insensitive search
 set smartcase       " Ignore ignorecase
 set hlsearch        " Show search results
 set wrapscan        " Continue search at the top
 set incsearch       " Incremental search
-"}}}
-"{{{ Textformatting, indenting, tabs
+
+" Textformatting, indenting, tabs
 set textwidth=80    " Yay, history!
 set autoindent      " ...
 set smartindent     " ...
@@ -53,8 +54,8 @@ set linebreak       " Break lines nicer
 set number          " Show line numbers
 set listchars=tab:»\ ,trail:·,eol:¬
 set fillchars=fold:·
-"}}}
-"{{{ Highlighting, colors, fonts
+
+" Highlighting, colors, fonts
 " syntax enable
 set t_Co=256
 
@@ -70,17 +71,16 @@ if has("gui_running")
     set guioptions-=R
     set guioptions-=b
 endif
-"}}}
-"{{{ Folding
+
+" Folding
 set foldenable
 set foldmethod=marker
-"}}}
-"{{{ Omni completion
+
+" Omni completion
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu
 "}}}
-"}}}
-"{{{1 Plugins
+"{{{ Plugins
 filetype off
 
 if has('vim_starting')
@@ -115,7 +115,6 @@ NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'itchyny/lightline.vim'
 
 filetype plugin indent on
-
 
 "{{{ ack.vim
 let g:ackprg="ag --nogroup --nocolor --column"
@@ -200,42 +199,41 @@ endfunction
 
 set foldtext=NicerFoldText()
 "}}}
-"{{{1 Keymaps
-"{{{ Misc
+"{{{ Keymaps
+" Misc
 nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
 nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
 
 nnoremap <CR> za
 nnoremap <silent> <Space> :silent noh<CR>
-"}}}
-"{{{ Buffer and file management
+
+" Buffer and file management
 nmap <Leader>w :w!<CR>
 nmap cn <Esc>:cn<CR>
 nmap cp <Esc>:cp<CR>
 nmap <Right> :bn<CR>
 nmap <Left> :bp<CR>
 nmap <Leader>cl :ccl<CR>
-"}}}
-"{{{ Tlist and ctags
+
+" Tlist and ctags
 nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build --exclude=_build .<CR><CR>
 nmap <C-i> <C-]>
 nmap <C-b> :CtrlPTag<CR>
-"}}}
-"{{{ Basic formatting
+
+" Basic formatting
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
-"}}}
-"{{{ Spellchecking
+
+" Spellchecking
 nmap <Leader>se :setlocal spell spelllang=en_us<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
-"}}}
-"{{{ Copy & Paste
+
+" Copy & Paste
 nnoremap <Leader>p :setlocal paste!<CR>"+p:setlocal nopaste!<CR>
 inoremap <silent> <C-v> <Esc>:setlocal paste!<CR>"+p:setlocal nopaste!<CR>a
-"}}}
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
