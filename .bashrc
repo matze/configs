@@ -35,6 +35,7 @@ alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
 alias mutt="TERM=xterm-256color mutt"
 alias make="make -j4"
+alias r="ranger"
 #}}}
 #{{{ Functions
 #{{{ Prompt
