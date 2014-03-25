@@ -92,10 +92,10 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle 'jnwhiteh/vim-golang'
-" NeoBundle 'tpope/vim-dispatch'
 " NeoBundle 'tpope/vim-surround'
 " NeoBundle 'wting/rust.vim'
 " NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'matze/vim-markdown'
@@ -106,13 +106,13 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nvie/vim-flake8'
+NeoBundle 'petRUShka/vim-opencl'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'petRUShka/vim-opencl'
-NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-dispatch'
 
 filetype plugin indent on
 
