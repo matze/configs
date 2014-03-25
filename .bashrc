@@ -152,4 +152,13 @@ fi
 if [ -f $HOME/configs/z/z.sh ]; then
     . $HOME/configs/z/z.sh
 fi
+
+SOCK=/tmp/ssh-agent-tmux
+
+if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
+    rm -f $SOCK
+    ln -s $SSH_AUTH_SOCK $SOCK
+fi
+
+export SSH_AUTH_SOCK=$SOCK
 #}}}
