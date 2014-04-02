@@ -39,3 +39,5 @@
     commitBeforeMerge   = false
     resolveConflict     = false
     detachedHead        = false
+[init]
+	templatedir = ~/.config/git-templates
