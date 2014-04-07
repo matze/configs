@@ -1,4 +1,5 @@
 .bin/*
+.vim/*.swp
 .vim/bundle/*
 .vim/spell/*
 .vim/.netrwhist
