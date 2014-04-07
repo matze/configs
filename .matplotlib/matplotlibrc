@@ -1,5 +1,5 @@
 #{{{ General
-backend             : GTKAgg
+backend             : TkAgg
 interactive         : True
 toolbar             : toolbar2   # None | classic | toolbar2
 timezone            : UTC        # a pytz timezone string, eg US/Central or Europe/Paris
