@@ -118,7 +118,7 @@ function ll() {
     fi
 }
 
-function _git_pick () {
+function _git_pick() {
     __gitcomp_nl "$(__git_refs)"
 }
 #}}}
@@ -129,7 +129,14 @@ _cenv() {
     COMPREPLY=($(compgen -W "${envs}" -- ${cur}))
 }
 
+_mx() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local sessions=$(tmux list-session | grep -o "^[A-Za-z0-9]*" | tr "\n" " ")
+    COMPREPLY=($(compgen -W "${sessions}" -- ${cur}))
+}
+
 complete -F _cenv cenv
+complete -F _mx mx
 #}}}
 #{{{ Environment
 PROMPT_COMMAND=_prompt_command
