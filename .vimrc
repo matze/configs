@@ -205,20 +205,6 @@ function NicerFoldText()
     return '+-' . v:folddashes . line
 endfunction
 
-let b:myLang = 0
-let g:myLangList = ["nospell", "de", "en_us"]
-
-function! ToggleSpell()
-    let b:myLang = b:myLang + 1
-    if b:myLang >= len(g:myLangList) | let b:myLang = 0 | endif
-    if b:myLang == 0
-        setlocal nospell
-    else
-        execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
-    endif
-    echo "Spell checking language:" g:myLangList[b:myLang]
-endfunction
-
 set foldtext=NicerFoldText()
 "}}}
 "{{{ Keymaps
@@ -254,7 +240,9 @@ nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
 nmap <Leader>fw :%s/\s\+$//<CR>
 
-nmap <Leader>s :call ToggleSpell()<CR>
+nmap <Leader>se :setlocal spell spelllang=en<CR>
+nmap <Leader>sd :setlocal spell spelllang=de<CR>
+nmap <Leader>sn :setlocal nospell<CR>
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
