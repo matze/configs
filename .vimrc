@@ -259,4 +259,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]*   nested  cwindow
 autocmd QuickFixCmdPost l*      nested  lwindow
+
+" Reset fold background to reduce distraction
+autocmd VimEnter * hi Folded ctermbg=None
 "}}}
