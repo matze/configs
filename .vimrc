@@ -205,6 +205,22 @@ function NicerFoldText()
     return '+-' . v:folddashes . line
 endfunction
 
+function TagJumpBack()
+    try
+        foldclose!
+    catch
+    endtry
+    pop
+endfunction
+
+function TagJumpForward()
+    execute "tag " . expand("<cword>")
+    try
+        foldopen!
+    catch
+    endtry
+endfunction
+
 set foldtext=NicerFoldText()
 "}}}
 "{{{ Keymaps
@@ -215,9 +231,8 @@ nnoremap <silent> p p`]
 
 nnoremap <CR> za
 
-" open and close folds when jumping to a tag
-nnoremap <C-t> zC<C-t>
-nnoremap <C-i> <C-]>zA
+nnoremap <silent> <C-i> :call TagJumpForward()<CR>
+nnoremap <silent> <C-t> :call TagJumpBack()<CR>
 
 " select pasted text
 noremap gV `[v`]
