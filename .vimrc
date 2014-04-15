@@ -206,19 +206,13 @@ function NicerFoldText()
 endfunction
 
 function TagJumpBack()
-    try
-        foldclose!
-    catch
-    endtry
+    try | foldclose! | catch | | endtry
     pop
 endfunction
 
 function TagJumpForward()
     execute "tag " . expand("<cword>")
-    try
-        foldopen!
-    catch
-    endtry
+    try | foldopen! | catch | | endtry
 endfunction
 
 set foldtext=NicerFoldText()
