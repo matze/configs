@@ -215,6 +215,10 @@ nnoremap <silent> p p`]
 
 nnoremap <CR> za
 
+" open and close folds when jumping to a tag
+nnoremap <C-t> zC<C-t>
+nnoremap <C-i> <C-]>zA
+
 " select pasted text
 noremap gV `[v`]
 
@@ -225,7 +229,6 @@ nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
 
 nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
-nnoremap <C-i> <C-]>
 nnoremap <C-b> :CtrlPTag<CR>
 
 nnoremap cn <Esc>:cn<CR>
