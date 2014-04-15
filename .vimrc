@@ -234,7 +234,7 @@ nnoremap cp <Esc>:cp<CR>
 nnoremap <Leader>w :w!<CR>
 nnoremap <Leader>h :silent noh<CR>
 
-nmap <Leader>gt :!ctags -R -f .tags --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --exclude=build --exclude=_build .<CR><CR>
+nmap <Leader>gt :!git ls-tree -r --name-only $(git rev-parse --abbrev-ref HEAD) <bar> ctags -f .tags --sort=yes -L - <CR><CR>
 
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
