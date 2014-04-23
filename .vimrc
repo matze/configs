@@ -113,6 +113,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-vinegar'
 
 filetype plugin indent on
 
