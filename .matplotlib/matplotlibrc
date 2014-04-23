@@ -1,9 +1,9 @@
 #{{{ General
-backend             : TkAgg
+# backend             : TkAgg
 interactive         : True
 toolbar             : toolbar2   # None | classic | toolbar2
 timezone            : UTC        # a pytz timezone string, eg US/Central or Europe/Paris
-#backend_fallback    : True
+backend_fallback    : True
 
 #verbose.level       : silent      # one of silent, helpful, debug, debug-annoying
 #verbose.fileo       : sys.stdout  # a log filename, sys.stdout or sys.stderr
