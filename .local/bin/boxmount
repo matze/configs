@@ -1,0 +1,58 @@
+#!/bin/bash
+
+SSHFS_URL="matthias@bloerg:/home/matthias/box"
+ENCFS_OPTS="--idle=5 --stdinpass"
+KEYRING_OPTS="--service=encbox --user=$USER"
+
+BOX_PATH=$HOME/box
+ENCBOX_PATH=$HOME/.encbox
+
+KEYRING_QUERY=$(which keyring-query)
+RC=$?
+
+if [[ $RC != 0 ]]; then
+    echo "keyring-query not found"
+    exit $RC
+fi
+
+ENCFS=$(which encfs)
+RC=$?
+
+if [[ $RC != 0 ]]; then
+    echo "encfs not found"
+    exit $RC
+fi
+
+SSHFS=$(which sshfs)
+RC=$?
+
+if [[ $RC != 0 ]]; then
+    echo "sshfs not found"
+    exit $RC
+fi
+
+if [[ ! -d $ENCBOX_PATH ]]; then
+    mkdir -p $ENCBOX_PATH
+fi
+
+if [[ ! -d $BOX_PATH ]]; then
+    mkdir -p $BOX_PATH
+fi
+
+
+if [ "$(ls -A $BOX_PATH)" ]; then
+    echo "Unmounting box ..."
+    fusermount -u $BOX_PATH
+
+    if [ "$(ls -A $ENCBOX_PATH)" ]; then
+        fusermount -u $ENCBOX_PATH
+    fi
+else
+    echo "Mounting box ..."
+
+    if [ ! "$(ls -A $ENCBOX_PATH)" ]; then
+        $SSHFS $SSHFS_URL $ENCBOX_PATH -o uid=$(id -u) -o gid=$(id -g)
+    fi
+
+    $KEYRING_QUERY $KEYRING_OPTS | $ENCFS $ENCFS_OPTS $ENCBOX_PATH $BOX_PATH
+fi

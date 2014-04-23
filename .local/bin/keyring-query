@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import argparse
+import keyring
+import getpass
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--service', type=str, required=True,
+                        help='Keyring domain')
+    parser.add_argument('--user', type=str, required=True,
+                        help='User to query password for')
+
+    args = parser.parse_args()
+
+    password = keyring.get_password(args.service, args.user)
+
+    if not password:
+        password = getpass.getpass('User/domain not found, set new password: ')
+        keyring.set_password(args.service, args.user, password)
+
+    print(password)
