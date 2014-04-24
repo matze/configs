@@ -1,11 +1,30 @@
 #!/bin/bash
 
+IDLE_TIME=5
+
 SSHFS_URL="matthias@bloerg:/home/matthias/box"
-ENCFS_OPTS="--idle=5 --stdinpass"
+ENCFS_OPTS="--idle=$IDLE_TIME --stdinpass"
 KEYRING_OPTS="--service=encbox --user=$USER"
 
-BOX_PATH=$HOME/box
-ENCBOX_PATH=$HOME/.encbox
+BOX_PATH="$HOME/box"
+ENCBOX_PATH="$HOME/.encbox"
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
+function test_return_code()
+{
+    if [[ $1 != 0 ]]; then
+        exit $1
+    fi
+}
+
+function print_check()
+{
+    printf "${GREEN}${BOLD}✓${NORMAL}\n"
+}
 
 KEYRING_QUERY=$(which keyring-query)
 RC=$?
@@ -41,18 +60,26 @@ fi
 
 
 if [ "$(ls -A $BOX_PATH)" ]; then
-    echo "Unmounting box ..."
+    printf "Unmounting box ... "
     fusermount -u $BOX_PATH
 
     if [ "$(ls -A $ENCBOX_PATH)" ]; then
         fusermount -u $ENCBOX_PATH
     fi
+
+    print_check
 else
-    echo "Mounting box ..."
+    printf "Mounting box ... "
 
     if [ ! "$(ls -A $ENCBOX_PATH)" ]; then
         $SSHFS $SSHFS_URL $ENCBOX_PATH -o uid=$(id -u) -o gid=$(id -g)
     fi
 
-    $KEYRING_QUERY $KEYRING_OPTS | $ENCFS $ENCFS_OPTS $ENCBOX_PATH $BOX_PATH
+    PASSWORD=$($KEYRING_QUERY $KEYRING_OPTS)
+    test_return_code $?
+
+    echo $PASSWORD | $ENCFS $ENCFS_OPTS $ENCBOX_PATH $BOX_PATH
+    test_return_code $?
+
+    print_check
 fi
