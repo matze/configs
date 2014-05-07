@@ -148,6 +148,9 @@ smap <C-e>     <Plug>(neosnippet_expand_or_jump)
 nmap <Leader>nce :NeoComplCacheEnable<CR>
 nmap <Leader>ncd :NeoComplCacheDisable<CR>
 "}}}
+"{{{ NeoSnippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+"}}}
 "{{{ ctrlp.vim
 let g:ctrlp_extensions = ['tag']
 
