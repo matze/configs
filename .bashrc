@@ -36,6 +36,8 @@ alias waf='./waf'
 alias mutt="TERM=xterm-256color mutt"
 alias make="make -j4"
 alias r="ranger"
+alias ledger="ledger -f main.ledger"
+alias finance="vim ~/box/finance/by-date/$(date +"%Y/%Y-%m").ledger"
 #}}}
 #{{{ Functions
 #{{{ Prompt
