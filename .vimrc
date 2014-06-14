@@ -262,6 +262,7 @@ nmap <Leader>se :setlocal spell spelllang=en<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 nmap <Leader>ss 1z=
+nmap <Leader>d :bd<CR>
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
