@@ -116,6 +116,7 @@ NeoBundle 'spolu/dwm.vim'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'zah/nimrod.vim'
 
 filetype plugin indent on
 
