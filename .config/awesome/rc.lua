@@ -58,16 +58,7 @@ layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -76,17 +67,17 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5 }, s, layouts[1])
 end
 -- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
+   { "manual",      terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "restart",     awesome.restart },
+   { "quit",        awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -101,14 +92,19 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" })
+-- mytextclock = awful.widget.textclock({ align = "right" })
+mytextclock = widget({ type = "textbox" })
+vicious.register(mytextclock, vicious.widgets.date, "%d %b %H:%M ", 60)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
 -- Createa a battery widget
 batwidget = widget({ type = "textbox" })
-vicious.register(batwidget, vicious.widgets.bat, " $1$2%", 120, "BAT1")
+vicious.register(batwidget, vicious.widgets.bat, "$1$2%", 120, "BAT1")
+
+spacer = widget({ type = "textbox" });
+spacer.text = " · "
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -186,7 +182,9 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        spacer,
         batwidget,
+        spacer,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -384,6 +382,9 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn_with_shell("gnome-settings-daemon")
-awful.util.spawn_with_shell("gnome-keyring-daemon")
-awful.util.spawn_with_shell("nm-applet")
+function run_once(prg)
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")") end
+
+run_once("gnome-settings-daemon")
+run_once("gnome-keyring-daemon")
+run_once("nm-applet")
