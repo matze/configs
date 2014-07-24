@@ -31,6 +31,7 @@ set sidescrolloff=2 " two columns context
 set mouse=a         " Mouse support
 set tags=.tags      " Tags file
 set ttyfast
+set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
 set dir=~/.vim      " Location for .swp files
 let mapleader = "\<Space>"
 
