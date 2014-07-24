@@ -226,6 +226,7 @@ endfunction
 set foldtext=NicerFoldText()
 "}}}
 "{{{ Keymaps
+inoremap <C-c> Look to the left
 
 " paste multiple lines without overwriting content
 vnoremap <silent> p p`]
