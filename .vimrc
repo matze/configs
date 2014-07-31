@@ -173,9 +173,9 @@ nmap <C-J> <C-W>w
 nmap <C-K> <C-W>W
 nmap <C-N> <Plug>DWMNew
 nmap <C-X> <Plug>DWMClose
-nmap <C-@> <Plug>DWMFocus
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
+nmap <C-E> <Plug>DWMFocus
 "}}}
 "{{{ sneak
 let g:sneak#streak = 1
