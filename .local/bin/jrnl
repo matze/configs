@@ -1,0 +1,101 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import argparse
+import string
+import pytz
+import datetime
+import subprocess
+
+try:
+    import ConfigParser as configparser
+except ImportError:
+    import configparser
+
+
+DATA_PATH = os.path.expanduser('~/.local/share/jrnl/diary.md')
+CONFIG_PATH = os.path.expanduser('~/.config/jrnl/jrnlrc')
+
+ENTRY_FORMAT = '- [$time] $entry'
+TIME_FORMAT = '%H:%M'
+HEADER_FORMAT = '# %d.%m.%Y'
+
+
+def read_config():
+    config = dict(time_format=TIME_FORMAT,
+                  header_format=HEADER_FORMAT,
+                  entry_format=ENTRY_FORMAT)
+
+    if os.path.exists(CONFIG_PATH):
+        parsed = configparser.ConfigParser()
+        parsed.read(CONFIG_PATH)
+
+        for key, value in parsed.items('default'):
+            if key in config:
+                config[key] = value
+
+    return config
+    
+
+def read_data(config):
+    try:
+        with open(DATA_PATH) as fp:
+            return fp.readlines()
+    except IOError:
+        return []
+
+
+def write_data(config, data):
+    with open(DATA_PATH, 'w') as fp:
+        fp.write(data)
+
+
+def find_insertion_point(content, header):
+    try:
+        return content.index(header) 
+    except ValueError:
+        return -1
+
+
+def add_entry(entry):
+    config = read_config()
+
+    now = datetime.datetime.now()
+    time = now.strftime(config['time_format'])
+    header = now.strftime(config['header_format']) + '\n'
+
+    vals = dict(entry=entry, time=time)
+    line = string.Template(config['entry_format']).substitute(vals) + '\n'
+
+    content = read_data(config)
+    index = find_insertion_point(content, header)
+
+    if index < 0:
+        write_data(config, ''.join(['\n', header, line] + content))
+    else:
+        write_data(config, ''.join(content[:index + 1] + [line] + content[index + 1:]))
+
+
+def show():
+    try:
+        with open(DATA_PATH) as fp:
+            print(fp.read())
+    except IOError:
+        pass
+
+
+def edit():
+    editor = os.getenv('EDITOR') or os.getenv('VISUAL') or 'vim'
+    subprocess.call([editor, DATA_PATH])
+
+
+if __name__ == '__main__':
+    if '--show' in sys.argv:
+        show()
+    elif '--edit' in sys.argv:
+        edit()
+    elif len(sys.argv) > 1:
+        add_entry(' '.join(sys.argv[1:]))
+    else:
+        print('usage: jrnl [--show] [--edit] some entry string ...')
