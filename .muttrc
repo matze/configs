@@ -17,7 +17,7 @@ set include     = yes   # always include quote
 set attribution = 'On %{%m/%d/%y %H:%M}, %n wrote:'
 set from        = 'matthias.vogelgesang@gmail.com'
 set use_from    = yes
-set sendmail    = '/usr/bin/msmtp'
+set sendmail    = "/usr/bin/msmtp"
 set envelope_from = yes
 
 set date_format = "%m/%d"
@@ -26,7 +26,7 @@ set sort_aux    = reverse-last-date-received
 set index_format = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
 
 set pager_index_lines   = 10
-set pager_context       = 3
+set pager_context       = 4
 set pager_stop
 unset markers                   # No + markers
 
@@ -37,7 +37,6 @@ set sidebar_delim   = '  │'
 set sidebar_visible = yes
 set sidebar_width   = 24
 #}}}
-
 #{{{ Headers
 ignore *
 unignore from: to: cc: date: subject:
@@ -48,7 +47,6 @@ mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts' '+Dokumente' '+Priva
 
 auto_view text/html
 #}}}
-
 #{{{ Colors
 color normal        color254 color233
 color tilde         color254 color233   # after attachment
@@ -86,18 +84,17 @@ color quoted7       color213 color233
 color index         color250 color233   "~v~(!~N)"  # no unread
 color index         color160 color233   "~v~D"      # deleted
 #}}}
-
 #{{{ Bindings
 bind index gg   first-entry
-bind index G    last-entry 
+bind index G    last-entry
 bind index j    next-entry
-bind index k    previous-entry 
+bind index k    previous-entry
 
 bind index \Cu   half-up
 bind index \Cd   half-down
 
-bind pager l    next-line
-bind pager h    previous-line 
+bind pager \Cj    next-line
+bind pager \Ck    previous-line
 
 # Sidebar ---------------------------------------
 bind index,pager J  sidebar-next
@@ -108,14 +105,12 @@ bind index,pager O  sidebar-open
 bind index      zA  collapse-thread
 bind index      za  collapse-all
 #}}}
-
 #{{{ Macros
 macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
 #}}}
-
 #{{{ Folder hooks
 folder-hook . "push <collapse-all>\n"
 #}}}

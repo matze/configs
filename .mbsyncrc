@@ -2,7 +2,7 @@ IMAPAccount gmail
 Host imap.gmail.com
 User matthias.vogelgesang@gmail.com
 UseIMAPS yes
-PassCmd "imap-pass -g matthias.vogelgesang@gmail.com"
+PassCmd "keyring-query --service mbsync --user matthias.vogelgesang@gmail.com"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore gmail-remote
