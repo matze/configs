@@ -57,8 +57,8 @@ set listchars=tab:»\ ,trail:·,eol:¬
 set fillchars=fold:·
 
 " Highlighting, colors, fonts
-" syntax enable
 set t_Co=256
+syntax enable
 
 if has("gui_running")
     set lines=60                " More lines ...
@@ -82,45 +82,33 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu
 "}}}
 "{{{ Plugins
-filetype off
+call plug#begin('~/.vim/plugged')
 
-if has('vim_starting')
-    set rtp+=~/.vim/bundle/neobundle.vim
-endif
+Plug 'itchyny/lightline.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'junegunn/goyo.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'ledger/vim-ledger'
+Plug 'matze/vim-markdown'
+Plug 'matze/vim-move'
+Plug 'matze/vim-tex-fold'
+Plug 'matze/vim-ini-fold'
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'nanotech/jellybeans.vim'
+Plug 'nvie/vim-flake8'
+Plug 'petRUShka/vim-opencl'
+Plug 'reedes/vim-wordy'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'spolu/dwm.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-vinegar'
+Plug 'zah/nimrod.vim'
 
-call neobundle#rc(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" NeoBundle 'jnwhiteh/vim-golang'
-" NeoBundle 'tpope/vim-surround'
-" NeoBundle 'wting/rust.vim'
-" NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'ledger/vim-ledger'
-NeoBundle 'matze/vim-markdown'
-NeoBundle 'matze/vim-move'
-NeoBundle 'matze/vim-tex-fold'
-NeoBundle 'matze/vim-ini-fold'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'nelstrom/vim-markdown-folding'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'nvie/vim-flake8'
-NeoBundle 'petRUShka/vim-opencl'
-NeoBundle 'reedes/vim-wordy'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'spolu/dwm.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'zah/nimrod.vim'
-
-filetype plugin indent on
+call plug#end()
 
 "{{{ ack.vim
 let g:ackprg="ag --nogroup --nocolor --column"
