@@ -1,6 +1,8 @@
 .bin/*
 .vim/*.swp
+.vim/autoload/*
 .vim/bundle/*
+.vim/plugged/*
 .vim/spell/*
 .vim/.netrwhist
 .vimperator/info/default/history-*
