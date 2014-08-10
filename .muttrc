@@ -1,41 +1,53 @@
 #{{{ General
-set realname    = 'Matthias Vogelgesang'
-set editor      = 'vim'
-set signature   = '~/.mutt/signature'
+set realname            = 'Matthias Vogelgesang'
+set editor              = 'vim'
+set signature           = '~/.mutt/signature'
 
-set mbox_type   = Maildir
-set folder      = '~/mail/gmail'
-set spoolfile   = '+INBOX'
-set record      = '+[Gmail]/.Sent Mail'
-set postponed   = '+[Gmail]/.Drafts'
+set mbox_type           = Maildir
+set folder              = '~/mail/gmail'
+set spoolfile           = '+INBOX'
+set record              = '=[Gmail]/.Sent Mail'
+set postponed           = '=[Gmail]/.Drafts'
+set mbox                = '=[Gmail]/.All Mail'
 
-set wait_key    = no
-set sleep_time  = 0     # switch mailbox immediately
-set fast_reply  = yes   # reply immediately
-set include     = yes   # always include quote
+set alias_file          = '~/mutt/alias'
+set header_cache        = '~/.mutt/cache/headers'
+set message_cachedir    = '~/.mutt/cache/bodies'
 
-set attribution = 'On %{%m/%d/%y %H:%M}, %n wrote:'
-set from        = 'matthias.vogelgesang@gmail.com'
-set use_from    = yes
-set sendmail    = "/usr/bin/msmtp"
-set envelope_from = yes
+set wait_key            = no
+set sleep_time          = 0     # switch mailbox immediately
+set fast_reply          = yes   # reply immediately
+set include             = yes   # always include quote
 
-set date_format = "%m/%d"
-set sort        = threads
-set sort_aux    = reverse-last-date-received
-set index_format = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
+set attribution         = 'On %{%m/%d/%y %H:%M}, %n wrote:'
+set from                = 'matthias.vogelgesang@gmail.com'
+set use_from            = yes
+set sendmail            = "/usr/bin/msmtp"
+set envelope_from       = yes
+
+set date_format         = "%m/%d"
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+set index_format        = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
 
 set pager_index_lines   = 10
 set pager_context       = 4
 set pager_stop
 unset markers                   # No + markers
 
-set status_chars  = " *%A"
-set status_format = "──── Folder: %f → %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
+set status_chars        = " *%A"
+set status_format       = "──── %f – %m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
 
-set sidebar_delim   = '  │'
-set sidebar_visible = yes
-set sidebar_width   = 24
+set sidebar_delim       = '  │'
+set sidebar_visible     = yes
+set sidebar_width       = 24
+
+#}}}
+#{{{ Mailboxes
+mailboxes '+INBOX' \
+          '+[Gmail]/.Sent Mail' \
+          '+[Gmail]/.Drafts' \
+          '+[Gmail]/.All Mail' \
 #}}}
 #{{{ Headers
 ignore *
@@ -43,19 +55,17 @@ unignore from: to: cc: date: subject:
 unhdr_order *
 hdr_order from: to: cc: date: subject:
 
-mailboxes '+INBOX' '+[Gmail]/.Sent Mail' '+[Gmail]/.Drafts' '+Dokumente' '+Privat'
-
 auto_view text/html
 #}}}
 #{{{ Colors
-color normal        color254 color233
+color normal        color015 color233
 color tilde         color254 color233   # after attachment
-color status        color039 color233
+color status        color038 color233
 color message       color118 color233
 color signature     color240 color233
-color attachment    color097 color233
-color indicator     color231 color238
-color tree          color191 color233
+color attachment    color237 color233
+color indicator     color214 color233
+color tree          color238 color233
 
 color index         color154 color233   ~N
 color index         color156 color233   ~O
@@ -71,8 +81,8 @@ color body          color241 color233   "^gpg:.*"
 
 # Quotes ----------------------------------------
 color quoted        color191 color233
-color quoted1       color227 color233
-color quoted2       color221 color233
+color quoted1       color214 color233
+color quoted2       color097 color233
 color quoted3       color215 color233
 color quoted3       color209 color233
 color quoted4       color210 color233
@@ -81,7 +91,7 @@ color quoted6       color212 color233
 color quoted7       color213 color233
 #
 # Collapsed threads -----------------------------
-color index         color250 color233   "~v~(!~N)"  # no unread
+# color index         color229 color233   "~v~(!~N)"  # no unread
 color index         color160 color233   "~v~D"      # deleted
 #}}}
 #{{{ Bindings
@@ -92,6 +102,8 @@ bind index k    previous-entry
 
 bind index \Cu   half-up
 bind index \Cd   half-down
+
+bind index <tab>  sync-mailbox
 
 bind pager \Cj    next-line
 bind pager \Ck    previous-line
@@ -106,7 +118,10 @@ bind index      zA  collapse-thread
 bind index      za  collapse-all
 #}}}
 #{{{ Macros
-macro index,pager $  "<shell-escape>mbsync gmail<enter>"
+macro index,pager $  "<sync-mailbox><shell-escape>mbsync gmail<enter><sync-mailbox>"
+
+# That is crap but okay ...
+macro index,pager A "<tag-prefix><save-message>=[Gmail]/.All <enter>"
 
 macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
 macro index a "<limit>all\n" "show all messages (undo limit)"
