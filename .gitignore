@@ -1,4 +1,5 @@
 .bin/*
+.mutt/cache
 .vim/*.swp
 .vim/autoload/*
 .vim/bundle/*
