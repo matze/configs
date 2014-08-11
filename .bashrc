@@ -37,10 +37,6 @@ alias mutt="TERM=xterm-256color mutt"
 alias make="make -j4"
 alias r="ranger"
 alias docker="docker.io"
-
-if [[ "$HOSTNAME" -eq "ganymed" ]]; then
-    alias mbsync="mbsync -c ~/.mbsyncrc.small"
-fi
 #}}}
 #{{{ Functions
 #{{{ Prompt
