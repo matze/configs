@@ -57,41 +57,41 @@ hdr_order from: to: cc: date: subject:
 auto_view text/html
 #}}}
 #{{{ Colors
-color normal        color015 color233
-color tilde         color254 color233   # after attachment
-color status        color038 color233
-color message       color118 color233
-color signature     color240 color233
-color attachment    color237 color233
-color indicator     color214 color233
-color tree          color238 color233
+color normal        color015 color234
+color tilde         color254 color234   # after attachment
+color status        color038 color234
+color message       color118 color234
+color signature     color240 color234
+color attachment    color237 color234
+color indicator     color214 color234
+color tree          color238 color234
 
-color index         color154 color233   ~N
-color index         color156 color233   ~O
-color index         color133 color233   ~F
-color index         color160 color233   ~D
-color index         color208 color233   ~T
+color index         color154 color234   ~N
+color index         color156 color234   ~O
+color index         color133 color234   ~F
+color index         color160 color234   ~D
+color index         color208 color234   ~T
 
-color hdrdefault    color250 color233
-color header        color214 color233 "^Subject"
+color hdrdefault    color250 color234
+color header        color214 color234 "^Subject"
 
-color body          color032 color233 "(finger|ftp|http|https|news|telnet)://[^ >]*"
-color body          color241 color233   "^gpg:.*"
+color body          color032 color234 "(finger|ftp|http|https|news|telnet)://[^ >]*"
+color body          color241 color234   "^gpg:.*"
 
-# Quotes ----------------------------------------
-color quoted        color191 color233
-color quoted1       color214 color233
-color quoted2       color097 color233
-color quoted3       color215 color233
-color quoted3       color209 color233
-color quoted4       color210 color233
-color quoted5       color211 color233
-color quoted6       color212 color233
-color quoted7       color213 color233
+# Quotes ---------------------------4------------
+color quoted        color191 color234
+color quoted1       color214 color234
+color quoted2       color097 color234
+color quoted3       color215 color234
+color quoted3       color209 color234
+color quoted4       color210 color234
+color quoted5       color211 color234
+color quoted6       color212 color234
+color quoted7       color213 color234
 #
 # Collapsed threads -----------------------------
 # color index         color229 color233   "~v~(!~N)"  # no unread
-color index         color160 color233   "~v~D"      # deleted
+color index         color160 color234   "~v~D"      # deleted
 #}}}
 #{{{ Bindings
 bind index gg   first-entry
