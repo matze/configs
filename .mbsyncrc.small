@@ -1,0 +1,21 @@
+IMAPAccount gmail
+    Host imap.gmail.com
+    User matthias.vogelgesang@gmail.com
+    UseIMAPS yes
+    PassCmd "keyring-query --service mbsync --user matthias.vogelgesang@gmail.com"
+    CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+    Account gmail
+
+MaildirStore gmail-local
+    Path ~/mail/gmail/
+    Inbox ~/mail/gmail/INBOX
+
+Channel gmail
+    Master :gmail-remote:
+    Slave :gmail-local:
+    Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Starred"
+    Create Both
+    Expunge Both
+    SyncState *
