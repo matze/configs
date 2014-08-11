@@ -1,0 +1,10 @@
+# vim: set ft=mutt
+
+set spoolfile           = '+kit/INBOX'
+set record              = '=kit/Sent'
+set postponed           = '=kit/Drafts'
+set mbox                = '=kit/Archives'
+
+macro index,pager $ "<sync-mailbox><shell-escape>mbsync -c ~/.mbsyncrc.small kit<enter><sync-mailbox>"
+
+mailboxes +kit +kit/INBOX

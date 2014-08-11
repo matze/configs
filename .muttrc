@@ -3,12 +3,8 @@ set realname            = 'Matthias Vogelgesang'
 set editor              = 'vim'
 set signature           = '~/.mutt/signature'
 
+set folder              = '~/mail'
 set mbox_type           = Maildir
-set folder              = '~/mail/gmail'
-set spoolfile           = '+INBOX'
-set record              = '=[Gmail]/.Sent Mail'
-set postponed           = '=[Gmail]/.Drafts'
-set mbox                = '=[Gmail]/.All Mail'
 
 set alias_file          = '~/mutt/alias'
 set header_cache        = '~/.mutt/cache/headers'
@@ -41,13 +37,16 @@ set status_format       = "──── %f – %m messages%?n? (%n new)?%?d? (%d
 set sidebar_delim       = '  │'
 set sidebar_visible     = yes
 set sidebar_width       = 24
-
 #}}}
-#{{{ Mailboxes
-mailboxes '+INBOX' \
-          '+[Gmail]/.Sent Mail' \
-          '+[Gmail]/.Drafts' \
-          '+[Gmail]/.All Mail' \
+#{{{ Accounts
+source ~/.mutt/account-gmail
+folder-hook $folder "source ~/.mutt/account-gmail"
+
+source ~/.mutt/account-kit
+folder-hook $folder "source ~/.mutt/account-kit"
+
+# source default mailbox
+source ~/.mutt/account-gmail
 #}}}
 #{{{ Headers
 ignore *
@@ -118,17 +117,11 @@ bind index      zA  collapse-thread
 bind index      za  collapse-all
 #}}}
 #{{{ Macros
-# That is crap but okay ...
-macro index,pager A "<tag-prefix><save-message>=[Gmail]/.All <enter>"
-
-macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
-macro index a "<limit>all\n" "show all messages (undo limit)"
-
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
 #}}}
 #{{{ Folder hooks
 folder-hook .                       "push <collapse-all>\n"
-folder-hook .                       source ~/.mutt/sync-macro.default
-folder-hook "!$"                    source ~/.mutt/sync-macro.default
-folder-hook "=[Gmail]/.All Mail"    source ~/.mutt/sync-macro.all
+# folder-hook .                       source ~/.mutt/sync-macro.default
+# folder-hook "!$"                    source ~/.mutt/sync-macro.default
+# folder-hook "=[Gmail]/.All Mail"    source ~/.mutt/sync-macro.all
 #}}}
