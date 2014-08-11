@@ -40,10 +40,10 @@ set sidebar_width       = 24
 #}}}
 #{{{ Accounts
 source ~/.mutt/account-gmail
-folder-hook $folder "source ~/.mutt/account-gmail"
+folder-hook $folder/gmail "source ~/.mutt/account-gmail"
 
 source ~/.mutt/account-kit
-folder-hook $folder "source ~/.mutt/account-kit"
+folder-hook $folder/kit "source ~/.mutt/account-kit"
 
 # source default mailbox
 source ~/.mutt/account-gmail
@@ -99,8 +99,8 @@ bind index G    last-entry
 bind index j    next-entry
 bind index k    previous-entry
 
-bind index \Cu   half-up
-bind index \Cd   half-down
+bind index,pager \Cu   half-up
+bind index,pager \Cd   half-down
 
 bind index <tab>  sync-mailbox
 
@@ -118,10 +118,4 @@ bind index      za  collapse-all
 #}}}
 #{{{ Macros
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
-#}}}
-#{{{ Folder hooks
-folder-hook .                       "push <collapse-all>\n"
-# folder-hook .                       source ~/.mutt/sync-macro.default
-# folder-hook "!$"                    source ~/.mutt/sync-macro.default
-# folder-hook "=[Gmail]/.All Mail"    source ~/.mutt/sync-macro.all
 #}}}
