@@ -22,11 +22,10 @@ function! MailRemoveSignature()
     endif
 endfunction
 
-" function! MailFixQuote()
-"     %s/> >/>>/ge
-"     %s/>>\([^>]\)/>> \1/ge
-"     normal! gqap
-" endfunction
+function! MailFixQuote()
+    silent :%s/> >/>>/ge
+    silent :%s/>>\([^>]\)/>> \1/ge
+endfunction
 
 call MailRemoveSignature()
-" call MailFixQuote()
+call MailFixQuote()
