@@ -18,7 +18,7 @@ function! MailRemoveSignature()
             let i = i - 1
         endwhile
 
-        execute ':' . i . ',' . j . 'd'
+        silent execute ':' . i . ',' . j . 'd'
     endif
 endfunction
 
