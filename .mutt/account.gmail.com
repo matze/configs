@@ -1,9 +1,11 @@
-# vim: set ft=mutt
+# vim: set ft=muttrc
 
+set from                = 'matthias.vogelgesang@gmail.com'
 set spoolfile           = '+gmail/INBOX'
 set record              = '=gmail/[Gmail]/.Sent Mail'
 set postponed           = '=gmail/[Gmail]/.Drafts'
 set mbox                = '=gmail/[Gmail]/.All Mail'
+set signature           = '~/.mutt/signature.gmail.com'
 
 macro index,pager A "<tag-prefix><save-message>=[Gmail]/.All <enter>"
 macro index,pager $ "<sync-mailbox><shell-escape>mbsync -c ~/.mbsyncrc.small gmail<enter><sync-mailbox>"

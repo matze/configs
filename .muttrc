@@ -16,10 +16,9 @@ set fast_reply          = yes   # reply immediately
 set include             = yes   # always include quote
 
 set attribution         = 'On %{%m/%d/%y %H:%M}, %n wrote:'
-set from                = 'matthias.vogelgesang@gmail.com'
 set use_from            = yes
-set sendmail            = "/usr/bin/msmtp"
 set envelope_from       = yes
+set sendmail            = "/usr/bin/msmtp"
 
 set date_format         = "%m/%d"
 set sort                = threads
@@ -39,14 +38,14 @@ set sidebar_visible     = yes
 set sidebar_width       = 24
 #}}}
 #{{{ Accounts
-source ~/.mutt/account-gmail
-folder-hook $folder/gmail "source ~/.mutt/account-gmail"
+source ~/.mutt/account.gmail.com
+folder-hook $folder/gmail "source ~/.mutt/account.gmail.com"
 
-source ~/.mutt/account-kit
-folder-hook $folder/kit "source ~/.mutt/account-kit"
+source ~/.mutt/account.kit.edu
+folder-hook $folder/kit "source ~/.mutt/account.kit.edu"
 
 # source default mailbox
-source ~/.mutt/account-gmail
+source ~/.mutt/account.gmail.com
 #}}}
 #{{{ Headers
 ignore *

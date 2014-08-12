@@ -8,7 +8,7 @@ IMAPStore kit-remote
     Account kit
 
 MaildirStore kit-local
-    Path ~/mail/kit
+    Path ~/mail/kit/
     Inbox ~/mail/kit/INBOX
 
 Channel kit
