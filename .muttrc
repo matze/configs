@@ -93,27 +93,23 @@ color quoted7       color213 color234
 color index         color160 color234   "~v~D"      # deleted
 #}}}
 #{{{ Bindings
-bind index gg   first-entry
-bind index G    last-entry
-bind index j    next-entry
-bind index k    previous-entry
+bind index gg           first-entry
+bind index G            last-entry
+bind index j            next-entry
+bind index k            previous-entry
 
-bind index,pager \Cu   half-up
-bind index,pager \Cd   half-down
+bind index <tab>        sync-mailbox
+bind index <space>      collapse-thread
 
-bind index <tab>  sync-mailbox
+bind pager \Cj          next-line
+bind pager \Ck          previous-line
 
-bind pager \Cj    next-line
-bind pager \Ck    previous-line
+bind index,pager \Cu    half-up
+bind index,pager \Cd    half-down
 
-# Sidebar ---------------------------------------
-bind index,pager J  sidebar-next
-bind index,pager K  sidebar-prev
-bind index,pager O  sidebar-open
-
-# Show/hide -------------------------------------
-bind index      zA  collapse-thread
-bind index      za  collapse-all
+bind index,pager J      sidebar-next
+bind index,pager K      sidebar-prev
+bind index,pager O      sidebar-open
 #}}}
 #{{{ Macros
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
