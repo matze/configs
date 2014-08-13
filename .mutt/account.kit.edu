@@ -7,7 +7,7 @@ set postponed           = '=kit/Drafts'
 set mbox                = '=kit/Archives/.2014'
 set signature           = '~/.mutt/signature.kit.edu'
 
-macro index,pager A "<tag-prefix><save-message>=kit/Archives/.2014 <enter>"
+macro index,pager A ":set confirmappend=no<enter> <tag-prefix><save-message>=kit/Archives/.2014 <enter>:set confirmappend=yes<enter>"
 macro index,pager $ "<sync-mailbox><shell-escape>mbsync kit-full<enter><sync-mailbox>"
 
 mailboxes +kit \
