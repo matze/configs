@@ -34,15 +34,7 @@ MaildirStore gmail-local
     Path ~/mail/gmail/
     Inbox ~/mail/gmail/INBOX
 
-Channel gmail-tiny
-    Master :gmail-remote:
-    Slave :gmail-local:
-    Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Starred"
-    Create Both
-    Expunge Both
-    SyncState *
-
-Channel gmail-full
+Channel gmail.com
     Master :gmail-remote:
     Slave :gmail-local:
     Patterns "INBOX" "[Gmail]/All Mail" "[Gmail]/Drafts" "[Gmail]/Starred"
