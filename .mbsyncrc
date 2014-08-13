@@ -11,15 +11,7 @@ MaildirStore kit-local
     Path ~/mail/kit/
     Inbox ~/mail/kit/INBOX
 
-Channel kit-tiny
-    Master :kit-remote:
-    Slave :kit-local:
-    Patterns "INBOX" "Drafts" "vimprovements"
-    Create Both
-    Expunge Both
-    SyncState *
-    
-Channel kit-full
+Channel kit.edu
     Master :kit-remote:
     Slave :kit-local:
     Patterns "INBOX" "Sent" "Drafts" "Archives/*" "astor" "sardana-*" "vimprovements" "ufo*"
