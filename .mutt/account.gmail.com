@@ -8,7 +8,7 @@ set mbox                = '=gmail/[Gmail]/.All Mail'
 set signature           = '~/.mutt/signature.gmail.com'
 
 macro index,pager A "<tag-prefix><save-message>=[Gmail]/.All <enter>"
-macro index,pager $ "<sync-mailbox><shell-escape>mbsync -c ~/.mbsyncrc.small gmail<enter><sync-mailbox>"
+macro index,pager $ "<sync-mailbox><shell-escape>mbsync gmail-tiny<enter><sync-mailbox>"
 
 folder-hook "=[Gmail]/.All Mail"    source ~/.mutt/sync-macro.all
 

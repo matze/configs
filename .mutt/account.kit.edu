@@ -8,6 +8,16 @@ set mbox                = '=kit/Archives/.2014'
 set signature           = '~/.mutt/signature.kit.edu'
 
 macro index,pager A "<tag-prefix><save-message>=kit/Archives/.2014 <enter>"
-macro index,pager $ "<sync-mailbox><shell-escape>mbsync -c ~/.mbsyncrc.small kit<enter><sync-mailbox>"
+macro index,pager $ "<sync-mailbox><shell-escape>mbsync kit-full<enter><sync-mailbox>"
 
-mailboxes +kit +kit/INBOX +kit/Sent +kit/Drafts +kit/Archives/.2014
+mailboxes +kit \
+          +kit/INBOX \
+          +kit/Sent \
+          +kit/Drafts \
+          +kit/astor \
+          +kit/sardana-devel \
+          +kit/sardana-users \
+          +kit/ufo \
+          +kit/ufo-devel \
+          +kit/vimprovements \
+          +kit/Archives/.2014

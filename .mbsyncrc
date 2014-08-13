@@ -11,13 +11,22 @@ MaildirStore kit-local
     Path ~/mail/kit/
     Inbox ~/mail/kit/INBOX
 
-Channel kit
+Channel kit-tiny
     Master :kit-remote:
     Slave :kit-local:
-    Patterns "INBOX" "Sent" "Drafts"
+    Patterns "INBOX" "Drafts" "vimprovements"
     Create Both
     Expunge Both
     SyncState *
+    
+Channel kit-full
+    Master :kit-remote:
+    Slave :kit-local:
+    Patterns "INBOX" "Sent" "Drafts" "Archives/*" "astor" "sardana-*" "vimprovements" "ufo*"
+    Create Both
+    Expunge Both
+    SyncState *
+
 
 IMAPAccount gmail
     Host imap.gmail.com
@@ -33,7 +42,15 @@ MaildirStore gmail-local
     Path ~/mail/gmail/
     Inbox ~/mail/gmail/INBOX
 
-Channel gmail
+Channel gmail-tiny
+    Master :gmail-remote:
+    Slave :gmail-local:
+    Patterns "INBOX" "[Gmail]/Drafts" "[Gmail]/Starred"
+    Create Both
+    Expunge Both
+    SyncState *
+
+Channel gmail-full
     Master :gmail-remote:
     Slave :gmail-local:
     Patterns "INBOX" "[Gmail]/All Mail" "[Gmail]/Drafts" "[Gmail]/Starred"

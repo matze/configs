@@ -35,7 +35,7 @@ set status_format       = "──── %f – %m messages%?n? (%n new)?%?d? (%d
 
 set sidebar_delim       = '  │'
 set sidebar_visible     = yes
-set sidebar_width       = 24
+set sidebar_width       = 32
 #}}}
 #{{{ Accounts
 source ~/.mutt/account.gmail.com
