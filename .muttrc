@@ -50,7 +50,7 @@ folder-hook $folder/kit "source ~/.mutt/account.kit.edu"
 # source default mailbox
 source ~/.mutt/account.gmail.com
 
-folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync inboxes<enter><sync-mailbox>'"
+folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync inboxes<enter><shell-escape>notmuch new<enter>'"
 #}}}
 #{{{ Headers
 ignore *
