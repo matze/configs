@@ -2,8 +2,8 @@
 
 set from                = 'matthias.vogelgesang@gmail.com'
 set spoolfile           = '+gmail/INBOX'
-set record              = '=gmail/[Gmail]/.Sent Mail'
-set postponed           = '=gmail/[Gmail]/.Drafts'
+set record              = '=gmail/Sent'
+set postponed           = '=gmail/Drafts'
 set mbox                = '=gmail/[Gmail]/.All Mail'
 set signature           = '~/.mutt/signature.gmail.com'
 
@@ -14,5 +14,5 @@ folder-hook $folder/gmail       "macro index,pager $ '<sync-mailbox><shell-escap
 
 mailboxes +gmail \
           +gmail/INBOX \
-          =gmail/[Gmail]/'.Sent Mail' \
-          =gmail/[Gmail]/'.Drafts'
+          =gmail/Sent \
+          =gmail/Drafts

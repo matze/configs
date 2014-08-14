@@ -37,7 +37,7 @@ MaildirStore gmail-local
 Channel gmail.com
     Master :gmail-remote:
     Slave :gmail-local:
-    Patterns "INBOX" "[Gmail]/All Mail" "[Gmail]/Drafts" "[Gmail]/Starred"
+    Patterns "INBOX" "[Gmail]/All Mail" "[Gmail]/Drafts" "[Gmail]/Sent Mail"
     Create Both
     Expunge Both
     SyncState *
