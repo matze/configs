@@ -78,8 +78,8 @@ color body          color032 color234 "(finger|ftp|http|https|news|telnet)://[^ 
 color body          color241 color234   "^gpg:.*"
 
 # Quotes ---------------------------4------------
-color quoted        color191 color234
-color quoted1       color214 color234
+color quoted        color221 color234
+color quoted1       color108 color234
 color quoted2       color097 color234
 color quoted3       color215 color234
 color quoted3       color209 color234
