@@ -33,14 +33,49 @@ IMAPStore gmail-remote
 MaildirStore gmail-local
     Path ~/mail/gmail/
     Inbox ~/mail/gmail/INBOX
+    Trash Trash
 
-Channel gmail.com
+Channel gmail-inbox
     Master :gmail-remote:
     Slave :gmail-local:
-    Patterns "INBOX" "[Gmail]/All Mail" "[Gmail]/Drafts" "[Gmail]/Sent Mail"
+    Patterns "INBOX"
     Create Both
     Expunge Both
     SyncState *
 
+Channel gmail-archives
+    Master :gmail-remote:"[Gmail]/All Mail"
+    Slave :gmail-local:Archives
+    Create Both
+    Expunge Both
+    SyncState *
 
-Group inboxes kit.edu:INBOX gmail.com:INBOX
+Channel gmail-sent
+    Master :gmail-remote:"[Gmail]/Sent Mail"
+    Slave :gmail-local:Sent
+    Create Both
+    Expunge Both
+    SyncState *
+
+Channel gmail-drafts
+    Master :gmail-remote:"[Gmail]/Drafts"
+    Slave :gmail-local:Drafts
+    Create Both
+    Expunge Both
+    SyncState *
+
+Channel gmail-trash
+    Master :gmail-remote:"[Gmail]/Trash"
+    Slave :gmail-local:Trash
+    Create Both
+    SyncState *
+
+Group gmail.com
+    Channel gmail-inbox
+    Channel gmail-drafts
+    Channel gmail-trash
+
+
+Group inboxes
+    Channel kit.edu:INBOX
+    Channel gmail-inbox

@@ -4,7 +4,8 @@ set from                = 'matthias.vogelgesang@gmail.com'
 set spoolfile           = '+gmail/INBOX'
 set record              = '=gmail/Sent'
 set postponed           = '=gmail/Drafts'
-set mbox                = '=gmail/[Gmail]/.All Mail'
+set trash               = '=gmail/Trash'
+set mbox                = '=gmail/Archives'
 set signature           = '~/.mutt/signature.gmail.com'
 
 set pgp_use_gpg_agent   = yes
