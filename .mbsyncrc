@@ -41,3 +41,6 @@ Channel gmail.com
     Create Both
     Expunge Both
     SyncState *
+
+
+Group inboxes kit.edu:INBOX gmail.com:INBOX

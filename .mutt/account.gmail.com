@@ -11,7 +11,6 @@ set pgp_use_gpg_agent   = yes
 set pgp_sign_as         = 4D3A8106
 
 folder-hook $folder/gmail       "macro index,pager $ '<sync-mailbox><shell-escape>mbsync gmail.com<enter><sync-mailbox>'"
-folder-hook $folder/gmail/INBOX "macro index,pager $ '<sync-mailbox><shell-escape>mbsync gmail.com:INBOX<enter><sync-mailbox>'"
 
 mailboxes +gmail \
           +gmail/INBOX \
