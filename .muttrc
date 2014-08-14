@@ -19,6 +19,7 @@ set attribution         = 'On %{%m/%d/%y %H:%M}, %n wrote:'
 set use_from            = yes
 set envelope_from       = yes
 set sendmail            = "/usr/bin/msmtp"
+set query_command       = "abook --mutt-query '%s'"
 
 set date_format         = "%m/%d"
 set sort                = threads
@@ -114,6 +115,8 @@ bind index,pager \Cd    half-down
 bind index,pager J      sidebar-next
 bind index,pager K      sidebar-prev
 bind index,pager O      sidebar-open
+
+bind editor <tab>       complete-query
 #}}}
 #{{{ Macros
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
