@@ -38,8 +38,14 @@ set sidebar_delim       = '  │'
 set sidebar_visible     = yes
 set sidebar_width       = 32
 #}}}
+#{{{ gpgme
+set crypt_use_gpgme             = yes
+set crypt_replysign             = yes
+set crypt_replyencrypt          = yes
+set crypt_replysignencrypted    = yes
+set crypt_verify_sig            = yes
+#}}}
 #{{{ Accounts
-source ~/.mutt/gpg.rc
 
 source ~/.mutt/account.gmail.com
 folder-hook $folder/gmail "source ~/.mutt/account.gmail.com"
@@ -69,7 +75,7 @@ color tilde         color254 color234   # after attachment
 color status        color038 color234
 color message       color118 color234
 color signature     color240 color234
-color attachment    color237 color234
+color attachment    color240 color234
 color indicator     color214 color234
 color tree          color238 color234
 
@@ -83,7 +89,6 @@ color hdrdefault    color250 color234
 color header        color214 color234 "^Subject"
 
 color body          color032 color234 "(finger|ftp|http|https|news|telnet)://[^ >]*"
-color body          color241 color234   "^gpg:.*"
 
 # Quotes ---------------------------4------------
 color quoted        color221 color234
