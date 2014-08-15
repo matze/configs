@@ -50,6 +50,9 @@ folder-hook $folder/kit "source ~/.mutt/account.kit.edu"
 # source default mailbox
 source ~/.mutt/account.gmail.com
 
+reply-hook .                        ""
+reply-hook '~t reply.github.com'    "set editor='vim -c \":call MailFixGithubReply()\""
+
 folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync inboxes<enter><shell-escape>notmuch new<enter>'"
 #}}}
 #{{{ Headers
