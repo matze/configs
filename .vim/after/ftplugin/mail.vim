@@ -1,6 +1,11 @@
 setlocal textwidth=72
 setlocal formatoptions+=n
 
+function! MailFixGithubReply()
+    delete
+    silent execute ':%s/> \_.> —\_.*//g'
+endfunction
+
 function! MailRemoveSignature()
     let i = 0
 
