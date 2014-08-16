@@ -24,13 +24,14 @@ set query_command       = "abook --mutt-query '%s'"
 set date_format         = "%m/%d"
 set sort                = threads
 set sort_aux            = reverse-last-date-received
-set index_format        = "%?M?+& ? [%Z]  %D  %-20.20F  %s"
+set index_format        = "%?M?+& ? %-25.25F  %s"
 
 set pager_index_lines   = 10
 set pager_context       = 4
 set pager_stop
-unset markers                   # No + markers
+unset markers           # No + markers
 
+set to_chars            = " .>-<L"
 set status_chars        = " *%A"
 set status_format       = "──── %f – %m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %>─%?p?( %p postponed )? "
 
