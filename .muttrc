@@ -38,6 +38,8 @@ set status_format       = "──── %f – %m messages%?n? (%n new)?%?d? (%d
 set sidebar_delim       = '  │'
 set sidebar_visible     = yes
 set sidebar_width       = 32
+
+set collapse_unread     = no
 #}}}
 #{{{ gpgme
 set crypt_use_gpgme             = yes
@@ -61,6 +63,8 @@ reply-hook .                        ""
 reply-hook '~t reply.github.com'    "set editor='vim -c \":call MailFixGithubReply()\""
 
 folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync inboxes<enter><shell-escape>notmuch new<enter>'"
+
+folder-hook .       "exec collapse-all"
 #}}}
 #{{{ Headers
 ignore *
@@ -103,7 +107,6 @@ color quoted6       color212 color234
 color quoted7       color213 color234
 #
 # Collapsed threads -----------------------------
-# color index         color229 color233   "~v~(!~N)"  # no unread
 color index         color160 color234   "~v~D"      # deleted
 #}}}
 #{{{ Bindings
