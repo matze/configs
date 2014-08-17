@@ -110,8 +110,6 @@ color quoted7       color213 color234
 color index         color160 color234   "~v~D"      # deleted
 #}}}
 #{{{ Bindings
-bind index gg           first-entry
-bind index G            last-entry
 bind index j            next-entry
 bind index k            previous-entry
 
