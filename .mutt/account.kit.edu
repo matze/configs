@@ -24,3 +24,11 @@ mailboxes +kit \
           +kit/ufo-devel \
           +kit/vimprovements \
           +kit/Archives/.2014
+
+subscribe sardana-devel@lists.sourceforge.net
+subscribe sardana-users@lists.sourceforge.net
+
+subscribe astor@lists.kit.edu
+subscribe ufo@lists.kit.edu
+subscribe ufo-devel@lists.kit.edu
+subscribe vimprovements@lists.kit.edu
