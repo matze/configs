@@ -64,6 +64,14 @@ Channel gmail-drafts
     Expunge Both
     SyncState *
 
+Channel gmail-lists
+    Master :gmail-remote:
+    Slave :gmail-local:
+    Patterns "ranger-users"
+    Create Slave
+    Expunge Both
+    SyncState *
+
 Channel gmail-trash
     Master :gmail-remote:"[Gmail]/Trash"
     Slave :gmail-local:Trash
@@ -79,3 +87,4 @@ Group gmail.com
 Group inboxes
     Channel kit.edu:INBOX
     Channel gmail-inbox
+    Channel gmail-trash

@@ -16,4 +16,7 @@ folder-hook $folder/gmail       "macro index,pager $ '<sync-mailbox><shell-escap
 mailboxes +gmail \
           +gmail/INBOX \
           =gmail/Sent \
-          =gmail/Drafts
+          =gmail/Drafts \
+          =gmail/ranger-users
+
+subscribe ranger-users@nongnu.org
