@@ -20,6 +20,7 @@ mailboxes +kit \
           +kit/astor \
           +kit/sardana-devel \
           +kit/sardana-users \
+          +kit/tango \
           +kit/ufo \
           +kit/ufo-devel \
           +kit/vimprovements \

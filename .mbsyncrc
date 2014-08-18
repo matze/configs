@@ -14,7 +14,7 @@ MaildirStore kit-local
 Channel kit.edu
     Master :kit-remote:
     Slave :kit-local:
-    Patterns "INBOX" "Sent" "Drafts" "Archives/*" "astor" "sardana-*" "vimprovements" "ufo*"
+    Patterns "INBOX" "Sent" "Drafts" "Archives/*" "astor" "sardana-*" "tango" "vimprovements" "ufo*"
     Create Both
     Expunge Both
     SyncState *
