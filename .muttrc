@@ -112,10 +112,12 @@ color index         color160 color234   "~v~D"      # deleted
 #{{{ Bindings
 bind index j            next-entry
 bind index k            previous-entry
+bind index \Cj          next-unread
 
 bind index gg           first-entry
 bind index G            last-entry
 
+bind index <return>     display-message
 bind index <tab>        sync-mailbox
 bind index <space>      collapse-thread
 
