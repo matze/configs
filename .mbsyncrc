@@ -3,6 +3,7 @@ IMAPAccount kit
     UseIMAPS yes
     User matthias.vogelgesang@kit.edu
     PassCmd "keyring-query --service mbsync --user matthias.vogelgesang@kit.edu"
+    PipelineDepth 1
 
 IMAPStore kit-remote
     Account kit
@@ -14,6 +15,7 @@ MaildirStore kit-local
 Channel kit.edu
     Master :kit-remote:
     Slave :kit-local:
+    MaxMessages 150
     Patterns "INBOX" "Sent" "Drafts" "Archives/*" "astor" "sardana-*" "tango" "vimprovements" "ufo*"
     Create Both
     Expunge Both
