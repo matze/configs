@@ -62,7 +62,7 @@ source ~/.mutt/account.gmail.com
 reply-hook .                        ""
 reply-hook '~t reply.github.com'    "set editor='vim -c \":call MailFixGithubReply()\""
 
-folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync inboxes<enter><shell-escape>notmuch new<enter>'"
+folder-hook INBOX   "macro index,pager $ '<sync-mailbox><shell-escape>mbsync -q inboxes<enter><shell-escape>notmuch new<enter>'"
 
 folder-hook .       "exec collapse-all"
 #}}}
@@ -135,4 +135,5 @@ bind editor <tab>       complete-query
 #}}}
 #{{{ Macros
 macro pager \cb <pipe-entry>'urlview'<enter>  "follow links"
+macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 #}}}

@@ -4,7 +4,6 @@ set from                = 'matthias.vogelgesang@kit.edu'
 set spoolfile           = '+kit/INBOX'
 set record              = '=kit/Sent'
 set postponed           = '=kit/Drafts'
-set mbox                = '=kit/Archives/.2014'
 set signature           = '~/.mutt/signature.kit.edu'
 
 set pgp_sign_as         =
