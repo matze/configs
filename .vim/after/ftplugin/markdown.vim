@@ -20,5 +20,6 @@ nnoremap <Leader>li ciw[<C-r>"](<Esc>"+pli)<Esc>
 vnoremap <Leader>li c[<C-r>"](<Esc>"+pli)<Esc>
 
 setlocal nosmartindent
+setlocal conceallevel=2
 
 let g:move_auto_indent = 0
