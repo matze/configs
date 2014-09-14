@@ -192,6 +192,9 @@ nmap k <Plug>MoveLineUp
 "{{{ vim-markdown-folding
 let g:markdown_fold_override_foldtext = 0
 "}}}
+"{{{ vim-tex-fold
+let g:tex_fold_additional_envs = ['tikzpicture']
+"}}}
 "}}}
 "{{{ Functions
 function NicerFoldText()
