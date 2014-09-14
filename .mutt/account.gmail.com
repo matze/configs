@@ -19,4 +19,5 @@ mailboxes +gmail \
           =gmail/Drafts \
           =gmail/ranger-users
 
+subscribe python-hackers-list@gnome.org
 subscribe ranger-users@nongnu.org
