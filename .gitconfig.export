@@ -28,7 +28,7 @@
     co      = checkout
     unstage = reset HEAD
     undo    = checkout --
-    snapshot = !git archive HEAD | gzip > $(basename $(pwd)).tar.gz
+    tarball = !git archive HEAD --prefix=$(basename $(pwd))/ | gzip > $(basename $(pwd)).tar.gz
 
 [advice]
     pushNonFastForward  = false
