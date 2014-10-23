@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -d build ]; then
+    make -C build
+else
+    make
+fi

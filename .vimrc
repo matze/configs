@@ -80,6 +80,9 @@ set foldmethod=marker
 " Omni completion
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu
+
+" Makeprg
+set makeprg=wrapped-make
 "}}}
 "{{{ Plugins
 call plug#begin('~/.vim/plugged')
