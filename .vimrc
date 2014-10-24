@@ -267,6 +267,11 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 nmap <Leader>p "+p
 nmap <Leader>P "+P
+
+" Tabs
+nmap o :tabnew<CR>
+nmap n :tabnext<CR>
+nmap p :tabprevious<CR>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
