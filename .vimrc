@@ -100,7 +100,6 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'nvie/vim-flake8'
 Plug 'petRUShka/vim-opencl'
 Plug 'reedes/vim-wordy'
-Plug 'Shougo/neocomplcache'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'spolu/dwm.vim'
@@ -108,37 +107,64 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 
+if has('lua')
+    Plug 'Shougo/neocomplete'
+else
+    Plug 'Shougo/neocomplcache'
+end
+
 call plug#end()
 
 "{{{ ack.vim
 let g:ackprg="ag --nogroup --nocolor --column"
 "}}}
-"{{{ NeoComplCache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_auto_completion_start_length = 3
-let g:neocomplcache_manual_completion_start_length = 3
-let g:neocomplcache_min_syntax_length = 3
+"{{{ NeoComplCache/NeoComplete
 
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if has('lua')
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_auto_select = 1
+    let g:neocomplete#auto_completion_start_length = 3
+    let g:neocomplete#manual_completion_start_length = 3
+    let g:neocomplete#max_list = 20
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
+    function! s:my_cr_function()
+        return neocomplete#close_popup() . "\<CR>"
+    endfunction
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    inoremap <silent><CR>   <C-r>=<SID>my_cr_function()<CR>
+    inoremap <expr><C-e>    neocomplete#complete_common_string()
 
-imap <C-e>     <Plug>(neosnippet_expand_or_jump)
-smap <C-e>     <Plug>(neosnippet_expand_or_jump)
+    nmap <Leader>nce :NeoCompleteEnable<CR>
+    nmap <Leader>ncd :NeoCompleteDisable<CR>
+else
+    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_enable_smart_case = 1
+    let g:neocomplcache_enable_auto_select = 1
+    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_enable_underbar_completion = 1
+    let g:neocomplcache_auto_completion_start_length = 3
+    let g:neocomplcache_manual_completion_start_length = 3
+    let g:neocomplcache_min_syntax_length = 3
 
-nmap <Leader>nce :NeoComplCacheEnable<CR>
-nmap <Leader>ncd :NeoComplCacheDisable<CR>
+    if !exists('g:neocomplcache_keyword_patterns')
+        let g:neocomplcache_keyword_patterns = {}
+    endif
+    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+    function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction
+
+    inoremap <silent><CR>   <C-r>=<SID>my_cr_function()<CR>
+    inoremap <C-e>          <Plug>(neosnippet_expand_or_jump)
+    smap     <C-e>          <Plug>(neosnippet_expand_or_jump)
+
+    nmap <Leader>nce :NeoComplCacheEnable<CR>
+    nmap <Leader>ncd :NeoComplCacheDisable<CR>
+end
+
 "}}}
 "{{{ NeoSnippets
 let g:neosnippet#snippets_directory='~/.vim/snippets'
