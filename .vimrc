@@ -254,6 +254,9 @@ nnoremap <CR> za
 nnoremap <silent> <C-i> :call TagJumpForward()<CR>
 nnoremap <silent> <C-t> :call TagJumpBack()<CR>
 
+" for some reason this is mapped to :call TagJumpForward
+nnoremap <tab> <nop>
+
 " select pasted text
 noremap gV `[v`]
 
