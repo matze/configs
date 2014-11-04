@@ -85,42 +85,95 @@ set completeopt=menu
 set makeprg=wrapped-make
 "}}}
 "{{{ Plugins
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'junegunn/goyo.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'matze/vim-markdown'
-Plug 'matze/vim-move'
-Plug 'matze/vim-tex-fold'
-Plug 'matze/vim-ini-fold'
-Plug 'mileszs/ack.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'nvie/vim-flake8'
-Plug 'petRUShka/vim-opencl'
-Plug 'reedes/vim-wordy'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'spolu/dwm.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-vinegar'
+Plug 'itchyny/lightline.vim' "{{{
 
-if has('lua')
-    Plug 'Shougo/neocomplete'
-else
-    Plug 'Shougo/neocomplcache'
-end
+let g:lightline = {
+    \ 'component': {
+    \   'readonly': '%{&readonly?"✖":""}',
+    \ },
+    \ 'active': {
+    \   'right': [['lineinfo'], ['percent']],
+    \ },
+    \ }
 
-call plug#end()
+"}}}
+Plug 'justinmk/vim-sneak' "{{{
 
-"{{{ ack.vim
+let g:sneak#streak = 1
+
+"}}}
+Plug 'junegunn/goyo.vim'"{{{
+"}}}
+Plug 'kien/ctrlp.vim'"{{{
+
+let g:ctrlp_extensions = ['tag']
+
+let g:ctrlp_user_command = {
+    \ 'types': {
+    \   1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \   2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+    \ 'fallback': 'ag %s -l --nocolor -g ""'
+    \ }
+"}}}
+Plug 'matze/vim-markdown'"{{{
+let g:markdown_fold_override_foldtext = 0
+"}}}
+Plug 'matze/vim-move'"{{{
+let g:move_map_keys = 0
+
+vmap j <Plug>MoveBlockDown
+vmap k <Plug>MoveBlockUp
+nmap j <Plug>MoveLineDown
+nmap k <Plug>MoveLineUp
+"}}}
+Plug 'matze/vim-tex-fold'"{{{
+let g:tex_fold_additional_envs = ['tikzpicture']
+"}}}
+Plug 'matze/vim-ini-fold'"{{{
+"}}}
+Plug 'mileszs/ack.vim'"{{{
 let g:ackprg="ag --nogroup --nocolor --column"
 "}}}
-"{{{ NeoComplCache/NeoComplete
+Plug 'nanotech/jellybeans.vim'"{{{
+"}}}
+Plug 'nvie/vim-flake8'"{{{
+"}}}
+Plug 'petRUShka/vim-opencl'"{{{
+"}}}
+Plug 'reedes/vim-wordy'"{{{
+"}}}
+Plug 'Shougo/neosnippet'"{{{
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+imap <C-e>          <Plug>(neosnippet_expand_or_jump)
+smap <C-e>          <Plug>(neosnippet_expand_or_jump)
+"}}}
+Plug 'Shougo/neosnippet-snippets'"{{{
+"}}}
+Plug 'spolu/dwm.vim'"{{{
+let g:dwm_map_keys = 0
+
+nmap <C-J> <C-W>w
+nmap <C-K> <C-W>W
+nmap <C-N> <Plug>DWMNew
+nmap <C-X> <Plug>DWMClose
+nmap <C-L> <Plug>DWMGrowMaster
+nmap <C-H> <Plug>DWMShrinkMaster
+nmap <C-E> <Plug>DWMFocus
+"}}}
+Plug 'tpope/vim-commentary'"{{{
+"}}}
+Plug 'tpope/vim-dispatch'"{{{
+"}}}
+Plug 'tpope/vim-vinegar'"{{{
+"}}}
 
 if has('lua')
+    Plug 'Shougo/neocomplete' "{{{
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#enable_auto_select = 1
@@ -137,7 +190,9 @@ if has('lua')
 
     nmap <Leader>nce :NeoCompleteEnable<CR>
     nmap <Leader>ncd :NeoCompleteDisable<CR>
+    "}}}
 else
+    Plug 'Shougo/neocomplcache' "{{{
     let g:neocomplcache_enable_at_startup = 1
     let g:neocomplcache_enable_smart_case = 1
     let g:neocomplcache_enable_auto_select = 1
@@ -160,68 +215,13 @@ else
 
     nmap <Leader>nce :NeoComplCacheEnable<CR>
     nmap <Leader>ncd :NeoComplCacheDisable<CR>
+    "}}}
 end
 
+call plug#end()
 
-"}}}
-"{{{ NeoSnippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-
-imap <C-e>          <Plug>(neosnippet_expand_or_jump)
-smap <C-e>          <Plug>(neosnippet_expand_or_jump)
-"}}}
-"{{{ ctrlp.vim
-let g:ctrlp_extensions = ['tag']
-
-let g:ctrlp_user_command = {
-    \ 'types': {
-    \   1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-    \   2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-    \ 'fallback': 'ag %s -l --nocolor -g ""'
-    \ }
-"}}}
-"{{{ dwm.vim
-let g:dwm_map_keys = 0
-
-nmap <C-J> <C-W>w
-nmap <C-K> <C-W>W
-nmap <C-N> <Plug>DWMNew
-nmap <C-X> <Plug>DWMClose
-nmap <C-L> <Plug>DWMGrowMaster
-nmap <C-H> <Plug>DWMShrinkMaster
-nmap <C-E> <Plug>DWMFocus
-"}}}
-"{{{ sneak
-let g:sneak#streak = 1
-"}}}
-"{{{ jellybeans.vim
 silent! colorscheme jellybeans
-"}}}
-"{{{ lightline
-let g:lightline = {
-    \ 'component': {
-    \   'readonly': '%{&readonly?"✖":""}',
-    \ },
-    \ 'active': {
-    \   'right': [['lineinfo'], ['percent']],
-    \ },
-    \ }
-"}}}
-"{{{ vim-move
-let g:move_map_keys = 0
 
-vmap j <Plug>MoveBlockDown
-vmap k <Plug>MoveBlockUp
-nmap j <Plug>MoveLineDown
-nmap k <Plug>MoveLineUp
-"}}}
-"{{{ vim-markdown-folding
-let g:markdown_fold_override_foldtext = 0
-"}}}
-"{{{ vim-tex-fold
-let g:tex_fold_additional_envs = ['tikzpicture']
-"}}}
 "}}}
 "{{{ Functions
 function! DefaultFoldText()
