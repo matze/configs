@@ -224,11 +224,9 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 "}}}
 "{{{ Functions
-function! NicerFoldText()
-    " Match everything that has the Vim marker after some character (presumably
-    " the comment starter.
+function! DefaultFoldText()
     let foldline = getline(v:foldstart)
-    let line = substitute(foldline, '^[^{]*{' . '{{\d*\([.]*\)', '\1', '') . ' '
+    let line = substitute(foldline, '[^{]{{' . '{', '\1', '') . ' '
     return '+-' . v:folddashes . line
 endfunction
 
@@ -242,7 +240,7 @@ function! TagJumpForward()
     try | foldopen! | catch | | endtry
 endfunction
 
-set foldtext=NicerFoldText()
+set foldtext=DefaultFoldText()
 "}}}
 "{{{ Keymaps
 
