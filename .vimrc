@@ -134,7 +134,6 @@ if has('lua')
     endfunction
 
     inoremap <silent><CR>   <C-r>=<SID>my_cr_function()<CR>
-    inoremap <expr><C-e>    neocomplete#complete_common_string()
 
     nmap <Leader>nce :NeoCompleteEnable<CR>
     nmap <Leader>ncd :NeoCompleteDisable<CR>
@@ -158,16 +157,18 @@ else
     endfunction
 
     inoremap <silent><CR>   <C-r>=<SID>my_cr_function()<CR>
-    inoremap <C-e>          <Plug>(neosnippet_expand_or_jump)
-    smap     <C-e>          <Plug>(neosnippet_expand_or_jump)
 
     nmap <Leader>nce :NeoComplCacheEnable<CR>
     nmap <Leader>ncd :NeoComplCacheDisable<CR>
 end
 
+
 "}}}
 "{{{ NeoSnippets
 let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+imap <C-e>          <Plug>(neosnippet_expand_or_jump)
+smap <C-e>          <Plug>(neosnippet_expand_or_jump)
 "}}}
 "{{{ ctrlp.vim
 let g:ctrlp_extensions = ['tag']
