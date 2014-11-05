@@ -6,6 +6,16 @@ import argparse
 import datetime
 import shutil
 import subprocess
+import warnings
+
+try:
+    with warnings.catch_warnings():
+        warnings.filterwarnings('ignore')
+        import fuzzywuzzy.fuzz
+except:
+    import sys
+    print("Install fuzzywuzzy: pip install fuzzywuzzy")
+    sys.exit(1)
 
 
 TEMPLATE = """---
@@ -16,44 +26,9 @@ title: {title}
 """
 
 
-class NoMatchError(Exception):
-    pass
-
-
-def score(needle, match):
-    needle_length = len(needle)
-    match_length = len(match)
-
-    penalty = 1. / match_length
-    current_penalty = 0.0
-    j = 0
-    s = 0
-
-    for i in range(match_length):
-        if match[i] == needle[j]:
-            s += 1.0
-
-            # Don't penalize first occurence
-            if j > 0:
-                s -= current_penalty
-
-            j += 1
-            current_penalty = 0.0
-
-            if j == needle_length:
-                break
-        else:
-            current_penalty += penalty
-
-    return s
-
-
 def fuzzy_search(needle, haystack):
-    scores = [(score(needle, normalize(h)), h) for h in haystack]
-    try:
-        return sorted(scores, key=lambda x: x[0], reverse=True)[0][1]
-    except IndexError:
-        raise NoMatchError
+    scores = ((fuzzywuzzy.fuzz.partial_ratio(needle, normalize(h)), h) for h in haystack)
+    return sorted(scores, key=lambda x: x[0])[-1][1]
 
 
 def get_title(path):
@@ -136,7 +111,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     args.title = ' '.join(args.title)
 
-    try:
-        args.func(args)
-    except NoMatchError:
-        print("Couldn't find posts matching `{}'.".format(args.title))
+    args.func(args)
