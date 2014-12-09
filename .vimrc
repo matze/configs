@@ -120,6 +120,8 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'ag %s -l --nocolor -g ""'
     \ }
 "}}}
+Plug 'matze/vim-golang'"{{{
+"}}}
 Plug 'matze/vim-markdown'"{{{
 let g:markdown_fold_override_foldtext = 0
 "}}}
