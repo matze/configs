@@ -174,6 +174,8 @@ Plug 'tpope/vim-dispatch'"{{{
 "}}}
 Plug 'tpope/vim-vinegar'"{{{
 "}}}
+Plug 'wting/rust.vim'"{{{
+"}}}
 
 if has('lua')
     Plug 'Shougo/neocomplete' "{{{
