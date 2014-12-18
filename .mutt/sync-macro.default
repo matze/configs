@@ -1,2 +1,0 @@
-macro index,pager $  "<sync-mailbox><shell-escape>mbsync -c ~/.mbsyncrc.small gmail<enter><sync-mailbox>"
-
