@@ -122,6 +122,8 @@ let g:ctrlp_user_command = {
 "}}}
 Plug 'matze/vim-golang'"{{{
 "}}}
+Plug 'matze/vim-lilypond'"{{{
+"}}}
 Plug 'matze/vim-markdown'"{{{
 let g:markdown_fold_override_foldtext = 0
 "}}}
