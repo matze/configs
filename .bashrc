@@ -165,8 +165,10 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-if [ -f $HOME/configs/z/z.sh ]; then
-    . $HOME/configs/z/z.sh
+Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
+
+if [ -f $Z_SH ]; then
+    . $Z_SH
 fi
 
 SOCK=/tmp/ssh-agent-tmux
