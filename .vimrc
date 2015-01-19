@@ -105,7 +105,7 @@ Plug 'justinmk/vim-sneak' "{{{
 let g:sneak#streak = 1
 
 "}}}
-Plug 'junegunn/goyo.vim'"{{{
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "{{{
 "}}}
 Plug 'kien/ctrlp.vim'"{{{
 
@@ -120,9 +120,9 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'ag %s -l --nocolor -g ""'
     \ }
 "}}}
-Plug 'matze/vim-golang'"{{{
+Plug 'matze/vim-golang', { 'for': 'go' } "{{{
 "}}}
-Plug 'matze/vim-lilypond'"{{{
+Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
 Plug 'matze/vim-markdown'"{{{
 let g:markdown_fold_override_foldtext = 0
@@ -135,7 +135,7 @@ vmap k <Plug>MoveBlockUp
 nmap j <Plug>MoveLineDown
 nmap k <Plug>MoveLineUp
 "}}}
-Plug 'matze/vim-tex-fold'"{{{
+Plug 'matze/vim-tex-fold'", { 'for': 'tex' } {{{
 let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'"{{{
@@ -145,9 +145,9 @@ let g:ackprg="ag --nogroup --nocolor --column"
 "}}}
 Plug 'nanotech/jellybeans.vim'"{{{
 "}}}
-Plug 'nvie/vim-flake8'"{{{
+Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
 "}}}
-Plug 'petRUShka/vim-opencl'"{{{
+Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
 Plug 'reedes/vim-wordy'"{{{
 "}}}
@@ -174,9 +174,9 @@ Plug 'tpope/vim-commentary'"{{{
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
-Plug 'tpope/vim-vinegar'"{{{
+Plug 'wting/rust.vim'", { 'for': 'rust' } {{{
 "}}}
-Plug 'wting/rust.vim'"{{{
+Plug 'zah/nimrod.vim'"{{{
 "}}}
 
 if has('lua')
