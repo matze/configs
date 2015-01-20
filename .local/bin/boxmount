@@ -3,7 +3,7 @@
 IDLE_TIME=5
 
 SSHFS_URL="matthias@bloerg:/home/matthias/box"
-ENCFS_OPTS="--idle=$IDLE_TIME --stdinpass"
+ENCFS_OPTS="--idle=$IDLE_TIME"
 
 BOX_PATH="$HOME/box"
 ENCBOX_PATH="$HOME/.encbox"
