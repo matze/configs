@@ -165,8 +165,6 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
 
 if [ -f $Z_SH ]; then
