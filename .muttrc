@@ -47,6 +47,7 @@ set crypt_replysign             = yes
 set crypt_replyencrypt          = yes
 set crypt_replysignencrypted    = yes
 set crypt_verify_sig            = yes
+set pgp_auto_decode             = yes
 #}}}
 #{{{ Accounts
 
