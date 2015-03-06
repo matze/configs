@@ -171,6 +171,7 @@ nmap <C-H> <Plug>DWMShrinkMaster
 nmap <C-E> <Plug>DWMFocus
 "}}}
 Plug 'tpope/vim-commentary'"{{{
+autocmd FileType cmake set commentstring=#\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
