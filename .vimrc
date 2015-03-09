@@ -91,6 +91,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim' "{{{
 
 let g:lightline = {
+    \ 'colorscheme': 'jellybeans',
     \ 'component': {
     \   'readonly': '%{&readonly?"✖":""}',
     \ },
