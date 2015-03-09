@@ -175,11 +175,14 @@ autocmd FileType cmake set commentstring=#\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
+Plug 'ajh17/Spacegray.vim'"{{{
+"}}}
 Plug 'wting/rust.vim'", { 'for': 'rust' } {{{
 "}}}
 Plug 'zah/nimrod.vim'"{{{
 "}}}
 
+"{{{ lua-only
 if has('lua')
     Plug 'Shougo/neocomplete' "{{{
     let g:neocomplete#enable_at_startup = 1
@@ -225,10 +228,11 @@ else
     nmap <Leader>ncd :NeoComplCacheDisable<CR>
     "}}}
 end
+"}}}
 
 call plug#end()
 
-silent! colorscheme jellybeans
+silent! colorscheme spacegray
 
 "}}}
 "{{{ Functions
