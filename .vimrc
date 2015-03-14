@@ -29,7 +29,6 @@ set hidden          " Allow buffers to be hidden
 set scrolloff=2     " At least two lines and ...
 set sidescrolloff=2 " two columns context
 set mouse=a         " Mouse support
-set tags=.tags      " Tags file
 set ttyfast
 set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
 set dir=~/.vim      " Location for .swp files
@@ -120,6 +119,9 @@ let g:ctrlp_user_command = {
     \ },
     \ 'fallback': 'ag %s -l --nocolor -g ""'
     \ }
+"}}}
+Plug 'ludovicchabant/vim-gutentags'"{{{
+let g:gutentags_cache_dir = '/tmp'
 "}}}
 Plug 'matze/vim-golang', { 'for': 'go' } "{{{
 "}}}
@@ -286,8 +288,6 @@ nnoremap cp <Esc>:cp<CR>
 
 nnoremap <Leader>w :w!<CR>
 nnoremap <Leader>h :silent noh<CR>
-
-nmap <Leader>gt :!git ls-tree -r --name-only $(git rev-parse --abbrev-ref HEAD) <bar> ctags -f .tags --sort=yes -L - <CR><CR>
 
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
