@@ -1,5 +1,6 @@
 setlocal textwidth=72
 setlocal formatoptions+=n
+setlocal nosmartindent
 
 function! MailFixGithubReply()
     delete
