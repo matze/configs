@@ -54,6 +54,7 @@ set linebreak       " Break lines nicer
 set number          " Show line numbers
 set listchars=tab:»\ ,trail:·,eol:¬
 set fillchars=fold:·
+set backspace=indent,eol,start
 
 " Highlighting, colors, fonts
 set t_Co=256
