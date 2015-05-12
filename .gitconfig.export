@@ -29,6 +29,7 @@
     unstage = reset HEAD
     undo    = checkout --
     tarball = !git archive HEAD --prefix=$(basename $(pwd))/ | gzip > $(basename $(pwd))-$(git rev-parse --short HEAD).tar.gz
+    checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 
 [advice]
     pushNonFastForward  = false
