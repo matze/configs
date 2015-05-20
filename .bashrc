@@ -83,7 +83,7 @@ function _prompt_command() {
     if test -z "$VIRTUAL_ENV" ; then
         PYTHON_VIRTUALENV=""
     else
-        PYTHON_VIRTUALENV="${YELLOW}☼ `basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
+        PYTHON_VIRTUALENV="${YELLOW}* `basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
     fi
 
     _set_prompt_workingdir
