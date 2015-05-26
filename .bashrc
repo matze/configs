@@ -75,7 +75,7 @@ function _git_prompt() {
         local branch=$(__git_ps1 "%s")
         test "$branch" != master || branch=' '
 
-        echo -n '\[\e[0;30m\]\e['"$ansi"'m\]'"$branch"'\[\e[0m\] '
+        echo -n '\[\e[0;30m\]\[\e[0;'"$ansi"'m\]'"$branch"'\[\e[0m\] '
     fi
 }
 
