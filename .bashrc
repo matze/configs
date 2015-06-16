@@ -13,7 +13,6 @@
 shopt -s autocd
 shopt -s cdspell
 shopt -s histappend
-set -o vi
 #}}}
 #{{{ Binds
 bind '"\e[A":history-search-backward'
