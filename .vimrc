@@ -101,6 +101,8 @@ let g:lightline = {
     \ }
 
 "}}}
+Plug 'nanotech/jellybeans.vim' "{{{
+"}}}
 Plug 'justinmk/vim-sneak' "{{{
 
 let g:sneak#streak = 1
@@ -236,7 +238,7 @@ end
 
 call plug#end()
 
-silent! colorscheme spacegray
+silent! colorscheme jellybeans
 
 "}}}
 "{{{ Functions
