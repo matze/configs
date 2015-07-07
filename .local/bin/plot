@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+
+import argparse
+import matplotlib.pyplot as plt
+import csv
+import numpy as np
+from itertools import izip, izip_longest, cycle
+
+
+def plot(fname, columns, headers, args):
+    fig = plt.figure(figsize=tuple(args.figsize))
+    ax = fig.add_subplot(1, 1, 1)
+    marker = cycle(('o', 's', '^', '*'))
+
+    for y_column in args.y_columns:
+        label = headers[y_column] if args.use_header_as_label else None
+        ax.plot(columns[args.x_column], columns[y_column], label=label, marker=marker.next())
+
+    if args.y_min is not None:
+        ax.set_ylim(args.y_min)
+    
+    if args.use_header_as_label:
+        ax.legend()
+
+    ax.set_xlabel(headers[args.x_column])
+    ax.set_ylabel(args.y_label or headers[args.y_columns[0]])
+
+    fig.savefig('{}.{}'.format(fname, args.filetype), dpi=args.dpi)
+
+
+def process(fname, args):
+    with open(fname, 'r') as f:
+        reader = csv.reader(f, delimiter=args.delimiter)
+        headers = reader.next()
+        columns = tuple(izip_longest(*[(float(x) for x in d) for d in reader]))
+        plot(fname, columns, headers, args)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('input', type=str, nargs='+')
+    parser.add_argument('--barchart', action='store_true')
+    parser.add_argument('--x-column', type=int, default=0)
+    parser.add_argument('--y-columns', type=int, nargs='+', default=[1])
+    parser.add_argument('--y-min', type=float, default=None)
+    parser.add_argument('--use-header-as-label', action='store_true')
+    parser.add_argument('--y-label', type=str, default=None)
+    parser.add_argument('--delimiter', type=str, default=',')
+
+    parser.add_argument('--filetype', type=str, default='png')
+    parser.add_argument('--dpi', type=int, default=None)
+    parser.add_argument('--figsize', type=float, nargs='+', default=[8, 6])
+
+    args = parser.parse_args()
+
+    for fname in args.input:
+        process(fname, args)
+
+
+if __name__ == '__main__':
+    main()
