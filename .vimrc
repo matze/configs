@@ -88,6 +88,8 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'ekalinin/Dockerfile.vim' "{{{
+"}}}
 Plug 'itchyny/lightline.vim' "{{{
 
 let g:lightline = {
