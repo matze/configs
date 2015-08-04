@@ -109,6 +109,18 @@ Plug 'justinmk/vim-sneak' "{{{
 
 let g:sneak#streak = 1
 
+hi link SneakPluginTarget Type
+hi link SneakPluginScope Function
+hi link SneakStreakTarget Type
+hi link SneakStreakMask Function
+
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+
 "}}}
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "{{{
 "}}}
