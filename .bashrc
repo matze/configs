@@ -28,8 +28,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ga='git annex'
 alias la='ls -A'
+alias ll='ls -l'
 alias tmux="TERM=xterm-256color tmux"
 alias waf='./waf'
 alias mutt="TERM=xterm-256color mutt"
@@ -99,31 +99,6 @@ function man() {
 	LESS_TERMCAP_ue=$(printf "\e[0m") \
 	LESS_TERMCAP_us=$(printf "\e[04;36m") \
 	man "$@"
-}
-
-function ll() {
-    local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
-
-    if [ $? -eq 0 ]; then
-        # we are in a Git repo
-
-        if [ -d "${git_root}/.git/annex" ]; then
-            for f in *; do
-                if [ -d "$f" ]; then
-                    printf "\e[1;34m$f\e[0m\n"
-                elif [ ! -e "$f" ]; then
-                    printf "\e[1;30m$f\e[0m\n"
-                else
-                    echo $f
-                fi
-            done
-
-            return 0
-        fi
-    fi
-
-    # fallback ls
-    ls -alF $1
 }
 
 function _git_pick() {
