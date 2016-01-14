@@ -1,8 +1,6 @@
 #!/bin/bash
 
-printf "> "
-
-while read line; do
+while read -ep "> " line; do
+    history -s $line
     task $line
-    printf "> "
-done < /dev/stdin
+done
