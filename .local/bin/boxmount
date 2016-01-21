@@ -1,12 +1,10 @@
 #!/bin/bash
 
-IDLE_TIME=5
+IDLE_TIME=15
 
-SSHFS_URL="matthias@bloerg:/home/matthias/box"
 ENCFS_OPTS="--idle=$IDLE_TIME"
-
 BOX_PATH="$HOME/box"
-ENCBOX_PATH="$HOME/.encbox"
+ENCBOX_PATH="$HOME/sync/documents/box"
 
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -41,14 +39,6 @@ if [[ $RC != 0 ]]; then
     exit $RC
 fi
 
-SSHFS=$(which sshfs)
-RC=$?
-
-if [[ $RC != 0 ]]; then
-    echo "sshfs not found"
-    exit $RC
-fi
-
 if [[ ! -d $ENCBOX_PATH ]]; then
     mkdir -p $ENCBOX_PATH
 fi
@@ -62,17 +52,9 @@ if [ "$(ls -A $BOX_PATH)" ]; then
     printf "Unmounting box ... "
     fusermount -u $BOX_PATH
 
-    if [ "$(ls -A $ENCBOX_PATH)" ]; then
-        fusermount -u $ENCBOX_PATH
-    fi
-
     print_check
 else
     printf "Mounting box ... "
-
-    if [ ! "$(ls -A $ENCBOX_PATH)" ]; then
-        $SSHFS $SSHFS_URL $ENCBOX_PATH -o uid=$(id -u) -o gid=$(id -g)
-    fi
 
     $ENCFS $ENCFS_OPTS --extpass="keyring-query --service=encbox --user=$USER" $ENCBOX_PATH $BOX_PATH
     test_return_code $?
