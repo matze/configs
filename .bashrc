@@ -36,6 +36,7 @@ alias mutt="TERM=xterm-256color mutt"
 alias make="make -j4"
 alias r="ranger"
 alias docker="docker.io"
+alias tl="date '+%Y-%m-%d %H:%M' >> ~/sync/documents/log"
 #}}}
 #{{{ Functions
 #{{{ Prompt
