@@ -137,6 +137,8 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'ag %s -l --nocolor -g ""'
     \ }
 "}}}
+Plug 'Konfekt/FastFold'"{{{
+"}}}
 Plug 'ledger/vim-ledger'"{{{
 "}}}
 Plug 'ludovicchabant/vim-gutentags'"{{{
