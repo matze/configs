@@ -166,6 +166,7 @@ Plug 'matze/vim-ini-fold'"{{{
 "}}}
 Plug 'mileszs/ack.vim'"{{{
 let g:ackprg="ag --nogroup --nocolor --column"
+nmap <C-F>f :Ack<space>
 "}}}
 Plug 'nanotech/jellybeans.vim'"{{{
 "}}}
