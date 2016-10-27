@@ -1,12 +1,10 @@
 set show-changes = yes
 set commit-order = topo
-set author-width = 2
-set show-id = yes
 set vertical-split = yes
 set split-view-height = 80%
 
-bind generic ^j view-next
-bind generic ^k view-next
+bind generic <Ctrl-j> view-next
+bind generic <Ctrl-k> view-next
 
 color title-focus   yellow default bold
 color title-blur    black default
