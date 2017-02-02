@@ -88,8 +88,6 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ekalinin/Dockerfile.vim' "{{{
-"}}}
 Plug 'itchyny/lightline.vim' "{{{
 
 let g:lightline = {
@@ -143,8 +141,6 @@ Plug 'ledger/vim-ledger'"{{{
 "}}}
 Plug 'ludovicchabant/vim-gutentags'"{{{
 let g:gutentags_cache_dir = '/tmp'
-"}}}
-Plug 'matze/vim-golang', { 'for': 'go' } "{{{
 "}}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
@@ -200,11 +196,7 @@ autocmd FileType cmake set commentstring=#\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
-Plug 'ajh17/Spacegray.vim'"{{{
-"}}}
 Plug 'wting/rust.vim'", { 'for': 'rust' } {{{
-"}}}
-Plug 'zah/nimrod.vim'"{{{
 "}}}
 
 "{{{ lua-only
