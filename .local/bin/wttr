@@ -1,0 +1,2 @@
+#!/bin/sh
+curl -H "Accept-Language: de" wttr.in
