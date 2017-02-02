@@ -81,9 +81,10 @@ fi
 if [ -z "$DO_EDIT" ]; then
     export CENV=$ENV_DIR
     export PATH=$ENV_DIR/bin:$PATH
-    export LD_LIBRARY_PATH=$ENV_DIR/lib:$LD_LIBRARY_PATH
-    export PKG_CONFIG_PATH=$ENV_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
-    export GI_TYPELIB_PATH=$ENV_DIR/lib/girepository-1.0:$GI_TYPELIB_PATH
+    export MANPATH=:$ENV_DIR/share/man
+    export LD_LIBRARY_PATH=$ENV_DIR/lib/x86_64-linux-gnu:$ENV_DIR/lib:$LD_LIBRARY_PATH
+    export PKG_CONFIG_PATH=$ENV_DIR/lib/x86_64-linux-gnu/pkgconfig:$ENV_DIR/lib/pkgconfig:$PKG_CONFIG_PATH
+    export GI_TYPELIB_PATH=$ENV_DIR/lib/x86_64-linux-gnu/girepository-1.0:$ENV_DIR/lib/girepository-1.0:$GI_TYPELIB_PATH
 
     if [ -z "$VIRTUAL_ENV" ]; then
         export VIRTUAL_ENV="$ENV"
