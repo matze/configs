@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -H "Accept-Language: de" wttr.in
+curl -H "Accept-Language: de" wttr.in/Karlsruhe
