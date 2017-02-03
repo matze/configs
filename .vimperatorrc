@@ -1,8 +1,0 @@
-"3.7.1 (created: 2013/05/22 20:32:57)
-
-" source! /home/matthias/.vimperatorrc.local
-
-javascript liberator.beep = function() { return false; }
-
-" colorscheme Mediterranean
-" vim: set ft=vimperator:
