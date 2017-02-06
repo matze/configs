@@ -122,6 +122,8 @@ omap F <Plug>Sneak_F
 "}}}
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "{{{
 "}}}
+Plug 'wellle/targets.vim' "{{{
+"}}}
 Plug 'kien/ctrlp.vim'"{{{
 
 let g:ctrlp_switch_buffer = 0
