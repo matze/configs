@@ -101,7 +101,7 @@ let g:lightline = {
     \ }
 
 "}}}
-Plug 'nanotech/jellybeans.vim' "{{{
+Plug 'morhetz/gruvbox' "{{{
 "}}}
 Plug 'justinmk/vim-sneak' "{{{
 
@@ -255,7 +255,8 @@ end
 
 call plug#end()
 
-silent! colorscheme jellybeans
+silent! colorscheme gruvbox
+silent! set background=dark
 
 "}}}
 "{{{ Functions
