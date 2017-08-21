@@ -88,6 +88,8 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'cespare/vim-toml' "{{{
+"}}}
 Plug 'itchyny/lightline.vim' "{{{
 
 let g:lightline = {
