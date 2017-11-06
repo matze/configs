@@ -142,7 +142,6 @@ fi
 command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git*"'
 
 if [ -f ~/.fzf/key-bindings.bash ]; then
-    echo "hello"
     . ~/.fzf/key-bindings.bash
 fi
 
