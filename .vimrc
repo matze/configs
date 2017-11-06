@@ -124,20 +124,28 @@ omap F <Plug>Sneak_F
 "}}}
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "{{{
 "}}}
-Plug 'wellle/targets.vim' "{{{
+Plug 'junegunn/fzf' "{{{
 "}}}
-Plug 'kien/ctrlp.vim'"{{{
+Plug 'junegunn/fzf.vim' "{{{
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Tags<CR>
 
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_extensions = ['tag']
-
-let g:ctrlp_user_command = {
-    \ 'types': {
-    \   1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-    \   2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-    \ 'fallback': 'ag %s -l --nocolor -g ""'
-    \ }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+"}}}
+Plug 'wellle/targets.vim' "{{{
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
@@ -304,7 +312,6 @@ nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
 
 nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
-nnoremap <C-b> :CtrlPTag<CR>
 
 nnoremap cn <Esc>:cn<CR>
 nnoremap cp <Esc>:cp<CR>

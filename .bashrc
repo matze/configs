@@ -139,6 +139,13 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
+command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git*"'
+
+if [ -f ~/.fzf/key-bindings.bash ]; then
+    echo "hello"
+    . ~/.fzf/key-bindings.bash
+fi
+
 Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
 
 if [ -f $Z_SH ]; then
