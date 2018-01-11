@@ -122,8 +122,6 @@ omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
 
 "}}}
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } "{{{
-"}}}
 Plug 'junegunn/fzf' "{{{
 "}}}
 Plug 'junegunn/fzf.vim' "{{{
@@ -144,8 +142,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-"}}}
-Plug 'wellle/targets.vim' "{{{
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
@@ -181,8 +177,6 @@ Plug 'nanotech/jellybeans.vim'"{{{
 Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
-"}}}
-Plug 'reedes/vim-wordy'"{{{
 "}}}
 Plug 'Shougo/neosnippet'"{{{
 let g:neosnippet#snippets_directory='~/.vim/snippets'
