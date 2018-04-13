@@ -29,6 +29,7 @@ set hidden          " Allow buffers to be hidden
 set scrolloff=2     " At least two lines and ...
 set sidescrolloff=2 " two columns context
 set mouse=a         " Mouse support
+set guicursor=      " Disable cursor change in neovim
 set ttyfast
 set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
 set dir=~/.vim      " Location for .swp files
