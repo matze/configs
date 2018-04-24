@@ -179,6 +179,8 @@ Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
+Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
+"}}}
 Plug 'Shougo/neosnippet'"{{{
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 
