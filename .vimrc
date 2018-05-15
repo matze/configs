@@ -146,6 +146,9 @@ let g:fzf_colors =
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
+Plug 'nathangrigg/vim-beancount'"{{{
+set sw=2
+"}}}
 Plug 'ledger/vim-ledger'"{{{
 "}}}
 Plug 'ludovicchabant/vim-gutentags'"{{{
