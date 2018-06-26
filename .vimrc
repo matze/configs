@@ -151,6 +151,8 @@ set sw=2
 "}}}
 Plug 'ledger/vim-ledger'"{{{
 "}}}
+Plug 'nathangrigg/vim-beancount'"{{{
+"}}}
 Plug 'ludovicchabant/vim-gutentags'"{{{
 let g:gutentags_cache_dir = '/tmp'
 "}}}
