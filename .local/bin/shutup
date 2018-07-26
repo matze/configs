@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo "You have two seconds to cancel shutdown ..."
-sleep 1
-echo "Hurry!"
-sleep 1
-
-dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop

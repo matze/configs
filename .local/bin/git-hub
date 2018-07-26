@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ "$#" -ne 1 ]; then
-    echo "Wrong number of arguments."
-    exit 1
-fi
-
-git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1
