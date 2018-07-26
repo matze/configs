@@ -61,8 +61,8 @@ function _set_prompt_workingdir () {
 }
 
 function _git_prompt() {
-    local git_status="`git status --porcelain 2>&1`"
-    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+    local git_status="`git rev-parse --is-inside-work-tree 2>&1`"
+    if ! [[ "$git_status" =~ fatal ]]; then
         if [ -z "$git_status" ]; then
             local ansi=42
         elif [[ "$git_status" == *" M "* ]]; then
