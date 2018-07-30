@@ -60,24 +60,6 @@ function _set_prompt_workingdir () {
     fi
 }
 
-function _git_prompt() {
-    local git_status="`git rev-parse --is-inside-work-tree 2>&1`"
-    if ! [[ "$git_status" =~ fatal ]]; then
-        if [ -z "$git_status" ]; then
-            local ansi=42
-        elif [[ "$git_status" == *" M "* ]]; then
-            local ansi=45
-        else
-            local ansi=43
-        fi
-
-        local branch=$(__git_ps1 "%s")
-        test "$branch" != master || branch=' '
-
-        echo -n '\[\e[0;30m\]\[\e[0;'"$ansi"'m\]'"$branch"'\[\e[0m\] '
-    fi
-}
-
 function _prompt_command() {
     if test -z "$VIRTUAL_ENV" ; then
         PYTHON_VIRTUALENV=""
@@ -87,7 +69,7 @@ function _prompt_command() {
 
     _set_prompt_workingdir
 
-    PS1="`_git_prompt`${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE} "
+    echo -n "${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE}"
 }
 #}}}
 function man() {
@@ -122,7 +104,7 @@ complete -F _cenv cenv
 complete -F _mx mx
 #}}}
 #{{{ Environment
-PROMPT_COMMAND=_prompt_command
+PROMPT_COMMAND='__git_ps1 "`_prompt_command`" " "'
 
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
@@ -137,6 +119,14 @@ fi
 
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
+fi
+
+if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+    . /usr/lib/git-core/git-sh-prompt
+    export GIT_PS1_SHOWDIRTYSTATE=yes
+    export GIT_PS1_SHOWCOLORHINTS=yes
+    export GIT_PS1_SHOWSTASHSTATE=yes
+    export GIT_PS1_SHOWUNTRACKEDFILES=yes
 fi
 
 command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git*"'
