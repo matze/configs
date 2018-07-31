@@ -147,7 +147,8 @@ let g:fzf_colors =
 Plug 'Konfekt/FastFold'"{{{
 "}}}
 Plug 'nathangrigg/vim-beancount'", { 'for': 'beancount' } {{{
-"}}}
+autocmd BufReadPost,BufNewFile *.beancount :set sw=2 
+" }}}
 "Plug 'ludovicchabant/vim-gutentags'"{{{
 "let g:gutentags_cache_dir = '/tmp'
 ""}}}
