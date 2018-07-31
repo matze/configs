@@ -89,7 +89,7 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'cespare/vim-toml' "{{{
+Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 "}}}
 Plug 'itchyny/lightline.vim' "{{{
 
@@ -146,19 +146,14 @@ let g:fzf_colors =
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
-Plug 'nathangrigg/vim-beancount'"{{{
-set sw=2
+Plug 'nathangrigg/vim-beancount'", { 'for': 'beancount' } {{{
 "}}}
-Plug 'ledger/vim-ledger'"{{{
-"}}}
-Plug 'nathangrigg/vim-beancount'"{{{
-"}}}
-Plug 'ludovicchabant/vim-gutentags'"{{{
-let g:gutentags_cache_dir = '/tmp'
-"}}}
+"Plug 'ludovicchabant/vim-gutentags'"{{{
+"let g:gutentags_cache_dir = '/tmp'
+""}}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
-Plug 'matze/vim-markdown'"{{{
+Plug 'matze/vim-markdown'", { 'for': 'markdown' } {{{
 let g:markdown_fold_override_foldtext = 0
 "}}}
 Plug 'matze/vim-meson'"{{{
@@ -174,7 +169,7 @@ nmap k <Plug>MoveLineUp
 Plug 'matze/vim-tex-fold'", { 'for': 'tex' } {{{
 let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
-Plug 'matze/vim-ini-fold'"{{{
+Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
 Plug 'mileszs/ack.vim'"{{{
 let g:ackprg="ag --nogroup --nocolor --column"
