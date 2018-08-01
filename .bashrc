@@ -31,11 +31,7 @@ fi
 alias la='ls -A'
 alias ll='ls -l'
 alias tmux="TERM=xterm-256color tmux"
-alias waf='./waf'
-alias mutt="TERM=xterm-256color mutt"
 alias make="make -j4"
-alias r="ranger"
-alias tl="date '+%Y-%m-%d %H:%M' >> ~/sync/documents/log"
 #}}}
 #{{{ Prompt
 COLOR_NONE="\[\033[0m\]"
