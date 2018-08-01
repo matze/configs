@@ -37,7 +37,6 @@ alias make="make -j4"
 alias r="ranger"
 alias tl="date '+%Y-%m-%d %H:%M' >> ~/sync/documents/log"
 #}}}
-#{{{ Functions
 #{{{ Prompt
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
@@ -72,6 +71,7 @@ function _prompt_command() {
     echo -n "${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE}"
 }
 #}}}
+#{{{ man enhancement
 function man() {
     env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 	LESS_TERMCAP_md=$(printf "\e[1;35m") \
@@ -82,12 +82,40 @@ function man() {
 	LESS_TERMCAP_us=$(printf "\e[04;36m") \
 	man "$@"
 }
+#}}}
+#{{{ ssh tmux integration
+__tm_get_hostname() {
+    local HOST="$(echo $* | rev | cut -d ' ' -f 1 | rev)"
+    if echo $HOST | grep -P "^([0-9]+\.){3}[0-9]+" -q; then
+        echo $HOST
+    else
+        echo $HOST | cut -d . -f 1
+    fi
+}
 
-function _git_pick() {
-    __gitcomp_nl "$(__git_refs)"
+__tm_get_current_window() {
+    tmux list-windows| awk -F : '/\(active\)$/{print $1}'
+}
+
+__tm_command() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=| cut -d : -f 1)" = "tmux" ]; then
+        __tm_window=$(__tm_get_current_window)
+        trap "tmux set-window-option -t $__tm_window automatic-rename on 1>/dev/null" RETURN
+        echo $(__tm_get_hostname $*)
+        tmux rename-window "$(__tm_get_hostname $*)"
+    fi
+    command "$@"
+}
+
+ssh() {
+    __tm_command ssh "$@"
 }
 #}}}
 #{{{ Completion
+_git_pick() {
+    __gitcomp_nl "$(__git_refs)"
+}
+
 _cenv() {
     local cur=${COMP_WORDS[COMP_CWORD]}
     local envs=$(cenv --show | tr "\n" " ")
