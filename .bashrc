@@ -97,7 +97,6 @@ __tm_command() {
     if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=| cut -d : -f 1)" = "tmux" ]; then
         __tm_window=$(__tm_get_current_window)
         trap "tmux set-window-option -t $__tm_window automatic-rename on 1>/dev/null" RETURN
-        echo $(__tm_get_hostname $*)
         tmux rename-window "$(__tm_get_hostname $*)"
     fi
     command "$@"
