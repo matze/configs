@@ -1,2 +1,4 @@
-set editing-mode vi
-set show-all-if-ambiguous on
+set editing-mode            vi
+set show-all-if-ambiguous   on
+set completion-query-items  0
+set page-completions        off
