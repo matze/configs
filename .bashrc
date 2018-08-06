@@ -106,6 +106,15 @@ ssh() {
     __tm_command ssh "$@"
 }
 #}}}
+#{{{ fzf and ripgrep
+command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.svn}/*"'
+
+if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
+    . ~/.vim/plugged/fzf/shell/key-bindings.bash
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    bind -x '"\C-p": vim $(fzf);'
+fi
+#}}}
 #{{{ Completion
 _git_pick() {
     __gitcomp_nl "$(__git_refs)"
@@ -143,12 +152,6 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     export GIT_PS1_SHOWCOLORHINTS=yes
     export GIT_PS1_SHOWSTASHSTATE=yes
     export GIT_PS1_SHOWUNTRACKEDFILES=yes
-fi
-
-command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git*"'
-
-if [ -f ~/.fzf/key-bindings.bash ]; then
-    . ~/.fzf/key-bindings.bash
 fi
 
 Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
