@@ -205,6 +205,7 @@ nmap <C-E> <Plug>DWMFocus
 "}}}
 Plug 'tpope/vim-commentary'"{{{
 autocmd FileType cmake set commentstring=#\ %s
+autocmd FileType meson set commentstring=#\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
