@@ -9,16 +9,20 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-#{{{ Options
+#{{{ options
 shopt -s autocd
 shopt -s cdspell
 shopt -s histappend
+
+HISTCONTROL=ignoredups:ignorespace
+HISTSIZE=1000
+HISTFILESIZE=2000
 #}}}
-#{{{ Binds
+#{{{ key binds
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 #}}}
-#{{{ Aliases
+#{{{ aliases
 # Color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b)"
@@ -33,7 +37,7 @@ alias ll='ls -l'
 alias tmux="TERM=xterm-256color tmux"
 alias make="make -j4"
 #}}}
-#{{{ Prompt
+#{{{ prompt
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
 YELLOW="\[\033[1;33m\]"
@@ -66,6 +70,16 @@ function _prompt_command() {
 
     echo -n "${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE}"
 }
+
+if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+    . /usr/lib/git-core/git-sh-prompt
+    export GIT_PS1_SHOWDIRTYSTATE=yes
+    export GIT_PS1_SHOWCOLORHINTS=yes
+    export GIT_PS1_SHOWSTASHSTATE=yes
+    export GIT_PS1_SHOWUNTRACKEDFILES=yes
+fi
+
+PROMPT_COMMAND='__git_ps1 "`_prompt_command`" " "'
 #}}}
 #{{{ man enhancement
 function man() {
@@ -79,7 +93,7 @@ function man() {
 	man "$@"
 }
 #}}}
-#{{{ ssh tmux integration
+#{{{ ssh + tmux integration
 __tm_get_hostname() {
     local HOST="$(echo $* | rev | cut -d ' ' -f 1 | rev)"
     if echo $HOST | grep -P "^([0-9]+\.){3}[0-9]+" -q; then
@@ -105,8 +119,17 @@ __tm_command() {
 ssh() {
     __tm_command ssh "$@"
 }
+
+SOCK=/tmp/ssh-agent-tmux
+
+if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
+    rm -f $SOCK
+    ln -s $SSH_AUTH_SOCK $SOCK
+fi
+
+export SSH_AUTH_SOCK=$SOCK
 #}}}
-#{{{ fzf and ripgrep
+#{{{ fzf + ripgrep
 command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.svn}/*"'
 
 if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
@@ -115,7 +138,14 @@ if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
     bind -x '"\C-p": vim $(fzf);'
 fi
 #}}}
-#{{{ Completion
+#{{{ z.sh
+Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
+
+if [ -f $Z_SH ]; then
+    . $Z_SH
+fi
+#}}}
+#{{{ bash completion
 _git_pick() {
     __gitcomp_nl "$(__git_refs)"
 }
@@ -127,45 +157,13 @@ _cenv() {
 }
 
 complete -F _cenv cenv
-#}}}
-#{{{ Environment
-PROMPT_COMMAND='__git_ps1 "`_prompt_command`" " "'
-
-HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=1000
-HISTFILESIZE=2000
-#}}}
-#{{{ Sourcing
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
+#}}}
+#{{{ local bash
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
-
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-    . /usr/lib/git-core/git-sh-prompt
-    export GIT_PS1_SHOWDIRTYSTATE=yes
-    export GIT_PS1_SHOWCOLORHINTS=yes
-    export GIT_PS1_SHOWSTASHSTATE=yes
-    export GIT_PS1_SHOWUNTRACKEDFILES=yes
-fi
-
-Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
-
-if [ -f $Z_SH ]; then
-    . $Z_SH
-fi
-
-SOCK=/tmp/ssh-agent-tmux
-
-if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
-    rm -f $SOCK
-    ln -s $SSH_AUTH_SOCK $SOCK
-fi
-
-export SSH_AUTH_SOCK=$SOCK
 #}}}
