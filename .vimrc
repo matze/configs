@@ -91,6 +91,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 "}}}
+Plug 'editorconfig/editorconfig-vim' "{{{
+"}}}
 Plug 'itchyny/lightline.vim' "{{{
 
 let g:lightline = {
