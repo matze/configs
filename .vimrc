@@ -264,6 +264,8 @@ else
 end
 "}}}
 
+let g:ftplugin_sql_omni_key = '<C-j>'
+
 call plug#end()
 
 silent! colorscheme gruvbox
