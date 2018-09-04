@@ -53,7 +53,7 @@ set expandtab       " Spaces instead of tabs
 set smarttab        " Add/remove spaces instead of tabs
 set linebreak       " Break lines nicer
 set number          " Show line numbers
-set listchars=tab:›\ ,trail:▾
+set listchars=tab:›\ ,trail:•
 set list
 set fillchars=fold:·
 set backspace=indent,eol,start
