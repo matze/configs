@@ -3,8 +3,8 @@
 IDLE_TIME=15
 
 ENCFS_OPTS="--idle=$IDLE_TIME"
-BOX_PATH="$HOME/box"
-ENCBOX_PATH="$HOME/sync/documents/box"
+BOX_PATH="$HOME/etc/box"
+ENCBOX_PATH="$HOME/docs/synced/box"
 
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
