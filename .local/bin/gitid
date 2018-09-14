@@ -11,7 +11,7 @@ function set_git_identity() {
 }
 
 case $answer in
-    1)  _USER_EMAIL="matthias.vogelgesang@kit.edu"
+    1)  _USER_EMAIL="mvogelgesang@cinemo.com"
         ;;
 
     *)  _USER_EMAIL="matthias.vogelgesang@gmail.com"
