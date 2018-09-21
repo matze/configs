@@ -348,6 +348,10 @@ nmap <Leader>P "+P
 nmap o :tabnew<CR>
 nmap n :tabnext<CR>
 nmap p :tabprevious<CR>
+
+" clang-format
+map <C-i> :py3f ~/.local/bin/clang-format.py<cr>
+imap <C-i> <c-o>:py3f ~/.local/bin/clang-format.py<cr>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
