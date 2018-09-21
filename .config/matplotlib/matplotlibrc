@@ -31,7 +31,7 @@ patch.edgecolor        : eeeeee
 #{{{ Font
 font.size           : 10.0
 font.family         : sans-serif   # serif | sans-serif | cursive | fantasy | monospace
-font.sans-serif     : PT Sans, Droid Sans, sans-serif
+font.sans-serif     : Roboto, PT Sans, Droid Sans, sans-serif
 #font.style          : normal       # normal | italic | oblique
 #font.variant        : normal       # normal | small-caps
 #font.weight         : medium       # normal | bold | bolder | lighter | 100 ... 900
