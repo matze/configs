@@ -351,7 +351,6 @@ nmap p :tabprevious<CR>
 
 " clang-format
 map <C-i> :py3f ~/.local/bin/clang-format.py<cr>
-imap <C-i> <c-o>:py3f ~/.local/bin/clang-format.py<cr>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
