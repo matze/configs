@@ -132,6 +132,7 @@ Plug 'junegunn/fzf' "{{{
 Plug 'junegunn/fzf.vim' "{{{
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Tags<CR>
+nnoremap <C-f> :Rg <C-r><C-w><CR><CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -175,10 +176,6 @@ Plug 'matze/vim-tex-fold'", { 'for': 'tex' } {{{
 let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
-"}}}
-Plug 'mileszs/ack.vim'"{{{
-let g:ackprg="ag --nogroup --nocolor --column"
-nmap <C-F>f :Ack<space>
 "}}}
 Plug 'nanotech/jellybeans.vim'"{{{
 "}}}
@@ -318,8 +315,6 @@ nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 
 nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
-
-nnoremap <C-f> :Ack! <C-r><C-w><CR><CR>
 
 nnoremap cn <Esc>:cn<CR>
 nnoremap cp <Esc>:cp<CR>
