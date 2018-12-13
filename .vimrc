@@ -185,6 +185,10 @@ Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
 Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
 "}}}
+Plug 'prabirshrestha/async.vim'"{{{
+"}}}
+Plug 'prabirshrestha/vim-lsp'"{{{
+"}}}
 Plug 'Shougo/neosnippet'"{{{
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 
@@ -358,4 +362,18 @@ autocmd QuickFixCmdPost l*      nested  lwindow
 
 " Reset fold background to reduce distraction
 autocmd VimEnter * hi Folded ctermbg=None
-"}}}
+
+" Hook up clangd with lsp
+ if executable('clangd-6.0')
+     augroup lsp_clangd
+         autocmd!
+         autocmd User lsp_setup call lsp#register_server({
+                     \ 'name': 'clangd-6.0',
+                     \ 'cmd': {server_info->['clangd-6.0']},
+                     \ 'whitelist': ['c', 'cpp'],
+                     \ })
+         autocmd FileType c setlocal omnifunc=lsp#complete
+         autocmd FileType cpp setlocal omnifunc=lsp#complete
+     augroup end
+ endif
+" }}}
