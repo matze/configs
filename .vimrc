@@ -212,6 +212,7 @@ Plug 'tpope/vim-commentary'"{{{
 autocmd FileType cmake setlocal commentstring=#\ %s
 autocmd FileType meson setlocal commentstring=#\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
+autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
