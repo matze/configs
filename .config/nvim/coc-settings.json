@@ -1,0 +1,17 @@
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cacheDirectory": "/tmp/ccls"
+            }
+        },
+        "pyls": {
+            "command": "pyls",
+            "filetypes": ["py"],
+            "rootPatterns": [".git/", ".hg/"]
+        }
+    }
+}
