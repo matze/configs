@@ -7,11 +7,6 @@
             "initializationOptions": {
                 "cacheDirectory": "/tmp/ccls"
             }
-        },
-        "pyls": {
-            "command": "pyls",
-            "filetypes": ["py"],
-            "rootPatterns": [".git/", ".hg/"]
         }
     }
 }
