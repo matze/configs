@@ -128,7 +128,7 @@ Plug 'junegunn/fzf' "{{{
 Plug 'junegunn/fzf.vim' "{{{
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Tags<CR>
-nnoremap <C-f> :Rg <C-r><C-w><CR><CR>
+nnoremap <C-f> :Rg <C-r><C-w><CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -160,10 +160,10 @@ Plug 'matze/vim-meson'"{{{
 Plug 'matze/vim-move'"{{{
 let g:move_map_keys = 0
 
-vmap j <Plug>MoveBlockDown
-vmap k <Plug>MoveBlockUp
-nmap j <Plug>MoveLineDown
-nmap k <Plug>MoveLineUp
+vmap <A-j> <Plug>MoveBlockDown
+vmap <A-k> <Plug>MoveBlockUp
+nmap <A-j> <Plug>MoveLineDown
+nmap <A-k> <Plug>MoveLineUp
 "}}}
 Plug 'matze/vim-tex-fold'", { 'for': 'tex' } {{{
 let g:tex_fold_additional_envs = ['tikzpicture']
@@ -209,6 +209,8 @@ call plug#end()
 
 silent! colorscheme gruvbox
 silent! set background=dark
+
+highlight clear SignColumn
 
 "}}}
 "{{{ Functions
