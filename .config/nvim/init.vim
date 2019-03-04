@@ -170,7 +170,7 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}} "{{{
+Plug 'neoclide/coc.nvim'"{{{
 nmap <Leader>f <Plug>(coc-definition)
 nmap <Leader>c <Plug>(coc-declaration)
 nmap <Leader>i <Plug>(coc-implementation)
