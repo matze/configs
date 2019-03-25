@@ -128,6 +128,7 @@ Plug 'junegunn/fzf' "{{{
 Plug 'junegunn/fzf.vim' "{{{
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Tags<CR>
+nnoremap <C-o> :Buffers<CR>
 nnoremap <C-f> :Rg <C-r><C-w><CR>
 
 let g:fzf_colors =
