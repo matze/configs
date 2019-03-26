@@ -29,6 +29,7 @@ set guicursor=      " Disable cursor change in neovim
 set ttyfast
 set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
 set dir=~/.vim      " Location for .swp files
+set clipboard=unnamedplus
 let mapleader = "\<Space>"
 
 " Searching
