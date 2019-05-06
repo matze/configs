@@ -202,7 +202,7 @@ autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
 Plug 'tpope/vim-dispatch'"{{{
 "}}}
-Plug 'wting/rust.vim'", { 'for': 'rust' } {{{
+Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 "}}}
 
 let g:ftplugin_sql_omni_key = '<C-j>'
