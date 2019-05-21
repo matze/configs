@@ -129,8 +129,8 @@ fi
 
 export SSH_AUTH_SOCK=$SOCK
 #}}}
-#{{{ fzf + ripgrep
-command -v rg > /dev/null && export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,.svn}/*"'
+#{{{ fzf + fd
+command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd .'
 
 if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
     . ~/.vim/plugged/fzf/shell/key-bindings.bash
