@@ -35,7 +35,6 @@ fi
 alias la='ls -A'
 alias ll='ls -l'
 alias tmux="TERM=xterm-256color tmux"
-alias make="make -j4"
 #}}}
 #{{{ prompt
 COLOR_NONE="\[\033[0m\]"
