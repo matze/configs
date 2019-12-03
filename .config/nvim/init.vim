@@ -176,6 +176,8 @@ Plug 'neoclide/coc.nvim'"{{{
 nmap <Leader>f <Plug>(coc-definition)
 nmap <Leader>c <Plug>(coc-declaration)
 nmap <Leader>i <Plug>(coc-implementation)
+nmap <Leader>n <Plug>(coc-diagnostic-next)
+nmap <Leader>p <Plug>(coc-diagnostic-prev)
 "}}}
 Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
 "}}}
