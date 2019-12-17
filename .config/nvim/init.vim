@@ -77,8 +77,8 @@ set foldenable
 set foldmethod=marker
 
 " Omni completion
-set omnifunc=syntaxcomplete#Complete
-set completeopt=menu
+" set omnifunc=syntaxcomplete#Complete
+" set completeopt=menu
 
 " Makeprg
 set makeprg=wrapped-make
@@ -172,12 +172,30 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
-Plug 'neoclide/coc.nvim'"{{{
-nmap <Leader>f <Plug>(coc-definition)
-nmap <Leader>c <Plug>(coc-declaration)
-nmap <Leader>i <Plug>(coc-implementation)
-nmap <Leader>n <Plug>(coc-diagnostic-next)
-nmap <Leader>p <Plug>(coc-diagnostic-prev)
+Plug 'prabirshrestha/asyncomplete.vim'"{{{
+"}}}
+Plug 'prabirshrestha/async.vim'"{{{
+"}}}
+Plug 'prabirshrestha/vim-lsp'"{{{
+
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
+      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '!'}
+let g:lsp_virtual_text_enabled = 0
+
+nmap <Leader>f :LspDefinition
+"}}}
+Plug 'prabirshrestha/asyncomplete-lsp.vim'"{{{
 "}}}
 Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
 "}}}
@@ -195,6 +213,10 @@ nmap <C-X> <Plug>DWMClose
 nmap <C-L> <Plug>DWMGrowMaster
 nmap <C-H> <Plug>DWMShrinkMaster
 nmap <C-E> <Plug>DWMFocus
+"}}}
+Plug 'rhysd/vim-clang-format'"{{{
+nnoremap <Leader>fo :ClangFormat<CR>
+vnoremap <Leader>fo :ClangFormat<CR>
 "}}}
 Plug 'tpope/vim-commentary'"{{{
 autocmd FileType cmake setlocal commentstring=#\ %s
@@ -286,9 +308,6 @@ nmap <Leader>P "+P
 nmap o :tabnew<CR>
 nmap n :tabnext<CR>
 nmap p :tabprevious<CR>
-
-" clang-format
-map <C-i> :py3f ~/.local/bin/clang-format.py<cr>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
