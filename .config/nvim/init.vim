@@ -188,12 +188,24 @@ if executable('ccls')
       \ })
 endif
 
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '!'}
 let g:lsp_virtual_text_enabled = 0
 
-nmap <Leader>f :LspDefinition
+nmap <Leader>f :LspDefinition<CR>
+nmap <Leader>nw :LspNextWarning<CR>
+nmap <Leader>ne :LspNextError<CR>
 "}}}
 Plug 'prabirshrestha/asyncomplete-lsp.vim'"{{{
 "}}}
