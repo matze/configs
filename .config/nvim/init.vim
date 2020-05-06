@@ -179,22 +179,30 @@ Plug 'prabirshrestha/async.vim'"{{{
 Plug 'prabirshrestha/vim-lsp'"{{{
 
 if executable('ccls')
-   au User lsp_setup call lsp#register_server({
-      \ 'name': 'ccls',
-      \ 'cmd': {server_info->['ccls']},
-      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
-      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      \ })
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'ccls',
+            \ 'cmd': {server_info->['ccls']},
+            \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+            \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
+            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+    \ })
 endif
 
 if executable('pyls')
     " pip install python-language-server
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->['pyls']},
+            \ 'whitelist': ['python'],
+    \ })
+endif
+
+if executable('rust-analyzer')
+    au User lsp_setup call lsp#register_server({
+            \ 'name': 'rust-analyzer',
+            \ 'cmd': {server_info->['rust-analyzer']},
+            \ 'whitelist': ['rust'],
+    \ })
 endif
 
 let g:lsp_diagnostics_echo_cursor = 1
