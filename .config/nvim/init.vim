@@ -87,6 +87,10 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'ambv/black'", { 'for': 'python' } {{{
+" let g:black_linelength = 119
+" autocmd BufWritePre *.py execute ':Black'
+"}}}
 Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 "}}}
 Plug 'editorconfig/editorconfig-vim' "{{{
@@ -178,14 +182,20 @@ Plug 'prabirshrestha/async.vim'"{{{
 "}}}
 Plug 'prabirshrestha/vim-lsp'"{{{
 
-if executable('ccls')
+if executable('clangd-9')
     au User lsp_setup call lsp#register_server({
-            \ 'name': 'ccls',
-            \ 'cmd': {server_info->['ccls']},
-            \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-            \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
-            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-    \ })
+        \ 'name': 'clangd-9',
+        \ 'cmd': {server_info->['clangd-9', '--background-index', '--header-insertion=never']},
+        \ 'whitelist': ['c', 'cpp'],
+        \ })
+elseif executable('ccls')
+    au User lsp_setup call lsp#register_server({
+       \ 'name': 'ccls',
+       \ 'cmd': {server_info->['ccls']},
+       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+       \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
+       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+       \ })
 endif
 
 if executable('pyls')
