@@ -87,10 +87,6 @@ set makeprg=wrapped-make
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'ambv/black'", { 'for': 'python' } {{{
-" let g:black_linelength = 119
-" autocmd BufWritePre *.py execute ':Black'
-"}}}
 Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 "}}}
 Plug 'editorconfig/editorconfig-vim' "{{{
