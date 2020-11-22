@@ -178,13 +178,7 @@ Plug 'prabirshrestha/async.vim'"{{{
 "}}}
 Plug 'prabirshrestha/vim-lsp'"{{{
 
-if executable('clangd-9')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd-9',
-        \ 'cmd': {server_info->['clangd-9', '--background-index', '--header-insertion=never']},
-        \ 'whitelist': ['c', 'cpp'],
-        \ })
-elseif executable('ccls')
+if executable('ccls')
     au User lsp_setup call lsp#register_server({
        \ 'name': 'ccls',
        \ 'cmd': {server_info->['ccls']},
