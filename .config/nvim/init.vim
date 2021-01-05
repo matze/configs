@@ -206,6 +206,9 @@ if executable('rust-analyzer')
 endif
 
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_signs_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_document_highlight_enabled = 0
 let g:lsp_signs_enabled = 0
 let g:lsp_virtual_text_enabled = 0
 let g:lsp_highlight_references_enabled = 0
