@@ -226,17 +226,6 @@ Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
 Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
 "}}}
-Plug 'spolu/dwm.vim'"{{{
-let g:dwm_map_keys = 0
-
-nmap <C-J> <C-W>w
-nmap <C-K> <C-W>W
-nmap <C-N> <Plug>DWMNew
-nmap <C-X> <Plug>DWMClose
-nmap <C-L> <Plug>DWMGrowMaster
-nmap <C-H> <Plug>DWMShrinkMaster
-nmap <C-E> <Plug>DWMFocus
-"}}}
 Plug 'rhysd/vim-clang-format'"{{{
 nnoremap <Leader>fo :ClangFormat<CR>
 vnoremap <Leader>fo :ClangFormat<CR>
@@ -327,10 +316,11 @@ vmap <Leader>P "+P
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 
-" Tabs
-nmap o :tabnew<CR>
-nmap n :tabnext<CR>
-nmap p :tabprevious<CR>
+" Splits
+nmap <C-J> <C-W>w
+nmap <C-K> <C-W>W
+nmap <C-X> :q<CR>
+nmap <C-N> :vsp<CR>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
