@@ -220,8 +220,6 @@ nmap <Leader>ne :LspNextError<CR>
 "}}}
 Plug 'prabirshrestha/asyncomplete-lsp.vim'"{{{
 "}}}
-Plug 'nvie/vim-flake8'", { 'for': 'python' } {{{
-"}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
 Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
