@@ -5,6 +5,7 @@
     editor          = vim
     excludesfile    = ~/.gitignore
     whitespace      = fix, trailing-space
+    pager           = delta
 
 [color]
     ui          = auto
@@ -37,7 +38,13 @@
     commitBeforeMerge   = false
     resolveConflict     = false
     detachedHead        = false
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+
+[interactive]
+    diffFilter          = delta --color-only
+
+[delta]
+    syntax-theme        = gruvbox-dark
+    side-by-side        = true
+    file-style          = bold yellow
+    file-decoration-style = none
+    hunk-header-decoration-style = none
