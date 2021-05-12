@@ -77,9 +77,8 @@ endif
 set foldenable
 set foldmethod=marker
 
-" Omni completion
-" set omnifunc=syntaxcomplete#Complete
-set completeopt=menuone,noinsert,noselect
+" Completion
+set completeopt=menuone,noselect
 set shortmess+=c
 
 " Makeprg
@@ -176,9 +175,31 @@ Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
 Plug 'neovim/nvim-lspconfig'" {{{
 "}}}
- Plug 'nvim-lua/lsp_extensions.nvim'" {{{
+Plug 'nvim-lua/lsp_extensions.nvim'" {{{
 "}}}
- Plug 'nvim-lua/completion-nvim'" {{{
+Plug 'hrsh7th/nvim-compe'" {{{
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
@@ -199,8 +220,6 @@ Plug 'tpope/vim-dispatch'"{{{
 Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 "}}}
 
-let g:ftplugin_sql_omni_key = '<C-j>'
-
 call plug#end()
 
 lua <<EOF
@@ -208,14 +227,9 @@ lua <<EOF
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
--- function to attach completion when setting up lsp
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
-nvim_lsp.ccls.setup({ on_attach=on_attach })
-nvim_lsp.pyls.setup({ on_attach=on_attach })
-nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.ccls.setup({})
+nvim_lsp.pyls.setup({})
+nvim_lsp.rust_analyzer.setup({})
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
