@@ -54,6 +54,7 @@ set listchars=tab:›\ ,trail:•,nbsp:␣
 set list
 set fillchars=fold:·
 set backspace=indent,eol,start
+set signcolumn=yes
 
 " Highlighting, colors, fonts
 set t_Co=256
@@ -78,7 +79,8 @@ set foldmethod=marker
 
 " Omni completion
 " set omnifunc=syntaxcomplete#Complete
-" set completeopt=menu
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
 " Makeprg
 set makeprg=wrapped-make
@@ -172,53 +174,11 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
-Plug 'prabirshrestha/asyncomplete.vim'"{{{
+Plug 'neovim/nvim-lspconfig' {{{
 "}}}
-Plug 'prabirshrestha/async.vim'"{{{
+Plug 'nvim-lua/lsp_extensions.nvim' {{{
 "}}}
-Plug 'prabirshrestha/vim-lsp'"{{{
-
-if executable('ccls')
-    au User lsp_setup call lsp#register_server({
-       \ 'name': 'ccls',
-       \ 'cmd': {server_info->['ccls']},
-       \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-       \ 'initialization_options': {'completion': {'detailedLabel': v:false}},
-       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-       \ })
-endif
-
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-            \ 'name': 'pyls',
-            \ 'cmd': {server_info->['pyls']},
-            \ 'whitelist': ['python'],
-    \ })
-endif
-
-if executable('rust-analyzer')
-    au User lsp_setup call lsp#register_server({
-            \ 'name': 'rust-analyzer',
-            \ 'cmd': {server_info->['rust-analyzer']},
-            \ 'whitelist': ['rust'],
-    \ })
-endif
-
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_signs_enabled = 0
-let g:lsp_diagnostics_virtual_text_enabled = 0
-let g:lsp_document_highlight_enabled = 0
-let g:lsp_signs_enabled = 0
-let g:lsp_virtual_text_enabled = 0
-let g:lsp_highlight_references_enabled = 0
-
-nmap <Leader>f :LspDefinition<CR>
-nmap <Leader>i :LspImplementation<CR>
-nmap <Leader>nw :LspNextWarning<CR>
-nmap <Leader>ne :LspNextError<CR>
-"}}}
-Plug 'prabirshrestha/asyncomplete-lsp.vim'"{{{
+Plug 'nvim-lua/completion-nvim' {{{
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
@@ -242,6 +202,30 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 let g:ftplugin_sql_omni_key = '<C-j>'
 
 call plug#end()
+
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+nvim_lsp.ccls.setup({ on_attach=on_attach })
+nvim_lsp.pyls.setup({ on_attach=on_attach })
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
+EOF
 
 silent! colorscheme gruvbox
 silent! set background=dark
@@ -331,4 +315,8 @@ autocmd QuickFixCmdPost l*      nested  lwindow
 
 " Reset fold background to reduce distraction
 autocmd VimEnter * hi Folded ctermbg=None
+
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
 " }}}
