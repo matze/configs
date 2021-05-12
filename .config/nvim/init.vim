@@ -174,11 +174,11 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
-Plug 'neovim/nvim-lspconfig' {{{
+Plug 'neovim/nvim-lspconfig'" {{{
 "}}}
-Plug 'nvim-lua/lsp_extensions.nvim' {{{
+ Plug 'nvim-lua/lsp_extensions.nvim'" {{{
 "}}}
-Plug 'nvim-lua/completion-nvim' {{{
+ Plug 'nvim-lua/completion-nvim'" {{{
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
