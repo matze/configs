@@ -108,23 +108,6 @@ let g:lightline = {
 "}}}
 Plug 'morhetz/gruvbox' "{{{
 "}}}
-Plug 'justinmk/vim-sneak' "{{{
-
-let g:sneak#streak = 1
-
-hi link SneakPluginTarget Type
-hi link SneakPluginScope Function
-hi link SneakStreakTarget Type
-hi link SneakStreakMask Function
-
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-
-"}}}
 Plug 'junegunn/fzf' "{{{
 "}}}
 Plug 'junegunn/fzf.vim' "{{{
@@ -205,17 +188,11 @@ Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
 Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
 "}}}
-Plug 'rhysd/vim-clang-format'"{{{
-nnoremap <Leader>fo :ClangFormat<CR>
-vnoremap <Leader>fo :ClangFormat<CR>
-"}}}
 Plug 'tpope/vim-commentary'"{{{
 autocmd FileType cmake setlocal commentstring=#\ %s
 autocmd FileType meson setlocal commentstring=#\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType cinemoproj setlocal commentstring=//\ %s
-"}}}
-Plug 'tpope/vim-dispatch'"{{{
 "}}}
 Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 "}}}
@@ -274,17 +251,8 @@ nnoremap <silent> p p`]
 
 nnoremap <CR> za
 
-nnoremap <silent> <C-i> :call TagJumpForward()<CR>
-nnoremap <silent> <C-t> :call TagJumpBack()<CR>
-
-" for some reason this is mapped to :call TagJumpForward
-nnoremap <tab> <nop>
-
 " select pasted text
 noremap gV `[v`]
-
-nnoremap <F5> <Esc>:w!<CR>:make!<CR><CR>
-nnoremap <F6> <Esc>:w!<CR>:Make<CR><CR>
 
 nnoremap <Right> :bn<CR>
 nnoremap <Left> :bp<CR>
