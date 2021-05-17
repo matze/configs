@@ -212,7 +212,7 @@ local on_attach = function(client, bufnr)
 end
 
 nvim_lsp.ccls.setup({ on_attach = on_attach })
-nvim_lsp.pyls.setup({ on_attach = on_attach })
+nvim_lsp.pylsp.setup({ on_attach = on_attach })
 nvim_lsp.rust_analyzer.setup({ on_attach = on_attach })
 
 -- Enable diagnostics
