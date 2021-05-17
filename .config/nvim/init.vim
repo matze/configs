@@ -106,7 +106,7 @@ let g:lightline = {
     \ }
 
 "}}}
-Plug 'morhetz/gruvbox' "{{{
+Plug 'gruvbox-community/gruvbox' "{{{
 "}}}
 Plug 'junegunn/fzf' "{{{
 "}}}
