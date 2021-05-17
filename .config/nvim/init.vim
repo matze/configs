@@ -204,9 +204,16 @@ lua <<EOF
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
-nvim_lsp.ccls.setup({})
-nvim_lsp.pyls.setup({})
-nvim_lsp.rust_analyzer.setup({})
+local on_attach = function(client, bufnr)
+  local opts = { noremap=true, silent=true }
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+end
+
+nvim_lsp.ccls.setup({ on_attach = on_attach })
+nvim_lsp.pyls.setup({ on_attach = on_attach })
+nvim_lsp.rust_analyzer.setup({ on_attach = on_attach })
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
