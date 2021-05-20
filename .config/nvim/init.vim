@@ -112,8 +112,7 @@ Plug 'junegunn/fzf' "{{{
 "}}}
 Plug 'junegunn/fzf.vim' "{{{
 nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Tags<CR>
-nnoremap <C-o> :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :Rg <C-r><C-w><CR>
 
 let g:fzf_colors =
@@ -206,9 +205,11 @@ local nvim_lsp = require'lspconfig'
 
 local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 nvim_lsp.ccls.setup({ on_attach = on_attach })
