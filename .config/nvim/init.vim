@@ -107,6 +107,7 @@ let g:lightline = {
 
 "}}}
 Plug 'gruvbox-community/gruvbox' "{{{
+let g:gruvbox_contrast_dark = "hard"
 "}}}
 Plug 'junegunn/fzf' "{{{
 "}}}
