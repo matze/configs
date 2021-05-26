@@ -93,21 +93,10 @@ Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 Plug 'editorconfig/editorconfig-vim' "{{{
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
-Plug 'itchyny/lightline.vim' "{{{
-
-let g:lightline = {
-    \ 'colorscheme': 'jellybeans',
-    \ 'component': {
-    \   'readonly': '%{&readonly?"✖":""}',
-    \ },
-    \ 'active': {
-    \   'right': [['lineinfo'], ['percent']],
-    \ },
-    \ }
-
-"}}}
 Plug 'gruvbox-community/gruvbox' "{{{
 let g:gruvbox_contrast_dark = "hard"
+"}}}
+Plug 'hoob3rt/lualine.nvim' "{{{
 "}}}
 Plug 'junegunn/fzf' "{{{
 "}}}
@@ -202,6 +191,20 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
+require'lualine'.setup {
+  options = {
+    theme = 'gruvbox',
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_y = {'diff'},
+    lualine_z = {'location'}
+  },
+}
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
