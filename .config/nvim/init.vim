@@ -157,6 +157,8 @@ Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
 "}}}
 Plug 'neovim/nvim-lspconfig'" {{{
 "}}}
+Plug 'nvim-treesitter/nvim-treesitter'", {'do': ':TSUpdate'} {{{
+"}}}
 Plug 'nvim-lua/lsp_extensions.nvim'" {{{
 "}}}
 Plug 'hrsh7th/nvim-compe'" {{{
@@ -199,6 +201,11 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+}
 
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
