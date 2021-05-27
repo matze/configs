@@ -9,7 +9,6 @@
 "{{{ Settings
 
 " General
-" set showmatch       " Show matching parentheses
 set nocompatible    " Disable vi compatibility
 set modeline        " Enable modeline
 set noshowcmd
@@ -26,7 +25,6 @@ set scrolloff=2     " At least two lines and ...
 set sidescrolloff=2 " two columns context
 set mouse=a         " Mouse support
 set guicursor=      " Disable cursor change in neovim
-set ttyfast
 set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
 set dir=~/.vim      " Location for .swp files
 set clipboard=unnamedplus
@@ -60,19 +58,6 @@ set signcolumn=yes
 set t_Co=256
 syntax enable
 
-if has("gui_running")
-    set lines=60                " More lines ...
-    set columns=120             " and columns in GUI mode
-    set gfn=Monospace\ 9
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=b
-endif
-
 " Folding
 set foldenable
 set foldmethod=marker
@@ -80,9 +65,6 @@ set foldmethod=marker
 " Completion
 set completeopt=menuone,noselect
 set shortmess+=c
-
-" Makeprg
-set makeprg=wrapped-make
 "}}}
 "{{{ Plugins
 
@@ -250,16 +232,6 @@ function! DefaultFoldText()
     return '+-' . v:folddashes . line
 endfunction
 
-function! TagJumpBack()
-    try | foldclose! | catch | | endtry
-    pop
-endfunction
-
-function! TagJumpForward()
-    execute "tag " . expand("<cword>")
-    try | foldopen! | catch | | endtry
-endfunction
-
 set foldtext=DefaultFoldText()
 "}}}
 "{{{ Keymaps
@@ -309,15 +281,9 @@ nmap <C-N> :vsp<CR>
 " Allow using <CR> on quickfix entries
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
-" Show quickfix after :make, taken from
-" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-autocmd QuickFixCmdPost [^l]*   nested  cwindow
-autocmd QuickFixCmdPost l*      nested  lwindow
-
 " Reset fold background to reduce distraction
 autocmd VimEnter * hi Folded ctermbg=None
 
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-
 " }}}
