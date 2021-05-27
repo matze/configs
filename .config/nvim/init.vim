@@ -80,27 +80,11 @@ let g:gruvbox_contrast_dark = "hard"
 "}}}
 Plug 'hoob3rt/lualine.nvim' "{{{
 "}}}
-Plug 'junegunn/fzf' "{{{
+Plug 'nvim-lua/popup.nvim' "{{{
 "}}}
-Plug 'junegunn/fzf.vim' "{{{
-nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :Rg <C-r><C-w><CR>
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+Plug 'nvim-lua/plenary.nvim' "{{{
+"}}}
+Plug 'nvim-telescope/telescope.nvim' "{{{
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
@@ -199,10 +183,7 @@ local nvim_lsp = require'lspconfig'
 local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 nvim_lsp.ccls.setup({ on_attach = on_attach })
@@ -235,6 +216,13 @@ endfunction
 set foldtext=DefaultFoldText()
 "}}}
 "{{{ Keymaps
+nnoremap <C-p> <cmd>Telescope find_files<CR>
+nnoremap <C-b> <cmd>Telescope buffers<CR>
+nnoremap <C-f> <cmd>Telescope grep_string<CR>
+
+nnoremap gd <cmd>Telescope lsp_definitions<CR>
+nnoremap gi <cmd>Telescope lsp_implementations<CR>
+nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 
 " paste multiple lines without overwriting content
 vnoremap <silent> p p`]
