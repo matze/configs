@@ -138,8 +138,6 @@ let g:compe.source.buffer = v:true
 let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.ultisnips = v:true
 "}}}
 Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
 "}}}
@@ -206,15 +204,6 @@ silent! set background=dark
 highlight clear SignColumn
 
 "}}}
-"{{{ Functions
-function! DefaultFoldText()
-    let foldline = getline(v:foldstart)
-    let line = substitute(foldline, '[^{]{{' . '{', '\1', '') . ' '
-    return '+-' . v:folddashes . line
-endfunction
-
-set foldtext=DefaultFoldText()
-"}}}
 "{{{ Keymaps
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
@@ -250,7 +239,6 @@ nmap <Leader>se :setlocal spell spelllang=en<CR>
 nmap <Leader>sd :setlocal spell spelllang=de<CR>
 nmap <Leader>sn :setlocal nospell<CR>
 nmap <Leader>ss 1z=
-nmap <Leader>d :bd<CR>
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -263,7 +251,6 @@ nmap <Leader>P "+P
 nmap <C-J> <C-W>w
 nmap <C-K> <C-W>W
 nmap <C-X> :q<CR>
-nmap <C-N> :vsp<CR>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
