@@ -86,6 +86,8 @@ Plug 'nvim-lua/plenary.nvim' "{{{
 "}}}
 Plug 'nvim-telescope/telescope.nvim' "{{{
 "}}}
+Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'do': 'make' } {{{
+"}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
 Plug 'nathangrigg/vim-beancount'", { 'for': 'beancount' } {{{
@@ -134,7 +136,6 @@ let g:compe.documentation = v:true
 
 let g:compe.source = {}
 let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
 let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
@@ -155,6 +156,8 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
+require('telescope').load_extension('fzf')
+
 require'lualine'.setup {
   options = {
     theme = 'gruvbox',
@@ -184,9 +187,15 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
+local ra_capabilities = vim.lsp.protocol.make_client_capabilities()
+ra_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 nvim_lsp.ccls.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
-nvim_lsp.rust_analyzer.setup({ on_attach = on_attach })
+nvim_lsp.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = ra_capabilities
+})
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -212,6 +221,8 @@ nnoremap <C-f> <cmd>Telescope grep_string<CR>
 nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
+
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
 " paste multiple lines without overwriting content
 vnoremap <silent> p p`]
