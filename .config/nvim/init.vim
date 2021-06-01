@@ -95,9 +95,6 @@ autocmd BufReadPost,BufNewFile *.beancount :set sw=2
 " }}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
-Plug 'matze/vim-markdown'", { 'for': 'markdown' } {{{
-let g:markdown_fold_override_foldtext = 0
-"}}}
 Plug 'matze/vim-move'"{{{
 let g:move_map_keys = 0
 
