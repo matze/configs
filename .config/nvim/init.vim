@@ -208,6 +208,20 @@ silent! set background=dark
 highlight clear SignColumn
 
 "}}}
+"{{{ Functions
+" Adapted from github.com/jkramer/vim-checkbox
+fu! ToggleCheckbox()
+  let line = getline('.')
+
+  if match(line, '- \[ \]') != -1
+    call setline('.', substitute(line, '- \[ \]', '- \[x\]', ''))
+  elseif match(line, '- \[x\]') != -1
+    call setline('.', substitute(line, '- \[x\]', '- \[ \]', ''))
+  elseif match(line, '- ') != -1
+    call setline('.', substitute(line, '- ', '- \[ \] ', ''))
+  endif
+endf
+"}}}
 "{{{ Keymaps
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
@@ -260,6 +274,8 @@ nmap <C-X> :q<CR>
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
+autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
+
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " Reset fold background to reduce distraction
