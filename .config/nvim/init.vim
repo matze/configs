@@ -90,9 +90,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'do': 'make' } {{{
 "}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
-Plug 'nathangrigg/vim-beancount'", { 'for': 'beancount' } {{{
-autocmd BufReadPost,BufNewFile *.beancount :set sw=2 
-" }}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
 Plug 'matze/vim-move'"{{{
