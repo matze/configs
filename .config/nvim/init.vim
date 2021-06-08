@@ -155,7 +155,7 @@ require('gitsigns').setup()
 
 require('telescope').load_extension('fzf')
 
-require'lualine'.setup {
+require('lualine').setup {
   options = {
     theme = 'gruvbox',
   },
@@ -169,14 +169,14 @@ require'lualine'.setup {
   },
 }
 
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
   },
 }
 
 -- nvim_lsp object
-local nvim_lsp = require'lspconfig'
+local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
