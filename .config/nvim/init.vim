@@ -77,6 +77,7 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
 Plug 'gruvbox-community/gruvbox' "{{{
 let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_sign_column = "bg0"
 "}}}
 Plug 'hoob3rt/lualine.nvim' "{{{
 "}}}
@@ -201,8 +202,6 @@ EOF
 
 silent! colorscheme gruvbox
 silent! set background=dark
-
-highlight clear SignColumn
 
 "}}}
 "{{{ Functions
