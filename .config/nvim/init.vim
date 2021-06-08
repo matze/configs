@@ -78,6 +78,8 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 Plug 'gruvbox-community/gruvbox' "{{{
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column = "bg0"
+
+sign define LspDiagnosticsSignError text=✗ texthl=GruvboxRed
 "}}}
 Plug 'hoob3rt/lualine.nvim' "{{{
 "}}}
