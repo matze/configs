@@ -223,6 +223,7 @@ endf
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
 nnoremap <C-f> <cmd>Telescope grep_string<CR>
+nnoremap <C-g> <cmd>Telescope live_grep<CR>
 
 nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
