@@ -89,6 +89,8 @@ Plug 'nvim-telescope/telescope.nvim' "{{{
 "}}}
 Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'do': 'make' } {{{
 "}}}
+Plug 'lewis6991/gitsigns.nvim'"{{{
+"}}}
 Plug 'Konfekt/FastFold'"{{{
 "}}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
@@ -149,6 +151,8 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
+require('gitsigns').setup()
+
 require('telescope').load_extension('fzf')
 
 require'lualine'.setup {
