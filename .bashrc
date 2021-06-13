@@ -136,12 +136,8 @@ if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
     bind -x '"\C-p": vim $(fzf);'
 fi
 #}}}
-#{{{ z.sh
-Z_SH="$(dirname $(readlink ~/.bashrc))/z/z.sh"
-
-if [ -f $Z_SH ]; then
-    . $Z_SH
-fi
+#{{{ zoxide
+eval "$(zoxide init bash)"
 #}}}
 #{{{ bash completion
 _git_pick() {
