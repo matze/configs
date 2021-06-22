@@ -92,8 +92,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'do': 'make' } {{{
 "}}}
 Plug 'lewis6991/gitsigns.nvim'"{{{
 "}}}
-Plug 'Konfekt/FastFold'"{{{
-"}}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
 Plug 'matze/vim-move'"{{{
