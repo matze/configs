@@ -2,7 +2,7 @@
     name            = Matthias Vogelgesang
 
 [core]
-    editor          = vim
+    editor          = nvim
     excludesfile    = ~/.gitignore
     whitespace      = fix, trailing-space
     pager           = delta
