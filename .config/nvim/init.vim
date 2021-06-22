@@ -225,6 +225,7 @@ fu! ToggleCheckbox()
 endf
 "}}}
 "{{{ Keymaps
+inoremap <C-c> <Esc>
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
 nnoremap <C-f> <cmd>Telescope grep_string<CR>
