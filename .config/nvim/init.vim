@@ -75,11 +75,10 @@ Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 Plug 'editorconfig/editorconfig-vim' "{{{
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
-Plug 'gruvbox-community/gruvbox' "{{{
-let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_sign_column = "bg0"
+Plug 'folke/tokyonight.nvim' "{{{
+let g:tokyonight_style = "night"
 
-sign define LspDiagnosticsSignError text=✗ texthl=GruvboxRed
+sign define LspDiagnosticsSignError text=▶ texthl=Error
 "}}}
 Plug 'hoob3rt/lualine.nvim' "{{{
 "}}}
@@ -159,7 +158,7 @@ require('telescope').load_extension('fzf')
 
 require('lualine').setup {
   options = {
-    theme = 'gruvbox',
+    theme = 'tokyonight',
   },
   sections = {
     lualine_a = {'mode'},
@@ -206,7 +205,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 EOF
 
-silent! colorscheme gruvbox
+silent! colorscheme tokyonight
 silent! set background=dark
 
 "}}}
