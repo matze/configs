@@ -150,7 +150,9 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
-require('gitsigns').setup()
+require('gitsigns').setup{
+  attach_to_untracked = false,
+}
 
 require('telescope').load_extension('fzf')
 
