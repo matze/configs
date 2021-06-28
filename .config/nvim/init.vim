@@ -75,7 +75,7 @@ Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 Plug 'editorconfig/editorconfig-vim' "{{{
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
-Plug 'folke/tokyonight.nvim' "{{{
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' } "{{{
 let g:tokyonight_style = "night"
 
 sign define LspDiagnosticsSignError text=▶ texthl=Error
@@ -88,9 +88,9 @@ Plug 'nvim-lua/plenary.nvim' "{{{
 "}}}
 Plug 'nvim-telescope/telescope.nvim' "{{{
 "}}}
-Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'do': 'make' } {{{
+Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'branch': 'main', 'do': 'make' } {{{
 "}}}
-Plug 'lewis6991/gitsigns.nvim'"{{{
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' } "{{{
 "}}}
 Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
 "}}}
