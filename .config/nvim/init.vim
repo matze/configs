@@ -192,7 +192,14 @@ nvim_lsp.ccls.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
 nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach,
-  capabilities = ra_capabilities
+  capabilities = ra_capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      diagnostics = {
+        disabled = {"inactive-code"}
+      }
+    }
+  }
 })
 
 -- Enable diagnostics
