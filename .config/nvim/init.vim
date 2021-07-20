@@ -188,7 +188,7 @@ end
 local ra_capabilities = vim.lsp.protocol.make_client_capabilities()
 ra_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-nvim_lsp.ccls.setup({ on_attach = on_attach })
+nvim_lsp.clangd.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
 nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach,
