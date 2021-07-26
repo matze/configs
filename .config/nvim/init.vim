@@ -70,6 +70,8 @@ set shortmess+=c
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'akinsho/nvim-bufferline.lua' "{{{
+"}}}
 Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 "}}}
 Plug 'editorconfig/editorconfig-vim' "{{{
@@ -150,6 +152,19 @@ Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
 call plug#end()
 
 lua <<EOF
+require('bufferline').setup{
+  options = {
+    always_show_bufferline = false,
+    show_buffer_close_icons = false,
+    modified_icon = '·',
+  },
+  highlights = {
+    buffer_selected = {
+      gui = "bold",
+    }
+  },
+}
+
 require('gitsigns').setup{
   attach_to_untracked = false,
 }
