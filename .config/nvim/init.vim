@@ -146,8 +146,6 @@ autocmd FileType meson setlocal commentstring=#\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
-Plug 'rust-lang/rust.vim'", { 'for': 'rust' } {{{
-"}}}
 
 call plug#end()
 
