@@ -146,6 +146,11 @@ autocmd FileType meson setlocal commentstring=#\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
+Plug 'rose-pine/neovim'", { 'branch': 'main' } {{{
+let g:rose_pine_variant = "base"
+let g:rose_pine_disable_italics = 1
+sign define LspDiagnosticsSignError text=▶ texthl=Error
+"}}}
 
 call plug#end()
 
@@ -171,7 +176,7 @@ require('telescope').load_extension('fzf')
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    theme = 'rose-pine',
   },
   sections = {
     lualine_a = {'mode'},
@@ -226,7 +231,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 EOF
 
-silent! colorscheme tokyonight
+silent! colorscheme rose-pine
 silent! set background=dark
 
 "}}}
