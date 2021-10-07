@@ -1,4 +1,6 @@
 set show-changes = yes
+set main-view = date:relative author:email-user id commit-title:graph=v1
+set line-graphics = default
 set commit-order = topo
 set vertical-split = yes
 set split-view-height = 80%
