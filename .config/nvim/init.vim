@@ -196,6 +196,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ge' , '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 end
 
 local ra_capabilities = vim.lsp.protocol.make_client_capabilities()
