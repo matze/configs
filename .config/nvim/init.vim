@@ -147,14 +147,17 @@ autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
 Plug 'rose-pine/neovim'", { 'branch': 'main' } {{{
-let g:rose_pine_variant = "base"
-let g:rose_pine_disable_italics = 1
 sign define LspDiagnosticsSignError text=▶ texthl=Error
 "}}}
 
 call plug#end()
 
 lua <<EOF
+
+vim.g.rose_pine_variant = 'base'
+vim.g.rose_pine_disable_italics = true
+vim.g.rose_pine_colors = { punctuation = '#bd8091' }
+
 require('bufferline').setup{
   options = {
     always_show_bufferline = false,
