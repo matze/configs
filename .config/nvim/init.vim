@@ -201,7 +201,6 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ge' , '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 end
 
 local ra_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -259,6 +258,8 @@ nnoremap <C-g> <cmd>Telescope live_grep<CR>
 nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
+nnoremap gr <cmd>Telescope lsp_references<CR>
+nnoremap ge <cmd>Telescope lsp_workspace_diagnostics<CR>
 
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
