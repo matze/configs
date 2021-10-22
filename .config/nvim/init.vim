@@ -231,6 +231,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+-- Coremake treesitter parser
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.coremake = {
+  install_info = {
+    url = "https://github.com/matze/tree-sitter-coremake",
+    files = {"src/parser.c"}
+  },
+  filetype = "coremake"
+}
+
 EOF
 
 silent! colorscheme rose-pine
