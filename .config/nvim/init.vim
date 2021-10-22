@@ -82,7 +82,7 @@ let g:tokyonight_style = "night"
 
 sign define LspDiagnosticsSignError text=▶ texthl=Error
 "}}}
-Plug 'hoob3rt/lualine.nvim' "{{{
+Plug 'nvim-lualine/lualine.nvim' "{{{
 "}}}
 Plug 'nvim-lua/popup.nvim' "{{{
 "}}}
