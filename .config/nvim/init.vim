@@ -113,8 +113,6 @@ Plug 'neovim/nvim-lspconfig'" {{{
 "}}}
 Plug 'nvim-treesitter/nvim-treesitter'", {'do': ':TSUpdate'} {{{
 "}}}
-Plug 'nvim-lua/lsp_extensions.nvim'" {{{
-"}}}
 Plug 'hrsh7th/nvim-compe'" {{{
 let g:compe = {}
 let g:compe.enabled = v:true
@@ -149,6 +147,8 @@ autocmd FileType cinemoproj setlocal commentstring=//\ %s
 Plug 'rose-pine/neovim'", { 'branch': 'main' } {{{
 sign define LspDiagnosticsSignError text=▶ texthl=Error
 "}}}
+Plug 'simrat39/rust-tools.nvim'"{{{
+"}}}
 
 call plug#end()
 
@@ -158,7 +158,7 @@ vim.g.rose_pine_variant = 'base'
 vim.g.rose_pine_disable_italics = true
 vim.g.rose_pine_colors = { punctuation = '#bd8091' }
 
-require('bufferline').setup{
+require('bufferline').setup {
   options = {
     always_show_bufferline = false,
     show_buffer_close_icons = false,
@@ -171,7 +171,7 @@ require('bufferline').setup{
   },
 }
 
-require('gitsigns').setup{
+require('gitsigns').setup {
   attach_to_untracked = false,
 }
 
@@ -197,6 +197,8 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+require('rust-tools').setup {}
+
 -- nvim_lsp object
 local nvim_lsp = require('lspconfig')
 
@@ -206,22 +208,8 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
-local ra_capabilities = vim.lsp.protocol.make_client_capabilities()
-ra_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 nvim_lsp.clangd.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
-nvim_lsp.rust_analyzer.setup({
-  on_attach = on_attach,
-  capabilities = ra_capabilities,
-  settings = {
-    ["rust-analyzer"] = {
-      diagnostics = {
-        disabled = {"inactive-code"}
-      }
-    }
-  }
-})
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -324,7 +312,4 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " Reset fold background to reduce distraction
 autocmd VimEnter * hi Folded ctermbg=None
-
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " }}}
