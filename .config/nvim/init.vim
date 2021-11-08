@@ -197,7 +197,14 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require('rust-tools').setup {}
+require('rust-tools').setup {
+  tools = {
+    inlay_hints = {
+      show_parameter_hints = false,
+      other_hints_prefix = " ⟶ ",
+    },
+  },
+}
 
 -- nvim_lsp object
 local nvim_lsp = require('lspconfig')
