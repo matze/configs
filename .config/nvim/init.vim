@@ -77,6 +77,8 @@ Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
 Plug 'editorconfig/editorconfig-vim' "{{{
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
+Plug 'ggandor/lightspeed.nvim' "{{{
+"}}}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' } "{{{
 let g:tokyonight_style = "night"
 
