@@ -6,116 +6,121 @@
 "  \ \_\ \_\ \_\ \__/.\_\\ \__\ /\____\ \____\
 "   \/_/\/_/\/_/\/__/\/_/ \/__/ \/____/\/____/
 
-"{{{ Settings
-
-" General
-set nocompatible    " Disable vi compatibility
-set modeline        " Enable modeline
+"{{{ General settings
+set nocompatible
+set modeline
 set noshowcmd
-set nocursorline    " Do not highlight cursor line
-set nocursorcolumn  " Do not highlight current cursor column
-set ruler           " Show cursor position
-set laststatus=2    " Show status line
-set noerrorbells    " No beeps
-set history=1000    " Maximum history
-set wildmenu        " Tab completion
-set wildignore+=*/.git/*,*/.bzr/*,*~,*/build/*,*.pyc
-set hidden          " Allow buffers to be hidden
-set scrolloff=2     " At least two lines and ...
-set sidescrolloff=2 " two columns context
-set mouse=a         " Mouse support
-set guicursor=      " Disable cursor change in neovim
-set ttimeoutlen=0   " Timeout for keycodes, esp. <Esc>
-set dir=~/.vim      " Location for .swp files
+set nocursorline
+set nocursorcolumn
+set noerrorbells
+set history=1000
+set wildmenu
+set wildignore+=*/.git/*,*~,*/build/*,*.pyc
+set hidden
+set scrolloff=2
+set sidescrolloff=2
+set mouse=a
+set guicursor=
+set ttimeoutlen=0
+set dir=~/.vim
 set clipboard=unnamedplus
-let mapleader = "\<Space>"
-
-" Searching
-set ignorecase      " Case insensitive search
-set smartcase       " Ignore ignorecase
-set hlsearch        " Show search results
-set wrapscan        " Continue search at the top
-set incsearch       " Incremental search
-
-" Textformatting, indenting, tabs
-set textwidth=80    " Yay, history!
-set autoindent      " ...
-set smartindent     " ...
-set tabstop=4       " Number of spaces per tab
-set shiftwidth=4    " Default number of spaces for >> and <<
-set softtabstop=4   " Number of spaces per tab
-set expandtab       " Spaces instead of tabs
-set smarttab        " Add/remove spaces instead of tabs
-set linebreak       " Break lines nicer
-set number          " Show line numbers
-set listchars=tab:›\ ,trail:•,nbsp:␣
+set ignorecase
+set smartcase
+set hlsearch
+set wrapscan
+set incsearch
+set textwidth=80
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+set linebreak
+set number
 set list
+set listchars=tab:›\ ,trail:•,nbsp:␣
 set fillchars=fold:·
 set backspace=indent,eol,start
 set signcolumn=yes
-
-" Highlighting, colors, fonts
 set t_Co=256
-syntax enable
-
-" Folding
 set foldenable
 set foldmethod=marker
-
-" Completion
 set completeopt=menuone,noselect
 set shortmess+=c
 "}}}
 "{{{ Plugins
-
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'akinsho/nvim-bufferline.lua' "{{{
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
+Plug 'matze/vim-ini-fold', { 'for': 'ini' }
+Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
+Plug 'matze/vim-move'
+Plug 'matze/vim-tex-fold', { 'for': 'tex' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+Plug 'rose-pine/neovim', { 'branch': 'main' }
+Plug 'simrat39/rust-tools.nvim'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
+
+"{{{ nvim-bufferline.lua
+lua <<EOF
+require('bufferline').setup {
+  options = {
+    always_show_bufferline = false,
+    show_buffer_close_icons = false,
+    modified_icon = '·',
+  },
+  highlights = {
+    buffer_selected = {
+      gui = "bold",
+    }
+  },
+}
+EOF
 "}}}
-Plug 'cespare/vim-toml'", { 'for': 'toml' } {{{
-"}}}
-Plug 'editorconfig/editorconfig-vim' "{{{
+"{{{ editorconfig-vim
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
-Plug 'ggandor/lightspeed.nvim' "{{{
+"{{{ lualine.nvim
+lua <<EOF
+require('lualine').setup {
+  options = {
+    theme = 'rose-pine',
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_y = {'diff'},
+    lualine_z = {'location'}
+  },
+}
+EOF
 "}}}
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' } "{{{
-let g:tokyonight_style = "night"
-
-sign define LspDiagnosticsSignError text=▶ texthl=Error
+"{{{ gitsigns.nvim
+lua <<EOF
+require('gitsigns').setup {
+  attach_to_untracked = false,
+}
+EOF
 "}}}
-Plug 'nvim-lualine/lualine.nvim' "{{{
-"}}}
-Plug 'nvim-lua/popup.nvim' "{{{
-"}}}
-Plug 'nvim-lua/plenary.nvim' "{{{
-"}}}
-Plug 'nvim-telescope/telescope.nvim' "{{{
-"}}}
-Plug 'nvim-telescope/telescope-fzf-native.nvim'", { 'branch': 'main', 'do': 'make' } {{{
-"}}}
-Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' } "{{{
-"}}}
-Plug 'matze/vim-lilypond'", { 'for': 'lilypond' }  {{{
-"}}}
-Plug 'matze/vim-move'"{{{
-let g:move_map_keys = 0
-
-vmap <A-j> <Plug>MoveBlockDown
-vmap <A-k> <Plug>MoveBlockUp
-nmap <A-j> <Plug>MoveLineDown
-nmap <A-k> <Plug>MoveLineUp
-"}}}
-Plug 'matze/vim-tex-fold'", { 'for': 'tex' } {{{
-let g:tex_fold_additional_envs = ['tikzpicture']
-"}}}
-Plug 'matze/vim-ini-fold'", { 'for': 'ini' } {{{
-"}}}
-Plug 'neovim/nvim-lspconfig'" {{{
-"}}}
-Plug 'nvim-treesitter/nvim-treesitter'", {'do': ':TSUpdate'} {{{
-"}}}
-Plug 'hrsh7th/nvim-compe'" {{{
+"{{{ nvim-compe
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
@@ -136,80 +141,8 @@ let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
 "}}}
-Plug 'petRUShka/vim-opencl'", { 'for': 'opencl' } {{{
-"}}}
-Plug 'posva/vim-vue'", { 'for': 'vue' } {{{
-"}}}
-Plug 'tpope/vim-commentary'"{{{
-autocmd FileType cmake setlocal commentstring=#\ %s
-autocmd FileType meson setlocal commentstring=#\ %s
-autocmd FileType dosini setlocal commentstring=#\ %s
-autocmd FileType cpp setlocal commentstring=//\ %s
-autocmd FileType cinemoproj setlocal commentstring=//\ %s
-"}}}
-Plug 'rose-pine/neovim'", { 'branch': 'main' } {{{
-sign define LspDiagnosticsSignError text=▶ texthl=Error
-"}}}
-Plug 'simrat39/rust-tools.nvim'"{{{
-"}}}
-
-call plug#end()
-
+"{{{ nvim-lspconfig
 lua <<EOF
-
-vim.g.rose_pine_variant = 'base'
-vim.g.rose_pine_disable_italics = true
-vim.g.rose_pine_colors = { punctuation = '#bd8091' }
-
-require('bufferline').setup {
-  options = {
-    always_show_bufferline = false,
-    show_buffer_close_icons = false,
-    modified_icon = '·',
-  },
-  highlights = {
-    buffer_selected = {
-      gui = "bold",
-    }
-  },
-}
-
-require('gitsigns').setup {
-  attach_to_untracked = false,
-}
-
-require('telescope').load_extension('fzf')
-
-require('lualine').setup {
-  options = {
-    theme = 'rose-pine',
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'filetype'},
-    lualine_y = {'diff'},
-    lualine_z = {'location'}
-  },
-}
-
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-  },
-}
-
-require('rust-tools').setup {
-  tools = {
-    inlay_hints = {
-      show_parameter_hints = false,
-      other_hints_prefix = "→ ",
-    },
-  },
-}
-
--- nvim_lsp object
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -221,7 +154,6 @@ end
 nvim_lsp.clangd.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
 
--- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
@@ -229,6 +161,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+EOF
+"}}}
+"{{{ nvim-treesitter
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+  },
+}
 
 -- Coremake treesitter parser
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
@@ -239,11 +180,57 @@ parser_config.coremake = {
   },
   filetype = "coremake"
 }
-
 EOF
+"}}}
+"{{{ rose-pine
+sign define LspDiagnosticsSignError text=▶ texthl=Error
+
+lua <<EOF
+vim.g.rose_pine_variant = 'base'
+vim.g.rose_pine_disable_italics = true
+vim.g.rose_pine_colors = { punctuation = '#bd8091' }
+EOF
+"}}}
+"{{{ rust-tools
+lua <<EOF
+require('rust-tools').setup {
+  tools = {
+    inlay_hints = {
+      show_parameter_hints = false,
+      other_hints_prefix = "→ ",
+      },
+    },
+  }
+EOF
+"}}}
+"{{{ telescope
+lua <<EOF
+require('telescope').load_extension('fzf')
+EOF
+"}}}
+"{{{ vim-commentary
+autocmd FileType cmake setlocal commentstring=#\ %s
+autocmd FileType meson setlocal commentstring=#\ %s
+autocmd FileType dosini setlocal commentstring=#\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
+autocmd FileType cinemoproj setlocal commentstring=//\ %s
+"}}}
+"{{{ vim-move
+let g:move_map_keys = 0
+
+vmap <A-j> <Plug>MoveBlockDown
+vmap <A-k> <Plug>MoveBlockUp
+nmap <A-j> <Plug>MoveLineDown
+nmap <A-k> <Plug>MoveLineUp
+"}}}
+"{{{ vim-tex-fold
+let g:tex_fold_additional_envs = ['tikzpicture']
+"}}}
 
 silent! colorscheme rose-pine
 silent! set background=dark
+
+syntax enable
 
 "}}}
 "{{{ Functions
@@ -261,6 +248,8 @@ fu! ToggleCheckbox()
 endf
 "}}}
 "{{{ Keymaps
+let mapleader = "\<Space>"
+
 inoremap <C-c> <Esc>
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
@@ -317,9 +306,5 @@ nmap <C-X> :q<CR>
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
 autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
-
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-
-" Reset fold background to reduce distraction
-autocmd VimEnter * hi Folded ctermbg=None
 " }}}
