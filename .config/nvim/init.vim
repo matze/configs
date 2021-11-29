@@ -56,7 +56,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ggandor/lightspeed.nvim'
+Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-compe'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'matze/vim-ini-fold', { 'for': 'ini' }
