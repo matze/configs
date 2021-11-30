@@ -47,7 +47,7 @@ set signcolumn=yes
 set t_Co=256
 set foldenable
 set foldmethod=marker
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 set shortmess+=c
 "}}}
 "{{{ Plugins
@@ -57,7 +57,11 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'matze/vim-ini-fold', { 'for': 'ini' }
 Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
@@ -120,26 +124,36 @@ require('gitsigns').setup {
 }
 EOF
 "}}}
-"{{{ nvim-compe
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
+"{{{ nvim-cmp
+lua <<EOF
+local cmp = require'cmp'
 
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
+cmp.setup({
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  })
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require('lspconfig')['rust_analyzer'].setup {
+  capabilities = capabilities
+}
+EOF
 "}}}
 "{{{ nvim-lspconfig
 lua <<EOF
@@ -261,8 +275,6 @@ nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope lsp_workspace_diagnostics<CR>
-
-inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
 " paste multiple lines without overwriting content
 vnoremap <silent> p p`]
