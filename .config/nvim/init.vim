@@ -57,10 +57,10 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
-Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
-Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
-Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'matze/vim-ini-fold', { 'for': 'ini' }
@@ -131,6 +131,7 @@ local cmp = require'cmp'
 cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'path' },
   })
 })
 
