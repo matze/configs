@@ -132,7 +132,10 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'path' },
-  })
+  }),
+  mapping = {
+    ["<C-j>"] = cmp.mapping.confirm({ select = true }),
+  },
 })
 
 cmp.setup.cmdline('/', {
