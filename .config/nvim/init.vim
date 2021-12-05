@@ -296,7 +296,6 @@ nnoremap cn <Esc>:cn<CR>
 nnoremap cp <Esc>:cp<CR>
 
 nnoremap <Leader>w :w!<CR>
-nnoremap <Leader>ch :silent noh<CR>
 
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
