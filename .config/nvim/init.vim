@@ -75,6 +75,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'rose-pine/neovim', { 'branch': 'main' }
 Plug 'simrat39/rust-tools.nvim'
 Plug 'tpope/vim-commentary'
@@ -99,6 +100,11 @@ EOF
 "}}}
 "{{{ editorconfig-vim
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+"}}}
+"{{{ lsp_signature.nvim
+lua <<EOF
+require('lsp_signature').setup()
+EOF
 "}}}
 "{{{ lualine.nvim
 lua <<EOF
