@@ -61,9 +61,8 @@ Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
-Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
-Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'matze/vim-ini-fold', { 'for': 'ini' }
 Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
@@ -79,6 +78,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'rose-pine/neovim', { 'branch': 'main' }
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'tpope/vim-commentary'
 
@@ -139,11 +139,12 @@ local cmp = require'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'path' },
   }),
   mapping = {
@@ -292,6 +293,12 @@ nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope lsp_workspace_diagnostics<CR>
+
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
 
 " paste multiple lines without overwriting content
 vnoremap <silent> p p`]
