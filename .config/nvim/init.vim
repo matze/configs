@@ -292,7 +292,7 @@ nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
-nnoremap ge <cmd>Telescope lsp_workspace_diagnostics<CR>
+nnoremap ge <cmd>Telescope diagnostics<CR>
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
