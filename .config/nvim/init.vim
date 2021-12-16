@@ -173,7 +173,7 @@ require('lspconfig')['rust_analyzer'].setup {
 }
 EOF
 "}}}
-"{{{ nvim-lspconfig
+"{{{ nvim-lspconfig + rust-tools
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 
@@ -181,6 +181,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 end
 
 nvim_lsp.clangd.setup({ on_attach = on_attach })
@@ -193,6 +194,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+require('rust-tools').setup {
+  server = {
+    on_attach = on_attach,
+  },
+  tools = {
+    inlay_hints = {
+      show_parameter_hints = false,
+      other_hints_prefix = "→ ",
+    },
+  },
+}
 EOF
 "}}}
 "{{{ nvim-treesitter
@@ -221,18 +233,6 @@ lua <<EOF
 vim.g.rose_pine_variant = 'base'
 vim.g.rose_pine_disable_italics = true
 vim.g.rose_pine_colors = { punctuation = '#bd8091' }
-EOF
-"}}}
-"{{{ rust-tools
-lua <<EOF
-require('rust-tools').setup {
-  tools = {
-    inlay_hints = {
-      show_parameter_hints = false,
-      other_hints_prefix = "→ ",
-      },
-    },
-  }
 EOF
 "}}}
 "{{{ telescope
