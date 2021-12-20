@@ -304,8 +304,6 @@ snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-nnoremap <CR> za
-
 " select pasted text
 noremap gV `[v`]
 
