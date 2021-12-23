@@ -77,6 +77,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'rose-pine/neovim', { 'branch': 'main' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
@@ -112,7 +113,7 @@ EOF
 lua <<EOF
 require('lualine').setup {
   options = {
-    theme = 'rose-pine',
+    theme = 'kanagawa',
   },
   sections = {
     lualine_a = {'mode'},
@@ -259,7 +260,7 @@ nmap <A-k> <Plug>MoveLineUp
 let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 
-silent! colorscheme rose-pine
+silent! colorscheme kanagawa
 silent! set background=dark
 
 syntax enable
