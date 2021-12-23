@@ -104,6 +104,24 @@ EOF
 "{{{ editorconfig-vim
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 "}}}
+"{{{ kanagawa.nvim
+lua <<EOF
+require('kanagawa').setup({
+  undercurl = true,
+  commentStyle = "italic",
+  functionStyle = "NONE",
+  keywordStyle = "NONE",
+  statementStyle = "NONE",
+  typeStyle = "NONE",
+  variablebuiltinStyle = "italic",
+  specialReturn = false,
+  specialException = false,
+  transparent = false,
+  colors = {},
+  overrides = {},
+})
+EOF
+"}}}
 "{{{ lsp_signature.nvim
 lua <<EOF
 require('lsp_signature').setup()
