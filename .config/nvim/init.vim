@@ -75,6 +75,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'rebelot/kanagawa.nvim'
