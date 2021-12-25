@@ -68,6 +68,7 @@ Plug 'matze/vim-ini-fold', { 'for': 'ini' }
 Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
 Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
+Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
@@ -258,6 +259,7 @@ EOF
 "{{{ telescope
 lua <<EOF
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('zk')
 EOF
 "}}}
 "{{{ vim-commentary
@@ -277,6 +279,11 @@ nmap <A-k> <Plug>MoveLineUp
 "}}}
 "{{{ vim-tex-fold
 let g:tex_fold_additional_envs = ['tikzpicture']
+"}}}
+"{{{ zk
+lua <<EOF
+require("zk").setup()
+EOF
 "}}}
 
 silent! colorscheme kanagawa
@@ -313,6 +320,10 @@ nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope diagnostics<CR>
+
+nnoremap <Leader>zn <cmd>Telescope zk notes<CR>
+nnoremap <Leader>zt <cmd>Telescope zk tags<CR>
+nnoremap <Leader>zc <cmd>:ZkNew<CR>
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
