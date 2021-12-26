@@ -323,6 +323,8 @@ nnoremap ge <cmd>Telescope diagnostics<CR>
 
 nnoremap <Leader>zn <cmd>Telescope zk notes<CR>
 nnoremap <Leader>zt <cmd>Telescope zk tags<CR>
+nnoremap <Leader>zb <cmd>Telescope zk backlinks<CR>
+nnoremap <Leader>zl <cmd>Telescope zk links<CR>
 nnoremap <Leader>zc <cmd>:ZkNew<CR>
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
