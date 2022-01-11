@@ -289,7 +289,9 @@ let g:tex_fold_additional_envs = ['tikzpicture']
 "}}}
 "{{{ zk
 lua <<EOF
-require("zk").setup()
+require("zk").setup({
+  picker = "telescope",
+})
 EOF
 "}}}
 
@@ -328,10 +330,10 @@ nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope diagnostics<CR>
 
-nnoremap <Leader>zn <cmd>Telescope zk notes<CR>
-nnoremap <Leader>zt <cmd>Telescope zk tags<CR>
-nnoremap <Leader>zb <cmd>Telescope zk backlinks<CR>
-nnoremap <Leader>zl <cmd>Telescope zk links<CR>
+nnoremap <Leader>zn <cmd>:ZkNotes<CR>
+nnoremap <Leader>zt <cmd>:ZkTags<CR>
+nnoremap <Leader>zb <cmd>:ZkBacklinks<CR>
+nnoremap <Leader>zl <cmd>:ZkLinks<CR>
 nnoremap <Leader>zc <cmd>:ZkNew<CR>
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
