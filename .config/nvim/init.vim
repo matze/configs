@@ -80,7 +80,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'rebelot/kanagawa.nvim'
-Plug 'rose-pine/neovim', { 'branch': 'main' }
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'tpope/vim-commentary'
