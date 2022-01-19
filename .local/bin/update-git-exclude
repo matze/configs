@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# update-git-exclude
+#
+# Updates .git/info/exclude with every currently untracked file. Errors out if
+# not run in a Git repository.
+
+if ! GIT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"; then
+    echo "Not inside a Git repository"
+    exit 1
+fi
+
+git ls-files . --exclude-standard --others >> $GIT_DIR/.git/info/exclude
