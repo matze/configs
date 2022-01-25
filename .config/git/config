@@ -3,35 +3,33 @@
 
 [core]
     editor          = nvim
-    excludesfile    = ~/.gitignore
     whitespace      = fix, trailing-space
     pager           = delta
 
 [color]
-    ui          = auto
-    branch      = auto
-    diff        = auto
-    interactive = auto
-    status      = auto
-
-[color "diff"]
-    whitespace  = red reverse
+    ui              = auto
+    branch          = auto
+    diff            = auto
+    interactive     = auto
+    status          = auto
 
 [push]
-    default = tracking
+    default         = tracking
+
+[merge]
+    conflictstyle   = diff3
 
 [alias]
-    l       = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
-    lb      = log --pretty='format:* %s%n%n%w(72,4,4)%b'
-    s       = status --short
-    d       = diff
-    ds      = diff --cached
-    wdiff   = diff --color-words --ignore-all-space
-    co      = checkout
-    unstage = reset HEAD
-    undo    = checkout --
-    tarball = !git archive HEAD --prefix=$(basename $(pwd))/ | gzip > $(basename $(pwd))-$(git rev-parse --short HEAD).tar.gz
-    checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+    l               = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
+    lb              = log --pretty='format:* %s%n%n%w(72,4,4)%b'
+    s               = status --short
+    d               = diff
+    ds              = diff --cached
+    wdiff           = diff --color-words --ignore-all-space
+    unstage         = reset HEAD
+    undo            = checkout --
+    tarball         = !git archive HEAD --prefix=$(basename $(pwd))/ | gzip > $(basename $(pwd))-$(git rev-parse --short HEAD).tar.gz
+    checkout-pr     = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 
 [advice]
     pushNonFastForward  = false
