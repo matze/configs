@@ -57,6 +57,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
+Plug 'j-hui/fidget.nvim'
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
@@ -104,6 +105,19 @@ EOF
 "}}}
 "{{{ editorconfig-vim
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+"}}}
+"{{{ fidget.nvim
+lua <<EOF
+require('fidget').setup({
+  text = {
+    spinner = "dots",
+  },
+  timer = {
+    fidget_decay = 0,
+    task_decay = 0,
+  },
+})
+EOF
 "}}}
 "{{{ kanagawa.nvim
 lua <<EOF
