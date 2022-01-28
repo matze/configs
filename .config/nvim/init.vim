@@ -55,6 +55,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
