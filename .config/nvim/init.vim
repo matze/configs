@@ -372,6 +372,7 @@ nnoremap <Left> :bp<CR>
 nnoremap cn <Esc>:cn<CR>
 nnoremap cp <Esc>:cp<CR>
 
+nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>w :w!<CR>
 
 nmap <Leader>r1 yypVr=
