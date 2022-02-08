@@ -72,6 +72,7 @@ Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
@@ -84,10 +85,14 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
-Plug 'tpope/vim-commentary'
 
 call plug#end()
 
+"{{{ Comment.nvim
+lua <<EOF
+require('Comment').setup()
+EOF
+"}}}
 "{{{ nvim-bufferline.lua
 lua <<EOF
 require('bufferline').setup {
@@ -283,13 +288,6 @@ lua <<EOF
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('zk')
 EOF
-"}}}
-"{{{ vim-commentary
-autocmd FileType cmake setlocal commentstring=#\ %s
-autocmd FileType meson setlocal commentstring=#\ %s
-autocmd FileType dosini setlocal commentstring=#\ %s
-autocmd FileType cpp setlocal commentstring=//\ %s
-autocmd FileType cinemoproj setlocal commentstring=//\ %s
 "}}}
 "{{{ vim-move
 let g:move_map_keys = 0
