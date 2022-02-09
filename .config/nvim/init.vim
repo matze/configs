@@ -62,6 +62,7 @@ Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'L3MON4D3/LuaSnip'
@@ -81,7 +82,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
@@ -143,11 +143,6 @@ require('kanagawa').setup({
 })
 EOF
 "}}}
-"{{{ lsp_signature.nvim
-lua <<EOF
-require('lsp_signature').setup()
-EOF
-"}}}
 "{{{ lualine.nvim
 lua <<EOF
 require('lualine').setup {
@@ -187,11 +182,14 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'path' },
   }),
   mapping = {
-    ["<C-j>"] = cmp.mapping.confirm({ select = true }),
+    ['<C-j>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
   },
 })
 
