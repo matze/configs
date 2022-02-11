@@ -129,7 +129,7 @@ export SSH_AUTH_SOCK=$SOCK
 #}}}
 #{{{ fzf + fd
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git --color=always'
-export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_OPTS="--ansi --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
