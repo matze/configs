@@ -132,10 +132,7 @@ export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git --color=alway
 export FZF_DEFAULT_OPTS="--ansi --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
-    . ~/.vim/plugged/fzf/shell/key-bindings.bash
-    bind -x '"\C-p": vi $(fzf);'
-fi
+bind -x '"\C-p": vi $(fzf);'
 #}}}
 #{{{ zoxide
 eval "$(zoxide init bash)"
