@@ -128,12 +128,13 @@ fi
 export SSH_AUTH_SOCK=$SOCK
 #}}}
 #{{{ fzf + fd
-command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd .'
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ -f ~/.vim/plugged/fzf/shell/key-bindings.bash ]; then
     . ~/.vim/plugged/fzf/shell/key-bindings.bash
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    bind -x '"\C-p": vim $(fzf);'
+    bind -x '"\C-p": vi $(fzf);'
 fi
 #}}}
 #{{{ zoxide
