@@ -72,13 +72,14 @@ Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
 Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
+Plug 'natecraddock/telescope-zf-native.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
@@ -283,8 +284,15 @@ EOF
 "}}}
 "{{{ telescope
 lua <<EOF
-require('telescope').load_extension('fzf')
+require('telescope').load_extension('zf-native')
 require('telescope').load_extension('zk')
+require('telescope').setup {
+  pickers = {
+    find_files = {
+      find_command = { "fd", "--type", "f", "--exclude", ".git", "--strip-cwd-prefix" },
+    },
+  }
+}
 EOF
 "}}}
 "{{{ vim-move
