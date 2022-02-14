@@ -293,6 +293,14 @@ require('telescope').setup {
     },
   }
 }
+
+telescope_custom_files = function()
+  local ok = pcall(require('telescope.builtin').git_files, {})
+
+  if not ok then
+    require('telescope.builtin').find_files({})
+  end
+end
 EOF
 "}}}
 "{{{ vim-move
@@ -338,7 +346,7 @@ endf
 let mapleader = "\<Space>"
 
 inoremap <C-c> <Esc>
-nnoremap <C-p> <cmd>Telescope find_files<CR>
+nnoremap <C-p> <cmd>lua telescope_custom_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<CR>
 nnoremap <C-f> <cmd>Telescope grep_string<CR>
 nnoremap <C-g> <cmd>Telescope live_grep<CR>
