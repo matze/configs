@@ -233,16 +233,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 require('rust-tools').setup {
   server = {
     on_attach = on_attach,
-    settings = {
-      ['rust-analyzer'] = {
-        procMacro = {
-          ignored = {
-            tonic = {'async_trait'},
-            ['async-trait'] = {'async_trait'},
-          },
-        },
-      }
-    }
   },
   tools = {
     inlay_hints = {
