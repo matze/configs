@@ -348,7 +348,7 @@ nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope diagnostics<CR>
 
-nnoremap <Leader>zn <cmd>:ZkNotes<CR>
+nnoremap <C-n> <cmd>:ZkNotes<CR>
 vnoremap <Leader>zn :'<,'>ZkNewFromTitleSelection<CR>
 nnoremap <Leader>zt <cmd>:ZkTags<CR>
 nnoremap <Leader>zb <cmd>:ZkBacklinks<CR>
