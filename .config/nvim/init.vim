@@ -53,6 +53,7 @@ set shortmess+=c
 "{{{ Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'AckslD/nvim-neoclip.lua'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dkarter/bullets.vim'
@@ -79,7 +80,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
@@ -169,6 +169,11 @@ require('gitsigns').setup {
     ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
   }
 }
+EOF
+"}}}
+"{{{ nvim-neoclip.lua
+lua <<EOF
+require('neoclip').setup({})
 EOF
 "}}}
 "{{{ nvim-cmp
@@ -274,6 +279,7 @@ EOF
 "}}}
 "{{{ telescope
 lua <<EOF
+require('telescope').load_extension('neoclip')
 require('telescope').load_extension('zf-native')
 require('telescope').load_extension('zk')
 require('telescope').setup {
