@@ -10,9 +10,9 @@
 set nocompatible
 set modeline
 set noshowcmd
-set nocursorline
 set nocursorcolumn
 set noerrorbells
+set cursorline
 set history=1000
 set wildmenu
 set wildignore+=*/.git/*,*~,*/build/*,*.pyc
@@ -73,6 +73,7 @@ Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
 Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
+Plug 'mvllow/modes.nvim', { 'branch': 'main' }
 Plug 'natecraddock/telescope-zf-native.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
@@ -128,6 +129,8 @@ EOF
 "}}}
 "{{{ kanagawa.nvim
 lua <<EOF
+local colors = require('kanagawa.colors').setup()
+
 require('kanagawa').setup({
   undercurl = true,
   commentStyle = "italic",
@@ -140,7 +143,9 @@ require('kanagawa').setup({
   specialException = false,
   transparent = false,
   colors = {},
-  overrides = {},
+  overrides = {
+    CursorLine = { bg = colors.bg_light0 },
+  },
 })
 EOF
 "}}}
@@ -169,6 +174,14 @@ require('gitsigns').setup {
     ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
   }
 }
+EOF
+"}}}
+"{{{ modes.nvim
+lua <<EOF
+require('modes').setup({
+  set_cursor = false,
+  line_opacity = 0.1,
+})
 EOF
 "}}}
 "{{{ nvim-neoclip.lua
