@@ -84,6 +84,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+Plug 'protex/better-digraphs.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
@@ -366,6 +367,10 @@ nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope diagnostics<CR>
+
+inoremap <C-k><C-k> <cmd>lua require'betterdigraphs'.digraphs("i")<CR>
+nnoremap r<C-k><C-k> <cmd>lua require'betterdigraphs'.digraphs("r")<CR>
+vnoremap r<C-k><C-k> <Esc><Cmd>lua require'betterdigraphs'.digraphs("gvr")<CR>
 
 nnoremap <C-n> <cmd>:ZkNotes<CR>
 nnoremap <C-t> <cmd>:ZkTags<CR>
