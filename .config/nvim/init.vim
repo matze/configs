@@ -49,6 +49,9 @@ set foldenable
 set foldmethod=marker
 set completeopt=menu,menuone,noselect
 set shortmess+=c
+
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
 "}}}
 "{{{ Plugins
 call plug#begin('~/.local/share/nvim/plugged')
