@@ -1,0 +1,5 @@
+theme = "rose_pine"
+
+[keys.normal]
+C-p = "file_picker"
+C-b = "buffer_picker"
