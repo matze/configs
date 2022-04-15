@@ -49,6 +49,7 @@ set foldenable
 set foldmethod=marker
 set completeopt=menu,menuone,noselect
 set shortmess+=c
+set laststatus=3
 
 let g:do_filetype_lua = 1
 let g:did_load_filetypes = 0
