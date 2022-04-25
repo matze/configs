@@ -210,11 +210,11 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'path' },
   }),
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-j>'] = cmp.mapping.confirm({ select = true }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-  },
+  }),
 })
 
 cmp.setup.cmdline('/', {
