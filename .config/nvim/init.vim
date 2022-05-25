@@ -88,6 +88,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+Plug 'p00f/clangd_extensions.nvim'
 Plug 'protex/better-digraphs.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
@@ -247,7 +248,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 end
 
-nvim_lsp.clangd.setup({ on_attach = on_attach })
 nvim_lsp.pylsp.setup({ on_attach = on_attach })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -257,6 +257,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
 require('rust-tools').setup {
   server = {
     on_attach = on_attach,
@@ -268,6 +269,20 @@ require('rust-tools').setup {
       other_hints_prefix = "⇒ ",
     },
   },
+}
+
+require("clangd_extensions").setup {
+  server = {
+    on_attach = on_attach,
+    cmd = { '/usr/bin/clangd-14' },
+  },
+  extensions = {
+    inlay_hints = {
+      show_parameter_hints = true,
+      parameter_hints_prefix = "← ",
+      other_hints_prefix = "⇒ ",
+    }
+  }
 }
 EOF
 "}}}
@@ -434,4 +449,5 @@ nmap <C-X> :q<CR>
 " Allow using <CR> on quickfix entries
 autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd BufWritePre *.rs,*.cpp,*.h lua vim.lsp.buf.formatting_sync()
 " }}}
