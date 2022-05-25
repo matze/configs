@@ -274,7 +274,6 @@ require('rust-tools').setup {
 require("clangd_extensions").setup {
   server = {
     on_attach = on_attach,
-    cmd = { '/usr/bin/clangd-14' },
   },
   extensions = {
     inlay_hints = {
