@@ -85,6 +85,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
@@ -243,6 +244,7 @@ local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K' , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
@@ -316,6 +318,7 @@ EOF
 "{{{ telescope
 lua <<EOF
 require('telescope').load_extension('neoclip')
+require('telescope').load_extension('ui-select')
 require('telescope').load_extension('zf-native')
 require('telescope').load_extension('zk')
 require('telescope').setup {
@@ -386,7 +389,6 @@ nnoremap <C-g> <cmd>Telescope live_grep<CR>
 nnoremap <Leader>fm <cmd>:lua vim.lsp.buf.formatting()<CR>
 nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
-nnoremap ga <cmd>Telescope lsp_code_actions<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
 nnoremap ge <cmd>Telescope diagnostics<CR>
 
