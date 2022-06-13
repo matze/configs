@@ -140,12 +140,12 @@ local colors = require('kanagawa.colors').setup()
 
 require('kanagawa').setup({
   undercurl = true,
-  commentStyle = "italic",
-  functionStyle = "NONE",
-  keywordStyle = "NONE",
-  statementStyle = "NONE",
-  typeStyle = "NONE",
-  variablebuiltinStyle = "italic",
+  commentStyle = { italic = true },
+  functionStyle = {},
+  keywordStyle = {},
+  statementStyle = {},
+  typeStyle = {},
+  variablebuiltinStyle = { italic = true },
   specialReturn = false,
   specialException = false,
   transparent = false,
