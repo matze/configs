@@ -58,7 +58,7 @@ let g:did_load_filetypes = 0
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'AckslD/nvim-neoclip.lua'
-Plug 'akinsho/nvim-bufferline.lua'
+Plug 'akinsho/nvim-bufferline.lua', { 'branch': 'main' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -152,6 +152,8 @@ require('kanagawa').setup({
   colors = {},
   overrides = {
     CursorLine = { bg = colors.bg_light0 },
+    -- BufferLineIndicatorSelected = { fg = colors.diag.warning, bg = colors.diag.error },
+    -- BufferLineFill = { fg = colors.springGreen },
   },
 })
 EOF
