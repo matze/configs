@@ -152,8 +152,6 @@ require('kanagawa').setup({
   colors = {},
   overrides = {
     CursorLine = { bg = colors.bg_light0 },
-    -- BufferLineIndicatorSelected = { fg = colors.diag.warning, bg = colors.diag.error },
-    -- BufferLineFill = { fg = colors.springGreen },
   },
 })
 EOF
@@ -306,15 +304,6 @@ parser_config.coremake = {
   },
   filetype = "coremake"
 }
-EOF
-"}}}
-"{{{ rose-pine
-sign define LspDiagnosticsSignError text=▶ texthl=Error
-
-lua <<EOF
-vim.g.rose_pine_variant = 'base'
-vim.g.rose_pine_disable_italics = true
-vim.g.rose_pine_colors = { punctuation = '#bd8091' }
 EOF
 "}}}
 "{{{ telescope
