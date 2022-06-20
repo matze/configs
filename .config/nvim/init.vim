@@ -57,7 +57,7 @@ let g:did_load_filetypes = 0
 "{{{ Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'AckslD/nvim-neoclip.lua'
+Plug 'AckslD/nvim-neoclip.lua', { 'branch': 'main' }
 Plug 'akinsho/nvim-bufferline.lua', { 'branch': 'main' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dkarter/bullets.vim'
@@ -89,7 +89,7 @@ Plug 'nvim-telescope/telescope-ui-select.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
-Plug 'p00f/clangd_extensions.nvim'
+Plug 'p00f/clangd_extensions.nvim', { 'branch': 'main' }
 Plug 'protex/better-digraphs.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
