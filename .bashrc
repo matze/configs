@@ -35,6 +35,11 @@ fi
 alias la='ls -A'
 alias ll='ls -l'
 #}}}
+#{{{ functions
+function man-browse() {
+    man -k . | fzf | man $(sed -n 's/^\(.*\) (\([0-9]\)).*$/\2 \1/p')
+}
+#}}}
 #{{{ prompt
 COLOR_NONE="\[\033[0m\]"
 BROWN="\[\033[0;33m\]"
