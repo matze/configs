@@ -77,6 +77,7 @@ Plug 'matze/vim-lilypond', { 'for': 'lilypond' }
 Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
+Plug 'mfussenegger/nvim-dap'
 Plug 'mvllow/modes.nvim', { 'branch': 'main' }
 Plug 'natecraddock/telescope-zf-native.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -261,6 +262,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+local extension_path = os.getenv("HOME") .. "/.local/share/codelldb-x86_64-linux/extension/"
+local codelldb_path = extension_path .. "adapter/codelldb"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+local adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
+
 require('rust-tools').setup {
   server = {
     on_attach = on_attach,
@@ -271,6 +277,12 @@ require('rust-tools').setup {
       parameter_hints_prefix = "← ",
       other_hints_prefix = "⇒ ",
     },
+  },
+  hover_actions = {
+    auto_focus = true,
+  },
+  dap = {
+    adapter = adapter,
   },
 }
 
@@ -423,6 +435,13 @@ nnoremap cp <Esc>:cp<CR>
 
 nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>w :w!<CR>
+
+" nvim-dap
+nnoremap <silent> <Leader>b <cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <Leader>1 <cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <Leader>2 <cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <Leader>3 <cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <Leader>v <cmd>lua require'dap.ui.widgets'.hover()<CR>
 
 nmap <Leader>r1 yypVr=
 nmap <Leader>r2 yypVr-
