@@ -70,6 +70,7 @@ Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'matze/vim-ini-fold', { 'for': 'ini' }
@@ -323,6 +324,13 @@ vim.filetype.add({
   extension = {
     proj = "coremake"
   }
+})
+EOF
+"}}}
+"{{{ nvim-web-devicons
+lua <<EOF
+require('nvim-web-devicons').setup({
+  color_icons = false,
 })
 EOF
 "}}}
