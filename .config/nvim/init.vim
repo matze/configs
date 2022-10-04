@@ -51,8 +51,6 @@ set completeopt=menu,menuone,noselect
 set shortmess+=c
 set laststatus=3
 
-let g:do_filetype_lua = 1
-let g:did_load_filetypes = 0
 "}}}
 "{{{ Plugins
 call plug#begin('~/.local/share/nvim/plugged')
