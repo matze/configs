@@ -50,6 +50,7 @@ set foldmethod=marker
 set completeopt=menu,menuone,noselect
 set shortmess+=c
 set laststatus=3
+set cmdheight=0
 
 "}}}
 "{{{ Plugins
