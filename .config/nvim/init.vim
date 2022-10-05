@@ -403,7 +403,7 @@ nnoremap <C-b> <cmd>Telescope buffers<CR>
 nnoremap <C-f> <cmd>Telescope grep_string<CR>
 nnoremap <C-g> <cmd>Telescope live_grep<CR>
 
-nnoremap <Leader>fm <cmd>:lua vim.lsp.buf.formatting()<CR>
+nnoremap <Leader>fm <cmd>:lua vim.lsp.buf.format()<CR>
 nnoremap gd <cmd>Telescope lsp_definitions<CR>
 nnoremap gi <cmd>Telescope lsp_implementations<CR>
 nnoremap gr <cmd>Telescope lsp_references<CR>
