@@ -475,5 +475,5 @@ nmap <C-X> :q<CR>
 " Allow using <CR> on quickfix entries
 autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-autocmd BufWritePre *.rs,*.cpp,*.h lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.rs,*.cpp,*.h lua vim.lsp.buf.format()
 " }}}
