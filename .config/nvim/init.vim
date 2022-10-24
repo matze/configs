@@ -61,7 +61,6 @@ Plug 'akinsho/nvim-bufferline.lua', { 'branch': 'main' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
@@ -91,7 +90,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 Plug 'p00f/clangd_extensions.nvim', { 'branch': 'main' }
-Plug 'protex/better-digraphs.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
