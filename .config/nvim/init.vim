@@ -469,6 +469,15 @@ nmap <C-J> <C-W>w
 nmap <C-K> <C-W>W
 nmap <C-X> :q<CR>
 "}}}
+"{{{ Filetypes
+lua <<EOF
+vim.filetype.add({
+  filename = {
+    ['Jenkinsfile'] = 'groovy',
+  },
+})
+EOF
+"}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
 autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
