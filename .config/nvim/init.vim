@@ -60,7 +60,7 @@ Plug 'AckslD/nvim-neoclip.lua', { 'branch': 'main' }
 Plug 'akinsho/nvim-bufferline.lua', { 'branch': 'main' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dkarter/bullets.vim'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'gpanders/editorconfig.nvim'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
