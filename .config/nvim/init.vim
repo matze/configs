@@ -77,6 +77,7 @@ Plug 'matze/vim-move'
 Plug 'matze/vim-tex-fold', { 'for': 'tex' }
 Plug 'mickael-menu/zk-nvim', { 'branch': 'main' }
 Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'mvllow/modes.nvim', { 'branch': 'main' }
 Plug 'natecraddock/telescope-zf-native.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -260,11 +261,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-local extension_path = os.getenv("HOME") .. "/.local/share/codelldb-x86_64-linux/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-local adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-
 require('rust-tools').setup {
   server = {
     on_attach = on_attach,
@@ -278,9 +274,6 @@ require('rust-tools').setup {
   },
   hover_actions = {
     auto_focus = true,
-  },
-  dap = {
-    adapter = adapter,
   },
 }
 
@@ -296,6 +289,140 @@ require("clangd_extensions").setup {
     }
   }
 }
+EOF
+"}}}
+"{{{ nvim-dap and nvim-dap-ui
+lua <<EOF
+local extension_path = os.getenv("HOME") .. "/.local/share/codelldb-x86_64-linux/extension/"
+
+local dap = require("dap")
+
+dap.adapters.lldb = {
+  type = "server",
+  port = "${port}",
+  host = "127.0.0.1",
+  executable = {
+    command = extension_path .. "adapter/codelldb",
+    args = {
+      "--liblldb", extension_path .. "lldb/lib/liblldb.so", "--port", "${port}"
+    },
+  },
+}
+
+dap.configurations.rust = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+  },
+  {
+    -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+    --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    name = "Attach",
+    type = "lldb",  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+    request = "attach",
+    pid = require("dap.utils").pick_process,
+    args = {},
+  },
+}
+
+local ui = require("dapui")
+
+ui.setup({
+  icons = { expanded = "", collapsed = "", current_frame = "" },
+  mappings = {
+    -- Use a table to apply multiple mappings
+    expand = { "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    edit = "e",
+    repl = "r",
+    toggle = "t",
+  },
+  -- Use this to override mappings for specific elements
+  element_mappings = {
+    -- Example:
+    -- stacks = {
+    --   open = "<CR>",
+    --   expand = "o",
+    -- }
+  },
+  -- Expand lines larger than the window
+  -- Requires >= 0.7
+  expand_lines = vim.fn.has("nvim-0.7") == 1,
+  -- Layouts define sections of the screen to place windows.
+  -- The position can be "left", "right", "top" or "bottom".
+  -- The size specifies the height/width depending on position. It can be an Int
+  -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
+  -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
+  -- Elements are the elements shown in the layout (in order).
+  -- Layouts are opened in order so that earlier layouts take priority in window sizing.
+  layouts = {
+    {
+      elements = {
+      -- Elements can be strings or table with id and size keys.
+        { id = "scopes", size = 0.25 },
+        "breakpoints",
+        "stacks",
+        "watches",
+      },
+      size = 40, -- 40 columns
+      position = "left",
+    },
+    {
+      elements = {
+        "repl",
+        "console",
+      },
+      size = 0.25, -- 25% of total lines
+      position = "bottom",
+    },
+  },
+  controls = {
+    -- Requires Neovim nightly (or 0.8 when released)
+    enabled = true,
+    -- Display controls in this element
+    element = "repl",
+    icons = {
+      pause = "",
+      play = "",
+      step_into = "",
+      step_over = "",
+      step_out = "",
+      step_back = "",
+      run_last = "",
+      terminate = "",
+    },
+  },
+  floating = {
+    max_height = nil, -- These can be integers or a float between 0 and 1.
+    max_width = nil, -- Floats will be treated as percentage of your screen.
+    border = "single", -- Border style. Can be "single", "double" or "rounded"
+    mappings = {
+      close = { "q", "<Esc>" },
+    },
+  },
+  windows = { indent = 1 },
+  render = {
+    max_type_length = nil, -- Can be integer or nil.
+    max_value_lines = 100, -- Can be integer or nil.
+  }
+})
+
+-- Start debugging session
+vim.keymap.set("n", "<localleader>0", function()
+  dap.continue()
+  ui.toggle({})
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
+end)
+
+vim.fn.sign_define('DapBreakpoint', { text = '👉' })
 EOF
 "}}}
 "{{{ nvim-treesitter
