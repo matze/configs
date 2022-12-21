@@ -241,8 +241,6 @@ EOF
 "}}}
 "{{{ nvim-lspconfig + rust-tools
 lua <<EOF
-local nvim_lsp = require('lspconfig')
-
 local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -251,7 +249,27 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 end
 
-nvim_lsp.pyright.setup({ on_attach = on_attach })
+require("lspconfig").pylsp.setup({
+  settings = {
+    pylsp = {
+      plugins = {
+        ruff = {
+          enabled = true
+        },
+        pycodestyle = {
+          enabled = false
+        },
+        pyflakes = {
+          enabled = false
+        },
+        mccabe = {
+          enabled = false
+        }
+      }
+    }
+  },
+  on_attach = on_attach,
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -261,7 +279,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-require('rust-tools').setup {
+require("rust-tools").setup {
   server = {
     on_attach = on_attach,
   },
