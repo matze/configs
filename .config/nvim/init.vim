@@ -282,6 +282,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 require("rust-tools").setup {
   server = {
     on_attach = on_attach,
+    settings = {
+      ["rust-analyzer"] = {
+        inlayHints = { locationLinks = false },
+      },
+    },
   },
   tools = {
     inlay_hints = {
