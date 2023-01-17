@@ -523,25 +523,37 @@ require("zk").setup({
 EOF
 "}}}
 
+"{{{ extra → beancount
+lua <<EOF
+local nvim_lsp = require('lspconfig')
+local configs = require 'lspconfig.configs'
+local util = require 'lspconfig.util'
+
+configs["beancount_foo"] = {
+  default_config = {
+    cmd = {"beancount-language-server"};
+    filetypes = {"beancount"};
+    root_dir = function(fname)
+      return util.find_git_ancestor(fname) or util.path.dirname(fname)
+    end;
+  };
+  docs = {
+    description = "hello";
+    default_config = {
+      root_dir = [[root_pattern("elm.json")]];
+    };
+  };
+}
+
+nvim_lsp.beancount_foo.setup({})
+EOF
+"}}}
+
 silent! colorscheme kanagawa
 silent! set background=dark
 
 syntax enable
 
-"}}}
-"{{{ Functions
-" Adapted from github.com/jkramer/vim-checkbox
-fu! ToggleCheckbox()
-  let line = getline('.')
-
-  if match(line, '- \[ \]') != -1
-    call setline('.', substitute(line, '- \[ \]', '- \[x\]', ''))
-  elseif match(line, '- \[x\]') != -1
-    call setline('.', substitute(line, '- \[x\]', '- \[ \]', ''))
-  elseif match(line, '- ') != -1
-    call setline('.', substitute(line, '- ', '- \[ \] ', ''))
-  endif
-endf
 "}}}
 "{{{ Keymaps
 let mapleader = "\<Space>"
@@ -629,7 +641,6 @@ EOF
 "}}}
 "{{{ Autocmds
 " Allow using <CR> on quickfix entries
-autocmd FileType markdown nnoremap <Leader>cm :call ToggleCheckbox()<CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd BufWritePre *.rs,*.cpp,*.h lua vim.lsp.buf.format()
 " }}}
