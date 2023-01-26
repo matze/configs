@@ -486,7 +486,6 @@ lua <<EOF
 require('telescope').load_extension('neoclip')
 require('telescope').load_extension('ui-select')
 require('telescope').load_extension('zf-native')
-require('telescope').load_extension('zk')
 require('telescope').setup {
   pickers = {
     find_files = {
