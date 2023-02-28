@@ -28,7 +28,7 @@ vim.opt.smarttab = true
 vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.list = true
-vim.opt.listchars = { tab = "›~", trail = "•", nbsp = "␣" }
+vim.opt.listchars = { tab = "› ", trail = "•", nbsp = "␣" }
 vim.opt.fillchars = { fold = "·" }
 vim.opt.backspace = "indent,eol,start"
 vim.opt.foldenable = true

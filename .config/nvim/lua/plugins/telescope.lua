@@ -25,11 +25,10 @@ return {
       { "ge",    "<cmd>Telescope diagnostics<CR>", remap = false },
     },
     config = function()
-      -- require("telescope").load_extension("neoclip")
       require("telescope").setup({
         pickers = {
           find_files = {
-            find_command = { "fd", "--type", "f", "--exclude", ".git" },
+            find_command = { "fd", "--type", "f", "--type", "l", "--exclude", ".git" },
           },
         }
       })
