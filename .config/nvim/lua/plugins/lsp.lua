@@ -15,7 +15,7 @@ return {
       {
         "j-hui/fidget.nvim",
         config = function()
-          require('fidget').setup({
+          require("fidget").setup({
             text = {
               spinner = "dots",
             },
@@ -32,7 +32,7 @@ return {
     "simrat39/rust-tools.nvim",
     ft = "rust",
     config = function()
-      require("rust-tools").setup {
+      require("rust-tools").setup({
         server = {
           settings = {
             ["rust-analyzer"] = {
@@ -50,7 +50,22 @@ return {
         hover_actions = {
           auto_focus = true,
         },
-      }
+      })
+    end,
+  },
+  {
+    "p00f/clangd_extensions.nvim",
+    ft = { "c", "cpp" },
+    config = function()
+      require("clangd_extensions").setup({
+        extensions = {
+          inlay_hints = {
+            show_parameter_hints = true,
+            parameter_hints_prefix = "← ",
+            other_hints_prefix = "⇒ ",
+          }
+        }
+      })
     end,
   }
 }
