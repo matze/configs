@@ -2,9 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
     opts = {
       ensure_installed = {
         "bash",
@@ -13,10 +10,15 @@ return {
         "css",
         "html",
         "json",
+        "lua",
         "markdown",
         "rust",
       },
       highlight = { enable = true },
+      indent = { enable = true },
     },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   }
 }
