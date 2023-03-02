@@ -9,6 +9,7 @@ return {
           show_buffer_close_icons = false,
           modified_icon = '·',
           diagnostics = "nvim_lsp",
+          separator_style = "padded_slant",
         },
         highlights = {
           buffer_selected = {
