@@ -10,6 +10,10 @@ vim.keymap.set("n", "<Right>", ":bn<CR>", { remap = false })
 vim.keymap.set("n", "<Left>", ":bp<CR>", { remap = false })
 vim.keymap.set("n", "<C-x>", ":q<CR>", { remap = false })
 
+-- split navigation
+vim.keymap.set("n", "<C-j>", "<C-w>w")
+vim.keymap.set("n", "<C-k>", "<C-w>W")
+
 -- kill trailing whitespace
 vim.keymap.set("n", "<Leader>fw", ":%s/\\s\\+$//<CR>", { remap = false })
 
