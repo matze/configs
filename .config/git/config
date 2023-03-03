@@ -23,6 +23,7 @@
     l               = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
     lb              = log --pretty='format:* %s%n%n%w(72,4,4)%b'
     s               = status --short
+    c               = !git checkout $(git for-each-ref --format='%(refname:short)' refs/heads/ | sort | fzf)
     d               = diff
     ds              = diff --cached
     wdiff           = diff --color-words --ignore-all-space
