@@ -6,9 +6,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
--- Set lua indentation to 2
+-- Set indentation to 2 for select file types
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
+  pattern = {"css,lua"},
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
