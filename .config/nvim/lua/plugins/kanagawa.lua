@@ -4,9 +4,8 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local colors = require('kanagawa.colors').setup()
-
       require('kanagawa').setup({
+        theme = "dragon",
         undercurl = true,
         commentStyle = { italic = true },
         functionStyle = {},
@@ -17,10 +16,18 @@ return {
         specialReturn = false,
         specialException = false,
         transparent = false,
-        colors = {},
-        overrides = {
-          CursorLine = { bg = colors.bg_light0 },
+        colors = {
+          theme = {
+            all = {
+              ui = { bg_gutter = "none" }
+            }
+          }
         },
+        overrides = function(colors)
+          return {
+            CursorLine = { bg = colors.palette.sumiInk2 },
+          }
+        end,
       })
 
       vim.cmd([[colorscheme kanagawa]])
