@@ -35,4 +35,6 @@ vim.opt.foldenable = true
 vim.opt.foldmethod = "marker"
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.laststatus = 3
-vim.opt.cmdheight = 0
+-- Ideally I would like to hide the command line by setting it to 0 but there is
+-- a bug with macro recordings.
+vim.opt.cmdheight = 1
