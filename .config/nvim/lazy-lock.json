@@ -26,5 +26,6 @@
   "telescope-zf-native.nvim": { "branch": "master", "commit": "9b80268377baca222fb04fa9e6c61adcc017a070" },
   "telescope.nvim": { "branch": "master", "commit": "a3f17d3baf70df58b9d3544ea30abe52a7a832c2" },
   "vim-move": { "branch": "master", "commit": "a4bbedda7ef516b4a1b74d145cd642297e82e800" },
+  "wastebin.nvim": { "branch": "master", "commit": "0d70e45f177d2552ef0cf9d06d5cd49216a7bd8a" },
   "zk-nvim": { "branch": "main", "commit": "0413c52500cd0133b0cd8e7e7d43084855ac1760" }
 }
