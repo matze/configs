@@ -7,7 +7,7 @@ return {
       require('kanagawa').setup({
         theme = "dragon",
         undercurl = true,
-        commentStyle = { italic = true },
+        commentStyle = { italic = false },
         functionStyle = {},
         keywordStyle = {},
         statementStyle = {},
