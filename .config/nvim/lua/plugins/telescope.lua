@@ -18,7 +18,7 @@ return {
       },
       { "<C-f>", "<cmd>Telescope grep_string<CR>", remap = false },
       { "<C-g>", "<cmd>Telescope live_grep<CR>", remap = false },
-      { "<C-b>", "<cmd>Telescope git_branches<CR>", remap = false },
+      { "<C-b>", "<cmd>Telescope buffers<CR>", remap = false },
       { "gd",    "<cmd>Telescope lsp_definitions<CR>", remap = false },
       { "gi",    "<cmd>Telescope lsp_implementations<CR>", remap = false },
       { "gr",    "<cmd>Telescope lsp_references<CR>", remap = false },
