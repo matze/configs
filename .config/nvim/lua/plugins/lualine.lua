@@ -2,6 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   config = function()
     local colors = require("kanagawa.colors").setup()
+    local separator = { left = "", right = "◤" }
 
     require("lualine").setup {
       options = {
@@ -13,13 +14,13 @@ return {
         lualine_a = {
           {
             "mode",
-            separator = { left = "", right = "◤" },
+            separator = separator,
           },
         },
         lualine_b = {
           {
             "branch",
-            separator = { left = "", right = "◤" },
+            separator = separator,
             fmt = function(str)
               if #str >= 30 then
                 return str:sub(1, 29) .. "…"
@@ -32,19 +33,19 @@ return {
         lualine_c = {
           {
             "filename",
-            separator = { left = "◥", right = "" },
+            separator = separator,
           },
         },
         lualine_x = {
           {
             "encoding",
-            separator = { left = "◥", right = "" },
+            separator = separator,
           },
         },
         lualine_y = {
           {
             "filetype",
-            separator = { left = "◥", right = "" },
+            separator = separator,
           },
           {
             "diff",
@@ -54,7 +55,6 @@ return {
         lualine_z = {
           {
             "location",
-            separator = { left = "◥", right = "" },
           }
         },
       },
@@ -62,7 +62,7 @@ return {
         lualine_a = {
           {
             "buffers",
-            separator = { left = "◢", right = "◣" },
+            separator = separator,
             show_filename_only = true,
             buffers_color = {
               active = { gui = "bold", fg = colors.theme.ui.fg, bg = colors.theme.ui.bg },
