@@ -47,6 +47,15 @@ return {
     config = function()
       require("rust-tools").setup({
         server = {
+          capabilities = {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = false
+                }
+              }
+            }
+          },
           settings = {
             ["rust-analyzer"] = {
               inlayHints = { locationLinks = false },

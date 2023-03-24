@@ -14,7 +14,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
-          { name = "luasnip" },
           { name = "path" },
         }),
         mapping = cmp.mapping.preset.insert({
