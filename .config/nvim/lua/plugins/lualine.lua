@@ -49,7 +49,7 @@ return {
           },
           {
             "diff",
-            symbols = { added = " ", modified = "柳", removed = " " }
+            symbols = { added = " ", modified = " ", removed = " " }
           },
         },
         lualine_z = {
