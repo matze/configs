@@ -5,9 +5,11 @@ return {
     config = function()
       require("gitsigns").setup({
         attach_to_untracked = false,
-        keymaps = {
-          ["n <leader>gb"] = "<cmd>lua require('gitsigns').blame_line{full=true}<CR>",
-        }
+        on_attach = function(bufnr)
+          opts = {}
+          opts.buffer = bufnr
+          vim.keymap.set("n", "<leader>gb", function() package.loaded.gitsigns.blame_line{full=true} end, opts)
+        end
       })
     end
   },
