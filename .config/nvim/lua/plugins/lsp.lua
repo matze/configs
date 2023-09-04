@@ -78,7 +78,9 @@ return {
   },
   {
     "p00f/clangd_extensions.nvim",
+    commit = "52b7e6f1d27de19e30e0c9e492b650f934be3f5e",
     ft = { "c", "cpp" },
+    pin = true,
     config = function()
       require("clangd_extensions").setup({
         extensions = {
