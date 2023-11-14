@@ -14,16 +14,13 @@ return {
     dependencies = {
       {
         "j-hui/fidget.nvim",
-        tag = "legacy",
         config = function()
           require("fidget").setup({
-            text = {
-              spinner = "dots",
-            },
-            timer = {
-              fidget_decay = 0,
-              task_decay = 0,
-            },
+            progress = {
+              display = {
+                done_ttl = 0,
+              }
+            }
           })
         end
       },
