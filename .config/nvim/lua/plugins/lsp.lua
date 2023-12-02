@@ -10,6 +10,7 @@ return {
     },
     config = function()
       require("lspconfig").pylsp.setup({})
+      require("lspconfig").typst_lsp.setup({})
     end,
     dependencies = {
       {
