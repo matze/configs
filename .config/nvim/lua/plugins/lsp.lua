@@ -1,3 +1,5 @@
+-- LSP related plugins, i.e. basic configuration and extensions like rust tools.
+
 return {
   {
     "neovim/nvim-lspconfig",

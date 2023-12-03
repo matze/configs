@@ -1,3 +1,5 @@
+-- Completion related plugins, mostly cmp and its specific modules.
+
 return {
   {
     "hrsh7th/nvim-cmp",
