@@ -11,6 +11,7 @@ return {
       { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", remap = false, silent = true },
     },
     config = function()
+      require("lspconfig").rust_analyzer.setup({})
       require("lspconfig").pylsp.setup({})
       require("lspconfig").typst_lsp.setup({})
     end,
@@ -41,40 +42,6 @@ return {
         end,
       }
     },
-  },
-  {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    config = function()
-      require("rust-tools").setup({
-        server = {
-          capabilities = {
-            textDocument = {
-              completion = {
-                completionItem = {
-                  snippetSupport = false
-                }
-              }
-            }
-          },
-          settings = {
-            ["rust-analyzer"] = {
-              inlayHints = { locationLinks = false },
-            },
-          },
-        },
-        tools = {
-          inlay_hints = {
-            show_parameter_hints = true,
-            parameter_hints_prefix = "← ",
-            other_hints_prefix = "⇒ ",
-          },
-        },
-        hover_actions = {
-          auto_focus = true,
-        },
-      })
-    end,
   },
   {
     "p00f/clangd_extensions.nvim",
