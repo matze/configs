@@ -23,7 +23,10 @@ return {
             progress = {
               display = {
                 done_ttl = 0,
-              }
+              },
+              lsp = {
+                progress_ringbuf_size = 16384,
+              },
             }
           })
         end
