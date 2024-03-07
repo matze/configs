@@ -14,6 +14,7 @@ return {
       require("lspconfig").rust_analyzer.setup({})
       require("lspconfig").pylsp.setup({})
       require("lspconfig").typst_lsp.setup({})
+      require("lspconfig").clangd.setup({})
 
       local signs = { Error = "", Warn = "", Hint = "", Info = "" }
       for type, icon in pairs(signs) do
@@ -52,21 +53,4 @@ return {
       }
     },
   },
-  {
-    "p00f/clangd_extensions.nvim",
-    commit = "52b7e6f1d27de19e30e0c9e492b650f934be3f5e",
-    ft = { "c", "cpp" },
-    pin = true,
-    config = function()
-      require("clangd_extensions").setup({
-        extensions = {
-          inlay_hints = {
-            show_parameter_hints = true,
-            parameter_hints_prefix = "← ",
-            other_hints_prefix = "⇒ ",
-          }
-        }
-      })
-    end,
-  }
 }
