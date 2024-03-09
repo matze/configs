@@ -1,8 +1,16 @@
-theme = "rose_pine"
+theme = "kanagawa"
 
 [keys.normal]
 C-p = "file_picker"
 C-b = "buffer_picker"
+
+[keys.insert]
+C-c = "normal_mode"
+
+[editor]
+bufferline = "multiple"
+color-modes = true
+cursorline = true
 
 [editor.lsp]
 display-inlay-hints = true
