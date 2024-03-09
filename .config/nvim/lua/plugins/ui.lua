@@ -62,7 +62,7 @@ return {
     "nvim-lualine/lualine.nvim",
     config = function()
       local colors = require("kanagawa.colors").setup()
-      local separator = { left = "", right = "◤" }
+      local separator = { left = "", right = "" }
 
       require("lualine").setup {
         options = {
