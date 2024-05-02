@@ -12,7 +12,7 @@ return {
     },
     config = function()
       require("lspconfig").rust_analyzer.setup({})
-      require("lspconfig").pylsp.setup({})
+      require("lspconfig").ruff_lsp.setup({})
       require("lspconfig").typst_lsp.setup({})
       require("lspconfig").clangd.setup({})
 
