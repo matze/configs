@@ -13,4 +13,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", { pkg = { sources = "" } })
+require("lazy").setup("plugins", { pkg = { sources = nil } })
