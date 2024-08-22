@@ -12,9 +12,9 @@ return {
     },
     config = function()
       require("lspconfig").rust_analyzer.setup({})
-      require("lspconfig").ruff_lsp.setup({})
       require("lspconfig").typst_lsp.setup({})
       require("lspconfig").clangd.setup({})
+      require('lspconfig').ruff.setup({})
 
       local signs = { Error = "", Warn = "", Hint = "", Info = "" }
       for type, icon in pairs(signs) do
