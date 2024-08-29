@@ -24,6 +24,21 @@ return {
     end,
     dependencies = {
       {
+        "chrisgrieser/nvim-lsp-endhints",
+        event = "LspAttach",
+        opts = {},
+        config = function()
+          require("lsp-endhints").setup({
+            icons = {
+              type = "=> ",
+              parameter = "<- ",
+              offspec = " ", -- hint kind not defined in official LSP spec
+              unknown = " ", -- hint kind is nil
+            },
+          })
+        end
+      },
+      {
         "j-hui/fidget.nvim",
         config = function()
           require("fidget").setup({
