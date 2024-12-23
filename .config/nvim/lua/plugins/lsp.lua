@@ -4,6 +4,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "BufRead",
+    dependencies = { "saghen/blink.cmp" },
     keys = {
       { "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", remap = false, silent = true },
       { "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", remap = false, silent = true },
@@ -11,10 +12,11 @@ return {
       { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", remap = false, silent = true },
     },
     config = function()
-      require("lspconfig").rust_analyzer.setup({})
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
       require("lspconfig").typst_lsp.setup({})
       require("lspconfig").clangd.setup({})
-      require('lspconfig').ruff.setup({})
+      require("lspconfig").ruff.setup({})
 
       local signs = { Error = "", Warn = "", Hint = "", Info = "" }
       for type, icon in pairs(signs) do
