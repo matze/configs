@@ -14,7 +14,13 @@ return {
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
-      require("lspconfig").typst_lsp.setup({})
+      require("lspconfig").tinymist.setup({
+        capabilities = capabilities,
+        single_file_support = true,
+        root_dir = function()
+          return vim.fn.getcwd()
+        end,
+      })
       require("lspconfig").clangd.setup({})
       require("lspconfig").ruff.setup({})
 
