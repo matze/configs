@@ -17,7 +17,7 @@ return {
         nerd_font_variant = "mono"
       },
       sources = {
-        default = { "buffer", "emoji", "lsp", "path", "snippets", },
+        default = { "buffer", "lsp", "path", "snippets", },
         providers = {
           emoji = {
             module = "blink-emoji",
