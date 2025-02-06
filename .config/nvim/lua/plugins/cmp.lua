@@ -4,9 +4,6 @@ return {
   {
     "saghen/blink.cmp",
     version = "*",
-    dependencies = {
-      "moyiz/blink-emoji.nvim",
-    },
     opts = {
       keymap = {
         preset = "default",
@@ -18,14 +15,6 @@ return {
       },
       sources = {
         default = { "buffer", "lsp", "path", "snippets", },
-        providers = {
-          emoji = {
-            module = "blink-emoji",
-            name = "Emoji",
-            score_offset = 15, -- the higher the number, the higher the priority
-            opts = { insert = true }, -- Insert emoji (default) or complete its name
-          },
-        }
       },
       signature = { enabled = true },
     },
