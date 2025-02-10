@@ -26,8 +26,7 @@ return {
     },
     dependencies = {
       {
-        "pkazmier/zk-nvim",
-        branch = "snacks-picker",
+        "zk-org/zk-nvim",
         keys = {
           { "<C-n>", "<cmd>:ZkNotes<CR>", remap = false },
           { "<C-t>", "<cmd>:ZkTags<CR>", remap = false },
