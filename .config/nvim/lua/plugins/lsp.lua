@@ -15,13 +15,13 @@ return {
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       require("lspconfig").rust_analyzer.setup({
         capabilities = capabilities,
-        settings = {
-          ["rust-analyzer"] = {
-            checkOnSave = {
-              command = "clippy"
-            }
-          }
-        }
+        -- settings = {
+        --   ["rust-analyzer"] = {
+        --     checkOnSave = {
+        --       command = "clippy"
+        --     }
+        --   }
+        -- }
       })
       require("lspconfig").tinymist.setup({
         capabilities = capabilities,
