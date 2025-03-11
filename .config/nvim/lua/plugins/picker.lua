@@ -16,7 +16,7 @@ return {
       },
     },
     keys = {
-      { "<C-p>", function() Snacks.picker.files() end, desc = "Find Files" },
+      { "<C-p>", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
       { "<C-g>", function() Snacks.picker.grep() end, desc = "Live grep" },
       { "<C-f>", function() Snacks.picker.grep_word() end, desc = "Grep word" },
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
