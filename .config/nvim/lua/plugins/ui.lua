@@ -141,6 +141,8 @@ return {
       }
     end,
   },
+  { "avm99963/vim-jjdescription" },
+  { "rafikdraoui/jj-diffconflicts" },
   {
     "lewis6991/gitsigns.nvim",
     event = "BufRead",
