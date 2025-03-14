@@ -1,0 +1,6 @@
+[ui]
+default-command = "log"
+pager = "delta"
+
+[ui.diff]
+format = "git"
