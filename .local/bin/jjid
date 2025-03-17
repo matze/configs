@@ -1,0 +1,21 @@
+#!/bin/bash
+
+read -p "Use private [ ] or work email [1]? " answer
+
+echo "answer: ${answer}"
+
+function set_jj_identity() {
+    echo "Set email to ${_USER_EMAIL}"
+    jj config set --repo user.name "Matthias Vogelgesang"
+    jj config set --repo user.email $_USER_EMAIL
+}
+
+case $answer in
+    1)  _USER_EMAIL="mvogelgesang@cinemo.com"
+        ;;
+
+    *)  _USER_EMAIL="matthias.vogelgesang@gmail.com"
+        ;;
+esac
+
+set_jj_identity
