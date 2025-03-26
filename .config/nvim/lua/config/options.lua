@@ -38,3 +38,8 @@ vim.opt.laststatus = 3
 -- Ideally I would like to hide the command line by setting it to 0 but there is
 -- a bug with macro recordings.
 vim.opt.cmdheight = 1
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = { current_line = true },
+})
