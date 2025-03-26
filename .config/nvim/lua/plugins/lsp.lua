@@ -5,12 +5,6 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufRead",
     dependencies = { "saghen/blink.cmp" },
-    keys = {
-      { "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", remap = false, silent = true },
-      { "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", remap = false, silent = true },
-      { "K", "<cmd>lua vim.lsp.buf.hover()<CR>", remap = false, silent = true },
-      { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", remap = false, silent = true },
-    },
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       require("lspconfig").rust_analyzer.setup({
