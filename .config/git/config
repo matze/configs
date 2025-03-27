@@ -1,5 +1,6 @@
 [user]
     name            = Matthias Vogelgesang
+    signingKey      = ~/.ssh/id_ed25519.pub
 
 [core]
     editor          = nvim
@@ -48,3 +49,5 @@
     file-style          = bold yellow
     file-decoration-style = none
     hunk-header-decoration-style = none
+[gpg]
+	format = ssh
