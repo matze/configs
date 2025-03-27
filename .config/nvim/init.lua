@@ -4,4 +4,4 @@ require("config.autocmds")
 require("config.filetypes")
 require("config.lazy")
 
-vim.lsp.enable({"clangd", "rust-analyzer"})
+vim.lsp.enable({"clangd", "rust-analyzer", "tinymist"})
