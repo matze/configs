@@ -41,5 +41,5 @@ vim.opt.cmdheight = 1
 
 vim.diagnostic.config({
   virtual_text = false,
-  virtual_lines = { current_line = true },
+  virtual_lines = false,
 })

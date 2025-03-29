@@ -21,3 +21,9 @@ vim.keymap.set("n", "<Leader>fw", ":%s/\\s\\+$//<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>se", ":setlocal spell spelllang=en<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>sd", ":setlocal spell spelllang=de<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>sn", ":setlocal nospell<CR>", { remap = false })
+
+-- toggle virtual lines
+vim.keymap.set("n", "<Leader>l", function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { remap = false, desc = "Toggle diagnostic virtual_lines" })
