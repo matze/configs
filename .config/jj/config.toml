@@ -1,9 +1,7 @@
 [ui]
 default-command = "log"
+diff-formatter = ":git"
 pager = "delta"
-
-[ui.diff]
-format = "git"
 
 [signing]
 behavior = "own"
