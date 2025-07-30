@@ -1,2 +1,5 @@
 [keys]
 cancel = ["q"]
+
+[ui.colors]
+"selected" = { bg = "#222222" }
