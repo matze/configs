@@ -1,6 +1,6 @@
 -- Auto-format Rust, Python, C and C++ with LSP
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.rs", "*.c", "*.cpp", "*.h", "*.py"},
+  pattern = {"*.rs", "*.c", "*.cpp", "*.h", "*.py", "*.typ"},
   callback = function(ev)
     vim.lsp.buf.format()
   end
