@@ -22,6 +22,12 @@ return {
         strategies = {
           chat = {
             adapter = "copilot",
+            keymaps = {
+              close = {
+                modes = { n = "<Esc>", i = "<Esc>" },
+                opts = {},
+              },
+            },
           },
           inline = {
             adapter = "copilot",
