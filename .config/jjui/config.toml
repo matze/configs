@@ -3,3 +3,11 @@ cancel = ["q"]
 
 [ui.colors]
 "selected" = { bg = "#222222" }
+
+[custom_commands."move revision down"]
+key = ["alt+j"]
+args = ["rebase", "-r", "$change_id", "--insert-before", "$change_id-"]
+
+[custom_commands."move revision up"]
+key = ["alt+k"]
+args = ["rebase", "-r", "$change_id", "--insert-after", "$change_id+"]
