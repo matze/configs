@@ -1,8 +1,8 @@
 [keys]
 cancel = ["q"]
 
-[ui.colors]
-"selected" = { bg = "#222222" }
+[ui]
+theme = "base16-kanagawa"
 
 [custom_commands."move revision down"]
 key = ["alt+j"]
