@@ -1,8 +1,13 @@
 [keys]
 cancel = ["q"]
+leader = ["-"]
 
 [ui]
 theme = "base16-kanagawa"
+
+[leader.a]
+help = "Show all revsets"
+send = ["L", "all()", "enter"]
 
 [custom_commands."move revision down"]
 key = ["alt+j"]
