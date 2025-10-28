@@ -16,7 +16,12 @@ return {
       sources = {
         default = { "buffer", "lsp", "path", "snippets", },
       },
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        window = {
+          show_documentation = true,
+        },
+      },
     },
     opts_extend = { "sources.default" },
   },
