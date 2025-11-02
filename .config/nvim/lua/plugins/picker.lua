@@ -13,6 +13,10 @@ return {
             }
           },
         },
+        sources = {
+          gh_issue = {},
+          gh_pr = {},
+        },
       },
     },
     keys = {
