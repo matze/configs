@@ -1,4 +1,5 @@
 [keys]
+quit = ["esc"]
 cancel = ["q"]
 leader = ["-"]
 
