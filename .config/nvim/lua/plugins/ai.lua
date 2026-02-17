@@ -1,7 +1,6 @@
 return {
   {
     "olimorris/codecompanion.nvim",
-    version = "v17.33.0",
     opts = {},
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -15,7 +14,7 @@ return {
               return require("codecompanion.adapters").extend("copilot", {
                 schema = {
                   model = {
-                    default = "claude-sonnet-4",
+                    default = "claude-opus-4.5",
                   }
                 }
               })
