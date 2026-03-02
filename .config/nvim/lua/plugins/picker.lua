@@ -34,9 +34,10 @@ return {
         keys = {
           { "<Leader>zo", "<cmd>:ZkNotes<CR>", remap = false },
           { "<Leader>zt", "<cmd>:ZkTags<CR>", remap = false },
-          { "<Leader>zb", "<cmd>:ZkBacklinks<CR>", remap = false },
+          { "<Leader>zl", "<cmd>:ZkInsertLink<CR>", mode = "n", remap = false },
+          { "<Leader>zl", ":ZkInsertLinkAtSelection<CR>", mode = "v", remap = false },
           { "<Leader>zc", "<cmd>:ZkNew<CR>", remap = false },
-          { "<Leader>zn", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
+          { "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
         },
         config = function()
           require("zk").setup({
