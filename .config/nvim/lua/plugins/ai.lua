@@ -1,42 +1,25 @@
 return {
   {
     "olimorris/codecompanion.nvim",
-    opts = {},
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function()
-      require("codecompanion").setup({
-        adapters = {
-          http = {
-            copilot = function()
-              return require("codecompanion.adapters").extend("copilot", {
-                schema = {
-                  model = {
-                    default = "claude-opus-4.5",
-                  }
-                }
-              })
-            end,
-          }
-        },
-        strategies = {
-          chat = {
-            adapter = "copilot",
-            keymaps = {
-              close = {
-                modes = { n = "<Esc>", i = "<Esc>" },
-                opts = {},
-              },
+    opts = {
+      interactions = {
+        cli = {
+          agent = "claude_code",
+          agents = {
+            claude_code = {
+              cmd = "claude",
+              args = {},
+              description = "Claude Code CLI",
+              provider = "terminal",
             },
           },
-          inline = {
-            adapter = "copilot",
-          },
         },
-      })
-    end,
+      },
+    },
   },
   {
     "zbirenbaum/copilot.lua",
