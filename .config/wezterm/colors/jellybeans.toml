@@ -1,0 +1,58 @@
+[metadata]
+name = "jellybeans"
+author = "A. Fox"
+origin_url = ""
+
+[colors]
+foreground = "#e8e8d3"
+background = "#151515"
+cursor_fg = "#151515"
+cursor_bg = "#e8e8d3"
+cursor_border = "#e8e8d3"
+selection_fg = "#151515"
+selection_bg = "#888888"
+compose_cursor = "#e8e8d3"
+visual_bell = "#40000a"
+
+ansi = [
+  "#101010",
+  "#B05050",
+  "#99ad6a",
+  "#dad085",
+  "#8197bf",
+  "#c6b6ee",
+  "#2B5B77",
+  "#c7c7c7",
+]
+
+brights = [
+  "#404040",
+  "#cf6a4c",
+  "#99ad6a",
+  "#ffb964",
+  "#8fbfdc",
+  "#c6b6ee",
+  "#668799",
+  "#ffffff",
+]
+
+[colors.indexed]
+16 = "#cf6a4c"
+17 = "#d8ad4c"
+18 = "#1c1c1c"
+19 = "#303030"
+20 = "#636363"
+21 = "#c7c7c7"
+
+[colors.tab_bar]
+background = "#151515"
+active_tab.bg_color = "#1c1c1c"
+active_tab.fg_color = "#e8e8d3"
+inactive_tab.bg_color = "#101010"
+inactive_tab.fg_color = "#888888"
+inactive_tab_hover.bg_color = "#1c1c1c"
+inactive_tab_hover.fg_color = "#a0a8b0"
+new_tab.bg_color = "#101010"
+new_tab.fg_color = "#888888"
+new_tab_hover.bg_color = "#1c1c1c"
+new_tab_hover.fg_color = "#a0a8b0"

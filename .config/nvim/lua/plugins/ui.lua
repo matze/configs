@@ -3,38 +3,12 @@
 
 return {
   {
-    "rebelot/kanagawa.nvim",
+    "wtfox/jellybeans.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require('kanagawa').setup({
-        theme = "dragon",
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = {},
-        statementStyle = {},
-        typeStyle = {},
-        variablebuiltinStyle = { italic = true },
-        specialReturn = false,
-        specialException = false,
-        transparent = false,
-        colors = {
-          theme = {
-            all = {
-              ui = { bg_gutter = "none" }
-            }
-          }
-        },
-        overrides = function(colors)
-          return {
-            CursorLine = { bg = colors.palette.sumiInk2 },
-          }
-        end,
-      })
-
-      vim.cmd([[colorscheme kanagawa]])
-    end,
+    opts = {
+      flat_ui = false,
+    },
   },
   {
     "akinsho/bufferline.nvim",
@@ -61,12 +35,11 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      local colors = require("kanagawa.colors").setup()
       local separator = { left = "", right = "" }
 
       require("lualine").setup {
         options = {
-          theme = "kanagawa",
+          theme = "jellybeans-nvim",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
         },
@@ -124,10 +97,6 @@ return {
               "buffers",
               separator = separator,
               show_filename_only = true,
-              buffers_color = {
-                active = { gui = "bold", fg = colors.theme.ui.fg, bg = colors.theme.ui.bg },
-                inactive = { fg = colors.palette.dragonBlack6, bg = colors.theme.ui.bg_dim },
-              },
               symbols = {
                 alternate_file = "",
                 modified = " ·",
