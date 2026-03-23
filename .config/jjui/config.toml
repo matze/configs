@@ -1,19 +1,44 @@
-[keys]
-quit = ["esc"]
-cancel = ["q"]
-leader = ["-"]
-
 [ui]
 theme = "base16-kanagawa"
 
-[leader.a]
-help = "Show all revsets"
-send = ["L", "all()", "enter"]
+[[actions]]
+name = "show-all-revsets"
+lua = "revset.set('all()') revset.apply()"
 
-[custom_commands."move revision down"]
-key = ["alt+j"]
-args = ["rebase", "-r", "$change_id", "--insert-before", "$change_id-"]
+[[actions]]
+name = "move-revision-down"
+lua = 'jj_async("rebase", "-r", context.change_id(), "--insert-before", context.change_id() .. "-") revisions.refresh()'
 
-[custom_commands."move revision up"]
-key = ["alt+k"]
-args = ["rebase", "-r", "$change_id", "--insert-after", "$change_id+"]
+[[actions]]
+name = "move-revision-up"
+lua = 'jj_async("rebase", "-r", context.change_id(), "--insert-after", context.change_id() .. "+") revisions.refresh()'
+
+[[bindings]]
+action = "ui.quit"
+key = "esc"
+scope = "ui"
+
+[[bindings]]
+action = "ui.cancel"
+key = "q"
+scope = "ui"
+
+[[bindings]]
+action = "ui.quit"
+key = "q"
+scope = "revisions"
+
+[[bindings]]
+action = "show-all-revsets"
+seq = ["-", "a"]
+scope = "revisions"
+
+[[bindings]]
+action = "move-revision-down"
+key = "alt+j"
+scope = "revisions"
+
+[[bindings]]
+action = "move-revision-up"
+key = "alt+k"
+scope = "revisions"
