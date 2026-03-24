@@ -1,6 +1,3 @@
-[ui]
-theme = "base16-kanagawa"
-
 [[actions]]
 name = "show-all-revsets"
 lua = "revset.set('all()') revset.apply()"
