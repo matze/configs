@@ -1,0 +1,58 @@
+[metadata]
+name = "jellybeans-nvim-muted-light"
+author = "A. Fox"
+origin_url = ""
+
+[colors]
+foreground = "#2d2c2a"
+background = "#f7f3eb"
+cursor_fg = "#f7f3eb"
+cursor_bg = "#47463f"
+cursor_border = "#47463f"
+selection_fg = "#f7f3eb"
+selection_bg = "#3f3e3c"
+compose_cursor = "#2d2c2a"
+visual_bell = "#ffe8e5"
+
+ansi = [
+  "#faf8f3",
+  "#8c594a",
+  "#567553",
+  "#987b40",
+  "#445987",
+  "#835a6d",
+  "#3c5971",
+  "#c0c0bd",
+]
+
+brights = [
+  "#787775",
+  "#a07542",
+  "#4d7134",
+  "#987b40",
+  "#3a6f8c",
+  "#655683",
+  "#3c5971",
+  "#0f0e0d",
+]
+
+[colors.indexed]
+16 = "#8c594a"
+17 = "#a07542"
+18 = "#ebe7df"
+19 = "#dcd8d0"
+20 = "#5f5f5d"
+21 = "#c0c0bd"
+
+[colors.tab_bar]
+background = "#dcd8d0"
+active_tab.bg_color = "#f7f3eb"
+active_tab.fg_color = "#2d2c2a"
+inactive_tab.bg_color = "#dcd8d0"
+inactive_tab.fg_color = "#787775"
+inactive_tab_hover.bg_color = "#ebe7df"
+inactive_tab_hover.fg_color = "#4f565d"
+new_tab.bg_color = "#dcd8d0"
+new_tab.fg_color = "#787775"
+new_tab_hover.bg_color = "#ebe7df"
+new_tab_hover.fg_color = "#4f565d"

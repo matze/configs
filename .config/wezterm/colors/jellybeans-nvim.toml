@@ -45,8 +45,8 @@ brights = [
 21 = "#c7c7c7"
 
 [colors.tab_bar]
-background = "#151515"
-active_tab.bg_color = "#1c1c1c"
+background = "#101010"
+active_tab.bg_color = "#151515"
 active_tab.fg_color = "#e8e8d3"
 inactive_tab.bg_color = "#101010"
 inactive_tab.fg_color = "#888888"

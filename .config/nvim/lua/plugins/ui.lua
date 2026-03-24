@@ -8,6 +8,10 @@ return {
     priority = 1000,
     opts = {
       flat_ui = false,
+      background = {
+        dark = "jellybeans",
+        light = "jellybeans_muted_light",
+      },
     },
   },
   {
