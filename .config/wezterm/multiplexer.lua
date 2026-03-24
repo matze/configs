@@ -122,7 +122,7 @@ wezterm.on('update-status', function(window, _pane)
   window:set_right_status(wezterm.format {
     { Foreground = { Color = fg } },
     { Background = { Color = bg } },
-    { Text = workspace .. ' ' },
+    { Text = ' ' .. workspace .. ' ' },
   })
 end)
 
