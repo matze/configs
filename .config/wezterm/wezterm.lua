@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.font_size = 14.5
-config.color_scheme = 'jellybeans'
+config.font_size = 12
+config.color_scheme = 'jellybeans-nvim'
 config.enable_tab_bar = false
 config.use_resize_increments = true
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
@@ -13,5 +13,7 @@ config.keys = {
     action = wezterm.action.ToggleFullScreen,
   },
 }
+
+require('multiplexer').apply(config)
 
 return config

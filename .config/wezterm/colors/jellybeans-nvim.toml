@@ -1,5 +1,5 @@
 [metadata]
-name = "jellybeans"
+name = "jellybeans-nvim"
 author = "A. Fox"
 origin_url = ""
 
@@ -7,32 +7,32 @@ origin_url = ""
 foreground = "#e8e8d3"
 background = "#151515"
 cursor_fg = "#151515"
-cursor_bg = "#e8e8d3"
-cursor_border = "#e8e8d3"
+cursor_bg = "#dddddd"
+cursor_border = "#dddddd"
 selection_fg = "#151515"
-selection_bg = "#888888"
+selection_bg = "#404040"
 compose_cursor = "#e8e8d3"
 visual_bell = "#40000a"
 
 ansi = [
-  "#101010",
-  "#B05050",
-  "#99ad6a",
-  "#dad085",
+  "#000000",
+  "#d98870",
+  "#799d6a",
+  "#fad07a",
   "#8197bf",
-  "#c6b6ee",
-  "#2B5B77",
+  "#cc88a3",
+  "#8fbfdc",
   "#c7c7c7",
 ]
 
 brights = [
-  "#404040",
-  "#cf6a4c",
-  "#99ad6a",
-  "#ffb964",
-  "#8fbfdc",
+  "#888888",
+  "#e6a75a",
+  "#afd787",
+  "#fad07a",
+  "#5f9ecf",
   "#c6b6ee",
-  "#668799",
+  "#8fbfdc",
   "#ffffff",
 ]
 
