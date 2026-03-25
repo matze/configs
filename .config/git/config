@@ -44,10 +44,10 @@
     diffFilter          = delta --color-only
 
 [delta]
-    syntax-theme        = gruvbox-dark
     side-by-side        = true
     file-style          = bold yellow
     file-decoration-style = none
     hunk-header-decoration-style = none
+
 [gpg]
-	format = ssh
+    format = ssh
