@@ -1,10 +1,10 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "blink.cmp": { "branch": "main", "commit": "451168851e8e2466bc97ee3e026c3dcb9141ce07" },
-  "codecompanion.nvim": { "branch": "main", "commit": "d17d4c7242254ae2d458e5ca600764febddd2e7b" },
+  "codecompanion.nvim": { "branch": "main", "commit": "78203ccaa36469b4a212123c7d532e2367ad9dd4" },
   "copilot.lua": { "branch": "master", "commit": "a620a5a97b73faba009a8160bab2885316e1451c" },
   "fidget.nvim": { "branch": "main", "commit": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970" },
-  "gitsigns.nvim": { "branch": "main", "commit": "0a80125bace82d82847d40bc2c38a22d62c6dc2d" },
+  "gitsigns.nvim": { "branch": "main", "commit": "50c205548d8b037b7ff6378fca6d21146f0b6161" },
   "jellybeans.nvim": { "branch": "main", "commit": "f75e0cfba0cdf3b7530301df8375367c29fbd310" },
   "jj-diffconflicts": { "branch": "main", "commit": "58163ae8fe7646179dfd7741206dd9a2b4cdadc0" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
