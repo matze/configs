@@ -136,9 +136,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 bind -x '"\C-p": vi $(fzf);'
 #}}}
-#{{{ zoxide
-eval "$(zoxide init bash)"
-#}}}
 #{{{ bash completion
 _git_pick() {
     __gitcomp_nl "$(__git_refs)"
