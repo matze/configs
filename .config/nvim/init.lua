@@ -351,19 +351,23 @@ require("lazy").setup({
         { "gri", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
         { "ge", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       },
-    },
-    {
-      "zk-org/zk-nvim",
-      opts = {
-        picker = "snacks_picker",
-      },
-      keys = {
-        { "<Leader>zo", "<cmd>:ZkNotes<CR>", remap = false },
-        { "<Leader>zt", "<cmd>:ZkTags<CR>", remap = false },
-        { "<Leader>zl", "<cmd>:ZkInsertLink<CR>", mode = "n", remap = false },
-        { "<Leader>zl", ":ZkInsertLinkAtSelection<CR>", mode = "v", remap = false },
-        { "<Leader>zc", "<cmd>:ZkNew<CR>", remap = false },
-        { "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
+      dependencies = {
+        {
+          "zk-org/zk-nvim",
+          config = function()
+            require("zk").setup({
+              picker = "snacks_picker",
+            })
+          end,
+          keys = {
+            { "<Leader>zo", "<cmd>:ZkNotes<CR>", remap = false },
+            { "<Leader>zt", "<cmd>:ZkTags<CR>", remap = false },
+            { "<Leader>zl", "<cmd>:ZkInsertLink<CR>", mode = "n", remap = false },
+            { "<Leader>zl", ":ZkInsertLinkAtSelection<CR>", mode = "v", remap = false },
+            { "<Leader>zc", "<cmd>:ZkNew<CR>", remap = false },
+            { "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
+          },
+        },
       },
     },
     {
