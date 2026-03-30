@@ -157,23 +157,21 @@ require("lazy").setup({
       "akinsho/bufferline.nvim",
       enabled = false,
       event = "BufRead",
-      config = function()
-        require("bufferline").setup {
-          options = {
-            always_show_bufferline = false,
-            show_buffer_close_icons = false,
-            modified_icon = '·',
-            diagnostics = "nvim_lsp",
-            separator_style = "padded_slant",
-          },
-          highlights = {
-            buffer_selected = {
-              bold = true,
-              italic = false,
-            }
-          },
-        }
-      end,
+      opts = {
+        options = {
+          always_show_bufferline = false,
+          show_buffer_close_icons = false,
+          modified_icon = '·',
+          diagnostics = "nvim_lsp",
+          separator_style = "padded_slant",
+        },
+        highlights = {
+          buffer_selected = {
+            bold = true,
+            italic = false,
+          }
+        },
+      },
     },
     {
       "nvim-lualine/lualine.nvim",
@@ -261,34 +259,28 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       event = "BufRead",
-      config = function()
-        require("gitsigns").setup({
-          attach_to_untracked = false,
-          on_attach = function(bufnr)
-            opts = {}
-            opts.buffer = bufnr
-            vim.keymap.set("n", "<leader>gb", function() package.loaded.gitsigns.blame_line{full=true} end, opts)
-          end
-        })
-      end
+      opts = {
+        attach_to_untracked = false,
+        on_attach = function(bufnr)
+          opts = {}
+          opts.buffer = bufnr
+          vim.keymap.set("n", "<leader>gb", function() package.loaded.gitsigns.blame_line{full=true} end, opts)
+        end
+      },
     },
     {
       "nvim-tree/nvim-web-devicons",
-      config = function()
-        require("nvim-web-devicons").setup({
-          color_icons = false,
-        })
-      end
+      opts = {
+        color_icons = false,
+      },
     },
     {
       "mvllow/modes.nvim",
       event = "ModeChanged",
-      config = function()
-        require('modes').setup({
-          set_cursor = false,
-          line_opacity = 0.1,
-        })
-      end
+      opts = {
+        set_cursor = false,
+        line_opacity = 0.1,
+      },
     },
     {
       "matze/vim-move",
@@ -305,41 +297,30 @@ require("lazy").setup({
     {
       "matze/wastebin.nvim",
       event = "BufRead",
-      config = function()
-        require("wastebin").setup()
-      end,
     },
     {
       "numToStr/Comment.nvim",
       event = "FileType",
-      config = function()
-        require("Comment").setup()
-      end
     },
     {
-      {
-        "rachartier/tiny-inline-diagnostic.nvim",
-        event = "VeryLazy",
-        priority = 1000,
-        opts = {
-          preset = "powerline",
-        },
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "VeryLazy",
+      priority = 1000,
+      opts = {
+        preset = "powerline",
       },
     },
     {
       "chrisgrieser/nvim-lsp-endhints",
       event = "LspAttach",
-      opts = {},
-      config = function()
-        require("lsp-endhints").setup({
-          icons = {
-            type = "=> ",
-            parameter = "<- ",
-            offspec = " ", -- hint kind not defined in official LSP spec
-            unknown = " ", -- hint kind is nil
-          },
-        })
-      end
+      opts = {
+        icons = {
+          type = "=> ",
+          parameter = "<- ",
+          offspec = " ", -- hint kind not defined in official LSP spec
+          unknown = " ", -- hint kind is nil
+        },
+      }
     },
     {
       "folke/snacks.nvim",
@@ -373,6 +354,9 @@ require("lazy").setup({
     },
     {
       "zk-org/zk-nvim",
+      opts = {
+        picker = "snacks_picker",
+      },
       keys = {
         { "<Leader>zo", "<cmd>:ZkNotes<CR>", remap = false },
         { "<Leader>zt", "<cmd>:ZkTags<CR>", remap = false },
@@ -381,15 +365,12 @@ require("lazy").setup({
         { "<Leader>zc", "<cmd>:ZkNew<CR>", remap = false },
         { "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
       },
-      config = function()
-        require("zk").setup({
-          picker = "snacks_picker",
-        })
-      end
     },
     {
       "nvim-treesitter/nvim-treesitter",
       event = "BufRead",
+      lazy = false,
+      build = ":TSUpdate",
       opts = {
         ensure_installed = {
           "bash",
@@ -406,9 +387,6 @@ require("lazy").setup({
           enable = true
         },
       },
-      config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
-      end,
     },
   },
 })
