@@ -368,7 +368,7 @@ require("lazy").setup({
     },
     {
       "nvim-treesitter/nvim-treesitter",
-      event = "BufRead",
+      branch = "main",
       lazy = false,
       build = ":TSUpdate",
       opts = {
