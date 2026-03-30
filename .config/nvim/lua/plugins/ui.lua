@@ -75,7 +75,10 @@ return {
           },
           lualine_x = {
             {
-              "encoding",
+              "lsp_status",
+              symbols = {
+                done = '',
+              },
               separator = separator,
             },
           },
