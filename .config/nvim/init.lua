@@ -53,17 +53,30 @@ vim.diagnostic.config({
 -- mappings -------------------------------------------------------------------
 
 vim.g.mapleader = " "
+vim.g.move_map_keys = false
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { remap = false })
 vim.keymap.set("n", "<C-x>", ":q<CR>", { remap = false })
 vim.keymap.set("n", "<C-j>", "<C-w>w")
 vim.keymap.set("n", "<C-k>", "<C-w>W")
+vim.keymap.set("n", "<C-p>", function() Snacks.picker.files({ hidden = true }) end)
+vim.keymap.set("n", "<C-g>", function() Snacks.picker.grep() end)
+vim.keymap.set("n", "<C-f>", function() Snacks.picker.grep_word() end)
 
 vim.keymap.set("n", "<Right>", ":bn<CR>", { remap = false })
 vim.keymap.set("n", "<Left>", ":bp<CR>", { remap = false })
 
+vim.keymap.set("v", "<A-j>", "<Plug>MoveBlockDown", { remap = false })
+vim.keymap.set("n", "<A-j>", "<Plug>MoveLineDown", { remap = false })
+vim.keymap.set("v", "<A-k>", "<Plug>MoveBlockUp", { remap = false })
+vim.keymap.set("n", "<A-k>", "<Plug>MoveLineUp", { remap = false })
+
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "grd", function() Snacks.picker.lsp_definitions() end)
+vim.keymap.set("n", "grr", function() Snacks.picker.lsp_references() end)
+vim.keymap.set("n", "gri", function() Snacks.picker.lsp_implementations() end)
+vim.keymap.set("n", "ge", function() Snacks.picker.diagnostics() end)
 
 vim.keymap.set("n", "<Leader>d", ":bd<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>w", ":w!<CR>", { remap = false })
@@ -71,6 +84,12 @@ vim.keymap.set("n", "<Leader>fw", ":%s/\\s\\+$//<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>se", ":setlocal spell spelllang=en<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>sd", ":setlocal spell spelllang=de<CR>", { remap = false })
 vim.keymap.set("n", "<Leader>sn", ":setlocal nospell<CR>", { remap = false })
+
+vim.keymap.set("n", "<Leader>zo", '<cmd>:ZkNotes<CR>')
+vim.keymap.set("n", "<Leader>zl", '<cmd>:ZkInsertLink<CR>')
+vim.keymap.set("v", "<Leader>zl", '<cmd>:ZkInsertLinkAtSelection<CR>')
+vim.keymap.set("n", "<Leader>zc", '<cmd>:ZkNew<CR>')
+vim.keymap.set("v", "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>")
 
 -- autocmds -------------------------------------------------------------------
 
@@ -104,6 +123,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+
+    if name == 'nvim-treesitter' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+      vim.cmd('TSUpdate')
+    end
+  end
+})
+
 -- filetypes ------------------------------------------------------------------
 
 vim.filetype.add({
@@ -119,346 +149,15 @@ vim.filetype.add({
 
 vim.lsp.enable({"clangd", "gopls", "ruff", "rust-analyzer", "tinymist", "ty"})
 
--- lazy plugins ---------------------------------------------------------------
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-  spec = {
-    {
-      "wtfox/jellybeans.nvim",
-      lazy = false,
-      priority = 1000,
-      opts = {
-        flat_ui = false,
-        background = {
-          dark = "jellybeans",
-          light = "jellybeans_muted_light",
-        },
-      },
-    },
-    {
-      "akinsho/bufferline.nvim",
-      enabled = false,
-      event = "BufRead",
-      opts = {
-        options = {
-          always_show_bufferline = false,
-          show_buffer_close_icons = false,
-          modified_icon = '·',
-          diagnostics = "nvim_lsp",
-          separator_style = "padded_slant",
-        },
-        highlights = {
-          buffer_selected = {
-            bold = true,
-            italic = false,
-          }
-        },
-      },
-    },
-    {
-      "nvim-lualine/lualine.nvim",
-      config = function()
-        local separator = { left = "", right = "" }
-
-        require("lualine").setup {
-          options = {
-            theme = "jellybeans-nvim",
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
-          },
-          sections = {
-            lualine_a = {
-              {
-                "mode",
-                separator = separator,
-              },
-            },
-            lualine_b = {
-              {
-                "branch",
-                separator = separator,
-                fmt = function(str)
-                  if #str >= 30 then
-                    return str:sub(1, 29) .. "…"
-                  else
-                    return str
-                  end
-                end
-              }
-            },
-            lualine_c = {
-              {
-                "filename",
-                separator = separator,
-              },
-            },
-            lualine_x = {
-              {
-                "lsp_status",
-                symbols = {
-                  done = '',
-                },
-                separator = separator,
-              },
-            },
-            lualine_y = {
-              {
-                "filetype",
-                separator = separator,
-              },
-              {
-                "diff",
-                symbols = { added = " ", modified = " ", removed = " " }
-              },
-            },
-            lualine_z = {
-              {
-                "location",
-              }
-            },
-          },
-          tabline = {
-            lualine_a = {
-              {
-                "buffers",
-                separator = separator,
-                show_filename_only = true,
-                symbols = {
-                  alternate_file = "",
-                  modified = " ·",
-                },
-                fmt = function(str, context)
-                  return str .. " "
-                end,
-              }
-            }
-          },
-        }
-      end,
-    },
-    { "avm99963/vim-jjdescription" },
-    { "rafikdraoui/jj-diffconflicts" },
-    {
-      "lewis6991/gitsigns.nvim",
-      event = "BufRead",
-      opts = {
-        attach_to_untracked = false,
-        on_attach = function(bufnr)
-          opts = {}
-          opts.buffer = bufnr
-          vim.keymap.set("n", "<leader>gb", function() package.loaded.gitsigns.blame_line{full=true} end, opts)
-        end
-      },
-    },
-    {
-      "nvim-tree/nvim-web-devicons",
-      opts = {
-        color_icons = false,
-      },
-    },
-    {
-      "mvllow/modes.nvim",
-      event = "ModeChanged",
-      opts = {
-        set_cursor = false,
-        line_opacity = 0.1,
-      },
-    },
-    {
-      "matze/vim-move",
-      keys = {
-        { "<A-j>", "<Plug>MoveBlockDown", mode = "v" },
-        { "<A-k>", "<Plug>MoveBlockUp", mode = "v" },
-        { "<A-j>", "<Plug>MoveLineDown", mode = "n" },
-        { "<A-k>", "<Plug>MoveLineUp", mode = "n" },
-      },
-      init = function()
-        vim.g.move_map_keys = false
-      end,
-    },
-    {
-      "matze/wastebin.nvim",
-      event = "BufRead",
-    },
-    {
-      "numToStr/Comment.nvim",
-      event = "FileType",
-    },
-    {
-      "rachartier/tiny-inline-diagnostic.nvim",
-      event = "VeryLazy",
-      priority = 1000,
-      opts = {
-        preset = "powerline",
-      },
-    },
-    {
-      "chrisgrieser/nvim-lsp-endhints",
-      event = "LspAttach",
-      opts = {
-        icons = {
-          type = "=> ",
-          parameter = "<- ",
-          offspec = " ", -- hint kind not defined in official LSP spec
-          unknown = " ", -- hint kind is nil
-        },
-      }
-    },
-    {
-      "folke/snacks.nvim",
-      opts = {
-        picker = {
-          prompt = " ",
-          ui_select = true,
-          win = {
-            input = {
-              keys = {
-                ["<Esc>"] = "close",
-                ["<C-c>"] = { "close", mode = "i" },
-              }
-            },
-          },
-          sources = {
-            gh_issue = {},
-            gh_pr = {},
-          },
-        },
-      },
-      keys = {
-        { "<C-p>", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
-        { "<C-g>", function() Snacks.picker.grep() end, desc = "Live grep" },
-        { "<C-f>", function() Snacks.picker.grep_word() end, desc = "Grep word" },
-        { "grd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-        { "grr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-        { "gri", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-        { "ge", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-      },
-      dependencies = {
-        {
-          "zk-org/zk-nvim",
-          config = function()
-            require("zk").setup({
-              picker = "snacks_picker",
-            })
-          end,
-          keys = {
-            { "<Leader>zo", "<cmd>:ZkNotes<CR>", remap = false },
-            { "<Leader>zt", "<cmd>:ZkTags<CR>", remap = false },
-            { "<Leader>zl", "<cmd>:ZkInsertLink<CR>", mode = "n", remap = false },
-            { "<Leader>zl", ":ZkInsertLinkAtSelection<CR>", mode = "v", remap = false },
-            { "<Leader>zc", "<cmd>:ZkNew<CR>", remap = false },
-            { "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", remap = false },
-          },
-        },
-      },
-    },
-    {
-      "saghen/blink.cmp",
-      version = "*",
-      opts = {
-        keymap = {
-          preset = "default",
-          ["<C-j>"] = { "accept" },
-        },
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = "mono",
-        },
-        sources = {
-          default = { "buffer", "lsp", "path", "snippets", },
-        },
-        signature = {
-          enabled = true,
-          window = {
-            show_documentation = true,
-          },
-        },
-      },
-      opts_extend = { "sources.default" },
-    },
-    {
-      "nvim-treesitter/nvim-treesitter",
-      branch = "main",
-      lazy = false,
-      build = ":TSUpdate",
-      opts = {
-        ensure_installed = {
-          "bash",
-          "c",
-          "cpp",
-          "css",
-          "html",
-          "json",
-          "lua",
-          "markdown",
-          "rust",
-        },
-        highlight = {
-          enable = true
-        },
-      },
-    },
-    {
-      "olimorris/codecompanion.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-      },
-      opts = {
-        interactions = {
-          cli = {
-            agent = "claude_code",
-            agents = {
-              claude_code = {
-                cmd = "claude",
-                args = {},
-                description = "Claude Code CLI",
-                provider = "terminal",
-              },
-            },
-          },
-        },
-      },
-    },
-    {
-      "zbirenbaum/copilot.lua",
-      enabled = false,
-      event = "InsertEnter",
-      config = function()
-        require("copilot").setup({
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-          copilot_node_command = "node",
-        })
-      end,
-    },
-  },
-})
-
 -- colorscheme ----------------------------------------------------------------
 
+-- Set color scheme based on the system color scheme, i.e.
+-- jellybeans-muted-light for light and jellybeans for dark mode. This is
+-- defined here, so we can call it before configuring modes.nvim which takes
+-- color values from the current colorscheme.
 local function sync_colorscheme()
   local result = vim.fn.system("gsettings get org.gnome.desktop.interface color-scheme")
   if result:find("prefer%-light") or result:find("default") then
-    -- set background directly so lualine is synced as well
     vim.o.background = "light"
     vim.cmd([[colorscheme jellybeans-muted-light]])
   else
@@ -467,9 +166,7 @@ local function sync_colorscheme()
   end
 end
 
-sync_colorscheme()
-
--- Watch for GNOME theme changes
+-- color scheme watcher
 local handle = vim.uv.new_pipe()
 local pid = vim.uv.spawn("gsettings", {
   args = { "monitor", "org.gnome.desktop.interface", "color-scheme" },
@@ -483,3 +180,183 @@ if handle then
     end
   end)
 end
+
+-- plugins --------------------------------------------------------------------
+
+vim.pack.add({
+  'https://github.com/avm99963/vim-jjdescription',
+  'https://github.com/chrisgrieser/nvim-lsp-endhints',
+  'https://github.com/folke/snacks.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/matze/wastebin.nvim',
+  'https://github.com/matze/vim-move',
+  'https://github.com/mvllow/modes.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/numToStr/Comment.nvim',
+  'https://github.com/olimorris/codecompanion.nvim',
+  'https://github.com/rachartier/tiny-inline-diagnostic.nvim',
+  'https://github.com/rafikdraoui/jj-diffconflicts',
+  'https://github.com/wtfox/jellybeans.nvim',
+  'https://github.com/zk-org/zk-nvim',
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('*') },
+})
+
+require('jellybeans').setup({
+  flat_ui = false,
+  background = {
+    dark = 'jellybeans',
+    light = 'jellybeans_muted_light',
+  },
+})
+
+-- sync colors now so subsequent plugins can make use of them as well
+sync_colorscheme()
+
+local left_separator = { left = "", right = "" }
+local right_separator = { left = "", right = "" }
+
+local function ellipsize(str)
+  if #str >= 30 then
+    return str:sub(1, 29) .. "…"
+  else
+    return str
+  end
+end
+
+require("lualine").setup({
+  options = {
+    theme = "jellybeans-nvim",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
+  },
+  sections = {
+    lualine_a = {
+      { "mode", separator = left_separator },
+    },
+    lualine_b = {
+      { "branch", separator = left_separator, fmt = ellipsize }
+    },
+    lualine_c = {
+      { "filename", separator = left_separator },
+    },
+    lualine_x = {
+      { "lsp_status", separator = right_separator, symbols = { done = "" } },
+    },
+    lualine_y = {
+      { "filetype", separator = right_separator },
+      { "diff", symbols = { added = " ", modified = " ", removed = " " } },
+    },
+    lualine_z = {
+      { "location", separator = right_separator }
+    },
+  },
+  tabline = {
+    lualine_a = {
+      {
+        "buffers",
+        separator = left_separator,
+        show_filename_only = true,
+        symbols = {
+          alternate_file = "",
+          modified = " ·",
+        },
+      }
+    }
+  },
+})
+
+require('blink.cmp').setup({
+  keymap = {
+    preset = "default",
+    ["<C-j>"] = { "accept" },
+  },
+  appearance = {
+    use_nvim_cmp_as_default = true,
+    nerd_font_variant = "mono",
+  },
+  sources = {
+    default = { "buffer", "lsp", "path", "snippets", },
+  },
+  signature = {
+    enabled = true,
+    window = {
+      show_documentation = true,
+    },
+  },
+})
+
+require('codecompanion').setup({
+  interactions = {
+    cli = {
+      agent = "claude_code",
+      agents = {
+        claude_code = {
+          cmd = "claude",
+          args = {},
+          description = "Claude Code CLI",
+          provider = "terminal",
+        },
+      },
+    },
+  },
+})
+
+require('gitsigns').setup({
+  on_attach = function(bufnr)
+    opts = {}
+    opts.buffer = bufnr
+    vim.keymap.set('n', '<leader>gb', function() package.loaded.gitsigns.blame_line{ full = true } end, opts)
+  end
+})
+
+require('lsp-endhints').setup({
+  icons = {
+    type = "=> ",
+    parameter = "<- ",
+    offspec = " ", -- hint kind not defined in official LSP spec
+    unknown = " ", -- hint kind is nil
+  },
+})
+
+require('modes').setup({
+  set_cursor = false,
+  line_opacity = 0.1,
+})
+
+require('nvim-treesitter').install({
+  "bash", "c", "cpp", "css", "html", "json", "lua", "markdown", "rust", "vim"
+})
+
+require('nvim-web-devicons').setup({
+  color_icons = false,
+})
+
+require('snacks').setup({
+  picker = {
+    prompt = ' ',
+    ui_select = true,
+    win = {
+      input = {
+        keys = {
+          ['<Esc>'] = 'close',
+          ['<C-c>'] = { 'close', mode = 'i' },
+        }
+      },
+    },
+    sources = {
+      gh_issue = {},
+      gh_pr = {},
+    },
+  },
+})
+
+require('tiny-inline-diagnostic').setup({
+  preset = 'powerline',
+})
+
+require('zk').setup({
+  picker = "snacks_picker",
+})
