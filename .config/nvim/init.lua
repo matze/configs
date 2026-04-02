@@ -39,9 +39,7 @@ vim.opt.foldenable = true
 vim.opt.foldmethod = "marker"
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.laststatus = 3
--- Ideally I would like to hide the command line by setting it to 0 but there is
--- a bug with macro recordings.
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 -- diagnostics ----------------------------------------------------------------
 
@@ -93,7 +91,7 @@ vim.keymap.set("v", "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>")
 
 -- autocmds -------------------------------------------------------------------
 
--- Auto-format using LSP
+-- auto-format using LSP
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.rs", "*.c", "*.cpp", "*.h", "*.py", "*.typ" },
   callback = function(ev)
@@ -101,7 +99,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
--- Set indentation to 2 for select file types
+-- set indentation to 2 for select file types
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "css,lua,tex" },
   callback = function()
@@ -110,7 +108,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
--- Enable inlay hints
+-- enable inlay hints
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local id = vim.tbl_get(event, "data", "client_id")
@@ -123,6 +121,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+-- update nvim-treesitter parsers
+
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
@@ -132,6 +132,94 @@ vim.api.nvim_create_autocmd('PackChanged', {
       vim.cmd('TSUpdate')
     end
   end
+})
+
+-- show floating window when recording a macro
+
+local api = vim.api
+local win_id = nil
+local buf_id = nil
+
+local config = {
+  row = 2,
+  col_offset = 4,
+}
+
+local function close_banner()
+  if win_id and api.nvim_win_is_valid(win_id) then
+    api.nvim_win_close(win_id, true)
+  end
+
+  if buf_id and api.nvim_buf_is_valid(buf_id) then
+    api.nvim_buf_delete(buf_id, { force = true })
+  end
+
+  win_id = nil
+  buf_id = nil
+end
+
+local function open_banner()
+  local reg = vim.fn.reg_recording()
+
+  if reg == '' then
+    return
+  end
+
+  close_banner()
+
+  local text = string.format(' ● REC @%s ', reg)
+
+  buf_id = api.nvim_create_buf(false, true)
+  api.nvim_buf_set_lines(buf_id, 0, -1, false, { text })
+
+  local col = vim.o.columns - #text - config.col_offset
+
+  win_id = api.nvim_open_win(buf_id, false, {
+    relative = 'editor',
+    width = #text,
+    height = 1,
+    row = config.row,
+    col = col,
+    style = 'minimal',
+    border = 'none',
+    focusable = false,
+    zindex = 150,
+  })
+
+  api.nvim_set_option_value(
+    'winhighlight',
+    'Normal:DiagnosticError',
+    { win = win_id }
+  )
+end
+
+local group = api.nvim_create_augroup('MacroRecordingBanner', { clear = true })
+
+api.nvim_create_autocmd(
+  'RecordingEnter',
+  { group = group, callback = open_banner }
+)
+
+api.nvim_create_autocmd('RecordingLeave', {
+  group = group,
+  callback = function()
+    vim.defer_fn(close_banner, 50)
+  end,
+})
+
+api.nvim_create_autocmd('VimResized', {
+  group = group,
+  callback = function()
+    if win_id and api.nvim_win_is_valid(win_id) then
+      open_banner()
+    end
+  end,
+})
+
+-- ui2 ------------------------------------------------------------------------
+
+require('vim._core.ui2').enable({
+  enable = true,
 })
 
 -- filetypes ------------------------------------------------------------------
