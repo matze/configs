@@ -356,26 +356,6 @@ require("lualine").setup({
   },
 })
 
-require('blink.cmp').setup({
-  keymap = {
-    preset = "default",
-    ["<C-j>"] = { "accept" },
-  },
-  appearance = {
-    use_nvim_cmp_as_default = true,
-    nerd_font_variant = "mono",
-  },
-  sources = {
-    default = { "buffer", "lsp", "path", "snippets", },
-  },
-  signature = {
-    enabled = true,
-    window = {
-      show_documentation = true,
-    },
-  },
-})
-
 require('codecompanion').setup({
   interactions = {
     cli = {
@@ -447,4 +427,24 @@ require('tiny-inline-diagnostic').setup({
 
 require('zk').setup({
   picker = "snacks_picker",
+})
+
+require('blink.cmp').setup({
+  keymap = {
+    preset = "default",
+    ["<C-j>"] = { "accept" },
+  },
+  appearance = {
+    use_nvim_cmp_as_default = true,
+    nerd_font_variant = "mono",
+  },
+  sources = {
+    default = { "buffer", "lsp", "path" },
+  },
+  signature = {
+    enabled = true,
+    window = {
+      show_documentation = true,
+    },
+  },
 })
