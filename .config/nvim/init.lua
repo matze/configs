@@ -122,7 +122,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- update nvim-treesitter parsers
-
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
@@ -134,8 +133,13 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end
 })
 
--- show floating window when recording a macro
+-- enable highlighting for jjdescription
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'jjdescription',
+  callback = function() vim.treesitter.start() end,
+})
 
+-- show floating window when recording a macro
 local api = vim.api
 local win_id = nil
 local buf_id = nil
@@ -272,7 +276,6 @@ end
 -- plugins --------------------------------------------------------------------
 
 vim.pack.add({
-  'https://github.com/avm99963/vim-jjdescription',
   'https://github.com/chrisgrieser/nvim-lsp-endhints',
   'https://github.com/folke/snacks.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
@@ -395,7 +398,7 @@ require('modes').setup({
 })
 
 require('nvim-treesitter').install({
-  "bash", "c", "cpp", "css", "html", "json", "lua", "markdown", "rust", "vim"
+  "bash", "c", "cpp", "css", "html", "jjdescription", "json", "lua", "markdown", "rust", "vim"
 })
 
 require('nvim-web-devicons').setup({
