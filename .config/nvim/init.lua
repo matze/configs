@@ -69,6 +69,8 @@ vim.keymap.set("n", "<A-j>", "<Plug>MoveLineDown", { remap = false })
 vim.keymap.set("v", "<A-k>", "<Plug>MoveBlockUp", { remap = false })
 vim.keymap.set("n", "<A-k>", "<Plug>MoveLineUp", { remap = false })
 
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end)
+
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "grd", function() Snacks.picker.lsp_definitions() end)
@@ -443,6 +445,8 @@ require('blink.cmp').setup({
   },
   completion = {
     ghost_text = { enabled = true },
+    documentation = { window = { border = "rounded" } },
+    menu = { border = "rounded" },
   },
   sources = {
     default = { "buffer", "lsp", "path" },
@@ -451,6 +455,7 @@ require('blink.cmp').setup({
     enabled = true,
     window = {
       show_documentation = true,
+      border = "rounded",
     },
   },
 })
