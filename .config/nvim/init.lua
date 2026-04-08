@@ -303,6 +303,18 @@ require('jellybeans').setup({
     dark = 'jellybeans',
     light = 'jellybeans_muted_light',
   },
+  on_highlights = function(hl, c)
+    local menu_bg = c.grey_one
+    hl.BlinkCmpMenu = { bg = menu_bg, fg = c.foreground }
+    hl.BlinkCmpMenuBorder = { bg = menu_bg, fg = c.grey }
+    hl.BlinkCmpDoc = { bg = menu_bg, fg = c.foreground }
+    hl.BlinkCmpDocBorder = { bg = menu_bg, fg = c.grey }
+    hl.BlinkCmpDocSeparator = { bg = menu_bg, fg = c.grey }
+    hl.BlinkCmpSignatureHelp = { bg = menu_bg, fg = c.foreground }
+    hl.BlinkCmpSignatureHelpBorder = { bg = menu_bg, fg = c.grey }
+    hl.PmenuSbar = { bg = menu_bg }
+    hl.PmenuThumb = { bg = c.grey_three }
+  end,
 })
 
 -- sync colors now so subsequent plugins can make use of them as well
@@ -447,7 +459,13 @@ require('blink.cmp').setup({
     ghost_text = { enabled = true },
     documentation = {
       auto_show = true,
-      window = { border = "rounded" }
+      window = {
+        winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc,'
+          .. '@markup.heading.1.markdown:BlinkCmpDoc,'
+          .. '@markup.heading.2.markdown:BlinkCmpDoc,'
+          .. '@markup.heading.3.markdown:BlinkCmpDoc,'
+          .. '@markup.heading.4.markdown:BlinkCmpDoc',
+      },
     },
   },
   sources = {
@@ -457,7 +475,6 @@ require('blink.cmp').setup({
     enabled = true,
     window = {
       show_documentation = true,
-      border = "rounded",
     },
   },
 })
