@@ -445,7 +445,10 @@ require('blink.cmp').setup({
   },
   completion = {
     ghost_text = { enabled = true },
-    documentation = { window = { border = "rounded" } },
+    documentation = {
+      auto_show = true,
+      window = { border = "rounded" }
+    },
   },
   sources = {
     default = { "buffer", "lsp", "path" },
