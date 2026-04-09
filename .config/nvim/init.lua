@@ -396,7 +396,6 @@ require('blink.cmp').setup({
     nerd_font_variant = "mono",
   },
   completion = {
-    ghost_text = { enabled = true },
     documentation = {
       auto_show = true,
       window = {
