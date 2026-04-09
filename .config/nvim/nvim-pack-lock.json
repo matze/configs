@@ -5,7 +5,7 @@
       "src": "https://github.com/numToStr/Comment.nvim"
     },
     "blink.cmp": {
-      "rev": "5e088706d92da09949e081cc4d49e2c9ba8cfc8c",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": ">=0.0.0"
     },
@@ -14,15 +14,15 @@
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
     "codecompanion.nvim": {
-      "rev": "e0fe366cf3af6c80dcac86cb053ef3fe48aae911",
+      "rev": "fe792b30974893d8809b06c5e31c5c876c14bbc7",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "caa98e2e5e4c23a1652c23be839d2e1722cecc29",
+      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "jellybeans.nvim": {
-      "rev": "f75e0cfba0cdf3b7530301df8375367c29fbd310",
+      "rev": "29f4c17981f70c0919c2f3f918da9a89f906bf37",
       "src": "https://github.com/wtfox/jellybeans.nvim"
     },
     "jj-diffconflicts": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/rafikdraoui/jj-diffconflicts"
     },
     "lualine.nvim": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "modes.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/mvllow/modes.nvim"
     },
     "nvim-lsp-endhints": {
-      "rev": "1a3ddb56ad94b1584d88782bc3e9c628e498a07c",
+      "rev": "a86e7ca7a92ef003008d7eb5d153c63bcc89f79c",
       "src": "https://github.com/chrisgrieser/nvim-lsp-endhints"
     },
     "nvim-treesitter": {
@@ -46,7 +46,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "d7462543c9e366c0d196c7f67a945eaaf5d99414",
+      "rev": "6e76c5e47e957fbf080b1fdac165c66dbd2e7cfb",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "ba133b3e932416e4b9507095731a6d7276878fe8",
+      "rev": "57a0eb84b2008c76e77930639890d9874195b1e1",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-jjdescription": {
