@@ -141,84 +141,22 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function() vim.treesitter.start() end,
 })
 
--- show floating window when recording a macro
-local api = vim.api
-local win_id = nil
-local buf_id = nil
-
-local config = {
-  row = 2,
-  col_offset = 4,
-}
-
-local function close_banner()
-  if win_id and api.nvim_win_is_valid(win_id) then
-    api.nvim_win_close(win_id, true)
-  end
-
-  if buf_id and api.nvim_buf_is_valid(buf_id) then
-    api.nvim_buf_delete(buf_id, { force = true })
-  end
-
-  win_id = nil
-  buf_id = nil
-end
-
-local function open_banner()
+-- macro recording
+local function macro_recording()
   local reg = vim.fn.reg_recording()
-
-  if reg == '' then
-    return
-  end
-
-  close_banner()
-
-  local text = string.format(' ● REC @%s ', reg)
-
-  buf_id = api.nvim_create_buf(false, true)
-  api.nvim_buf_set_lines(buf_id, 0, -1, false, { text })
-
-  local col = vim.o.columns - #text - config.col_offset
-
-  win_id = api.nvim_open_win(buf_id, false, {
-    relative = 'editor',
-    width = #text,
-    height = 1,
-    row = config.row,
-    col = col,
-    style = 'minimal',
-    border = 'none',
-    focusable = false,
-    zindex = 150,
-  })
-
-  api.nvim_set_option_value(
-    'winhighlight',
-    'Normal:DiagnosticError',
-    { win = win_id }
-  )
+  if reg ~= '' then return '● REC @' .. reg end
+  return ''
 end
 
-local group = api.nvim_create_augroup('MacroRecordingBanner', { clear = true })
-
-api.nvim_create_autocmd(
-  'RecordingEnter',
-  { group = group, callback = open_banner }
-)
-
-api.nvim_create_autocmd('RecordingLeave', {
-  group = group,
+vim.api.nvim_create_autocmd('RecordingEnter', {
   callback = function()
-    vim.defer_fn(close_banner, 50)
+    require('lualine').refresh()
   end,
 })
 
-api.nvim_create_autocmd('VimResized', {
-  group = group,
+vim.api.nvim_create_autocmd('RecordingLeave', {
   callback = function()
-    if win_id and api.nvim_win_is_valid(win_id) then
-      open_banner()
-    end
+    vim.defer_fn(function() require('lualine').refresh() end, 50)
   end,
 })
 
@@ -314,6 +252,7 @@ require('jellybeans').setup({
     hl.BlinkCmpSignatureHelpBorder = { bg = menu_bg, fg = c.grey }
     hl.PmenuSbar = { bg = menu_bg }
     hl.PmenuThumb = { bg = c.grey_three }
+    hl.MacroRecording = { bg = c.error, fg = c.background }
   end,
 })
 
@@ -348,6 +287,7 @@ require("lualine").setup({
       { "filename", separator = left_separator },
     },
     lualine_x = {
+      { macro_recording, separator = right_separator, color = "MacroRecording" },
       { "lsp_status", separator = right_separator, symbols = { done = "" } },
     },
     lualine_y = {
