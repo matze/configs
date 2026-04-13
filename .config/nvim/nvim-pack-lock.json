@@ -9,10 +9,6 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": ">=0.0.0"
     },
-    "bufferline.nvim": {
-      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
-      "src": "https://github.com/akinsho/bufferline.nvim"
-    },
     "codecompanion.nvim": {
       "rev": "fe792b30974893d8809b06c5e31c5c876c14bbc7",
       "src": "https://github.com/olimorris/codecompanion.nvim"
@@ -60,10 +56,6 @@
     "tiny-inline-diagnostic.nvim": {
       "rev": "57a0eb84b2008c76e77930639890d9874195b1e1",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
-    },
-    "vim-jjdescription": {
-      "rev": "c99bff42e7afff356514ae5b3f225665bf10b57c",
-      "src": "https://github.com/avm99963/vim-jjdescription"
     },
     "vim-move": {
       "rev": "267fd1cff61fc643dfb5f9b188c434906f5214aa",
