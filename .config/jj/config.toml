@@ -7,3 +7,10 @@ pager = "delta"
 behavior = "own"
 backend = "ssh"
 key = "~/.ssh/id_ed25519.pub"
+
+[revset-aliases]
+# Returns the closest merge commit to `to`
+"closest_merge(to)" = "heads(::to & merges())"
+
+[aliases]
+stack = ["rebase", "--after", "trunk()", "--before", "closest_merge(@)", "--revision"]
