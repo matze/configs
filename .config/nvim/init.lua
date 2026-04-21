@@ -135,10 +135,14 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end
 })
 
--- enable highlighting for jjdescription
+-- start tree-sitter highlighting for any filetype with an installed parser
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'jjdescription',
-  callback = function() vim.treesitter.start() end,
+  callback = function(args)
+    local ok, parser = pcall(vim.treesitter.get_parser, args.buf)
+    if ok and parser then
+      vim.treesitter.start(args.buf, parser:lang())
+    end
+  end,
 })
 
 -- macro recording
