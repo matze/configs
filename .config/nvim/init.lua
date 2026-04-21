@@ -183,7 +183,7 @@ vim.filetype.add({
 
 -- lsp ------------------------------------------------------------------------
 
-vim.lsp.enable({"clangd", "gopls", "ruff", "rust-analyzer", "tinymist", "ty"})
+vim.lsp.enable({"clangd", "gopls", "ruff", "rust-analyzer", "tinymist", "ty", "typescript"})
 
 -- colorscheme ----------------------------------------------------------------
 
