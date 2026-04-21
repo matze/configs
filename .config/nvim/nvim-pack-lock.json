@@ -10,11 +10,11 @@
       "version": ">=0.0.0"
     },
     "codecompanion.nvim": {
-      "rev": "afba1b7ea5cf2f50eac6d41c8af60efcb405da07",
+      "rev": "0bc486860666272c7ed73612aed56301b1b8e24d",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "jellybeans.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "57a0eb84b2008c76e77930639890d9874195b1e1",
+      "rev": "e4b60e3794098f9f3e244809296a0a1a63818d12",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-move": {
