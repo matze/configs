@@ -10,7 +10,7 @@
       "version": ">=0.0.0"
     },
     "codecompanion.nvim": {
-      "rev": "0bc486860666272c7ed73612aed56301b1b8e24d",
+      "rev": "d972496805f1a7c932d64b91a6f2edb8bbe7f671",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "6e76c5e47e957fbf080b1fdac165c66dbd2e7cfb",
+      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "e4b60e3794098f9f3e244809296a0a1a63818d12",
+      "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-move": {
