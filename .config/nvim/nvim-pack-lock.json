@@ -10,7 +10,7 @@
       "version": ">=0.0.0"
     },
     "codecompanion.nvim": {
-      "rev": "d972496805f1a7c932d64b91a6f2edb8bbe7f671",
+      "rev": "4939f94e78d0420ecb6ea530973436c10e71b7da",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
@@ -26,7 +26,7 @@
       "src": "https://github.com/rafikdraoui/jj-diffconflicts"
     },
     "lualine.nvim": {
-      "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
+      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "modes.nvim": {
