@@ -191,19 +191,31 @@ local function sync_colorscheme()
 end
 
 -- color scheme watcher
-local handle = vim.uv.new_pipe()
-local pid = vim.uv.spawn("gsettings", {
+local stdout = vim.uv.new_pipe()
+local proc = vim.uv.spawn("gsettings", {
   args = { "monitor", "org.gnome.desktop.interface", "color-scheme" },
-  stdio = { nil, handle, nil },
+  stdio = { nil, stdout, nil },
 }, function() end)
 
-if handle then
-  handle:read_start(function(err, data)
+if stdout then
+  stdout:read_start(function(err, data)
     if data then
       vim.schedule(sync_colorscheme)
     end
   end)
 end
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    if proc and not proc:is_closing() then
+      proc:kill("sigterm")
+      proc:close()
+    end
+    if stdout and not stdout:is_closing() then
+      stdout:close()
+    end
+  end,
+})
 
 -- plugins --------------------------------------------------------------------
 
