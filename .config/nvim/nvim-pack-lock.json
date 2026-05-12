@@ -10,7 +10,7 @@
       "version": ">=0.0.0"
     },
     "codecompanion.nvim": {
-      "rev": "2e33fbdd1ace1e5019ffba8891c5a23711005707",
+      "rev": "7858b5ae571f94e499aced466506860cc00afd6f",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
+      "rev": "2795c26c916bb3c57dde308b82be51971fa92747",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
