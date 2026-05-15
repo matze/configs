@@ -45,7 +45,6 @@
 
 [delta]
     side-by-side        = true
-    file-style          = bold yellow
     file-decoration-style = none
     hunk-header-decoration-style = none
 
