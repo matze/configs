@@ -9,16 +9,12 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": ">=0.0.0"
     },
-    "bufferline.nvim": {
-      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
-      "src": "https://github.com/akinsho/bufferline.nvim"
-    },
     "codecompanion.nvim": {
-      "rev": "7858b5ae571f94e499aced466506860cc00afd6f",
+      "rev": "3f562cc3b7efe3795527df00c08eb02ad1aa70c9",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
+      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "jellybeans.nvim": {
@@ -26,11 +22,11 @@
       "src": "https://github.com/wtfox/jellybeans.nvim"
     },
     "jj-diffconflicts": {
-      "rev": "58163ae8fe7646179dfd7741206dd9a2b4cdadc0",
+      "rev": "a2aa9a247b56d2c1a6f6be81bcf41c5450cc82ff",
       "src": "https://github.com/rafikdraoui/jj-diffconflicts"
     },
     "lualine.nvim": {
-      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "modes.nvim": {
@@ -46,7 +42,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "2795c26c916bb3c57dde308b82be51971fa92747",
+      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
@@ -54,16 +50,12 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",
+      "rev": "680762989e8b05a72e90769959d0fb9a557e6917",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
-    },
-    "vim-jjdescription": {
-      "rev": "c99bff42e7afff356514ae5b3f225665bf10b57c",
-      "src": "https://github.com/avm99963/vim-jjdescription"
     },
     "vim-move": {
       "rev": "267fd1cff61fc643dfb5f9b188c434906f5214aa",
@@ -74,7 +66,7 @@
       "src": "https://github.com/matze/wastebin.nvim"
     },
     "zk-nvim": {
-      "rev": "dea1ee6cd6d07568c92ea8353063d4d85c58a964",
+      "rev": "bc3b39374b25fad977cecc936588cb060f15a773",
       "src": "https://github.com/zk-org/zk-nvim"
     }
   }
