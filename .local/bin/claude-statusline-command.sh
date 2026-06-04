@@ -20,17 +20,16 @@ used_int=$(printf '%.0f' "$used")
 used_filled=$(( used_int * bar_width / 100 ))
 used_empty=$(( bar_width - used_filled ))
 
-used_bar=""
-for i in $(seq 1 "$used_filled"); do used_bar="${used_bar}▒"; done
-for i in $(seq 1 "$used_empty"); do used_bar="${used_bar}░"; done
+for i in $(seq 1 "$used_filled"); do used_bar="${used_bar}━"; done
+for i in $(seq 1 "$used_empty"); do used_bar="${used_bar}─"; done
 
 limit_int=$(printf '%.0f' "$limit")
 limit_filled=$(( limit_int * bar_width / 100 ))
 limit_empty=$(( bar_width - limit_filled ))
 
 limit_bar=""
-for i in $(seq 1 "$limit_filled"); do limit_bar="${limit_bar}▒"; done
-for i in $(seq 1 "$limit_empty"); do limit_bar="${limit_bar}░"; done
+for i in $(seq 1 "$limit_filled"); do limit_bar="${limit_bar}━"; done
+for i in $(seq 1 "$limit_empty"); do limit_bar="${limit_bar}─"; done
 
 # Color: green <= 50%, yellow <= 80%, red > 80%
 if [ "$used_int" -le 50 ]; then
