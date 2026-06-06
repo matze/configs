@@ -1,6 +1,8 @@
 # Version control
 
 - Use jj if the project repo is configured that way
+- Split changes into meaningful, atomic changes that can be reviewed
+  independently
 
 # Code navigation
 
@@ -12,6 +14,8 @@
 
 - Never use boolean argument types and instead create types with appropriately
   named values
+- Separate control flow structures (if, loop, while, for, ...) from surrounding
+  code with newlines
 
 ## Rust
 
