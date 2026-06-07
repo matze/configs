@@ -16,29 +16,35 @@ fi
 
 bar_width=20
 
-used_int=$(printf '%.0f' "$used")
-used_filled=$(( used_int * bar_width / 100 ))
-used_empty=$(( bar_width - used_filled ))
+get_color() {
+    local percentage=$1
+    if [ "$percentage" -le 50 ]; then
+        echo -n "\033[0;32m"
+    elif [ "$percentage" -le 80 ]; then
+        echo -n "\033[0;33m"
+    else
+        echo -n "\033[0;31m"
+    fi
+}
 
-for i in $(seq 1 "$used_filled"); do used_bar="${used_bar}━"; done
-for i in $(seq 1 "$used_empty"); do used_bar="${used_bar}─"; done
+make_bar() {
+    local percentage=$1
+    local filled=$(( percentage * bar_width / 100 ))
+    local empty=$(( bar_width - filled ))
+    local bar=""
+    for i in $(seq 1 "$filled"); do bar="${bar}━"; done
+    for i in $(seq 1 "$empty"); do bar="${bar}─"; done
+    echo -n "$bar"
+}
 
-limit_int=$(printf '%.0f' "$limit")
-limit_filled=$(( limit_int * bar_width / 100 ))
-limit_empty=$(( bar_width - limit_filled ))
-
-limit_bar=""
-for i in $(seq 1 "$limit_filled"); do limit_bar="${limit_bar}━"; done
-for i in $(seq 1 "$limit_empty"); do limit_bar="${limit_bar}─"; done
-
-# Color: green <= 50%, yellow <= 80%, red > 80%
-if [ "$used_int" -le 50 ]; then
-    color="\033[0;32m"
-elif [ "$used_int" -le 80 ]; then
-    color="\033[0;33m"
-else
-    color="\033[0;31m"
-fi
 reset="\033[0m"
+used_int=$(printf '%.0f' "$used")
+limit_int=$(printf '%.0f' "$limit")
 
-printf "${model} • context ${color}${used_bar} ${used_int}%%${reset} • 5h limit ${limit_bar} ${limit_int}%% • ${cost}"
+used_color=$(get_color "$used_int")
+used_bar=$(make_bar "$used_int")
+
+limit_color=$(get_color "$limit_int")
+limit_bar=$(make_bar "$limit_int")
+
+printf "${model} • context ${used_color}${used_bar} ${used_int}%%${reset} • 5h limit ${limit_color}${limit_bar} ${limit_int}%%${reset} • ${cost}"
