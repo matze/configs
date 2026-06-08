@@ -40,13 +40,22 @@ function man-browse() {
     man -k . | fzf | man $(sed -n 's/^\(.*\) (\([0-9]\)).*$/\2 \1/p')
 }
 #}}}
-#{{{ prompt
-COLOR_NONE="\[\033[0m\]"
-BROWN="\[\033[0;33m\]"
-YELLOW="\[\033[1;33m\]"
-LIGHT_GRAY="\[\033[0;37m\]"
-DARK_GRAY="\[\033[1;30m\]"
-HOST_COLOR="\[\033[1;$((31 + $(hostname | cksum | cut -c1-4) % 6))m\]"
+#{{{ prompt (pure-style, jj-aware)
+# A two-line prompt inspired by sindresorhus/pure. Colocated jj repos take
+# precedence over git. Everything is synchronous but kept to a single VCS
+# subprocess per prompt, so it stays fast.
+
+_PROMPT_SYMBOL="❯"
+
+# Colours, wrapped in \[ \] so bash can compute the prompt width correctly.
+_C_RESET="\[\e[0m\]"
+_C_PATH="\[\e[34m\]"       # blue   - working directory
+_C_VCS="\[\e[38;5;242m\]" # grey   - branch / change id + dirty marker
+_C_ARROW="\[\e[36m\]"     # cyan   - ahead/behind arrows
+_C_HOST="\[\e[38;5;242m\]" # grey  - user@host (ssh only)
+_C_VENV="\[\e[38;5;242m\]" # grey  - virtualenv name
+_C_OK="\[\e[35m\]"        # magenta - prompt symbol, last command succeeded
+_C_ERR="\[\e[31m\]"       # red     - prompt symbol, last command failed
 
 function _set_prompt_workingdir () {
     local pwdmaxlen=$(($COLUMNS/5))
@@ -62,27 +71,77 @@ function _set_prompt_workingdir () {
     fi
 }
 
+# jj: show change id, bookmarks and a dirty marker. --ignore-working-copy keeps
+# it fast and avoids spamming the operation log on every prompt; the dirty state
+# therefore reflects the last snapshot, which is refreshed by any jj command.
+function _jj_info() {
+    local info
+    info=$(jj log --no-graph --ignore-working-copy --color=never -r @ \
+        -T 'separate(" ", change_id.shortest(8), bookmarks, if(empty, "", "*"), if(conflict, "×"))' \
+        2>/dev/null) || return
+    [ -n "$info" ] && printf '%s' "${_C_VCS}${info}${_C_RESET}"
+}
+
+# git: branch (or short sha when detached), a dirty marker and ahead/behind
+# arrows, all from a single `git status` call.
+function _git_info() {
+    local line head oid ab ahead behind dirty arrows
+    while IFS= read -r line; do
+        case "$line" in
+            "# branch.head "*) head="${line#\# branch.head }" ;;
+            "# branch.oid "*)  oid="${line#\# branch.oid }" ;;
+            "# branch.ab "*)
+                ab="${line#\# branch.ab }"
+                ahead="${ab%% *}"; ahead="${ahead#+}"
+                behind="${ab##* }"; behind="${behind#-}"
+                ;;
+            "#"*) ;;
+            *) dirty="*" ;;
+        esac
+    done < <(git status --porcelain=v2 --branch 2>/dev/null)
+
+    [ -z "$head" ] && return
+    [ "$head" = "(detached)" ] && head="${oid:0:7}"
+
+    [ "${ahead:-0}" -gt 0 ] 2>/dev/null && arrows="${arrows}⇡"
+    [ "${behind:-0}" -gt 0 ] 2>/dev/null && arrows="${arrows}⇣"
+
+    printf '%s' "${_C_VCS}${head}${dirty}${_C_RESET}"
+    [ -n "$arrows" ] && printf '%s' " ${_C_ARROW}${arrows}${_C_RESET}"
+}
+
+# Walk up the tree to find the closest repo, preferring a colocated jj repo.
+function _vcs_info() {
+    local dir="$PWD"
+    while : ; do
+        if [ -d "$dir/.jj" ]; then
+            command -v jj >/dev/null 2>&1 && { _jj_info; return; }
+        fi
+        [ -e "$dir/.git" ] && { _git_info; return; }
+        [ "$dir" = "/" ] || [ -z "$dir" ] && break
+        dir="${dir%/*}"
+    done
+}
+
 function _prompt_command() {
-    if test -z "$VIRTUAL_ENV" ; then
-        PYTHON_VIRTUALENV=""
-    else
-        PYTHON_VIRTUALENV="${YELLOW}*${COLOR_NONE} "
-    fi
+    local exit=$?
+    local venv="" host="" sym vcs
+
+    [ -n "$VIRTUAL_ENV" ] && venv="${_C_VENV}${VIRTUAL_ENV##*/}${_C_RESET} "
 
     _set_prompt_workingdir
 
-    echo -n "${PYTHON_VIRTUALENV}${DARK_GRAY}\u${COLOR_NONE}@${HOST_COLOR}\h${COLOR_NONE}:${BROWN}${NEW_PWD}${COLOR_NONE}"
+    vcs=$(_vcs_info)
+    [ -n "$vcs" ] && vcs=" ${vcs}"
+
+    [ -n "$SSH_CONNECTION" ] && host=" ${_C_HOST}\u@\h${_C_RESET}"
+
+    if [ "$exit" -eq 0 ]; then sym="$_C_OK"; else sym="$_C_ERR"; fi
+
+    PS1="${venv}${_C_PATH}${NEW_PWD}${_C_RESET}${vcs}${host} ${sym}${_PROMPT_SYMBOL}${_C_RESET} "
 }
 
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-    . /usr/lib/git-core/git-sh-prompt
-    export GIT_PS1_SHOWDIRTYSTATE=yes
-    export GIT_PS1_SHOWCOLORHINTS=yes
-    export GIT_PS1_SHOWSTASHSTATE=yes
-    export GIT_PS1_SHOWUNTRACKEDFILES=yes
-fi
-
-PROMPT_COMMAND='__git_ps1 "`_prompt_command`" " "'
+PROMPT_COMMAND=_prompt_command
 #}}}
 #{{{ man enhancement
 export LESS_TERMCAP_mb=$(printf "\e[1;31m")
