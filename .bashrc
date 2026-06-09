@@ -50,7 +50,8 @@ _PROMPT_SYMBOL="❯"
 # Colours, wrapped in \[ \] so bash can compute the prompt width correctly.
 _C_RESET="\[\e[0m\]"
 _C_PATH="\[\e[34m\]"       # blue   - working directory
-_C_VCS="\[\e[38;5;242m\]" # grey   - branch / change id + dirty marker
+_C_VCS="\[\e[38;5;242m\]" # grey   - branch / change id rest + dirty marker
+_C_VCS_ID="\[\e[1;35m\]"  # bold purple - unique (shortest) change id prefix
 _C_ARROW="\[\e[36m\]"     # cyan   - ahead/behind arrows
 _C_HOST="\[\e[38;5;242m\]" # grey  - user@host (ssh only)
 _C_VENV="\[\e[38;5;242m\]" # grey  - virtualenv name
@@ -74,12 +75,19 @@ function _set_prompt_workingdir () {
 # jj: show change id, bookmarks and a dirty marker. --ignore-working-copy keeps
 # it fast and avoids spamming the operation log on every prompt; the dirty state
 # therefore reflects the last snapshot, which is refreshed by any jj command.
+# The change id is split into its shortest unique prefix and the remaining
+# padding (tab-separated) so the prefix can be highlighted like jj does itself.
 function _jj_info() {
-    local info
+    local info prefix rest extra
     info=$(jj log --no-graph --ignore-working-copy --color=never -r @ \
-        -T 'separate(" ", change_id.shortest(8), bookmarks, if(empty, "", "*"), if(conflict, "×"))' \
+        -T 'change_id.shortest(8).prefix() ++ "\t" ++ change_id.shortest(8).rest() ++ "\t" ++ separate(" ", bookmarks, if(empty, "", "*"), if(conflict, "×"))' \
         2>/dev/null) || return
-    [ -n "$info" ] && printf '%s' "${_C_VCS}${info}${_C_RESET}"
+    [ -z "$info" ] && return
+
+    IFS=$'\t' read -r prefix rest extra <<< "$info"
+    [ -n "$extra" ] && extra=" ${extra}"
+
+    printf '%s' "${_C_VCS_ID}${prefix}${_C_VCS}${rest}${extra}${_C_RESET}"
 }
 
 # git: branch (or short sha when detached), a dirty marker and ahead/behind
