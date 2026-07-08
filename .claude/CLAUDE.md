@@ -3,17 +3,18 @@
 When responding either directly to me or indirectly via code comments, PR
 comments, issue comments etc. stay terse and cut down on unnecessary fluff and
 redundant information. Respond with information that is necessary for the task
-and free of ambiguity. Do not recap without being asked to.
+and free of ambiguity.
 
 # Version control
 
-- Use jj if the project repo is configured that way
+- Before any version-control action, check for a `.jj/` directory; if present,
+  use jj (never git directly)
 - Split changes into meaningful, atomic changes that can be reviewed
-  independently
+  individually and independently
 
 # Code navigation
 
-- Use LSP whenever possible, rust-analyzer should be installed
+- Use LSP whenever possible
 
 # Writing code
 
@@ -30,7 +31,7 @@ and free of ambiguity. Do not recap without being asked to.
 
 ### Documentation
 
-- Avoid justifications in API docstrings.
+- Avoid justifications in API docstrings
 - Avoid justifing a decision based on what I ask you to do. For
   example when you use an `enum` don't write "Using `FooBar` to avoid a
   boolean"
