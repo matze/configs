@@ -231,7 +231,6 @@ vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/numToStr/Comment.nvim',
-  'https://github.com/olimorris/codecompanion.nvim',
   'https://github.com/rachartier/tiny-inline-diagnostic.nvim',
   'https://github.com/rafikdraoui/jj-diffconflicts',
   'https://github.com/wtfox/jellybeans.nvim',
@@ -314,22 +313,6 @@ require("lualine").setup({
         },
       }
     }
-  },
-})
-
-require('codecompanion').setup({
-  interactions = {
-    cli = {
-      agent = "claude_code",
-      agents = {
-        claude_code = {
-          cmd = "claude",
-          args = {},
-          description = "Claude Code CLI",
-          provider = "terminal",
-        },
-      },
-    },
   },
 })
 

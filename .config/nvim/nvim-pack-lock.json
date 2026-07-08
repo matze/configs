@@ -13,10 +13,6 @@
       "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
-    "codecompanion.nvim": {
-      "rev": "7c05317ccd373cf3cf7801328e0d271a1636c3da",
-      "src": "https://github.com/olimorris/codecompanion.nvim"
-    },
     "gitsigns.nvim": {
       "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
