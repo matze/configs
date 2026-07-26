@@ -4,6 +4,7 @@ description: |
     Create sentence-based English→German vocabulary cards in the Anki English
     deck. Supports single cards or batch import.
 argument-hint: "[word(s)]"
+disable-model-invocation: true
 ---
 
 # Add English Vocabulary Card(s)
