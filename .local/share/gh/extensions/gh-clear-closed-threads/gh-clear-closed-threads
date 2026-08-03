@@ -8,13 +8,22 @@
 set -euo pipefail
 
 usage() {
-    echo "Usage: gh clear-closed-threads [-n|--dry-run] [-h|--help]"
+    echo "Usage: gh clear-closed-threads [-a|--all] [-n|--dry-run] [-h|--help]"
+    echo
+    echo "  -a, --all      also consider threads that are already read. The API"
+    echo "                 reports these identically to threads already marked"
+    echo "                 done, so they are cleared again on every run."
+    echo "  -n, --dry-run  list what would be cleared without clearing it"
 }
 
 dry_run=
+endpoint=/notifications
 
 while [ $# -ge 1 ]; do
     case "$1" in
+        -a|--all)
+            endpoint='/notifications?all=true'
+            ;;
         -n|--dry-run)
             dry_run=1
             ;;
@@ -31,8 +40,7 @@ while [ $# -ge 1 ]; do
     shift
 done
 
-# all=true also returns read threads, which stay in the inbox until marked done.
-threads=$(gh api --paginate '/notifications?all=true' | jq -s 'add | [.[]
+threads=$(gh api --paginate "$endpoint" | jq -s 'add | [.[]
     | select(.subject.type == "PullRequest" or .subject.type == "Issue")
     | {
         id,
