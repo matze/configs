@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+#
+# gh-clear-closed-threads
+#
+# Marks every notification as done whose subject is an issue or pull request
+# that is no longer open, i.e. closed or merged.
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: gh clear-closed-threads [-n|--dry-run] [-h|--help]"
+}
+
+dry_run=
+
+while [ $# -ge 1 ]; do
+    case "$1" in
+        -n|--dry-run)
+            dry_run=1
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            usage >&2
+            exit 1
+            ;;
+    esac
+
+    shift
+done
+
+# all=true also returns read threads, which stay in the inbox until marked done.
+threads=$(gh api --paginate '/notifications?all=true' | jq -s 'add | [.[]
+    | select(.subject.type == "PullRequest" or .subject.type == "Issue")
+    | {
+        id,
+        owner: .repository.owner.login,
+        name: .repository.name,
+        number: (.subject.url | split("/") | last | tonumber),
+        label: "\(.repository.full_name)#\(.subject.url | split("/") | last): \(.subject.title)"
+    }]')
+
+if [ "$(jq 'length' <<< "$threads")" -eq 0 ]; then
+    exit 0
+fi
+
+# One aliased sub-query per thread keeps the state lookup to a single request.
+query=$(jq -r '[to_entries[]
+    | "t\(.key): repository(owner: \"\(.value.owner)\", name: \"\(.value.name)\") {"
+      + " issueOrPullRequest(number: \(.value.number)) {"
+      + " ... on Issue { state } ... on PullRequest { state } } }"]
+    | "query { \(join(" ")) }"' <<< "$threads")
+
+# Unreadable repositories fail their alias only, so the partial response is
+# still usable and gh's non-zero exit is expected. It also drops --jq in that
+# case, hence the filtering below.
+response=$(gh api graphql -f query="$query" 2> /dev/null) || true
+
+closed=$(jq -r --argjson response "${response:-null}" '[to_entries[]
+    | select($response.data["t\(.key)"].issueOrPullRequest.state
+        | . == "MERGED" or . == "CLOSED")
+    | .value]' <<< "$threads")
+
+while IFS=$'\t' read -r thread_id label; do
+    if [ -n "$dry_run" ]; then
+        echo "would clear $label"
+        continue
+    fi
+
+    gh api --silent --method DELETE "/notifications/threads/$thread_id"
+    echo "cleared $label"
+done < <(jq -r '.[] | [.id, .label] | @tsv' <<< "$closed")
