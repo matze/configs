@@ -8,7 +8,12 @@ and free of ambiguity.
 # Version control
 
 - Before any version-control action, check for a `.jj/` directory; if present,
-  use jj (never git directly)
+  use jj (never git directly) according to these rules:
+  - `jj split <file>` splits non-interactively (first commit = the given files);
+    no editor config is needed while the commit has no description.
+  - `jj bookmark` instead of `jj branch`
+  - Never rewrite the working-copy commit (`jj describe -r @`, `jj edit`),
+    split/describe other commits first, then `jj new` for a fresh working copy.
 - Split changes into meaningful, atomic changes that can be reviewed
   individually and independently
 
@@ -35,6 +40,8 @@ and free of ambiguity.
 - Avoid justifing a decision based on what I ask you to do. For
   example when you use an `enum` don't write "Using `FooBar` to avoid a
   boolean"
+- Wrap Markdown at 80 characters or whatever the environment requires (e.g. PR
+  description rules, Rust docstrings, ...)
 
 ### Style
 
