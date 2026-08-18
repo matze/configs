@@ -37,6 +37,8 @@ Rules applying to textual output: prose and code alike.
 
 ## Style
 
+- Avoid cleft sentence constructions, especially It-cleft,
+  Wh-cleft/Pseudo-cleft and their reversed forms.
 - No performative honesty: no "honestly", no confessions, no apologies.
 - Never explain a choice as "X, not Y" or "X rather than Y". State what is done.
 

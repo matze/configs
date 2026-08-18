@@ -4,7 +4,8 @@ Always use the unslop skill to write in a more understandable way.
 
 ## Output
 
-- Wrap Markdown lines at 80 characters
+- Wrap Markdown lines at 80 characters unless it's for system that provides its
+  own layouting (GitHub, ...)
 - **Do not** wrap Markdown when the system provides its own layouts (PR
   description rules, Jira, Rust docstrings, ...)
 
