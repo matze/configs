@@ -1,13 +1,8 @@
 # Agent rules
 
-## General
+Always use the unslop skill to write in a more understandable way.
 
-- Do not rationalize and justify unless asked for
-- Stay terse and keep sentences short
-- Avoid inventing new lingo and terminology
-- Avoid redundancy
-
-### Output
+## Output
 
 - Wrap Markdown lines at 80 characters
 - **Do not** wrap Markdown when the system provides its own layouts (PR
