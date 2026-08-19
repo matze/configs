@@ -1,18 +1,16 @@
 # Agent rules
 
-Always use the unslop skill to write in a more understandable way.
+Always use the /unslop skill to write in a more understandable way.
 
 ## Output
 
-- Wrap Markdown lines at 80 characters unless it's for system that provides its
-  own layouting (GitHub, ...)
-- **Do not** wrap Markdown when the system provides its own layouts (PR
-  description rules, Jira, Rust docstrings, ...)
+- Wrap Markdown lines at 80 characters
+- **Do not** wrap Markdown at 80 characters when the system provides its own
+  layouts (GitHub, Jira, Rust docstrings, ...)
 
 ## Version control
 
-- Before any version-control action, check for a `.jj/` directory and use `jj`
-  if present
+- Check for a `.jj/` directory and use `jj` before doing any version control
 - `jj split <file>` splits non-interactively (first commit = the given files);
   no editor config is needed while the commit has no description.
 - `jj bookmark` instead of `jj branch`
