@@ -3,27 +3,25 @@
 # gh-clear-closed-threads
 #
 # Marks every notification as done whose subject is an issue or pull request
-# that is no longer open, i.e. closed or merged.
+# that is no longer open, i.e. closed or merged. Read threads count too, so the
+# inbox is cleared and not just its unread part.
+#
+# The API reports threads already marked done identically to merely read ones,
+# so those are cleared again on every run. Repeating the DELETE is idempotent.
 
 set -euo pipefail
 
 usage() {
-    echo "Usage: gh clear-closed-threads [-a|--all] [-n|--dry-run] [-h|--help]"
+    echo "Usage: gh clear-closed-threads [-n|--dry-run] [-h|--help]"
     echo
-    echo "  -a, --all      also consider threads that are already read. The API"
-    echo "                 reports these identically to threads already marked"
-    echo "                 done, so they are cleared again on every run."
     echo "  -n, --dry-run  list what would be cleared without clearing it"
 }
 
 dry_run=
-endpoint=/notifications
+endpoint='/notifications?all=true'
 
 while [ $# -ge 1 ]; do
     case "$1" in
-        -a|--all)
-            endpoint='/notifications?all=true'
-            ;;
         -n|--dry-run)
             dry_run=1
             ;;
