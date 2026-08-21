@@ -22,9 +22,14 @@ Numbers are append-only. A deleted rule retires its number.
   paragraph.
 - GEN-04 Never justify unless the reader asks.
 - GEN-05 Conclusion first, evidence after.
-- GEN-06 Use concrete subjects and avoid metaphors.
+- GEN-06 Make the actor the subject and give it a real verb. No metaphors.
 - GEN-07 Do not describe alternatives you rejected. No "X, not Y".
 - GEN-08 Drop the consequence clause when the first clause implies it.
+- GEN-09 Adverbs to avoid: honestly, genuinely, load-bearing
+- GEN-10 Nouns to avoid: seam, blast radius
+- GEN-11 Verbs to avoid: carry, travel, live, earn, be for
+- GEN-12 The words in GEN-09 to GEN-11 name constructions. Replacing one with a
+  synonym in the same sentence frame is not a fix.
 
 ## Cutting
 
