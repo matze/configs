@@ -6,11 +6,11 @@ description: >-
 
 # Language rules
 
-`rules.md` next to this file carries the rules. Read it before writing, and
-apply it to every output.
+`rules.md` next to this file contains writing rules to be applied to every
+output that a human reader may see.
 
 Each section names what it applies to. Style, General and Cutting apply to
 prose. Naming, Declaration comments and Body comments apply to code.
 
-When asked to remove slop, re-read the finished text against every rule. Your
-own new sentences are subject to them too.
+When asked to remove slop, re-read the finished text against every rule. Any new
+sentences is subject to them as well.

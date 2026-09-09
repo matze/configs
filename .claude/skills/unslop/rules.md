@@ -1,6 +1,6 @@
 # Language rules
 
-Numbers are append-only. A deleted rule retires its number.
+Numbers are append-only. A deleted rule blocks its number.
 
 ## Style
 
@@ -13,6 +13,8 @@ Numbers are append-only. A deleted rule retires its number.
   one.
 - STY-05 Keep sentences and paragraphs short.
 - STY-06 No performative honesty: no "honestly", no confessions, no apologies.
+- STY-07 Avoid an indefinite pronoun as a subject of a claim if a concrete
+  alternative exists: nothing, nobody, no one, something, anything, everything
 
 ## General
 
@@ -27,9 +29,12 @@ Numbers are append-only. A deleted rule retires its number.
 - GEN-08 Drop the consequence clause when the first clause implies it.
 - GEN-09 Adverbs to avoid: honestly, genuinely, load-bearing
 - GEN-10 Nouns to avoid: seam, blast radius
-- GEN-11 Verbs to avoid: carry, travel, live, earn, be for
+- GEN-11 Verbs to avoid: carry, travel, live, earn, be for, learn, know, want,
+  decide, understand, notice, realise, believe, expect, care, try
 - GEN-12 The words in GEN-09 to GEN-11 name constructions. Replacing one with a
-  synonym in the same sentence frame is not a fix.
+  synonym in the same sentence is not a fix.
+- GEN-13 A GEN-11 verb is only a defect when its subject is not a person. Keep
+  the verb for human subjects.
 
 ## Cutting
 
