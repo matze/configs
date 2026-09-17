@@ -35,6 +35,21 @@ Numbers are append-only. A deleted rule blocks its number.
   synonym in the same sentence is not a fix.
 - GEN-13 A GEN-11 verb is only a defect when its subject is not a person. Keep
   the verb for human subjects.
+- GEN-14 Keep the phrase when it takes a modifier or a comparison the single
+  word cannot express: "almost no", "no fewer than", "not always able to".
+- GEN-15 Avoid periphrasis constructs. The list is open.
+  - Negation: with no → without, in the absence of → without, at no point →
+    never, there is no need to → need not, does not have → lacks
+  - Modality: is not able to → cannot, has the ability to → can, is required
+    to → must, it is possible that → may
+  - Light verb plus nominalization: performs a check on → checks, gives a
+    description of → describes, makes use of → uses, provides support for →
+    supports
+  - Copula plus adjective: is different from → differs from, is in agreement
+    with → agrees with, is dependent on → depends on, is able to be → can be
+  - Connective and adjunct: in order to → to, for the purpose of → to, in the
+    event that → if, at this point in time → now, due to the fact that →
+    because
 
 ## Cutting
 
