@@ -2,6 +2,7 @@
 
 ## Output
 
+- Always use /unslop to improve writing
 - Wrap Markdown lines at 80 characters
 - **Do not** wrap Markdown at 80 characters when the system provides its own
   layouts (GitHub, Jira, Rust docstrings, ...)
