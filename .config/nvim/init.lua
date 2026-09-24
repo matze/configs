@@ -87,9 +87,9 @@ vim.keymap.set("n", "<Leader>sn", ":setlocal nospell<CR>", { remap = false })
 
 vim.keymap.set("n", "<Leader>zo", '<cmd>:ZkNotes<CR>')
 vim.keymap.set("n", "<Leader>zl", '<cmd>:ZkInsertLink<CR>')
-vim.keymap.set("v", "<Leader>zl", '<cmd>:ZkInsertLinkAtSelection<CR>')
+vim.keymap.set("v", "<Leader>zl", ":ZkInsertLinkAtSelection<CR>")
 vim.keymap.set("n", "<Leader>zc", '<cmd>:ZkNew<CR>')
-vim.keymap.set("v", "<Leader>zc", ":'<,'>ZkNewFromTitleSelection<CR>")
+vim.keymap.set("v", "<Leader>zc", ":ZkNewFromTitleSelection<CR>")
 
 -- autocmds -------------------------------------------------------------------
 
