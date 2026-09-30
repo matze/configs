@@ -95,7 +95,7 @@ vim.keymap.set("v", "<Leader>zc", ":ZkNewFromTitleSelection<CR>")
 
 -- auto-format using LSP
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.rs", "*.c", "*.cpp", "*.h", "*.py", "*.typ" },
+  pattern = { "*.rs", "*.c", "*.cpp", "*.h", "*.md", "*.py", "*.typ" },
   callback = function(ev)
     vim.lsp.buf.format()
   end
