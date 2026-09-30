@@ -50,6 +50,8 @@ Numbers are append-only. A deleted rule blocks its number.
   - Connective and adjunct: in order to → to, for the purpose of → to, in the
     event that → if, at this point in time → now, due to the fact that →
     because
+- GEN-16 Avoid paired correlative conjunctions and prefer negative auxiliary
+  verbs (does not, has not, will not)
 
 ## Cutting
 
