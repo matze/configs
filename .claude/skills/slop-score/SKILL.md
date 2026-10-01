@@ -9,28 +9,26 @@ disable-model-invocation: true
 
 # Slop rating
 
-Read `../unslop/rules.md` relative to this file. Every finding cites one rule
-from it by ID.
+Read `../unslop/general.md` and `../unslop/code.md` relative to this file. Every
+finding cites one rule from one of them by ID.
 
 ## Scope
 
-Skip a section when the input holds no instance of its subject. Style, General
-and Cutting apply to prose. Naming, Declaration comments and Body comments
-apply to code.
+Skip a section when the input holds no instance of its subject. Style applies to
+prose. Naming, Declaration comments and Body comments apply to code.
 
-A commit message gets STY, GEN and CUT. A Rust diff gets all six.
+A commit message gets STY. A Rust diff gets all four.
 
 ## Findings
 
 Report a violation only where you can quote the span it applies to. A rule that
-yields no span yields no finding. GEN-03 and CUT-03 judge the whole text, so
-they produce a finding only where you can quote the sentence you would delete.
+yields no span yields no finding.
 
 Write nothing about a section that produced no findings.
 
 Open the report with the score line, then this legend:
 
-```
+```text
 🔍 red `-` is what is there now, ✏️ green `+` is the suggestion, and `[-…-]` /
 `{+…+}` mark the words that change.
 ```
@@ -38,7 +36,7 @@ Open the report with the score line, then this legend:
 One block per violation, in file order, so the reader walks the file top to
 bottom:
 
-````
+````text
 `<file>:<line>:<col>` `<ID>` <why those words break the rule>
 ```diff
 - <the text as it stands, changed words wrapped in [-…-]>
@@ -54,7 +52,7 @@ block, with the other locations listed in the reason line.
 
 For example:
 
-````
+````text
 `README.md:8:1` `STY-03` reversed pseudo-cleft fronting `It is`
 ```diff
 - [-It is the cache that is-] slow.
@@ -112,7 +110,7 @@ Pipe the text on stdin when the input is not a file.
 
 One line above the legend carries all three numbers:
 
-```
+```text
 **`<file>`** <count> violations, <d> per 100 words, **<fail|pass>**
 ```
 
