@@ -34,4 +34,17 @@ end)
 
 require('multiplexer').apply(config)
 
+config.font_rules = {
+  {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font('JetBrains Mono', { weight = 'Bold' }),
+  },
+  {
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font('JetBrains Mono', { weight = 'Bold', italic = true }),
+  },
+}
+
 return config
