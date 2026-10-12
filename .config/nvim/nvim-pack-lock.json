@@ -14,15 +14,15 @@
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
     "codecompanion.nvim": {
-      "rev": "e0fe366cf3af6c80dcac86cb053ef3fe48aae911",
+      "rev": "3dd1ef7fa8d6aeb27020023e40293bac588de714",
       "src": "https://github.com/olimorris/codecompanion.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
+      "rev": "36a091f28cdef8c560770d3bce787ddbeb66464b",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "jellybeans.nvim": {
-      "rev": "29f4c17981f70c0919c2f3f918da9a89f906bf37",
+      "rev": "e732023eed419be0efb0bf47569cc12e7cdda6a1",
       "src": "https://github.com/wtfox/jellybeans.nvim"
     },
     "jj-diffconflicts": {
@@ -34,19 +34,19 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "modes.nvim": {
-      "rev": "2badf8771dbb2d1e1066fd6a5dddaad2fc836e72",
+      "rev": "8022c7345e51423b4cc6333971f3cbfb7e6035bc",
       "src": "https://github.com/mvllow/modes.nvim"
     },
     "nvim-lsp-endhints": {
-      "rev": "cc11482c988ba0e394b3426ae13d0b97e81a508d",
+      "rev": "3224a1c1b2fe1b067049764a154d4d727425fa6d",
       "src": "https://github.com/chrisgrieser/nvim-lsp-endhints"
     },
     "nvim-treesitter": {
-      "rev": "a1bcffc8095c142ad1f7a9671a4ae180333f9209",
+      "rev": "1a4f47b03dfe92d28de7d5654c67327ef008c9e6",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
+      "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
+      "rev": "46ae9b3c8f3039e96ff4497d190ad0aee091f30d",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-jjdescription": {
@@ -74,7 +74,7 @@
       "src": "https://github.com/matze/wastebin.nvim"
     },
     "zk-nvim": {
-      "rev": "bca7e4a119353f18f2a819385fb7ce10269ef747",
+      "rev": "2093138f4fabce994cf19403fca89d629f312ac9",
       "src": "https://github.com/zk-org/zk-nvim"
     }
   }
