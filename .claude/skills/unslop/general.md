@@ -43,3 +43,6 @@
 - STY-25 Never cut a sentence down to a verbless fragment.
 - STY-26 Never write an em dash or a semicolon.
 - STY-27 Write negative auxiliaries in full: does not, has not, will not.
+- STY-28 Never use a noun-derived verb when a plain verb exists: impact →
+  affect, author → write, leverage → use, architect → design, transition →
+  move. Keep a noun-derived verb with no plain equivalent: cache, index, fork.
