@@ -25,9 +25,10 @@
 - STY-16 Never write an adverb that adds no information, such as honestly or
   genuinely.
 - STY-17 Never write a metaphor, such as seam, blast radius, or load-bearing.
-- STY-18 Never write a verb such as carry, travel, live, earn, be for, learn,
-  know, want, decide, understand, notice, realise, believe, expect, care, or
-  try with a non-person subject. Keep the verb when the subject is a person.
+- STY-18 Never give a non-person subject a verb of human thought, feeling, or
+  intent: want, decide, understand, notice, realise, believe, expect, care,
+  try, know, learn. Keep the verb when the subject is a person. Keep literal
+  verbs: a pipe carries water.
 - STY-22 Replace a periphrasis with the single word it paraphrases. Keep the
   phrase when no single word expresses it: "almost no", "no fewer than", "not
   always able to". The list is open:
